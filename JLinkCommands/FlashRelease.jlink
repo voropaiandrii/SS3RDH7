@@ -1,0 +1,4 @@
+r
+loadfile /Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Release/SS3RDH7.bin 0x08000000
+r
+q

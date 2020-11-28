@@ -160,17 +160,23 @@
     <Filter Include="Source Files\gui\model">
       <UniqueIdentifier>C3C465E8-3ABD-9FE1-9AB0-E6AA6E3D8AB9</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>98A8B7DB-4F17-2B9D-F4C3-C683D9D87601</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>14FA1EF5-62DA-5860-4893-F5FBBC9681EA</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\generated\gui_generated\common">
       <UniqueIdentifier>B1C86E26-567E-682F-622C-2D3986BFF52B</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\common">
       <UniqueIdentifier>64DE089E-6D6F-8AB7-FF3B-CF4F00C1FB42</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_screen">
+      <UniqueIdentifier>D0AFF2FE-6CC9-EE24-96F3-C35B80197165</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_screen">
+      <UniqueIdentifier>920119AB-C251-DD10-0B1A-DE11147464B7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_screen">
+      <UniqueIdentifier>136E0EF8-6CCC-79A9-348A-F16C31867CBB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_screen">
+      <UniqueIdentifier>B6176052-0C93-4292-8A80-8A16574B91E6</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -198,17 +204,20 @@
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp">
       <Filter>Source Files\generated\gui_generated\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
       <Filter>Source Files\gui\main_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_screen\screenPresenter.cpp">
+      <Filter>Source Files\gui\screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_screen\screenView.cpp">
+      <Filter>Source Files\gui\screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -634,14 +643,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
       <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp">
       <Filter>Header Files\gui\model</Filter>
@@ -651,6 +654,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenPresenter.hpp">
+      <Filter>Header Files\gui\screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenView.hpp">
+      <Filter>Header Files\gui\screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,9 +8,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
-#include <platform/driver/lcd/LCD16bpp.hpp>
-#include <gui/main_screen/MainView.hpp>
-#include <gui/main_screen/MainPresenter.hpp>
+#include<platform/driver/lcd/LCD24bpp.hpp>
+#include <gui/screen_screen/screenView.hpp>
+#include <gui/screen_screen/screenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -22,22 +22,22 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
 {
     touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
     touchgfx::Texts::setLanguage(GB);
-    reinterpret_cast<touchgfx::LCD16bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
+    reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
 }
 
 /*
  * Screen Transition Declarations
  */
 
-// Main
+// screen
 
-void FrontendApplicationBase::gotoMainScreenNoTransition()
+void FrontendApplicationBase::gotoscreenScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMainScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoscreenScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoscreenScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<screenView, screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

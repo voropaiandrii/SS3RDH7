@@ -61,22 +61,29 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(SPI1_CS2_GPIO_Port, SPI1_CS2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MAX30003_CS_GPIO_Port, MAX30003_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(MAX30003_CS_GPIO_Port, MAX30003_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOH, LCD_3V3_EN_Pin|MAXM86161_RIGHT_EN_Pin|MAXM86161_LEFT_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOH, MAXM86161_RIGHT_EN_Pin|MAXM86161_LEFT_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LCD_PWR_EN_Pin|LCD_BL_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LCD_PWR_EN_Pin|LCD_BL_EN_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, TOUCH_PWR_EN_Pin|MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOG, LCD_STBY_Pin|LCD_RESET_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOG, LCD_STBY_Pin|LCD_RESET_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LCD_3V3_EN_GPIO_Port, LCD_3V3_EN_Pin, GPIO_PIN_SET);
+
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(TOUCH_PWR_EN_GPIO_Port, TOUCH_PWR_EN_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = SPI1_CS2_Pin;

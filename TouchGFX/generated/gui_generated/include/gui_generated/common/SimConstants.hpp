@@ -4,8 +4,8 @@
 #ifndef SIMCONSTANTS_HPP
 #define SIMCONSTANTS_HPP
 
-static unsigned short SIM_WIDTH = 640;
+static unsigned short SIM_WIDTH = 800;
 static unsigned short SIM_HEIGHT = 480;
-#define SIM_TITLE "STM32H743I-EVAL"
+#define SIM_TITLE "SS3RDH7"
 
 #endif // SIMCONSTANTS_HPP

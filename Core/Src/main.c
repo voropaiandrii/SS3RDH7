@@ -37,7 +37,6 @@
 #include "usb_device.h"
 #include "gpio.h"
 #include "fmc.h"
-#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -127,7 +126,6 @@ int main(void)
   MX_TIM7_Init();
   MX_TIM12_Init();
   MX_TIM13_Init();
-  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

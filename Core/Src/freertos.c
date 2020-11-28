@@ -23,6 +23,7 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -53,70 +54,70 @@ osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for touchTask */
 osThreadId_t touchTaskHandle;
 const osThreadAttr_t touchTask_attributes = {
   .name = "touchTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for touchIRQTask */
 osThreadId_t touchIRQTaskHandle;
 const osThreadAttr_t touchIRQTask_attributes = {
   .name = "touchIRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for max30003Task */
 osThreadId_t max30003TaskHandle;
 const osThreadAttr_t max30003Task_attributes = {
   .name = "max30003Task",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for max30003IRQTask */
 osThreadId_t max30003IRQTaskHandle;
 const osThreadAttr_t max30003IRQTask_attributes = {
   .name = "max30003IRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for max30102Task */
 osThreadId_t max30102TaskHandle;
 const osThreadAttr_t max30102Task_attributes = {
   .name = "max30102Task",
   .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for max30102IRQTask */
 osThreadId_t max30102IRQTaskHandle;
 const osThreadAttr_t max30102IRQTask_attributes = {
   .name = "max30102IRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for maxm86161RTask */
 osThreadId_t maxm86161RTaskHandle;
 const osThreadAttr_t maxm86161RTask_attributes = {
   .name = "maxm86161RTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for maxm86161IRTask */
 osThreadId_t maxm86161IRTaskHandle;
 const osThreadAttr_t maxm86161IRTask_attributes = {
   .name = "maxm86161IRTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for maxm86161LTask */
 osThreadId_t maxm86161LTaskHandle;
 const osThreadAttr_t maxm86161LTask_attributes = {
   .name = "maxm86161LTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024
 };
 /* Definitions for maxm86161ILTask */
 osThreadId_t maxm86161ILTaskHandle;
@@ -130,77 +131,77 @@ osThreadId_t i2c1TxTaskHandle;
 const osThreadAttr_t i2c1TxTask_attributes = {
   .name = "i2c1TxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for i2c1RxTask */
 osThreadId_t i2c1RxTaskHandle;
 const osThreadAttr_t i2c1RxTask_attributes = {
   .name = "i2c1RxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for i2c1ErrorTask */
 osThreadId_t i2c1ErrorTaskHandle;
 const osThreadAttr_t i2c1ErrorTask_attributes = {
   .name = "i2c1ErrorTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for i2c2TxTask */
 osThreadId_t i2c2TxTaskHandle;
 const osThreadAttr_t i2c2TxTask_attributes = {
   .name = "i2c2TxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for i2c2RxTask */
 osThreadId_t i2c2RxTaskHandle;
 const osThreadAttr_t i2c2RxTask_attributes = {
   .name = "i2c2RxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for i2c2ErrorTask */
 osThreadId_t i2c2ErrorTaskHandle;
 const osThreadAttr_t i2c2ErrorTask_attributes = {
   .name = "i2c2ErrorTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for debugTask */
 osThreadId_t debugTaskHandle;
 const osThreadAttr_t debugTask_attributes = {
   .name = "debugTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for fatFsTask */
 osThreadId_t fatFsTaskHandle;
 const osThreadAttr_t fatFsTask_attributes = {
   .name = "fatFsTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 4096 * 4
+  .stack_size = 4096
 };
 /* Definitions for usbTask */
 osThreadId_t usbTaskHandle;
 const osThreadAttr_t usbTask_attributes = {
   .name = "usbTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 4096 * 4
+  .stack_size = 4096
 };
 /* Definitions for usbDmaTxTask */
 osThreadId_t usbDmaTxTaskHandle;
 const osThreadAttr_t usbDmaTxTask_attributes = {
   .name = "usbDmaTxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 /* Definitions for usbDmaRxTask */
 osThreadId_t usbDmaRxTaskHandle;
 const osThreadAttr_t usbDmaRxTask_attributes = {
   .name = "usbDmaRxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 2048 * 4
+  .stack_size = 2048
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -265,67 +266,67 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* creation of touchTask */
-  touchTaskHandle = osThreadNew(StartTouchTask, NULL, &touchTask_attributes);
+  //touchTaskHandle = osThreadNew(StartTouchTask, NULL, &touchTask_attributes);
 
   /* creation of touchIRQTask */
-  touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
+  //touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
 
   /* creation of max30003Task */
-  max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
+  //max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
 
   /* creation of max30003IRQTask */
-  max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
+  //max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
 
   /* creation of max30102Task */
-  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+  //max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
 
   /* creation of max30102IRQTask */
-  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
+  //max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
 
   /* creation of maxm86161RTask */
-  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+  //maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
 
   /* creation of maxm86161IRTask */
-  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+  //maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
 
   /* creation of maxm86161LTask */
-  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+  //maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
 
   /* creation of maxm86161ILTask */
-  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+  //maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* creation of i2c1TxTask */
-  i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
+  //i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
 
   /* creation of i2c1RxTask */
-  i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
+  //i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
 
   /* creation of i2c1ErrorTask */
-  i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
+  //i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
 
   /* creation of i2c2TxTask */
-  i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
+  //i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
 
   /* creation of i2c2RxTask */
-  i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
+  //i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
 
   /* creation of i2c2ErrorTask */
-  i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
+  //i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
 
   /* creation of debugTask */
-  debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+  //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
   /* creation of fatFsTask */
-  fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
+  //fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
   /* creation of usbTask */
-  usbTaskHandle = osThreadNew(StartUsbTask, NULL, &usbTask_attributes);
+  //usbTaskHandle = osThreadNew(StartUsbTask, NULL, &usbTask_attributes);
 
   /* creation of usbDmaTxTask */
-  usbDmaTxTaskHandle = osThreadNew(StartUsbDmaTxTask, NULL, &usbDmaTxTask_attributes);
+  //usbDmaTxTaskHandle = osThreadNew(StartUsbDmaTxTask, NULL, &usbDmaTxTask_attributes);
 
   /* creation of usbDmaRxTask */
-  usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
+  //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -347,8 +348,9 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
+  //MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
+  MX_TouchGFX_Init();
   /* Infinite loop */
   for(;;)
   {
