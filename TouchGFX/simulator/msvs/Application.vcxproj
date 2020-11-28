@@ -19,11 +19,18 @@
     <ClCompile Include="$(ApplicationRoot)\generated\simulator\src\mainBase.cpp"/>
     <ClCompile Include="..\..\gui\src\common\FrontendApplication.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp"/>
+    <ClCompile Include="..\..\gui\src\fullgraphscreen_screen\FullGraphScreenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\fullgraphscreen_screen\FullGraphScreenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\fullgraphscreen_screen\FullGraphScreenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\mainscreen_screen\MainScreenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\mainscreen_screen\MainScreenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\mainscreen_screen\MainScreenViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_screen\screenView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_screen\screenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\NavigationMenu.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\NavigationMenuBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\settingsscreen_screen\SettingsScreenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\settingsscreen_screen\SettingsScreenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\settingsscreen_screen\SettingsScreenViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -168,13 +175,20 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendApplicationBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\FrontendHeap.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\fullgraphscreen_screen\FullGraphScreenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\fullgraphscreen_screen\FullGraphScreenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\fullgraphscreen_screen\FullGraphScreenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\mainscreen_screen\MainScreenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\mainscreen_screen\MainScreenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mainscreen_screen\MainScreenViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\NavigationMenu.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\NavigationMenuBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settingsscreen_screen\SettingsScreenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settingsscreen_screen\SettingsScreenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settingsscreen_screen\SettingsScreenViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_screen\screenView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_screen\screenViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

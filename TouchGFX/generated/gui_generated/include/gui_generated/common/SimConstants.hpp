@@ -6,6 +6,6 @@
 
 static unsigned short SIM_WIDTH = 800;
 static unsigned short SIM_HEIGHT = 480;
-#define SIM_TITLE "SS3RDH7"
+#define SIM_TITLE "SS3RD"
 
 #endif // SIMCONSTANTS_HPP

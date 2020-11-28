@@ -27,7 +27,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "fatfs.h"
+#include "semphr.h"
+#include "usbd_def.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +49,36 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
+QueueHandle_t standartECGQueue = 0;
+QueueHandle_t earECGQueue = 0;
+QueueHandle_t fingerPPGRedQueue = 0;
+QueueHandle_t fingerPPGIRQueue = 0;
+QueueHandle_t earPPGLeftGreenQueue = 0;
+QueueHandle_t earPPGLeftRedQueue = 0;
+QueueHandle_t earPPGLeftIRQueue = 0;
+QueueHandle_t earPPGRightGreenQueue = 0;
+QueueHandle_t earPPGRightRedQueue = 0;
+QueueHandle_t earPPGRightIRQueue = 0;
 
+SemaphoreHandle_t i2c1TxBinarySemaphore;
+SemaphoreHandle_t i2c1RxBinarySemaphore;
+SemaphoreHandle_t i2c1ErrorBinarySemaphore;
+SemaphoreHandle_t i2c2TxBinarySemaphore;
+SemaphoreHandle_t i2c2RxBinarySemaphore;
+SemaphoreHandle_t i2c2ErrorBinarySemaphore;
+
+SemaphoreHandle_t usbBinarySemaphore;
+SemaphoreHandle_t usbDmaTxBinarySemaphore;
+SemaphoreHandle_t usbDmaRxBinarySemaphore;
+SemaphoreHandle_t usbReadBinarySemaphore;
+SemaphoreHandle_t usbWriteBinarySemaphore;
+
+SemaphoreHandle_t i2c1MutexSemaphore;
+SemaphoreHandle_t i2c2MutexSemaphore;
+
+SemaphoreHandle_t fsMutexSemaphore;
+
+SemaphoreHandle_t storeEcgBinarySemaphore;
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;

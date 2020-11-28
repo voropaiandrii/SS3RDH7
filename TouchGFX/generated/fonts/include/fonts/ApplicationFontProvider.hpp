@@ -13,13 +13,21 @@ namespace touchgfx
 
 struct Typography
 {
-    static const touchgfx::FontId LABELS = 0;
+    static const touchgfx::FontId DEFAULT = 0;
+    static const touchgfx::FontId LARGE = 1;
+    static const touchgfx::FontId SMALL = 2;
+    static const touchgfx::FontId CLOCK = 3;
+    static const touchgfx::FontId MID = 4;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId LABELS = 0; // NotoSans_Regular_12_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 1;
+    static const touchgfx::FontId DEFAULT = 0; // verdana_20_4bpp
+    static const touchgfx::FontId LARGE = 1;   // verdana_40_4bpp
+    static const touchgfx::FontId SMALL = 2;   // verdana_10_4bpp
+    static const touchgfx::FontId CLOCK = 3;   // verdana_40_1bpp
+    static const touchgfx::FontId MID = 4;     // verdana_30_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider
