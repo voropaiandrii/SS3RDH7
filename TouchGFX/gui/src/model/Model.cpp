@@ -1,13 +1,11 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 #include "stdio.h"
-#include "time/time.h"
-#include "data/saved_data_application.h"
 
 extern "C" {
-	void setBrightness(int brightnessPercent);
-	uint32_t HAL_GetTick(void);
-	//RTCDate getCurrentRTCDate();
+	#include "time/time.h"
+	#include "display/display.h"
+	#include "data/saved_data_application.h"
 }
 
 extern "C" QueueHandle_t standartECGQueue;
@@ -241,13 +239,14 @@ void Model::setGraphLimits(QueueHandle_t queueHandle, GraphLimits* limits, bool 
 }
 
 void Model::updateRTCTime() {
-	RTCDate currentDate;
-	//currentDate = getCurrentRTCDate();
+
+	RTCDate currentDate = getCurrentRTCDate();
 	modelListener->updateTime(currentDate.years,
 			currentDate.months,
 			currentDate.days,
 			currentDate.hours,
 			currentDate.minutes,
 			currentDate.seconds);
+
 }
 

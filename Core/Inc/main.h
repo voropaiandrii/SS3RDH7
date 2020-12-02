@@ -43,7 +43,11 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+#define RTOS_DEBUG_BUFFER_SIZE 					500
+#define ECG_BUFFER_SIZE							1000
+#define ECG_BUFFER_NUMBER						2
 
+#define GRAPH_DOWNSAMPLING_VALUE				19
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -91,6 +95,7 @@ void Error_Handler(void);
 #define TOUCH_PIRQ_GPIO_Port GPIOI
 #define MAXM86161_RIGHT_INT_Pin GPIO_PIN_4
 #define MAXM86161_RIGHT_INT_GPIO_Port GPIOD
+#define MAXM86161_RIGHT_INT_EXTI_IRQn EXTI4_IRQn
 #define MAX30003_PWR_EN_Pin GPIO_PIN_5
 #define MAX30003_PWR_EN_GPIO_Port GPIOD
 #define OLIMEX_PWR_EN_Pin GPIO_PIN_7
@@ -101,6 +106,7 @@ void Error_Handler(void);
 #define LCD_RESET_GPIO_Port GPIOG
 #define MAXM86161_LEFT_INT_Pin GPIO_PIN_5
 #define MAXM86161_LEFT_INT_GPIO_Port GPIOB
+#define MAXM86161_LEFT_INT_EXTI_IRQn EXTI9_5_IRQn
 #define MAX30102_INT_Pin GPIO_PIN_6
 #define MAX30102_INT_GPIO_Port GPIOI
 /* USER CODE BEGIN Private defines */

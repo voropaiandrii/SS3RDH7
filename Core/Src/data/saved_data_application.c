@@ -13,7 +13,7 @@ void setTimeSet(uint8_t isSet) {
 }
 
 uint8_t isTimeSet() {
-	return readUByte(RTC_BKP_DR0, 0);
+	readUByte(RTC_BKP_DR0, 0);
 }
 
 void saveDisplayBrigthness(uint8_t brigthnessPercent) {
@@ -21,6 +21,6 @@ void saveDisplayBrigthness(uint8_t brigthnessPercent) {
 }
 
 uint8_t readDisplayBrigthness() {
-	return readUByte(RTC_BKP_DR0, 8);
+	readUByte(RTC_BKP_DR0, 8);
 }
 

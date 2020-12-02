@@ -18,6 +18,26 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include <STM32TouchController.hpp>
+#include "devices/touch/XPT2046.h"
+#include <stdio.h>
+
+TouchEvent_t event;
+extern "C" void xpt2046LowLevelInit(XPT2046TouchEventCallback_t);
+
+static bool isTouchEventDetected = false;
+
+void xpt2046TouchEventCallback(TouchEvent_t* e) {
+	if(!isTouchEventDetected) {
+		event.xPosition = e->xPosition;
+		event.yPosition = e->yPosition;
+		event.batteryVoltage = e->batteryVoltage;
+		event.auxValue = e->auxValue;
+		event.temperature = e->temperature;
+		event.z1Position = e->z1Position;
+		event.z2Position = e->z2Position;
+	}
+    isTouchEventDetected = true;
+}
 
 void STM32TouchController::init()
 {
@@ -25,6 +45,7 @@ void STM32TouchController::init()
      * Initialize touch controller and driver
      *
      */
+	xpt2046LowLevelInit(xpt2046TouchEventCallback);
 }
 
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
@@ -39,7 +60,15 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
      * By default sampleTouch is called every tick, this can be adjusted by HAL::setTouchSampleRate(int8_t);
      *
      */
-    return false;
+	if(isTouchEventDetected) {
+		x = event.xPosition;
+		y = event.yPosition;
+		isTouchEventDetected = false;
+		//printf("Touched, x: %d, y: %d\n", x, y);
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /* USER CODE END STM32TouchController */

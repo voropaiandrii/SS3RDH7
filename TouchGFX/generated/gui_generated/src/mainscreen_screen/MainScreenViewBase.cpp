@@ -218,7 +218,7 @@ MainScreenViewBase::MainScreenViewBase() :
     digitalClock1.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     digitalClock1.setTime24Hour(10, 10, 0);
 
-    recordingStateTextArea.setXY(639, 0);
+    recordingStateTextArea.setXY(541, 0);
     recordingStateTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 247, 247));
     recordingStateTextArea.setLinespacing(0);
     recordingStateTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID48));
@@ -238,6 +238,15 @@ MainScreenViewBase::MainScreenViewBase() :
 
     navigationMenu1.setXY(0, 0);
 
+    cpuUsageTextProgress.setXY(715, -1);
+    cpuUsageTextProgress.setProgressIndicatorPosition(0, 0, 84, 34);
+    cpuUsageTextProgress.setRange(0, 100);
+    cpuUsageTextProgress.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 250, 250));
+    cpuUsageTextProgress.setNumberOfDecimals(0);
+    cpuUsageTextProgress.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
+    cpuUsageTextProgress.setBackground(touchgfx::Bitmap(BITMAP_DARK_PROGRESSINDICATORS_BG_MEDIUM_TEXT_PROGRESS_BG_SQUARE_ID));
+    cpuUsageTextProgress.setValue(0);
+
     add(__background);
     add(MainBackgroundTiledImage1);
     add(standardECGGraph);
@@ -256,6 +265,7 @@ MainScreenViewBase::MainScreenViewBase() :
     add(makeScreenshotButton);
     add(startRecordingButton);
     add(navigationMenu1);
+    add(cpuUsageTextProgress);
 }
 
 void MainScreenViewBase::setupScreen()

@@ -37,10 +37,17 @@
 #include "usb_device.h"
 #include "gpio.h"
 #include "fmc.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include "display/display.h"
+#include "devices/touch/XPT2046.h"
+#include "devices/touch/XPT2046LL.h"
+#include "devices/ecg/MAX30003LL.h"
+#include "devices/ppg/MAX30102LL.h"
+#include "devices/ppg/MAX86161LL.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,12 +74,48 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+TouchEvent_t event;
+extern osThreadId touchEventTaskHandle;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void xpt2046TouchEventCallback(TouchEvent_t* e) {
+    event.xPosition = e->xPosition;
+    event.yPosition = e->yPosition;
+    event.batteryVoltage = e->batteryVoltage;
+    event.auxValue = e->auxValue;
+    event.temperature = e->temperature;
+    event.z1Position = e->z1Position;
+    event.z2Position = e->z2Position;
+    osThreadResume(touchEventTaskHandle);
+}
 
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
+	if(hspi->Instance == SPI1) {
+		xpt2046LowLevelSpiTxRxHandler(hspi);
+	} else if(hspi->Instance == SPI5) {
+		max30003LowLevelSpiTxRxHandler(hspi);
+	}
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t pin) {
+    if(pin == TOUCH_PIRQ_Pin) {
+    	xpt2046LowLevelEXTIHandler();
+    } else if(pin == MAX30003_INTB_Pin) {
+    	max30003LowLevelEXTIHandler();
+    } else if(pin == MAXM86161_RIGHT_INT_Pin) {
+
+    }
+}
+
+int _write(int file, char *ptr, int len) {
+	for(int i = 0; i < len; i++) {
+		ITM_SendChar(ptr[i]);
+	}
+	return len;
+}
 /* USER CODE END 0 */
 
 /**
@@ -105,6 +148,8 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_DMA2D_Init();
+  MX_FMC_Init();
+  SDRAM_InitSequence();
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_LTDC_Init();
@@ -117,7 +162,6 @@ int main(void)
   MX_USART6_UART_Init();
   MX_FATFS_Init();
   MX_LIBJPEG_Init();
-  MX_FMC_Init();
   MX_JPEG_Init();
   MX_ADC1_Init();
   MX_CRC_Init();
@@ -126,8 +170,13 @@ int main(void)
   MX_TIM7_Init();
   MX_TIM12_Init();
   MX_TIM13_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_SET);
+  HAL_TIM_Base_Start(&htim3);
+  HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1);
+  HAL_ADC_Start_IT(&hadc1);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -142,7 +191,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -229,7 +277,7 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLL3.PLL3N = 192;
   PeriphClkInitStruct.PLL3.PLL3P = 4;
   PeriphClkInitStruct.PLL3.PLL3Q = 4;
-  PeriphClkInitStruct.PLL3.PLL3R = 4;
+  PeriphClkInitStruct.PLL3.PLL3R = 8;
   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_0;
   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;

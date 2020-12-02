@@ -17,6 +17,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <gui/containers/NavigationMenu.hpp>
+#include <touchgfx/containers/progress_indicators/TextProgress.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class MainScreenViewBase : public touchgfx::View<MainScreenPresenter>
@@ -84,6 +85,7 @@ protected:
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > makeScreenshotButton;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > startRecordingButton;
     NavigationMenu navigationMenu1;
+    touchgfx::TextProgress cpuUsageTextProgress;
 
 private:
 

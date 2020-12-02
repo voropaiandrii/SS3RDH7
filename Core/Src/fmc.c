@@ -19,9 +19,78 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "fmc.h"
+#include "stm32h7xx_ll_fmc.h"
+
 
 /* USER CODE BEGIN 0 */
+void SDRAM_InitSequence() {
+    //HAL_Delay(100);
+    FMC_SDRAM_CommandTypeDef sdramCommand;
 
+    // - Enable output of SDCLK
+    sdramCommand.CommandMode = FMC_SDRAM_CMD_CLK_ENABLE;   // Set sdram controller to "Clock Configuration Enable" mode, causing it to enable the output of SDCLK
+    sdramCommand.CommandTarget = FMC_SDRAM_CMD_TARGET_BANK2; // Target is the sdram module connected to bank 2
+    sdramCommand.AutoRefreshNumber = 2;                          // Not used by this command
+    sdramCommand.ModeRegisterDefinition = 0;                          // Not used by this command
+    FMC_SDRAM_SendCommand(FMC_Bank5_6_R, &sdramCommand, 10);
+
+    while ((FMC_SDRAM_GetModeStatus(FMC_Bank5_6_R, FMC_SDRAM_BANK2) & FMC_SDRAM_FLAG_BUSY) != RESET);
+    HAL_Delay(10);
+
+    // - Issue a single "Precharge All" command
+    sdramCommand.CommandMode = FMC_SDRAM_CMD_PALL;         // Causes the sdram controller to issue a "Precharge All" command to the sdram module.
+    sdramCommand.CommandTarget = FMC_SDRAM_CMD_TARGET_BANK2; // Target is the sdram module connected to bank 2
+    sdramCommand.AutoRefreshNumber = 2;                          // Not used by this command
+    sdramCommand.ModeRegisterDefinition = 0;                          // Not used by this command
+    FMC_SDRAM_SendCommand(FMC_Bank5_6_R, &sdramCommand, 10);
+
+    while ((FMC_SDRAM_GetModeStatus(FMC_Bank5_6_R, FMC_SDRAM_BANK2) & FMC_SDRAM_FLAG_BUSY) != RESET);
+    // - Issue two "Auto-Refresh" commands
+    sdramCommand.CommandMode = FMC_SDRAM_CMD_AUTOREFRESH_MODE; // Causes the sdram controller to issue a specified number of consecutive "Auto-Refresh" commands. The number of commands is specified through the "AutoRefreshNumber" attribute.
+    sdramCommand.CommandTarget = FMC_SDRAM_CMD_TARGET_BANK2;     // Target is the sdram module connected to bank 2
+    sdramCommand.AutoRefreshNumber = 8;                              // In "Auto refresh" mode this value specifies the number of consecutive "Auto refresh.
+    sdramCommand.ModeRegisterDefinition = 0;                              // Not used by this command
+    FMC_SDRAM_SendCommand(FMC_Bank5_6_R, &sdramCommand, 10);
+
+    while ((FMC_SDRAM_GetModeStatus(FMC_Bank5_6_R, FMC_SDRAM_BANK2) & FMC_SDRAM_FLAG_BUSY) != RESET);
+    // - Issue a "Load Mode Register" command to load the "Mode" register
+
+    sdramCommand.CommandMode = FMC_SDRAM_CMD_LOAD_MODE;    // Causes the sdram controller to load the value specified through "ModeRegisterDefinition
+    sdramCommand.CommandTarget = FMC_SDRAM_CMD_TARGET_BANK2; // Target is the sdram module connected to bank 2
+    sdramCommand.AutoRefreshNumber = 2;                          // Not used by this command
+    sdramCommand.ModeRegisterDefinition = (
+            (1 << 9) |           // Burst-Read-Single-Write
+            (0 << 7) |           // Normal mode
+            (3 << 4) |           // CAS latency 2
+            (0 << 3) |           // Wrap type, Burst mode: Sequential
+            (1 << 0)               // Burst length: 2
+    );
+    FMC_SDRAM_SendCommand(FMC_Bank5_6_R, &sdramCommand, 10);
+
+    while ((FMC_SDRAM_GetModeStatus(FMC_Bank5_6_R, FMC_SDRAM_BANK2) & FMC_SDRAM_FLAG_BUSY) != RESET);
+    /*
+    * sdram memory requires to be refreshed at a specific interval called "Refresh Interval Time" (tREFI or tREF) in the datasheet. For the used sdram module
+    * this refresh interval is 15,6 us (4096 refresh cycles every 64ms). The interval is configured in the sdram controller in number of SDCLK cycles.
+    * Having the SDCLK set to 84 MHz (we have HCLK set to 168 MHz and SDCLK to "HCLK/2"), this means we need to do a refresh every 1310 clock cycles:
+    *
+    *    64msec / 4096 fresh = 15.62 us
+    *   120.000.000 Hz * 0,000.015.6 s = 1872
+    *	112.500.000 Hz * 0,000.015.6 s = 1755
+    *	100.000.000 Hz * 0,000.015.6 s = 1560
+    *	 90.000.000 Hz * 0,000.015.6 s = 1404
+    *	 84.000.000 Hz * 0,000.015.6 s = 1310
+    *
+    *	 60.000.000 Hz * 0.000.015.6 s = 936
+    *	 4.000.000 Hz * 0,000.015.6 s = 62
+    *
+    * The refresh is done automatically by the SDRAM controller, we just need to load the value into a counter. To obtain a safe margin if an internal
+    * refresh request occurs when a read request has been accepted, the counter must be decreased by 20, resulting in a final value of 1290 for 84.000.000 Hz.
+    */
+    //FMC_SDRAM_ProgramRefreshRate(FMC_Bank5_6_R, 1386);
+    //FMC_SDRAM_ProgramRefreshRate(FMC_Bank5_6, 1735);
+    FMC_SDRAM_ProgramRefreshRate(FMC_Bank5_6_R, 1852);
+    while ((FMC_SDRAM_GetModeStatus(FMC_Bank5_6_R, FMC_SDRAM_BANK2) & FMC_SDRAM_FLAG_BUSY) != RESET);
+}
 /* USER CODE END 0 */
 
 SDRAM_HandleTypeDef hsdram1;

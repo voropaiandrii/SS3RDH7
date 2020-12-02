@@ -30,11 +30,52 @@
 #include "fatfs.h"
 #include "semphr.h"
 #include "usbd_def.h"
+#include <stdio.h>
+#include "app_touchgfx.h"
+#include "devices/touch/XPT2046.h"
+#include "devices/touch/XPT2046LL.h"
+#include "devices/ecg/MAX30003LL.h"
+#include "devices/ppg/MAX30102LL.h"
+#include "devices/ppg/MAX86161LL.h"
+#include "fatfs.h"
+#include "semphr.h"
+#include "usbd_def.h"
+#include "utils/file_utils.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+extern TouchEvent_t event;
+extern MAX30003Device_t max30003device;
+extern MAX30102Device_t max30102device;
+extern MAX86161Device_t max86161RightDevice; // I2C2
+extern MAX86161Device_t max86161LeftDevice;	 // I2C1
+extern I2C_HandleTypeDef hi2c1;
+extern I2C_HandleTypeDef hi2c2;
+extern DMA_HandleTypeDef hdma_sdio_rx;
+extern DMA_HandleTypeDef hdma_sdio_tx;
+extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
+
+ECGData_t max30003ECGEvent;
+MAX30102PPGData_t max30102PPGEvent;
+MAXM86161PPGData_t max86161RightPPGEvent;
+MAXM86161PPGData_t max86161LeftPPGEvent;
+
+uint8_t max300032Counter = 0;
+uint8_t max30102Counter = 0;
+uint8_t max86161RightCounter = 0;
+uint8_t max86161LeftCounter = 0;
+
+uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t ecgDataBufferIndex = 0;
+uint8_t ecgDataBufferNumberIndex = 0;
+
+int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t earEcgDataBufferIndex = 0;
+uint8_t earEcgDataBufferNumberIndex = 0;
+
+char wtext[ECG_BUFFER_SIZE * 6];
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -79,13 +120,18 @@ SemaphoreHandle_t i2c2MutexSemaphore;
 SemaphoreHandle_t fsMutexSemaphore;
 
 SemaphoreHandle_t storeEcgBinarySemaphore;
+
+
+static char debugInfoBuffer[RTOS_DEBUG_BUFFER_SIZE];
+static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
+
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024
+  .stack_size = 1024 * 4
 };
 /* Definitions for touchTask */
 osThreadId_t touchTaskHandle;
@@ -237,7 +283,100 @@ const osThreadAttr_t usbDmaRxTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
+void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	if(hi2c->Instance == I2C1) {
+		xSemaphoreGiveFromISR(i2c1RxBinarySemaphore, pdFALSE);
+	} else if(hi2c->Instance == I2C2) {
+		xSemaphoreGiveFromISR(i2c2RxBinarySemaphore, pdFALSE);
+	}
+}
 
+void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	if(hi2c->Instance == I2C1) {
+		xSemaphoreGiveFromISR(i2c1TxBinarySemaphore, pdFALSE);
+	} else if(hi2c->Instance == I2C2) {
+		xSemaphoreGiveFromISR(i2c2TxBinarySemaphore, pdFALSE);
+	}
+}
+
+void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c) {
+	if(hi2c->Instance == I2C1) {
+		xSemaphoreGiveFromISR(i2c1ErrorBinarySemaphore, pdFALSE);
+	} else if(hi2c->Instance == I2C2) {
+		xSemaphoreGiveFromISR(i2c2ErrorBinarySemaphore, pdFALSE);
+	}
+}
+
+
+void max30003ECGDataCallback(ECGData_t* ecgEvent) {
+	max30003ECGDataHandler(ecgEvent);
+	max30003ECGDataHandler(ecgEvent);
+}
+
+void max30003ECGDataHandler(ECGData_t* ecgEvent) {
+	max30003ECGEvent.sample = ecgEvent->sample;
+
+	earEcgDataBuffer[earEcgDataBufferNumberIndex][earEcgDataBufferIndex] = (uint16_t)max30003ECGEvent.sample;
+
+	if(earEcgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
+		earEcgDataBufferIndex++;
+	} else {
+		earEcgDataBufferIndex = 0;
+		if(earEcgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
+			earEcgDataBufferNumberIndex++;
+		} else {
+			earEcgDataBufferNumberIndex = 0;
+			xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
+			portYIELD_FROM_ISR(pdFALSE);
+		}
+	}
+
+	if(max300032Counter < GRAPH_DOWNSAMPLING_VALUE) {
+		max300032Counter++;
+	} else {
+		max300032Counter = 0;
+		xQueueSendFromISR(earECGQueue, (void *)&(max30003ECGEvent.sample), (TickType_t)0);
+	}
+}
+
+void max30102PPGDataCallback(MAX30102PPGData_t* ppgEvent) {
+	max30102PPGEvent.redSample = ppgEvent->redSample;
+	max30102PPGEvent.irSample = ppgEvent->irSample;
+	if(max30102Counter < GRAPH_DOWNSAMPLING_VALUE) {
+		max30102Counter++;
+	} else {
+		max30102Counter = 0;
+		xQueueSendFromISR(fingerPPGRedQueue, (void *)&(max30102PPGEvent.redSample), (TickType_t)0);
+		xQueueSendFromISR(fingerPPGIRQueue, (void *)&(max30102PPGEvent.irSample), (TickType_t)0);
+	}
+}
+
+void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+	max86161RightPPGEvent.redSample = ppgEvent->redSample;
+	max86161RightPPGEvent.greenSample = ppgEvent->greenSample;
+	max86161RightPPGEvent.irSample = ppgEvent->irSample;
+	if(max86161RightCounter < GRAPH_DOWNSAMPLING_VALUE) {
+		max86161RightCounter++;
+	} else {
+		max86161RightCounter = 0;
+		xQueueSendFromISR(earPPGRightGreenQueue, (void *)&max86161RightPPGEvent.greenSample, (TickType_t)0);
+		xQueueSendFromISR(earPPGRightRedQueue, (void *)&max86161RightPPGEvent.redSample, (TickType_t)0);
+		xQueueSendFromISR(earPPGRightIRQueue, (void *)&max86161RightPPGEvent.irSample, (TickType_t)0);
+	}
+}
+void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+	max86161LeftPPGEvent.redSample = ppgEvent->redSample;
+	max86161LeftPPGEvent.greenSample = ppgEvent->greenSample;
+	max86161LeftPPGEvent.irSample = ppgEvent->irSample;
+	if(max86161LeftCounter < GRAPH_DOWNSAMPLING_VALUE) {
+		max86161LeftCounter++;
+	} else {
+		max86161LeftCounter = 0;
+		xQueueSendFromISR(earPPGLeftGreenQueue, (void *)&max86161LeftPPGEvent.greenSample, (TickType_t)0);
+		xQueueSendFromISR(earPPGLeftRedQueue, (void *)&max86161LeftPPGEvent.redSample, (TickType_t)0);
+		xQueueSendFromISR(earPPGLeftIRQueue, (void *)&max86161LeftPPGEvent.irSample, (TickType_t)0);
+	}
+}
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -273,7 +412,106 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
+	standartECGQueue = xQueueCreate( 10, sizeof(int));
+	  if(standartECGQueue == 0) {
+		  printf("Can't create a queue");
+	  }
 
+	  earECGQueue = xQueueCreate( 10, sizeof(int));
+	  if(earECGQueue == 0) {
+		  printf("Can't create a queue");
+	  }
+
+	  fingerPPGRedQueue = xQueueCreate( 50, sizeof(int));
+	  if(fingerPPGRedQueue == 0) {
+		  printf("Can't create a queue");
+	  }
+
+	  fingerPPGIRQueue = xQueueCreate( 50, sizeof(int));
+	  if(fingerPPGIRQueue == 0) {
+		  printf("Can't create a queue");
+	  }
+
+	  earPPGRightGreenQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightGreenQueue == 0) {
+	  	printf("Can't create a queue");
+	  }
+
+	  earPPGRightRedQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightRedQueue == 0) {
+	    printf("Can't create a queue");
+	  }
+
+	  earPPGRightIRQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightIRQueue == 0) {
+	    printf("Can't create a queue");
+	  }
+
+	  earPPGLeftGreenQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightGreenQueue == 0) {
+	  	printf("Can't create a queue");
+	  }
+
+	  earPPGLeftRedQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightRedQueue == 0) {
+	    printf("Can't create a queue");
+	  }
+
+	  earPPGLeftIRQueue = xQueueCreate( 50, sizeof(int));
+	  if(earPPGRightIRQueue == 0) {
+	    printf("Can't create a queue");
+	  }
+
+	  i2c1TxBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c1TxBinarySemaphore == NULL) {
+		 printf("Can't create i2c1TxBinarySemaphore");
+	  }
+
+	  i2c1RxBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c1RxBinarySemaphore == NULL) {
+	 	 printf("Can't create i2c1RxBinarySemaphore");
+	  }
+
+	  i2c1ErrorBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c1ErrorBinarySemaphore == NULL) {
+	 	 printf("Can't create i2c1ErrorBinarySemaphore");
+	  }
+
+	  i2c2TxBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c2TxBinarySemaphore == NULL) {
+	     printf("Can't create i2c2TxBinarySemaphore");
+	  }
+
+	  i2c2RxBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c2RxBinarySemaphore == NULL) {
+	   	 printf("Can't create i2c2RxBinarySemaphore");
+	  }
+
+	  i2c2ErrorBinarySemaphore = xSemaphoreCreateBinary();
+	  if(i2c2ErrorBinarySemaphore == NULL) {
+	 	 printf("Can't create i2c2ErrorBinarySemaphore");
+	  }
+
+	  storeEcgBinarySemaphore = xSemaphoreCreateBinary();
+	  if(storeEcgBinarySemaphore == NULL) {
+		 printf("Can't create storeEcgBinarySemaphore");
+	  }
+
+	  i2c1MutexSemaphore = xSemaphoreCreateMutex();
+	  if(i2c1MutexSemaphore == NULL) {
+	   	 printf("Can't create i2c1MutexSemaphore");
+	  }
+
+	  i2c2MutexSemaphore = xSemaphoreCreateMutex();
+	  if(i2c2MutexSemaphore == NULL) {
+	   	 printf("Can't create i2c2MutexSemaphore");
+	  }
+
+	  usbBinarySemaphore = xSemaphoreCreateBinary();
+	  usbDmaTxBinarySemaphore = xSemaphoreCreateBinary();
+	  usbDmaRxBinarySemaphore = xSemaphoreCreateBinary();
+
+	  fsMutexSemaphore = xSemaphoreCreateMutex();
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -297,10 +535,10 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* creation of touchTask */
-  //touchTaskHandle = osThreadNew(StartTouchTask, NULL, &touchTask_attributes);
+  touchTaskHandle = osThreadNew(StartTouchTask, NULL, &touchTask_attributes);
 
   /* creation of touchIRQTask */
-  //touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
+  touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
 
   /* creation of max30003Task */
   //max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
@@ -381,7 +619,7 @@ void StartDefaultTask(void *argument)
   /* init code for USB_DEVICE */
   //MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
-  MX_TouchGFX_Init();
+  MX_TouchGFX_Process();
   /* Infinite loop */
   for(;;)
   {
@@ -403,6 +641,7 @@ void StartTouchTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	osThreadSuspend(NULL);
     osDelay(1);
   }
   /* USER CODE END StartTouchTask */
@@ -421,7 +660,9 @@ void StartTouchIRQTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  osThreadSuspend(NULL);
+	  xpt2046LowLevelPenInterruptBottomHalfHandler();
+      osDelay(100);
   }
   /* USER CODE END StartTouchIRQTask */
 }
@@ -436,11 +677,11 @@ void StartTouchIRQTask(void *argument)
 void StartMAX30003Task(void *argument)
 {
   /* USER CODE BEGIN StartMAX30003Task */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	osThreadSuspend(NULL);
+	for (;;) {
+		vTaskDelay(1000);
+		max30003LowLevelTick();
+	}
   /* USER CODE END StartMAX30003Task */
 }
 
@@ -454,11 +695,15 @@ void StartMAX30003Task(void *argument)
 void StartMAX30003IRQTask(void *argument)
 {
   /* USER CODE BEGIN StartMAX30003IRQTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	max30003LowLevelInit(max30003ECGDataCallback);
+	max30003Start(&max30003device);
+	osThreadResume(max30003TaskHandle);
+	for(;;)
+	{
+	  osThreadSuspend(NULL);
+	  max30003LowLevelInterruptBottomHalfHandler();
+	  //osDelay(10);
+	}
   /* USER CODE END StartMAX30003IRQTask */
 }
 
@@ -472,11 +717,16 @@ void StartMAX30003IRQTask(void *argument)
 void StartMAX30102Task(void *argument)
 {
   /* USER CODE BEGIN StartMAX30102Task */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	osThreadSuspend(NULL);
+	for (;;) {
+		vTaskDelay(500);
+		if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+			//max30102LLTick();
+			xSemaphoreGive(i2c1MutexSemaphore);
+		} else {
+
+		}
+	}
   /* USER CODE END StartMAX30102Task */
 }
 
@@ -490,11 +740,24 @@ void StartMAX30102Task(void *argument)
 void StartMAX30102IRQTask(void *argument)
 {
   /* USER CODE BEGIN StartMAX30102IRQTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+		max30102LLInit(max30102PPGDataCallback);
+		max30102Start(&max30102device);
+		xSemaphoreGive(i2c1MutexSemaphore);
+	} else {
+		printf("Can't take i2c1MutexSemaphore\n");
+	}
+
+	osThreadResume(max30102TaskHandle);
+	for(;;)
+	{
+	  osThreadSuspend(NULL);
+	  if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+		  max30102LLInterruptBottomHalfHandler();
+		  xSemaphoreGive(i2c1MutexSemaphore);
+	  }
+	  //vTaskDelay(1);
+	}
   /* USER CODE END StartMAX30102IRQTask */
 }
 
@@ -508,11 +771,10 @@ void StartMAX30102IRQTask(void *argument)
 void StartMAXM86161RTask(void *argument)
 {
   /* USER CODE BEGIN StartMAXM86161RTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for (;;) {
+		vTaskDelay(10);
+		max86161RightLLTick();
+	}
   /* USER CODE END StartMAXM86161RTask */
 }
 
@@ -526,11 +788,17 @@ void StartMAXM86161RTask(void *argument)
 void StartMAXM86161IRQRTask(void *argument)
 {
   /* USER CODE BEGIN StartMAXM86161IRQRTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	max86161RightLLInit(max86161RightPPGDataCallback);
+	vTaskDelay(10);
+	max86161Start(&max86161RightDevice);
+	osThreadResume(maxm86161RTaskHandle);
+	for(;;)
+	{
+	  osThreadSuspend(NULL);
+	  max86161RightLLInterruptBottomHalfHandler();
+	  //osDelay(10);
+	  vTaskDelay(1);
+	}
   /* USER CODE END StartMAXM86161IRQRTask */
 }
 
@@ -545,10 +813,10 @@ void StartMAXM86161LTask(void *argument)
 {
   /* USER CODE BEGIN StartMAXM86161LTask */
   /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for (;;) {
+		vTaskDelay(10);
+		max86161LeftLLTick();
+	}
   /* USER CODE END StartMAXM86161LTask */
 }
 
@@ -562,11 +830,17 @@ void StartMAXM86161LTask(void *argument)
 void StartMAXM86161IRQLTask(void *argument)
 {
   /* USER CODE BEGIN StartMAXM86161IRQLTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	max86161LeftLLInit(max86161LeftPPGDataCallback);
+	vTaskDelay(10);
+	max86161Start(&max86161LeftDevice);
+	osThreadResume(maxm86161LTaskHandle);
+	for(;;)
+	{
+	  osThreadSuspend(NULL);
+	  max86161LeftLLInterruptBottomHalfHandler();
+	  //osDelay(10);
+	  vTaskDelay(1);
+	}
   /* USER CODE END StartMAXM86161IRQLTask */
 }
 
@@ -580,11 +854,23 @@ void StartMAXM86161IRQLTask(void *argument)
 void StartI2C1TxTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C1TxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c1TxBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c1.AddrEventCount == MAX30102_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max30102LLI2CTxHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+
+			} else if(hi2c1.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C1LeftTxHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C1TxTask */
 }
 
@@ -598,11 +884,22 @@ void StartI2C1TxTask(void *argument)
 void StartI2C1RxTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C1RxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c1RxBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c1.AddrEventCount == MAX30102_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max30102LLI2CRxHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+			} else if(hi2c1.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C1LeftRxHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C1RxTask */
 }
 
@@ -616,11 +913,22 @@ void StartI2C1RxTask(void *argument)
 void StartI2C1ErrorTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C1ErrorTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c1ErrorBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c1.AddrEventCount == MAX30102_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max30102LLI2CErrorHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+			} else if(hi2c1.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C1LeftErrorHandler(&hi2c1);
+					xSemaphoreGive(i2c1MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C1ErrorTask */
 }
 
@@ -634,11 +942,17 @@ void StartI2C1ErrorTask(void *argument)
 void StartI2C2TxTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C2TxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c2TxBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c2.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c2MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C2RightTxHandler(&hi2c2);
+					xSemaphoreGive(i2c2MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C2TxTask */
 }
 
@@ -652,11 +966,17 @@ void StartI2C2TxTask(void *argument)
 void StartI2C2RxTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C2RxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c2RxBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c2.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c2MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C2RightRxHandler(&hi2c2);
+					xSemaphoreGive(i2c2MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C2RxTask */
 }
 
@@ -670,11 +990,17 @@ void StartI2C2RxTask(void *argument)
 void StartI2C2ErrorTask(void *argument)
 {
   /* USER CODE BEGIN StartI2C2ErrorTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(i2c2ErrorBinarySemaphore, 1000) == pdTRUE ) {
+			if(hi2c2.AddrEventCount == MAX86161_I2C_ADDRESS) {
+				if(xSemaphoreTake(i2c2MutexSemaphore, 1000) == pdTRUE) {
+					max86161LLI2C2RightErrorHandler(&hi2c2);
+					xSemaphoreGive(i2c2MutexSemaphore);
+				}
+			}
+		}
+		vTaskDelay(1);
+	}
   /* USER CODE END StartI2C2ErrorTask */
 }
 
@@ -691,7 +1017,10 @@ void StartDebugTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+		osDelay(10000);
+	    vTaskList(debugInfoBuffer);
+	    printf("Name\t\t\tState\tPriority\tStack\tNum\n%s", debugInfoBuffer);
+
   }
   /* USER CODE END StartDebugTask */
 }
@@ -706,11 +1035,77 @@ void StartDebugTask(void *argument)
 void StartFatFsTask(void *argument)
 {
   /* USER CODE BEGIN StartFatFsTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	FIL MyFile;
+		uint32_t totalWrittenBytes = 0;
+		uint32_t wbytes;
+		//char currentLine[20] = {'\0'};
+		FRESULT fresult = FR_OK;
+
+		generateFilename(currentFilename);
+
+		if(retSD == 0) {
+			if(fresult == FR_OK) {
+				fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
+			} else {
+				printf("Can't mount a SD card, fresult: %d\n", fresult);
+			}
+		} else {
+			printf("Can't link a driver!\n");
+		}
+
+		for (;;) {
+			if(BSP_PlatformIsDetected() == SD_PRESENT) {
+				if(xSemaphoreTake(storeEcgBinarySemaphore, 5000) == pdTRUE) {
+					//if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
+						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
+						FRESULT fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
+						if(fresult == FR_OK) {
+							totalWrittenBytes = f_size(&MyFile);
+							fresult = f_lseek(&MyFile, totalWrittenBytes);
+							if(fresult == FR_OK) {
+
+							} else {
+								printf("Failed to seek\n");
+							}
+
+							for(int i = 0; i < ECG_BUFFER_SIZE; i++) {
+								uint16_t newIndex = i * 6;
+								wtext[newIndex] = ecgDataBuffer[0][i] >> 8;
+								wtext[newIndex + 1] = ecgDataBuffer[0][i];
+								wtext[newIndex + 2] = ',';
+								wtext[newIndex + 3] = earEcgDataBuffer[0][i] >> 8;
+								wtext[newIndex + 4] = earEcgDataBuffer[0][i];
+								wtext[newIndex + 5] = '\n';
+							}
+
+							uint32_t stringLength = ECG_BUFFER_SIZE * 6;//strlen(wtext);
+							fresult = f_write(&MyFile, wtext, stringLength, (void *)&wbytes);
+							// Set string length to 0
+							wtext[0] = '\0';
+							if(fresult == FR_OK) {
+								printf("Written bytes: %lu, string length: %lu\n", wbytes, stringLength);
+								//fresult = f_sync(&MyFile);
+								if(fresult == FR_OK) {
+
+								} else {
+									printf("Failed to sync a file\n");
+								}
+								f_close(&MyFile);
+
+							} else {
+								printf("Can't write a file, fresult: %d\n", fresult);
+							}
+							f_close(&MyFile);
+						} else {
+							printf("Can't open a file, fresult: %d\n", fresult);
+						}
+						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
+					//}
+					//xSemaphoreGive(fsMutexSemaphore);
+				}
+			}
+			vTaskDelay(100);
+		}
   /* USER CODE END StartFatFsTask */
 }
 
@@ -724,11 +1119,15 @@ void StartFatFsTask(void *argument)
 void StartUsbTask(void *argument)
 {
   /* USER CODE BEGIN StartUsbTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(usbBinarySemaphore, 1000) == pdTRUE ) {
+			if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
+				HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+				xSemaphoreGive(fsMutexSemaphore);
+			}
+		}
+		//vTaskDelay(1);
+	}
   /* USER CODE END StartUsbTask */
 }
 
@@ -742,11 +1141,14 @@ void StartUsbTask(void *argument)
 void StartUsbDmaTxTask(void *argument)
 {
   /* USER CODE BEGIN StartUsbDmaTxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(usbDmaTxBinarySemaphore, 1000) == pdTRUE ) {
+		//	if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
+				HAL_DMA_IRQHandler(&hdma_sdio_tx);
+				//xSemaphoreGive(fsMutexSemaphore);
+		//	}
+		}
+	}
   /* USER CODE END StartUsbDmaTxTask */
 }
 
@@ -760,11 +1162,14 @@ void StartUsbDmaTxTask(void *argument)
 void StartUsbDmaRxTask(void *argument)
 {
   /* USER CODE BEGIN StartUsbDmaRxTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for( ;; ) {
+		if(xSemaphoreTake(usbDmaRxBinarySemaphore, 1000) == pdTRUE ) {
+		//	if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
+				HAL_DMA_IRQHandler(&hdma_sdio_rx);
+		//		xSemaphoreGive(fsMutexSemaphore);
+		//	}
+		}
+	}
   /* USER CODE END StartUsbDmaRxTask */
 }
 

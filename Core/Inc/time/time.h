@@ -19,6 +19,7 @@ typedef struct {
 	uint8_t seconds;
 } RTCDate;
 
+
 RTCDate getCurrentRTCDate();
 
 #endif /* INC_TIME_TIME_H_ */

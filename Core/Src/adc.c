@@ -21,7 +21,23 @@
 #include "adc.h"
 
 /* USER CODE BEGIN 0 */
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "semphr.h"
 
+#define ADC_BUFFER_LENGHT 4
+extern QueueHandle_t standartECGQueue;
+extern SemaphoreHandle_t storeEcgBinarySemaphore;
+
+extern uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+extern uint16_t ecgDataBufferIndex;
+extern uint8_t ecgDataBufferNumberIndex;
+
+uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
+uint8_t bufferCounter = 0;
+uint16_t adcValue;
+uint32_t averageValue;
+uint8_t graphCounter = 0;
 /* USER CODE END 0 */
 
 ADC_HandleTypeDef hadc1;
@@ -99,7 +115,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* USER CODE BEGIN ADC1_MspInit 1 */
-
+    HAL_NVIC_SetPriority(ADC_IRQn, 10, 0);
+    HAL_NVIC_EnableIRQ(ADC_IRQn);
   /* USER CODE END ADC1_MspInit 1 */
   }
 }
@@ -128,7 +145,52 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	adcValue = HAL_ADC_GetValue(hadc);
 
+	if(bufferCounter < ADC_BUFFER_LENGHT - 1) {
+		adcBuffer[bufferCounter] = adcValue;
+		bufferCounter++;
+	} else {
+		adcBuffer[bufferCounter] = adcValue;
+		bufferCounter = 0;
+		averageValue = 0;
+		for(int i = 0; i < ADC_BUFFER_LENGHT; i++) {
+			averageValue += adcBuffer[i];
+		}
+		averageValue = averageValue / ADC_BUFFER_LENGHT;
+
+		if(storeEcgBinarySemaphore != NULL) {
+
+			ecgDataBuffer[ecgDataBufferNumberIndex][ecgDataBufferIndex] = (uint16_t)averageValue;
+
+
+			if(ecgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
+				ecgDataBufferIndex++;
+			} else {
+				ecgDataBufferIndex = 0;
+				if(ecgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
+					ecgDataBufferNumberIndex++;
+				} else {
+					ecgDataBufferNumberIndex = 0;
+				}
+				//xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
+				//portYIELD_FROM_ISR(pdFALSE);
+			}
+
+		}
+
+		if(standartECGQueue != 0) {
+			if(graphCounter < GRAPH_DOWNSAMPLING_VALUE) {
+				graphCounter++;
+			} else {
+				graphCounter = 0;
+				xQueueSendFromISR(standartECGQueue, (void *)&averageValue, (TickType_t)0);
+			}
+		}
+	}
+}
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

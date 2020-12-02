@@ -37,10 +37,10 @@ void MX_TIM3_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 47999;
+  htim3.Init.Prescaler = 15000 - 1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 4;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
   {
@@ -77,9 +77,10 @@ void MX_TIM7_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   htim7.Instance = TIM7;
-  htim7.Init.Prescaler = 44999;
+  htim7.Init.Prescaler = 60000 - 1;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim7.Init.Period = 99;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
@@ -99,10 +100,10 @@ void MX_TIM12_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim12.Instance = TIM12;
-  htim12.Init.Prescaler = 44;
+  htim12.Init.Prescaler = 60 - 1;
   htim12.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim12.Init.Period = 999;
-  htim12.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim12.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim12.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_PWM_Init(&htim12) != HAL_OK)
   {
@@ -125,10 +126,10 @@ void MX_TIM13_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim13.Instance = TIM13;
-  htim13.Init.Prescaler = 44;
+  htim13.Init.Prescaler = 60 - 1;
   htim13.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim13.Init.Period = 999;
-  htim13.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim13.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim13.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim13) != HAL_OK)
   {
