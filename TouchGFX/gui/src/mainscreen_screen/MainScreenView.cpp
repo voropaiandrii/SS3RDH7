@@ -8,21 +8,36 @@ MainScreenView::MainScreenView()
 void MainScreenView::setupScreen()
 {
     MainScreenViewBase::setupScreen();
-    standardECGGraphMajorYAxisGrid.setInterval(500);
-    earECGGraphMajorYAxisGrid.setInterval(10000);
 
-    standardECGGraph.setGraphRangeY(0, 0x0FFF);
+    standardECGGraph.setGraphRangeY(0, 0xFFFF);
+    standardECGGraphMajorYAxisGrid.setInterval(10000);
+
     earECGGraph.setGraphRangeY(65535, -65535);
+    earECGGraphMajorYAxisGrid.setInterval(20000);
 
     fingerPPGRedGraph.setGraphRangeY(0, 0xFFFF);
+    fingerPPGRedGraphMajorYAxisGrid.setInterval(20000);
+
     fingerPPGIRGraph.setGraphRangeY(0, 0xFFFF);
+    fingerPPGIRGraphMajorYAxisGrid.setInterval(20000);
 
     leftEarPPGGreenGraph.setGraphRangeY(0, 0x3FFFF);
+    leftEarPPGGreenGraphMajorYAxisGrid.setInterval(40000);
+
     leftEarPPGRedGraph.setGraphRangeY(0, 0x3FFFF);
+    leftEarPPGRedGraphMajorYAxisGrid.setInterval(40000);
+
     leftEarPPGIRGraph.setGraphRangeY(0, 0x3FFFF);
+    leftEarPPGIRGraphMajorYAxisGrid.setInterval(40000);
+
     rightEarPPGGreenGraph.setGraphRangeY(0, 0x3FFFF);
-    rightEarPPGGreenGraph.setGraphRangeY(0, 0x3FFFF);
-    rightEarPPGGreenGraph.setGraphRangeY(0, 0x3FFFF);
+    rightEarPPGGreenGraphMajorYAxisGrid.setInterval(40000);
+
+    rightEarPPGRedGraph.setGraphRangeY(0, 0x3FFFF);
+    rightEarPPGRedGraphMajorYAxisGrid.setInterval(40000);
+
+    rightEarPPGIRGraph.setGraphRangeY(0, 0x3FFFF);
+    rightEarPPGIRGraphMajorYAxisGrid.setInterval(40000);
 
 
 }

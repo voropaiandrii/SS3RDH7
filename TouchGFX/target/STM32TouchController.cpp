@@ -35,6 +35,8 @@ void xpt2046TouchEventCallback(TouchEvent_t* e) {
 		event.temperature = e->temperature;
 		event.z1Position = e->z1Position;
 		event.z2Position = e->z2Position;
+		event.rawX = e->rawX;
+		event.rawY = e->rawY;
 	}
     isTouchEventDetected = true;
 }
@@ -64,7 +66,7 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 		x = event.xPosition;
 		y = event.yPosition;
 		isTouchEventDetected = false;
-		//printf("Touched, x: %d, y: %d\n", x, y);
+		printf("Touched, x: %ld, y: %ld, rawX: %u, rawY: %u\n", x, y, event.rawX, event.rawY);
 		return true;
 	} else {
 		return false;

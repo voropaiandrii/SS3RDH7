@@ -140,21 +140,30 @@ static void receiveData(void* device, uint8_t *buffer, uint8_t size) {
 				uint16_t rawXPosition = xPositionSum/XPT2046_AVERAGE_MEASURE_COUNT;
 				uint16_t rawYPosition = yPositionSum/XPT2046_AVERAGE_MEASURE_COUNT;
 
+				devicePointer->currentTouchEvent.rawX = rawXPosition;
+				devicePointer->currentTouchEvent.rawY = rawYPosition;
+
 				uint32_t calculatedXPosition = 0;
 				uint32_t calculatedYPosition = 0;
 
 				if(rawXPosition > XPT2046_X_POSITION_VALUE_OFFSET_MAX) {
 					calculatedXPosition = XPT2046_SCREEN_WIDTH;
 				} else if(rawXPosition > XPT2046_X_POSITION_VALUE_OFFSET_MIN) {
+					/*
 					calculatedXPosition = (rawXPosition - XPT2046_X_POSITION_VALUE_OFFSET_MIN) *
 							XPT2046_SCREEN_WIDTH / (XPT2046_X_POSITION_VALUE_OFFSET_MAX - XPT2046_X_POSITION_VALUE_OFFSET_MIN);
+				    */
+					calculatedXPosition = rawXPosition * XPT2046_X_SCALE_FACTOR - XPT2046_Y_POSITION_VALUE_OFFSET_MIN * XPT2046_X_SCALE_FACTOR;
 				}
 
 				if(rawYPosition > XPT2046_Y_POSITION_VALUE_OFFSET_MAX) {
 					calculatedYPosition = XPT2046_SCREEN_WIDTH;
 				} else if(rawYPosition > XPT2046_Y_POSITION_VALUE_OFFSET_MIN) {
+					/*
 					calculatedYPosition = (rawYPosition - XPT2046_Y_POSITION_VALUE_OFFSET_MIN) *
 											XPT2046_SCREEN_HEIGHT / (XPT2046_Y_POSITION_VALUE_OFFSET_MAX - XPT2046_Y_POSITION_VALUE_OFFSET_MIN);
+					*/
+					calculatedYPosition = rawYPosition * XPT2046_Y_SCALE_FACTOR - XPT2046_Y_POSITION_VALUE_OFFSET_MIN * XPT2046_Y_SCALE_FACTOR;
 				}
 
 #if XPT2046_SCREEN_ORIENTATION_MIRROR_X_AXIS == 1
