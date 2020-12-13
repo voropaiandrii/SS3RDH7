@@ -192,3 +192,7 @@ void max86161RightLLTick() {
 void max86161LeftLLTick() {
 	max86161Tick(&max86161LeftDevice);
 }
+
+uint8_t isMax86161Operation(I2C_HandleTypeDef *hi2c) {
+	return ((uint16_t)(hi2c->Instance->CR2 & I2C_CR2_SADD) == MAX86161_I2C_ADDRESS);
+}

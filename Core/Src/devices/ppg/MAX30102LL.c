@@ -21,7 +21,11 @@ static void changeI2CState(MAX30102Device_t* max30102device, I2C_HandleTypeDef *
 	switch(max30102device->i2cState) {
 		case MAX30102_I2C_STATE_START:
 			max30102device->i2cState = MAX30102_I2C_STATE_SEND_ADDRESS;
-			operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_FRAME);
+			if(max30102device->i2cAction == MAX30102_I2C_ACTION_READ_DATA) {
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
+			} else {
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
+			}
 			//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_FRAME);
 			break;
 		case MAX30102_I2C_STATE_SEND_ADDRESS:
@@ -44,7 +48,7 @@ static void changeI2CState(MAX30102Device_t* max30102device, I2C_HandleTypeDef *
 		case MAX30102_I2C_STATE_RECEIVE_DATA:
 			max30102device->i2cState = MAX30102_I2C_STATE_COMPLETED;
 			if(i2cMAX30102.operations.receiveData != NULL) {
-				i2cMAX30102.operations.receiveData((void*)max30102device, max30102device->rxBuffer, size);
+				i2cMAX30102.operations.receiveData((void*)max30102device, max30102device->rxBuffer, max30102device->i2cDataSize);
 			}
 			break;
 	}
@@ -157,4 +161,9 @@ void max30102LLInterruptBottomHalfHandler() {
 
 void max30102LLTick() {
 	max30102Tick(&max30102device);
+}
+
+uint8_t isMax30102Operation(I2C_HandleTypeDef *hi2c) {
+	uint16_t slaveAddress = (uint16_t)(hi2c->Instance->CR2 & I2C_CR2_SADD);
+	return  ( slaveAddress == MAX30102_I2C_ADDRESS);
 }

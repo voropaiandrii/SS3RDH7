@@ -100,16 +100,6 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
 	}
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t pin) {
-    if(pin == TOUCH_PIRQ_Pin) {
-    	xpt2046LowLevelEXTIHandler();
-    } else if(pin == MAX30003_INTB_Pin) {
-    	max30003LowLevelEXTIHandler();
-    } else if(pin == MAXM86161_RIGHT_INT_Pin) {
-
-    }
-}
-
 int _write(int file, char *ptr, int len) {
 	for(int i = 0; i < len; i++) {
 		ITM_SendChar(ptr[i]);

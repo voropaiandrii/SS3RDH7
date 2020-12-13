@@ -112,7 +112,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -157,7 +157,10 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     __HAL_LINKDMA(i2cHandle,hdmatx,hdma_i2c1_tx);
 
   /* USER CODE BEGIN I2C1_MspInit 1 */
-
+    HAL_NVIC_SetPriority(I2C1_EV_IRQn, 5, 1);
+    HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
+    HAL_NVIC_SetPriority(I2C1_ER_IRQn, 5, 1);
+    HAL_NVIC_EnableIRQ(I2C1_ER_IRQn);
   /* USER CODE END I2C1_MspInit 1 */
   }
   else if(i2cHandle->Instance==I2C2)
@@ -175,7 +178,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     GPIO_InitStruct.Pin = GPIO_PIN_4;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
     HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
@@ -227,7 +230,10 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     __HAL_LINKDMA(i2cHandle,hdmatx,hdma_i2c2_tx);
 
   /* USER CODE BEGIN I2C2_MspInit 1 */
-
+    HAL_NVIC_SetPriority(I2C2_EV_IRQn, 5, 2);
+    HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
+    HAL_NVIC_SetPriority(I2C2_ER_IRQn, 5, 2);
+    HAL_NVIC_EnableIRQ(I2C2_ER_IRQn);
   /* USER CODE END I2C2_MspInit 1 */
   }
 }

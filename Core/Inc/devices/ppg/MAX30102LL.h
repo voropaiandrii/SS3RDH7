@@ -30,6 +30,7 @@ void max30102LLEXTIHandler();
 void max30102LLInterruptTopHalfHandler();
 void max30102LLInterruptBottomHalfHandler();
 void max30102LLTick();
+uint8_t isMax30102Operation(I2C_HandleTypeDef *hi2c);
 
 
 

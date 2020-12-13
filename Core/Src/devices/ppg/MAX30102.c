@@ -6,6 +6,8 @@
  */
 #include "devices/ppg/MAX30102.h"
 #include "stdio.h"
+#include "FreeRTOS.h"
+#include "queue.h"
 
 
 static void receiveData(void* device, uint8_t *buffer, uint8_t size);
@@ -201,7 +203,7 @@ static void receiveData(void* device, uint8_t *buffer, uint8_t size) {
 
 		// Copy all enqueued bytes to the RX buffer
 		while(xQueueIsQueueEmptyFromISR(devicePointer->rxSerialQueue) != pdTRUE) {
-			xQueueReceiveFromISR(devicePointer->rxSerialQueue, &data, pdFALSE);
+			xQueueReceive(devicePointer->rxSerialQueue, &data, pdFALSE);
 			devicePointer->rxBuffer[rxBufferIndex] = data >> 24;
 			rxBufferIndex++;
 		}
@@ -275,7 +277,7 @@ static void configurate(MAX30102Device_t* device) {
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_SPO2_CONFIG,
 			MAX30102_REGISTER_SPO2_CONFIG_SPO2_ADC_RGE_16384 |
-			MAX30102_REGISTER_SPO2_CONFIG_SPO2_SR_400 |
+			MAX30102_REGISTER_SPO2_CONFIG_SPO2_SR_3200 |
 			MAX30102_REGISTER_SPO2_CONFIG_LED_PW_18bit,
 			0);
 
@@ -286,17 +288,17 @@ static void configurate(MAX30102Device_t* device) {
 
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_LED1_PULSE,
-			MAX30102_REGISTER_ADDRESS_LED_CURRENT_10000uA,
+			MAX30102_REGISTER_ADDRESS_LED_CURRENT_20100uA,
 			0);
 
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_LED2_PULSE,
-			MAX30102_REGISTER_ADDRESS_LED_CURRENT_10000uA,
+			MAX30102_REGISTER_ADDRESS_LED_CURRENT_20100uA,
 			0);
 
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_PROXIMITY_LED_PULSE,
-			MAX30102_REGISTER_ADDRESS_LED_CURRENT_10000uA,
+			MAX30102_REGISTER_ADDRESS_LED_CURRENT_20100uA,
 			0);
 
 	enqueueRegisterDataRequest(device,
@@ -375,7 +377,7 @@ static void readConfigurationBack(MAX30102Device_t* device) {
  */
 static void enqueueRegisterDataRequest(MAX30102Device_t* device, uint8_t address, uint8_t data, uint8_t isReadRequest) {
 	uint16_t value = ((address | (isReadRequest << 7)) << 8) | data;
-	xQueueSendFromISR(device->txSerialQueue, &value, pdFALSE);
+	xQueueSend(device->txSerialQueue, &value, pdFALSE);
 }
 
 /*
@@ -383,7 +385,7 @@ static void enqueueRegisterDataRequest(MAX30102Device_t* device, uint8_t address
  */
 static void dequeueRegisterDataRequest(MAX30102Device_t* device, uint8_t* address, uint8_t* data) {
 	uint16_t value = 0;
-	xQueueReceiveFromISR(device->txSerialQueue, &value, pdFALSE);
+	xQueueReceive(device->txSerialQueue, &value, pdFALSE);
 	*address = value >> 8;
 	*data = value & 0x00FF;
 }
@@ -392,7 +394,7 @@ static void dequeueRegisterDataRequest(MAX30102Device_t* device, uint8_t* addres
  * Place register value in the TX queue, only write operations
  */
 static void enqueueRxData(MAX30102Device_t* device, uint8_t data) {
-	xQueueSendFromISR(device->rxSerialQueue, &data, pdFALSE);
+	xQueueSend(device->rxSerialQueue, &data, pdFALSE);
 }
 
 /*
@@ -400,7 +402,7 @@ static void enqueueRxData(MAX30102Device_t* device, uint8_t data) {
  */
 static uint8_t dequeueRxData(MAX30102Device_t* device) {
 	uint8_t result = 0;
-	xQueueReceiveFromISR(device->rxSerialQueue, &result, pdFALSE);
+	xQueueReceive(device->rxSerialQueue, &result, pdFALSE);
 	return result;
 }
 
@@ -433,17 +435,14 @@ void max30102InterruptTopHalfHandler(MAX30102Device_t* device) {
 }
 
 void max30102InterruptBottomHalfHandler(MAX30102Device_t* device) {
-	//if(device->isConfigurated) {
-		//device->currentState = MAX30102_STATE_READ_PPG;
-		if(device->isConfigurated && device->isReadStarted == 0) {
-			if(device->settings->readInterruptStateFunction()) {
-				device->currentState = MAX30102_STATE_READ_PPG;
-				changeState(device, device->rxBuffer, 0);
-			} else {
-				device->currentState = MAX30102_STATE_IDLE;
-			}
+	if(device->isConfigurated && device->isReadStarted == 0) {
+		if(device->settings->readInterruptStateFunction()) {
+			device->currentState = MAX30102_STATE_READ_PPG;
+			changeState(device, device->rxBuffer, 0);
+		} else {
+			device->currentState = MAX30102_STATE_IDLE;
 		}
-	//}
+	}
 }
 
 static void readFIFOReadPointer(MAX30102Device_t* device) {

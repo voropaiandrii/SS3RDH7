@@ -49,5 +49,6 @@ void max86161RightLLTick();
 void max86161LeftLLInterruptTopHalfHandler();
 void max86161LeftLLInterruptBottomHalfHandler();
 void max86161LeftLLTick();
+uint8_t isMax86161Operation(I2C_HandleTypeDef *hi2c);
 
 #endif /* INC_DEVICES_PPG_MAX86161LL_H_ */
