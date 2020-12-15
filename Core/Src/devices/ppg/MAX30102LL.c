@@ -21,20 +21,22 @@ static void changeI2CState(MAX30102Device_t* max30102device, I2C_HandleTypeDef *
 			max30102device->i2cState = MAX30102_I2C_STATE_SEND_ADDRESS;
 			if(max30102device->i2cAction == MAX30102_I2C_ACTION_READ_DATA) {
 				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
+				//operationResult = HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
 			} else {
 				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
+				//operationResult = HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
 			}
-			//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_FRAME);
+
 			break;
 		case MAX30102_I2C_STATE_SEND_ADDRESS:
 			if(max30102device->i2cAction == MAX30102_I2C_ACTION_READ_DATA) {
 				max30102device->i2cState = MAX30102_I2C_STATE_RECEIVE_DATA;
 				operationResult = HAL_I2C_Master_Seq_Receive_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
-				//HAL_I2C_Master_Seq_Receive_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
+				//operationResult = HAL_I2C_Master_Seq_Receive_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
 			} else if(max30102device->i2cAction == MAX30102_I2C_ACTION_WRITE_DATA) {
 				max30102device->i2cState = MAX30102_I2C_STATE_SEND_DATA;
 				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
-				//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
+				//operationResult = HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
 			}
 			break;
 		case MAX30102_I2C_STATE_SEND_DATA:

@@ -882,7 +882,7 @@ void StartMAX30003Task(void *argument)
   /* USER CODE BEGIN StartMAX30003Task */
 	osThreadSuspend(NULL);
 	for (;;) {
-		vTaskDelay(10);
+		vTaskDelay(5);
 		max30003LowLevelTick();
 	}
   /* USER CODE END StartMAX30003Task */
@@ -924,12 +924,17 @@ void StartMAX30102Task(void *argument)
 	if(xSemaphoreTake(i2c4MutexSemaphore, 1000) == pdTRUE) {
 		max30102LLInit(max30102PPGDataCallback);
 		max30102Start(&max30102device);
+
+		//vTaskDelay(50);
+		//max30102LLTick();
+		//vTaskDelay(50);
+		//max30102LLTick();
 		xSemaphoreGive(i2c4MutexSemaphore);
 	} else {
 		printf("Can't take i2c1MutexSemaphore\n");
 	}
 	for (;;) {
-		vTaskDelay(200);
+		vTaskDelay(50);
 		if(xSemaphoreTake(i2c4MutexSemaphore, 1000) == pdTRUE) {
 			max30102LLTick();
 			xSemaphoreGive(i2c4MutexSemaphore);
@@ -952,7 +957,7 @@ void StartMAX30102IRQTask(void *argument)
 	{
 	  if(xSemaphoreTake(max30102IRQBinarySemaphore, 1000) == pdTRUE) {
 		  if(xSemaphoreTake(i2c4MutexSemaphore, 1000) == pdTRUE) {
-		  	  max30102LLInterruptBottomHalfHandler();
+		  	  //max30102LLInterruptBottomHalfHandler();
 		  	  xSemaphoreGive(i2c4MutexSemaphore);
 	  	  }
 	  }
@@ -978,7 +983,7 @@ void StartMAXM86161RTask(void *argument)
 		xSemaphoreGive(i2c2MutexSemaphore);
 	}
 	for (;;) {
-		vTaskDelay(10);
+		vTaskDelay(5);
 		if(xSemaphoreTake(i2c2MutexSemaphore, 1000) == pdTRUE) {
 			max86161RightLLTick();
 			xSemaphoreGive(i2c2MutexSemaphore);
@@ -1029,7 +1034,7 @@ void StartMAXM86161LTask(void *argument)
 	}
 
 	for (;;) {
-		vTaskDelay(10);
+		vTaskDelay(5);
 		if(xSemaphoreTake(i2c1MutexSemaphore, 1000) == pdTRUE) {
 			max86161LeftLLTick();
 			xSemaphoreGive(i2c1MutexSemaphore);
