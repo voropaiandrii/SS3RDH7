@@ -164,8 +164,8 @@ void max30102Init(MAX30102Device_t* device) {
 	device->error = MAX30102_ERROR_NONE;
 	device->i2cState = MAX30102_I2C_STATE_START;
 
-	device->txSerialQueue = xQueueCreate(11, sizeof(uint16_t));
-	device->rxSerialQueue = xQueueCreate(11, sizeof(uint8_t));
+	device->txSerialQueue = xQueueCreate(12, sizeof(uint16_t));
+	device->rxSerialQueue = xQueueCreate(12, sizeof(uint8_t));
 
 	device->settings->disableInterruptFunction();
 }
@@ -308,11 +308,13 @@ static void configurate(MAX30102Device_t* device) {
 			0);
 
 
-	//enqueueRegisterDataRequest(device,
-	//		MAX30102_REGISTER_ADDRESS_MULTI_LED_CONTROL2,
-	//		(MAX30102_REGISTER_MULTI_LED_CONTROL_SLOT_LED1_PA_RED << MAX30102_REGISTER_MULTI_LED_CONTROL2_SLOT3_POS) |
-	//		(MAX30102_REGISTER_MULTI_LED_CONTROL_SLOT_LED2_PA_IR << MAX30102_REGISTER_MULTI_LED_CONTROL2_SLOT4_POS),
-	//		0);
+	/*
+	enqueueRegisterDataRequest(device,
+			MAX30102_REGISTER_ADDRESS_MULTI_LED_CONTROL2,
+			(MAX30102_REGISTER_MULTI_LED_CONTROL_SLOT_DISABLED << MAX30102_REGISTER_MULTI_LED_CONTROL2_SLOT3_POS) |
+			(MAX30102_REGISTER_MULTI_LED_CONTROL_SLOT_DISABLED << MAX30102_REGISTER_MULTI_LED_CONTROL2_SLOT4_POS),
+			0);
+			*/
 
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_INTERRUPT_ENABLE_1,
@@ -359,10 +361,12 @@ static void readConfigurationBack(MAX30102Device_t* device) {
 			0,
 			1);
 
-	//enqueueRegisterDataRequest(device,
-	//		MAX30102_REGISTER_ADDRESS_MULTI_LED_CONTROL2,
-	//		0,
-	//		1);
+	/*
+	enqueueRegisterDataRequest(device,
+			MAX30102_REGISTER_ADDRESS_MULTI_LED_CONTROL2,
+			0,
+			1);
+		*/
 
 	enqueueRegisterDataRequest(device,
 			MAX30102_REGISTER_ADDRESS_INTERRUPT_ENABLE_1,
@@ -463,9 +467,7 @@ static void readFIFODataSample(MAX30102Device_t* device) {
 }
 
 void max30102Tick(MAX30102Device_t* device) {
-	//device->settings->disableInterruptFunction();
-
-	//device->settings->enableInterruptFunction();
+	max30102InterruptBottomHalfHandler(device);
 }
 
 

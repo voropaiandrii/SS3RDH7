@@ -11,32 +11,30 @@
 static I2C_t i2cMAX30102;
 MAX30102Device_t max30102device;
 static MAX30102Settings_t max30102Settings;
-
-//extern I2C_HandleTypeDef hi2c1;
 extern osThreadId max30102InterruptTaskHandle;
 
 static void changeI2CState(MAX30102Device_t* max30102device, I2C_HandleTypeDef *hi2c, uint8_t size) {
-	HAL_StatusTypeDef operationResult = 0;
+	HAL_StatusTypeDef operationResult = HAL_OK;
 	//printf("changeI2CState start, device->currentState %d\n", max30102device->i2cState);
 	switch(max30102device->i2cState) {
 		case MAX30102_I2C_STATE_START:
 			max30102device->i2cState = MAX30102_I2C_STATE_SEND_ADDRESS;
 			if(max30102device->i2cAction == MAX30102_I2C_ACTION_READ_DATA) {
-				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
 			} else {
-				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
 			}
-			//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_FRAME);
+			//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->txBuffer, 1, I2C_FIRST_FRAME);
 			break;
 		case MAX30102_I2C_STATE_SEND_ADDRESS:
 			if(max30102device->i2cAction == MAX30102_I2C_ACTION_READ_DATA) {
 				max30102device->i2cState = MAX30102_I2C_STATE_RECEIVE_DATA;
-				operationResult = HAL_I2C_Master_Seq_Receive_IT(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
-				//HAL_I2C_Master_Seq_Receive_DMA(&hi2c1, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Receive_IT(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
+				//HAL_I2C_Master_Seq_Receive_DMA(&hi2c4, MAX30102_I2C_ADDRESS, max30102device->rxBuffer, max30102device->i2cDataSize, I2C_LAST_FRAME);
 			} else if(max30102device->i2cAction == MAX30102_I2C_ACTION_WRITE_DATA) {
 				max30102device->i2cState = MAX30102_I2C_STATE_SEND_DATA;
-				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
-				//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c1, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(&hi2c4, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
+				//HAL_I2C_Master_Seq_Transmit_DMA(&hi2c4, MAX30102_I2C_ADDRESS, (max30102device->txBuffer + 1), 1, I2C_LAST_FRAME);
 			}
 			break;
 		case MAX30102_I2C_STATE_SEND_DATA:
@@ -94,8 +92,7 @@ void max30102LLDeInit() {
 }
 
 void max30102LLWriteData(void* device, uint8_t* txBuffer, uint8_t size) {
-	//HAL_I2C_Master_Transmit_IT(&hi2c1, MAX30102_I2C_ADDRESS, ((MAX30102Device_t*)device)->txBuffer, size);
-	changeI2CState((MAX30102Device_t*)device, &hi2c1, size);
+	changeI2CState((MAX30102Device_t*)device, &hi2c4, size);
 }
 
 void max30102LLI2CTxHandler(I2C_HandleTypeDef *hi2c) {

@@ -44,7 +44,6 @@ void MX_LTDC_Init(void)
   hltdc.Init.AccumulatedActiveH = 511;
   hltdc.Init.TotalWidth = 927;
   hltdc.Init.TotalHeigh = 524;
-  // 485748 pixel clocks in total
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;

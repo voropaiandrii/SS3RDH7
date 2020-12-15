@@ -6,8 +6,8 @@
 
 static void readValue(XPT2046Device_t* device) {
     if (device->settings->spi != NULL) {
-    	device->settings->disablePenInterruptFunction();
     	if(device->isInitialCommandSent == 0 || device->settings->readPenStateFunction()) {
+    		device->settings->disablePenInterruptFunction();
     		device->isReadStarted = 1;
 			if (device->settings->spi->chipEnable != NULL) {
 				device->settings->spi->chipEnable();

@@ -15,11 +15,11 @@ void MainScreenView::setupScreen()
     earECGGraph.setGraphRangeY(65535, -65535);
     earECGGraphMajorYAxisGrid.setInterval(20000);
 
-    fingerPPGRedGraph.setGraphRangeY(0, 0x3FFFF);
-    fingerPPGRedGraphMajorYAxisGrid.setInterval(20000);
+    fingerPPGRedGraph.setGraphRangeY(0, 0xFFFFF);
+    fingerPPGRedGraphMajorYAxisGrid.setInterval(40000);
 
-    fingerPPGIRGraph.setGraphRangeY(0, 0x3FFFF);
-    fingerPPGIRGraphMajorYAxisGrid.setInterval(20000);
+    fingerPPGIRGraph.setGraphRangeY(0, 0xFFFFF);
+    fingerPPGIRGraphMajorYAxisGrid.setInterval(40000);
 
     leftEarPPGGreenGraph.setGraphRangeY(0, 0x3FFFF);
     leftEarPPGGreenGraphMajorYAxisGrid.setInterval(40000);

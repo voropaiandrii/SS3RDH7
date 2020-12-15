@@ -19,10 +19,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "fmc.h"
-#include "stm32h7xx_ll_fmc.h"
-
 
 /* USER CODE BEGIN 0 */
+#include "stm32h7xx_ll_fmc.h"
+
 void SDRAM_InitSequence() {
     //HAL_Delay(100);
     FMC_SDRAM_CommandTypeDef sdramCommand;

@@ -16,18 +16,23 @@ static MAX86161Settings_t max86161LeftSettings;
 static MAX86161Settings_t max86161RightSettings;
 
 static void changeI2CState(MAX86161Device_t* max86161device, I2C_HandleTypeDef *hi2c, uint8_t size) {
+	HAL_StatusTypeDef operationResult = HAL_OK;
 	switch(max86161device->i2cState) {
 		case MAX86161_I2C_STATE_START:
 			max86161device->i2cState = MAX86161_I2C_STATE_SEND_ADDRESS;
-			HAL_I2C_Master_Seq_Transmit_IT(hi2c, MAX86161_I2C_ADDRESS, max86161device->txBuffer, 1, I2C_FIRST_FRAME);
+			if(max86161device->i2cAction == MAX86161_I2C_ACTION_READ_DATA) {
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(hi2c, MAX86161_I2C_ADDRESS, max86161device->txBuffer, 1, I2C_FIRST_AND_LAST_FRAME);
+			} else {
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(hi2c, MAX86161_I2C_ADDRESS, max86161device->txBuffer, 1, I2C_FIRST_AND_NEXT_FRAME);
+			}
 			break;
 		case MAX86161_I2C_STATE_SEND_ADDRESS:
 			if(max86161device->i2cAction == MAX86161_I2C_ACTION_READ_DATA) {
 				max86161device->i2cState = MAX86161_I2C_STATE_RECEIVE_DATA;
-				HAL_I2C_Master_Seq_Receive_IT(hi2c, MAX86161_I2C_ADDRESS, max86161device->rxBuffer, max86161device->i2cDataSize, I2C_LAST_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Receive_IT(hi2c, MAX86161_I2C_ADDRESS, max86161device->rxBuffer, max86161device->i2cDataSize, I2C_LAST_FRAME);
 			} else if(max86161device->i2cAction == MAX86161_I2C_ACTION_WRITE_DATA) {
 				max86161device->i2cState = MAX86161_I2C_STATE_SEND_DATA;
-				HAL_I2C_Master_Seq_Transmit_IT(hi2c, MAX86161_I2C_ADDRESS, (max86161device->txBuffer + 1), 1, I2C_LAST_FRAME);
+				operationResult = HAL_I2C_Master_Seq_Transmit_IT(hi2c, MAX86161_I2C_ADDRESS, (max86161device->txBuffer + 1), 1, I2C_LAST_FRAME);
 			}
 			break;
 		case MAX86161_I2C_STATE_SEND_DATA:
@@ -39,9 +44,13 @@ static void changeI2CState(MAX86161Device_t* max86161device, I2C_HandleTypeDef *
 		case MAX86161_I2C_STATE_RECEIVE_DATA:
 			max86161device->i2cState = MAX86161_I2C_STATE_COMPLETED;
 			if(max86161device->settings->i2c->operations.receiveData != NULL) {
-				max86161device->settings->i2c->operations.receiveData((void*)max86161device, max86161device->rxBuffer, size);
+				max86161device->settings->i2c->operations.receiveData((void*)max86161device, max86161device->rxBuffer, max86161device->i2cDataSize);
 			}
 			break;
+	}
+	if(operationResult == HAL_ERROR) {
+		max86161device->currentState = MAX86161_STATE_STOPPED;
+		max86161device->error = MAX86161_ERROR_COMMUNICATION_FAILED;
 	}
 }
 

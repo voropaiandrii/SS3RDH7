@@ -1,0 +1,3375 @@
+diff --git a/.mxproject b/.mxproject
+index 6910608..5fc8ded 100644
+--- a/.mxproject
++++ b/.mxproject
+@@ -2,50 +2,51 @@
+ LibFiles=Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h;Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma2d.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_fmc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sdram.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_jpeg.h;Utilities/JPEG/jpeg_utils.h;Utilities/JPEG/jpeg_utils_conf_template.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rtc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rtc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_sdmmc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sd.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_delayblock.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sd_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h;Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h;Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h;Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h;Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h;Middlewares/Third_Party/FreeRTOS/Source/include/list.h;Middlewares/Third_Party/FreeRTOS/Source/include/message_buffer.h;Middlewares/Third_Party/FreeRTOS/Source/include/mpu_prototypes.h;Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h;Middlewares/Third_Party/FreeRTOS/Source/include/portable.h;Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h;Middlewares/Third_Party/FreeRTOS/Source/include/queue.h;Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h;Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h;Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h;Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h;Middlewares/Third_Party/FreeRTOS/Source/include/task.h;Middlewares/Third_Party/FreeRTOS/Source/include/timers.h;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h;Middlewares/Third_Party/FatFs/src/diskio.h;Middlewares/Third_Party/FatFs/src/ff.h;Middlewares/Third_Party/FatFs/src/ff_gen_drv.h;Middlewares/Third_Party/FatFs/src/integer.h;Middlewares/Third_Party/LibJPEG/include/jconfig_template.h;Middlewares/Third_Party/LibJPEG/include/jdct.h;Middlewares/Third_Party/LibJPEG/include/jerror.h;Middlewares/Third_Party/LibJPEG/include/jinclude.h;Middlewares/Third_Party/LibJPEG/include/jmemsys.h;Middlewares/Third_Party/LibJPEG/include/jmorecfg_template.h;Middlewares/Third_Party/LibJPEG/include/jpegint.h;Middlewares/Third_Party/LibJPEG/include/jpeglib.h;Middlewares/Third_Party/LibJPEG/include/jversion.h;Middlewares/Third_Party/LibJPEG/include/jdata_conf_template.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_bot.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_data.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_scsi.h;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_jpeg.c;Utilities/JPEG/jpeg_utils.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h;Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_adc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma2d.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_fmc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sdram.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_jpeg.h;Utilities/JPEG/jpeg_utils.h;Utilities/JPEG/jpeg_utils_conf_template.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rtc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rtc_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_sdmmc.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sd.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_delayblock.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sd_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h;Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h;Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h;Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h;Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h;Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h;Middlewares/Third_Party/FreeRTOS/Source/include/list.h;Middlewares/Third_Party/FreeRTOS/Source/include/message_buffer.h;Middlewares/Third_Party/FreeRTOS/Source/include/mpu_prototypes.h;Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h;Middlewares/Third_Party/FreeRTOS/Source/include/portable.h;Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h;Middlewares/Third_Party/FreeRTOS/Source/include/queue.h;Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h;Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h;Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h;Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h;Middlewares/Third_Party/FreeRTOS/Source/include/task.h;Middlewares/Third_Party/FreeRTOS/Source/include/timers.h;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h;Middlewares/Third_Party/FatFs/src/diskio.h;Middlewares/Third_Party/FatFs/src/ff.h;Middlewares/Third_Party/FatFs/src/ff_gen_drv.h;Middlewares/Third_Party/FatFs/src/integer.h;Middlewares/Third_Party/LibJPEG/include/jconfig_template.h;Middlewares/Third_Party/LibJPEG/include/jdct.h;Middlewares/Third_Party/LibJPEG/include/jerror.h;Middlewares/Third_Party/LibJPEG/include/jinclude.h;Middlewares/Third_Party/LibJPEG/include/jmemsys.h;Middlewares/Third_Party/LibJPEG/include/jmorecfg_template.h;Middlewares/Third_Party/LibJPEG/include/jpegint.h;Middlewares/Third_Party/LibJPEG/include/jpeglib.h;Middlewares/Third_Party/LibJPEG/include/jversion.h;Middlewares/Third_Party/LibJPEG/include/jdata_conf_template.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h;Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_bot.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_data.h;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_scsi.h;Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h;Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h;Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h;Drivers/CMSIS/Device/ST/STM32H7xx/Source/Templates/system_stm32h7xx.c;Drivers/CMSIS/Include/core_cm7.h;Drivers/CMSIS/Include/tz_context.h;Drivers/CMSIS/Include/core_cm3.h;Drivers/CMSIS/Include/cmsis_compiler.h;Drivers/CMSIS/Include/cmsis_armclang.h;Drivers/CMSIS/Include/mpu_armv7.h;Drivers/CMSIS/Include/cmsis_armcc.h;Drivers/CMSIS/Include/core_cm4.h;Drivers/CMSIS/Include/core_cm0.h;Drivers/CMSIS/Include/cmsis_iccarm.h;Drivers/CMSIS/Include/core_armv8mml.h;Drivers/CMSIS/Include/core_sc000.h;Drivers/CMSIS/Include/core_cm1.h;Drivers/CMSIS/Include/mpu_armv8.h;Drivers/CMSIS/Include/core_sc300.h;Drivers/CMSIS/Include/cmsis_gcc.h;Drivers/CMSIS/Include/cmsis_version.h;Drivers/CMSIS/Include/core_cm23.h;Drivers/CMSIS/Include/core_cm33.h;Drivers/CMSIS/Include/core_cm0plus.h;Drivers/CMSIS/Include/core_armv8mbl.h;
+ 
+ [PreviousUsedCubeIDEFiles]
+-SourceFiles=Core/Src/main.c;Core/Src/gpio.c;Core/Src/freertos.c;Core/Src/adc.c;Core/Src/crc.c;Core/Src/dma.c;Core/Src/dma2d.c;FATFS/Target/bsp_driver_sd.c;FATFS/Target/sd_diskio.c;FATFS/App/fatfs.c;FATFS/Target/fatfs_platform.c;Core/Src/fmc.c;Core/Src/i2c.c;Core/Src/jpeg.c;LIBJPEG/App/libjpeg.c;LIBJPEG/Target/jdata_conf.c;Core/Src/ltdc.c;Core/Src/rtc.c;Core/Src/sdmmc.c;Core/Src/spi.c;TouchGFX/target/generated/TouchGFXConfiguration.cpp;TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp;TouchGFX/target/TouchGFXHAL.cpp;TouchGFX/target/STM32TouchController.cpp;TouchGFX/target/generated/STM32DMA.cpp;TouchGFX/target/generated/OSWrappers.cpp;TouchGFX/target/TouchGFXGPIO.cpp;TouchGFX/App/app_touchgfx.c;Core/Src/tim.c;Core/Src/usart.c;USB_DEVICE/App/usb_device.c;USB_DEVICE/Target/usbd_conf.c;USB_DEVICE/App/usbd_desc.c;USB_DEVICE/App/usbd_storage_if.c;Core/Src/stm32h7xx_it.c;Core/Src/stm32h7xx_hal_msp.c;Core/Src/stm32h7xx_hal_timebase_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_jpeg.c;Utilities/JPEG/jpeg_utils.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;Core/Src/system_stm32h7xx.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_jpeg.c;Utilities/JPEG/jpeg_utils.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;Core/Src/system_stm32h7xx.c;Drivers/CMSIS/Device/ST/STM32H7xx/Source/Templates/system_stm32h7xx.c;;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;
++SourceFiles=Core/Src/main.c;Core/Src/gpio.c;Core/Src/freertos.c;Core/Src/adc.c;Core/Src/bdma.c;Core/Src/crc.c;Core/Src/dma.c;Core/Src/dma2d.c;FATFS/Target/bsp_driver_sd.c;FATFS/Target/sd_diskio.c;FATFS/App/fatfs.c;FATFS/Target/fatfs_platform.c;Core/Src/fmc.c;Core/Src/i2c.c;Core/Src/jpeg.c;LIBJPEG/App/libjpeg.c;LIBJPEG/Target/jdata_conf.c;Core/Src/ltdc.c;Core/Src/rtc.c;Core/Src/sdmmc.c;Core/Src/spi.c;TouchGFX/target/generated/TouchGFXConfiguration.cpp;TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp;TouchGFX/target/TouchGFXHAL.cpp;TouchGFX/target/STM32TouchController.cpp;TouchGFX/target/generated/STM32DMA.cpp;TouchGFX/target/generated/OSWrappers.cpp;TouchGFX/target/TouchGFXGPIO.cpp;TouchGFX/App/app_touchgfx.c;Core/Src/tim.c;Core/Src/usart.c;USB_DEVICE/App/usb_device.c;USB_DEVICE/Target/usbd_conf.c;USB_DEVICE/App/usbd_desc.c;USB_DEVICE/App/usbd_storage_if.c;Core/Src/stm32h7xx_it.c;Core/Src/stm32h7xx_hal_msp.c;Core/Src/stm32h7xx_hal_timebase_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_jpeg.c;Utilities/JPEG/jpeg_utils.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;Core/Src/system_stm32h7xx.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma2d.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_jpeg.c;Utilities/JPEG/jpeg_utils.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rtc_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c;Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;Core/Src/system_stm32h7xx.c;Drivers/CMSIS/Device/ST/STM32H7xx/Source/Templates/system_stm32h7xx.c;;Middlewares/Third_Party/FatFs/src/diskio.c;Middlewares/Third_Party/FatFs/src/ff.c;Middlewares/Third_Party/FatFs/src/ff_gen_drv.c;Middlewares/Third_Party/FatFs/src/option/syscall.c;Middlewares/Third_Party/FreeRTOS/Source/croutine.c;Middlewares/Third_Party/FreeRTOS/Source/event_groups.c;Middlewares/Third_Party/FreeRTOS/Source/list.c;Middlewares/Third_Party/FreeRTOS/Source/queue.c;Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c;Middlewares/Third_Party/FreeRTOS/Source/tasks.c;Middlewares/Third_Party/FreeRTOS/Source/timers.c;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c;Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c;Middlewares/Third_Party/LibJPEG/source/jcapimin.c;Middlewares/Third_Party/LibJPEG/source/jcapistd.c;Middlewares/Third_Party/LibJPEG/source/jdapimin.c;Middlewares/Third_Party/LibJPEG/source/jdapistd.c;Middlewares/Third_Party/LibJPEG/source/jcomapi.c;Middlewares/Third_Party/LibJPEG/source/jcparam.c;Middlewares/Third_Party/LibJPEG/source/jctrans.c;Middlewares/Third_Party/LibJPEG/source/jdtrans.c;Middlewares/Third_Party/LibJPEG/source/jcinit.c;Middlewares/Third_Party/LibJPEG/source/jcmaster.c;Middlewares/Third_Party/LibJPEG/source/jcmainct.c;Middlewares/Third_Party/LibJPEG/source/jcprepct.c;Middlewares/Third_Party/LibJPEG/source/jccoefct.c;Middlewares/Third_Party/LibJPEG/source/jccolor.c;Middlewares/Third_Party/LibJPEG/source/jcsample.c;Middlewares/Third_Party/LibJPEG/source/jcdctmgr.c;Middlewares/Third_Party/LibJPEG/source/jfdctint.c;Middlewares/Third_Party/LibJPEG/source/jfdctfst.c;Middlewares/Third_Party/LibJPEG/source/jfdctflt.c;Middlewares/Third_Party/LibJPEG/source/jchuff.c;Middlewares/Third_Party/LibJPEG/source/jcarith.c;Middlewares/Third_Party/LibJPEG/source/jcmarker.c;Middlewares/Third_Party/LibJPEG/source/jdatadst.c;Middlewares/Third_Party/LibJPEG/source/jdmaster.c;Middlewares/Third_Party/LibJPEG/source/jdinput.c;Middlewares/Third_Party/LibJPEG/source/jdmainct.c;Middlewares/Third_Party/LibJPEG/source/jdcoefct.c;Middlewares/Third_Party/LibJPEG/source/jdpostct.c;Middlewares/Third_Party/LibJPEG/source/jdmarker.c;Middlewares/Third_Party/LibJPEG/source/jdhuff.c;Middlewares/Third_Party/LibJPEG/source/jdarith.c;Middlewares/Third_Party/LibJPEG/source/jddctmgr.c;Middlewares/Third_Party/LibJPEG/source/jidctint.c;Middlewares/Third_Party/LibJPEG/source/jidctfst.c;Middlewares/Third_Party/LibJPEG/source/jidctflt.c;Middlewares/Third_Party/LibJPEG/source/jdsample.c;Middlewares/Third_Party/LibJPEG/source/jdcolor.c;Middlewares/Third_Party/LibJPEG/source/jdmerge.c;Middlewares/Third_Party/LibJPEG/source/jquant1.c;Middlewares/Third_Party/LibJPEG/source/jquant2.c;Middlewares/Third_Party/LibJPEG/source/jdatasrc.c;Middlewares/Third_Party/LibJPEG/source/jaricom.c;Middlewares/Third_Party/LibJPEG/source/jerror.c;Middlewares/Third_Party/LibJPEG/source/jmemmgr.c;Middlewares/Third_Party/LibJPEG/source/jutils.c;Middlewares/Third_Party/LibJPEG/source/jmemnobs.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c;Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c;
+ HeaderPath=Drivers/STM32H7xx_HAL_Driver/Inc;Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;Utilities/JPEG;Middlewares/Third_Party/FreeRTOS/Source/include;Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F;Middlewares/Third_Party/FatFs/src;Middlewares/Third_Party/LibJPEG/include;Middlewares/ST/STM32_USB_Device_Library/Core/Inc;Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc;Drivers/CMSIS/Device/ST/STM32H7xx/Include;Drivers/CMSIS/Include;Core/Inc;FATFS/Target;FATFS/App;LIBJPEG/App;LIBJPEG/Target;TouchGFX/App;TouchGFX/target/generated;TouchGFX/target;USB_DEVICE/App;USB_DEVICE/Target;
+ CDefines=USE_HAL_DRIVER;STM32H743xx;USE_HAL_DRIVER;USE_HAL_DRIVER;
+ 
+ [PreviousGenFiles]
+ AdvancedFolderStructure=true
+-HeaderFileListSize=37
++HeaderFileListSize=38
+ HeaderFiles#0=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/gpio.h
+ HeaderFiles#1=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/FreeRTOSConfig.h
+ HeaderFiles#2=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/adc.h
+-HeaderFiles#3=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/crc.h
+-HeaderFiles#4=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/dma.h
+-HeaderFiles#5=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/dma2d.h
+-HeaderFiles#6=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/ffconf.h
+-HeaderFiles#7=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/bsp_driver_sd.h
+-HeaderFiles#8=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/sd_diskio.h
+-HeaderFiles#9=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/App/fatfs.h
+-HeaderFiles#10=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/fatfs_platform.h
+-HeaderFiles#11=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/fmc.h
+-HeaderFiles#12=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/i2c.h
+-HeaderFiles#13=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/jpeg.h
+-HeaderFiles#14=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/jpeg_utils_conf.h
+-HeaderFiles#15=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/App/libjpeg.h
+-HeaderFiles#16=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jconfig.h
+-HeaderFiles#17=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jmorecfg.h
+-HeaderFiles#18=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jdata_conf.h
+-HeaderFiles#19=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/ltdc.h
+-HeaderFiles#20=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/rtc.h
+-HeaderFiles#21=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/sdmmc.h
+-HeaderFiles#22=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/spi.h
+-HeaderFiles#23=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/App/app_touchgfx.h
+-HeaderFiles#24=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp
+-HeaderFiles#25=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXHAL.hpp
+-HeaderFiles#26=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/STM32TouchController.hpp
+-HeaderFiles#27=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/STM32DMA.hpp
+-HeaderFiles#28=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/tim.h
+-HeaderFiles#29=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/usart.h
+-HeaderFiles#30=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usb_device.h
+-HeaderFiles#31=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/Target/usbd_conf.h
+-HeaderFiles#32=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_desc.h
+-HeaderFiles#33=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_storage_if.h
+-HeaderFiles#34=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/stm32h7xx_it.h
+-HeaderFiles#35=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/stm32h7xx_hal_conf.h
+-HeaderFiles#36=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/main.h
++HeaderFiles#3=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/bdma.h
++HeaderFiles#4=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/crc.h
++HeaderFiles#5=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/dma.h
++HeaderFiles#6=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/dma2d.h
++HeaderFiles#7=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/ffconf.h
++HeaderFiles#8=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/bsp_driver_sd.h
++HeaderFiles#9=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/sd_diskio.h
++HeaderFiles#10=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/App/fatfs.h
++HeaderFiles#11=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/fatfs_platform.h
++HeaderFiles#12=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/fmc.h
++HeaderFiles#13=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/i2c.h
++HeaderFiles#14=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/jpeg.h
++HeaderFiles#15=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/jpeg_utils_conf.h
++HeaderFiles#16=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/App/libjpeg.h
++HeaderFiles#17=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jconfig.h
++HeaderFiles#18=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jmorecfg.h
++HeaderFiles#19=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jdata_conf.h
++HeaderFiles#20=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/ltdc.h
++HeaderFiles#21=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/rtc.h
++HeaderFiles#22=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/sdmmc.h
++HeaderFiles#23=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/spi.h
++HeaderFiles#24=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/App/app_touchgfx.h
++HeaderFiles#25=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXGeneratedHAL.hpp
++HeaderFiles#26=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXHAL.hpp
++HeaderFiles#27=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/STM32TouchController.hpp
++HeaderFiles#28=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/STM32DMA.hpp
++HeaderFiles#29=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/tim.h
++HeaderFiles#30=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/usart.h
++HeaderFiles#31=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usb_device.h
++HeaderFiles#32=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/Target/usbd_conf.h
++HeaderFiles#33=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_desc.h
++HeaderFiles#34=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_storage_if.h
++HeaderFiles#35=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/stm32h7xx_it.h
++HeaderFiles#36=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/stm32h7xx_hal_conf.h
++HeaderFiles#37=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc/main.h
+ HeaderFolderListSize=10
+ HeaderPath#0=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Inc
+ HeaderPath#1=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target
+@@ -58,44 +59,45 @@ HeaderPath#7=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGF
+ HeaderPath#8=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App
+ HeaderPath#9=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/Target
+ HeaderFiles=;
+-SourceFileListSize=37
++SourceFileListSize=38
+ SourceFiles#0=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/gpio.c
+ SourceFiles#1=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/freertos.c
+ SourceFiles#2=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/adc.c
+-SourceFiles#3=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/crc.c
+-SourceFiles#4=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/dma.c
+-SourceFiles#5=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/dma2d.c
+-SourceFiles#6=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/bsp_driver_sd.c
+-SourceFiles#7=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/sd_diskio.c
+-SourceFiles#8=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/App/fatfs.c
+-SourceFiles#9=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/fatfs_platform.c
+-SourceFiles#10=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/fmc.c
+-SourceFiles#11=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/i2c.c
+-SourceFiles#12=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/jpeg.c
+-SourceFiles#13=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/App/libjpeg.c
+-SourceFiles#14=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jdata_conf.c
+-SourceFiles#15=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/ltdc.c
+-SourceFiles#16=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/rtc.c
+-SourceFiles#17=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/sdmmc.c
+-SourceFiles#18=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/spi.c
+-SourceFiles#19=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXConfiguration.cpp
+-SourceFiles#20=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp
+-SourceFiles#21=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXHAL.cpp
+-SourceFiles#22=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/STM32TouchController.cpp
+-SourceFiles#23=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/STM32DMA.cpp
+-SourceFiles#24=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/OSWrappers.cpp
+-SourceFiles#25=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXGPIO.cpp
+-SourceFiles#26=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/App/app_touchgfx.c
+-SourceFiles#27=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/tim.c
+-SourceFiles#28=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/usart.c
+-SourceFiles#29=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usb_device.c
+-SourceFiles#30=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/Target/usbd_conf.c
+-SourceFiles#31=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_desc.c
+-SourceFiles#32=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_storage_if.c
+-SourceFiles#33=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_it.c
+-SourceFiles#34=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_hal_msp.c
+-SourceFiles#35=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_hal_timebase_tim.c
+-SourceFiles#36=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/main.c
++SourceFiles#3=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/bdma.c
++SourceFiles#4=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/crc.c
++SourceFiles#5=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/dma.c
++SourceFiles#6=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/dma2d.c
++SourceFiles#7=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/bsp_driver_sd.c
++SourceFiles#8=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/sd_diskio.c
++SourceFiles#9=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/App/fatfs.c
++SourceFiles#10=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target/fatfs_platform.c
++SourceFiles#11=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/fmc.c
++SourceFiles#12=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/i2c.c
++SourceFiles#13=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/jpeg.c
++SourceFiles#14=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/App/libjpeg.c
++SourceFiles#15=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/LIBJPEG/Target/jdata_conf.c
++SourceFiles#16=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/ltdc.c
++SourceFiles#17=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/rtc.c
++SourceFiles#18=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/sdmmc.c
++SourceFiles#19=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/spi.c
++SourceFiles#20=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXConfiguration.cpp
++SourceFiles#21=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp
++SourceFiles#22=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXHAL.cpp
++SourceFiles#23=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/STM32TouchController.cpp
++SourceFiles#24=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/STM32DMA.cpp
++SourceFiles#25=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/generated/OSWrappers.cpp
++SourceFiles#26=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/target/TouchGFXGPIO.cpp
++SourceFiles#27=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/TouchGFX/App/app_touchgfx.c
++SourceFiles#28=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/tim.c
++SourceFiles#29=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/usart.c
++SourceFiles#30=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usb_device.c
++SourceFiles#31=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/Target/usbd_conf.c
++SourceFiles#32=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_desc.c
++SourceFiles#33=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/USB_DEVICE/App/usbd_storage_if.c
++SourceFiles#34=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_it.c
++SourceFiles#35=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_hal_msp.c
++SourceFiles#36=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/stm32h7xx_hal_timebase_tim.c
++SourceFiles#37=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src/main.c
+ SourceFolderListSize=10
+ SourcePath#0=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/Core/Src
+ SourcePath#1=/Users/andrey/Documents/Common/STM32CubeIDEProjects/SS3RDH7/FATFS/Target
+diff --git a/Core/Inc/FreeRTOSConfig.h b/Core/Inc/FreeRTOSConfig.h
+index 75d556a..dbf38e1 100644
+--- a/Core/Inc/FreeRTOSConfig.h
++++ b/Core/Inc/FreeRTOSConfig.h
+@@ -52,14 +52,14 @@
+   #include <stdint.h>
+   extern uint32_t SystemCoreClock;
+ #endif
+-#define configENABLE_FPU                         0
++#define configENABLE_FPU                         1
+ #define configENABLE_MPU                         0
+ 
+ #define configUSE_PREEMPTION                     1
+ #define configSUPPORT_STATIC_ALLOCATION          1
+ #define configSUPPORT_DYNAMIC_ALLOCATION         1
+-#define configUSE_IDLE_HOOK                      0
+-#define configUSE_TICK_HOOK                      0
++#define configUSE_IDLE_HOOK                      1
++#define configUSE_TICK_HOOK                      1
+ #define configCPU_CLOCK_HZ                       ( SystemCoreClock )
+ #define configTICK_RATE_HZ                       ((TickType_t)1000)
+ #define configMAX_PRIORITIES                     ( 56 )
+@@ -71,6 +71,8 @@
+ #define configUSE_MUTEXES                        1
+ #define configQUEUE_REGISTRY_SIZE                8
+ #define configUSE_RECURSIVE_MUTEXES              1
++#define configUSE_MALLOC_FAILED_HOOK             1
++#define configUSE_DAEMON_TASK_STARTUP_HOOK       1
+ #define configUSE_COUNTING_SEMAPHORES            1
+ #define configUSE_PORT_OPTIMISED_TASK_SELECTION  0
+ /* USER CODE BEGIN MESSAGE_BUFFER_LENGTH_TYPE */
+diff --git a/Core/Inc/i2c.h b/Core/Inc/i2c.h
+index e360f9a..54856a2 100644
+--- a/Core/Inc/i2c.h
++++ b/Core/Inc/i2c.h
+@@ -33,6 +33,7 @@ extern "C" {
+ 
+ extern I2C_HandleTypeDef hi2c1;
+ extern I2C_HandleTypeDef hi2c2;
++extern I2C_HandleTypeDef hi2c4;
+ 
+ /* USER CODE BEGIN Private defines */
+ 
+@@ -40,6 +41,7 @@ extern I2C_HandleTypeDef hi2c2;
+ 
+ void MX_I2C1_Init(void);
+ void MX_I2C2_Init(void);
++void MX_I2C4_Init(void);
+ 
+ /* USER CODE BEGIN Prototypes */
+ 
+diff --git a/Core/Inc/main.h b/Core/Inc/main.h
+index 2d7a0dd..5f4b8d6 100644
+--- a/Core/Inc/main.h
++++ b/Core/Inc/main.h
+@@ -69,22 +69,24 @@ void Error_Handler(void);
+ #define MAX30003_CS_GPIO_Port GPIOF
+ #define TOUCH_CS_Pin GPIO_PIN_4
+ #define TOUCH_CS_GPIO_Port GPIOA
++#define TOUCH_BUSY_Pin GPIO_PIN_9
++#define TOUCH_BUSY_GPIO_Port GPIOH
+ #define LCD_3V3_EN_Pin GPIO_PIN_12
+ #define LCD_3V3_EN_GPIO_Port GPIOH
++#define SDCARD_PLG_Pin GPIO_PIN_12
++#define SDCARD_PLG_GPIO_Port GPIOB
+ #define LCD_PWR_EN_Pin GPIO_PIN_13
+ #define LCD_PWR_EN_GPIO_Port GPIOB
+ #define LCD_BL_EN_Pin GPIO_PIN_15
+ #define LCD_BL_EN_GPIO_Port GPIOB
+ #define TOUCH_PWR_EN_Pin GPIO_PIN_11
+ #define TOUCH_PWR_EN_GPIO_Port GPIOD
+-#define TOUCH_BUSY_Pin GPIO_PIN_12
+-#define TOUCH_BUSY_GPIO_Port GPIOD
+-#define SDCARD_PLG_Pin GPIO_PIN_13
+-#define SDCARD_PLG_GPIO_Port GPIOD
+ #define MAX30003_INT2B_Pin GPIO_PIN_2
+ #define MAX30003_INT2B_GPIO_Port GPIOG
++#define MAX30003_INT2B_EXTI_IRQn EXTI2_IRQn
+ #define MAX30003_INTB_Pin GPIO_PIN_3
+ #define MAX30003_INTB_GPIO_Port GPIOG
++#define MAX30003_INTB_EXTI_IRQn EXTI3_IRQn
+ #define MAX30003_CLK_Pin GPIO_PIN_8
+ #define MAX30003_CLK_GPIO_Port GPIOA
+ #define MAXM86161_RIGHT_EN_Pin GPIO_PIN_13
+@@ -93,6 +95,7 @@ void Error_Handler(void);
+ #define MAXM86161_LEFT_EN_GPIO_Port GPIOH
+ #define TOUCH_PIRQ_Pin GPIO_PIN_1
+ #define TOUCH_PIRQ_GPIO_Port GPIOI
++#define TOUCH_PIRQ_EXTI_IRQn EXTI1_IRQn
+ #define MAXM86161_RIGHT_INT_Pin GPIO_PIN_4
+ #define MAXM86161_RIGHT_INT_GPIO_Port GPIOD
+ #define MAXM86161_RIGHT_INT_EXTI_IRQn EXTI4_IRQn
+@@ -109,6 +112,7 @@ void Error_Handler(void);
+ #define MAXM86161_LEFT_INT_EXTI_IRQn EXTI9_5_IRQn
+ #define MAX30102_INT_Pin GPIO_PIN_6
+ #define MAX30102_INT_GPIO_Port GPIOI
++#define MAX30102_INT_EXTI_IRQn EXTI9_5_IRQn
+ /* USER CODE BEGIN Private defines */
+ 
+ /* USER CODE END Private defines */
+diff --git a/Core/Inc/stm32h7xx_it.h b/Core/Inc/stm32h7xx_it.h
+index 82a958e..2657aba 100644
+--- a/Core/Inc/stm32h7xx_it.h
++++ b/Core/Inc/stm32h7xx_it.h
+@@ -53,6 +53,10 @@ void MemManage_Handler(void);
+ void BusFault_Handler(void);
+ void UsageFault_Handler(void);
+ void DebugMon_Handler(void);
++void EXTI1_IRQHandler(void);
++void EXTI2_IRQHandler(void);
++void EXTI3_IRQHandler(void);
++void EXTI4_IRQHandler(void);
+ void DMA1_Stream0_IRQHandler(void);
+ void DMA1_Stream1_IRQHandler(void);
+ void DMA1_Stream2_IRQHandler(void);
+@@ -60,8 +64,18 @@ void DMA1_Stream3_IRQHandler(void);
+ void DMA1_Stream4_IRQHandler(void);
+ void DMA1_Stream5_IRQHandler(void);
+ void DMA1_Stream6_IRQHandler(void);
++void ADC_IRQHandler(void);
++void EXTI9_5_IRQHandler(void);
++void I2C1_EV_IRQHandler(void);
++void I2C1_ER_IRQHandler(void);
++void I2C2_EV_IRQHandler(void);
++void I2C2_ER_IRQHandler(void);
+ void SPI1_IRQHandler(void);
++void USART1_IRQHandler(void);
++void USART2_IRQHandler(void);
+ void DMA1_Stream7_IRQHandler(void);
++void SDMMC1_IRQHandler(void);
++void UART4_IRQHandler(void);
+ void TIM6_DAC_IRQHandler(void);
+ void DMA2_Stream0_IRQHandler(void);
+ void DMA2_Stream1_IRQHandler(void);
+@@ -71,11 +85,20 @@ void DMA2_Stream4_IRQHandler(void);
+ void DMA2_Stream5_IRQHandler(void);
+ void DMA2_Stream6_IRQHandler(void);
+ void DMA2_Stream7_IRQHandler(void);
++void USART6_IRQHandler(void);
++void FPU_IRQHandler(void);
+ void SPI5_IRQHandler(void);
+ void LTDC_IRQHandler(void);
+ void LTDC_ER_IRQHandler(void);
+ void DMA2D_IRQHandler(void);
++void I2C4_EV_IRQHandler(void);
++void I2C4_ER_IRQHandler(void);
++void OTG_FS_EP1_OUT_IRQHandler(void);
++void OTG_FS_EP1_IN_IRQHandler(void);
+ void OTG_FS_IRQHandler(void);
++void JPEG_IRQHandler(void);
++void BDMA_Channel0_IRQHandler(void);
++void BDMA_Channel1_IRQHandler(void);
+ /* USER CODE BEGIN EFP */
+ 
+ /* USER CODE END EFP */
+diff --git a/Core/Src/adc.c b/Core/Src/adc.c
+index 5baff20..eff095e 100644
+--- a/Core/Src/adc.c
++++ b/Core/Src/adc.c
+@@ -51,7 +51,7 @@ void MX_ADC1_Init(void)
+   /** Common config
+   */
+   hadc1.Instance = ADC1;
+-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV8;
++  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV128;
+   hadc1.Init.Resolution = ADC_RESOLUTION_16B;
+   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
+   hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
+@@ -114,6 +114,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 
++    /* ADC1 interrupt Init */
++    HAL_NVIC_SetPriority(ADC_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(ADC_IRQn);
+   /* USER CODE BEGIN ADC1_MspInit 1 */
+     HAL_NVIC_SetPriority(ADC_IRQn, 10, 0);
+     HAL_NVIC_EnableIRQ(ADC_IRQn);
+@@ -138,6 +141,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
+     */
+     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_0|GPIO_PIN_4);
+ 
++    /* ADC1 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(ADC_IRQn);
+   /* USER CODE BEGIN ADC1_MspDeInit 1 */
+ 
+   /* USER CODE END ADC1_MspDeInit 1 */
+diff --git a/Core/Src/fmc.c b/Core/Src/fmc.c
+index 5967188..be74262 100644
+--- a/Core/Src/fmc.c
++++ b/Core/Src/fmc.c
+@@ -19,10 +19,10 @@
+ 
+ /* Includes ------------------------------------------------------------------*/
+ #include "fmc.h"
+-#include "stm32h7xx_ll_fmc.h"
+-
+ 
+ /* USER CODE BEGIN 0 */
++#include "stm32h7xx_ll_fmc.h"
++
+ void SDRAM_InitSequence() {
+     //HAL_Delay(100);
+     FMC_SDRAM_CommandTypeDef sdramCommand;
+diff --git a/Core/Src/freertos.c b/Core/Src/freertos.c
+index 5d4e179..97c1517 100644
+--- a/Core/Src/freertos.c
++++ b/Core/Src/freertos.c
+@@ -23,10 +23,10 @@
+ #include "task.h"
+ #include "main.h"
+ #include "cmsis_os.h"
+-#include "app_touchgfx.h"
+ 
+ /* Private includes ----------------------------------------------------------*/
+ /* USER CODE BEGIN Includes */
++#include "app_touchgfx.h"
+ #include "fatfs.h"
+ #include "semphr.h"
+ #include "usbd_def.h"
+@@ -144,63 +144,63 @@ osThreadId_t touchTaskHandle;
+ const osThreadAttr_t touchTask_attributes = {
+   .name = "touchTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for touchIRQTask */
+ osThreadId_t touchIRQTaskHandle;
+ const osThreadAttr_t touchIRQTask_attributes = {
+   .name = "touchIRQTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for max30003Task */
+ osThreadId_t max30003TaskHandle;
+ const osThreadAttr_t max30003Task_attributes = {
+   .name = "max30003Task",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for max30003IRQTask */
+ osThreadId_t max30003IRQTaskHandle;
+ const osThreadAttr_t max30003IRQTask_attributes = {
+   .name = "max30003IRQTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for max30102Task */
+ osThreadId_t max30102TaskHandle;
+ const osThreadAttr_t max30102Task_attributes = {
+   .name = "max30102Task",
+   .priority = (osPriority_t) osPriorityLow,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for max30102IRQTask */
+ osThreadId_t max30102IRQTaskHandle;
+ const osThreadAttr_t max30102IRQTask_attributes = {
+   .name = "max30102IRQTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for maxm86161RTask */
+ osThreadId_t maxm86161RTaskHandle;
+ const osThreadAttr_t maxm86161RTask_attributes = {
+   .name = "maxm86161RTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for maxm86161IRTask */
+ osThreadId_t maxm86161IRTaskHandle;
+ const osThreadAttr_t maxm86161IRTask_attributes = {
+   .name = "maxm86161IRTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for maxm86161LTask */
+ osThreadId_t maxm86161LTaskHandle;
+ const osThreadAttr_t maxm86161LTask_attributes = {
+   .name = "maxm86161LTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for maxm86161ILTask */
+ osThreadId_t maxm86161ILTaskHandle;
+@@ -214,77 +214,98 @@ osThreadId_t i2c1TxTaskHandle;
+ const osThreadAttr_t i2c1TxTask_attributes = {
+   .name = "i2c1TxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for i2c1RxTask */
+ osThreadId_t i2c1RxTaskHandle;
+ const osThreadAttr_t i2c1RxTask_attributes = {
+   .name = "i2c1RxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for i2c1ErrorTask */
+ osThreadId_t i2c1ErrorTaskHandle;
+ const osThreadAttr_t i2c1ErrorTask_attributes = {
+   .name = "i2c1ErrorTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for i2c2TxTask */
+ osThreadId_t i2c2TxTaskHandle;
+ const osThreadAttr_t i2c2TxTask_attributes = {
+   .name = "i2c2TxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for i2c2RxTask */
+ osThreadId_t i2c2RxTaskHandle;
+ const osThreadAttr_t i2c2RxTask_attributes = {
+   .name = "i2c2RxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for i2c2ErrorTask */
+ osThreadId_t i2c2ErrorTaskHandle;
+ const osThreadAttr_t i2c2ErrorTask_attributes = {
+   .name = "i2c2ErrorTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for debugTask */
+ osThreadId_t debugTaskHandle;
+ const osThreadAttr_t debugTask_attributes = {
+   .name = "debugTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for fatFsTask */
+ osThreadId_t fatFsTaskHandle;
+ const osThreadAttr_t fatFsTask_attributes = {
+   .name = "fatFsTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 4096
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for usbTask */
+ osThreadId_t usbTaskHandle;
+ const osThreadAttr_t usbTask_attributes = {
+   .name = "usbTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 4096
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for usbDmaTxTask */
+ osThreadId_t usbDmaTxTaskHandle;
+ const osThreadAttr_t usbDmaTxTask_attributes = {
+   .name = "usbDmaTxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
+ };
+ /* Definitions for usbDmaRxTask */
+ osThreadId_t usbDmaRxTaskHandle;
+ const osThreadAttr_t usbDmaRxTask_attributes = {
+   .name = "usbDmaRxTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 2048
++  .stack_size = 1024 * 4
++};
++/* Definitions for i2c4TxTask */
++osThreadId_t i2c4TxTaskHandle;
++const osThreadAttr_t i2c4TxTask_attributes = {
++  .name = "i2c4TxTask",
++  .priority = (osPriority_t) osPriorityNormal,
++  .stack_size = 1024 * 4
++};
++/* Definitions for i2c4RxTask */
++osThreadId_t i2c4RxTaskHandle;
++const osThreadAttr_t i2c4RxTask_attributes = {
++  .name = "i2c4RxTask",
++  .priority = (osPriority_t) osPriorityLow,
++  .stack_size = 1024 * 4
++};
++/* Definitions for i2c4ErrorTask */
++osThreadId_t i2c4ErrorTaskHandle;
++const osThreadAttr_t i2c4ErrorTask_attributes = {
++  .name = "i2c4ErrorTask",
++  .priority = (osPriority_t) osPriorityLow,
++  .stack_size = 1024 * 4
+ };
+ 
+ /* Private function prototypes -----------------------------------------------*/
+@@ -442,10 +463,67 @@ void StartFatFsTask(void *argument);
+ void StartUsbTask(void *argument);
+ void StartUsbDmaTxTask(void *argument);
+ void StartUsbDmaRxTask(void *argument);
++void StartI2C4TxTask(void *argument);
++void StartI2C4RxTask(void *argument);
++void StartI2C4ErrorTask(void *argument);
+ 
+ extern void MX_USB_DEVICE_Init(void);
+ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+ 
++/* Hook prototypes */
++void vApplicationIdleHook(void);
++void vApplicationTickHook(void);
++void vApplicationMallocFailedHook(void);
++void vApplicationDaemonTaskStartupHook(void);
++
++/* USER CODE BEGIN 2 */
++void vApplicationIdleHook( void )
++{
++   /* vApplicationIdleHook() will only be called if configUSE_IDLE_HOOK is set
++   to 1 in FreeRTOSConfig.h. It will be called on each iteration of the idle
++   task. It is essential that code added to this hook function never attempts
++   to block in any way (for example, call xQueueReceive() with a block time
++   specified, or call vTaskDelay()). If the application makes use of the
++   vTaskDelete() API function (as this demo application does) then it is also
++   important that vApplicationIdleHook() is permitted to return to its calling
++   function, because it is the responsibility of the idle task to clean up
++   memory allocated by the kernel to any task that has since been deleted. */
++}
++/* USER CODE END 2 */
++
++/* USER CODE BEGIN 3 */
++void vApplicationTickHook( void )
++{
++   /* This function will be called by each tick interrupt if
++   configUSE_TICK_HOOK is set to 1 in FreeRTOSConfig.h. User code can be
++   added here, but the tick hook is called from an interrupt context, so
++   code must not attempt to block, and only the interrupt safe FreeRTOS API
++   functions can be used (those that end in FromISR()). */
++}
++/* USER CODE END 3 */
++
++/* USER CODE BEGIN 5 */
++void vApplicationMallocFailedHook(void)
++{
++   /* vApplicationMallocFailedHook() will only be called if
++   configUSE_MALLOC_FAILED_HOOK is set to 1 in FreeRTOSConfig.h. It is a hook
++   function that will get called if a call to pvPortMalloc() fails.
++   pvPortMalloc() is called internally by the kernel whenever a task, queue,
++   timer or semaphore is created. It is also called by various parts of the
++   demo application. If heap_1.c or heap_2.c are used, then the size of the
++   heap available to pvPortMalloc() is defined by configTOTAL_HEAP_SIZE in
++   FreeRTOSConfig.h, and the xPortGetFreeHeapSize() API function can be used
++   to query the size of free heap space that remains (although it does not
++   provide information on how the remaining heap might be fragmented). */
++}
++/* USER CODE END 5 */
++
++/* USER CODE BEGIN DAEMON_TASK_STARTUP_HOOK */
++void vApplicationDaemonTaskStartupHook(void)
++{
++}
++/* USER CODE END DAEMON_TASK_STARTUP_HOOK */
++
+ /**
+   * @brief  FreeRTOS initialization
+   * @param  None
+@@ -626,6 +704,12 @@ void MX_FREERTOS_Init(void) {
+   /* creation of max30003IRQTask */
+   max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
+ 
++  /* creation of max30102Task */
++  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
++
++  /* creation of max30102IRQTask */
++  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
++
+   /* creation of maxm86161RTask */
+   //maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+ 
+@@ -648,20 +732,13 @@ void MX_FREERTOS_Init(void) {
+   i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
+ 
+   /* creation of i2c2TxTask */
+-  //i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
++  i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
+ 
+   /* creation of i2c2RxTask */
+-  //i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
++  i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
+ 
+   /* creation of i2c2ErrorTask */
+-  //i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
+-
+-
+-  /* creation of max30102Task */
+-  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+-
+-  /* creation of max30102IRQTask */
+-  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
++  i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
+ 
+   /* creation of debugTask */
+   //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+@@ -678,6 +755,15 @@ void MX_FREERTOS_Init(void) {
+   /* creation of usbDmaRxTask */
+   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
+ 
++  /* creation of i2c4TxTask */
++  //i2c4TxTaskHandle = osThreadNew(StartI2C4TxTask, NULL, &i2c4TxTask_attributes);
++
++  /* creation of i2c4RxTask */
++  //i2c4RxTaskHandle = osThreadNew(StartI2C4RxTask, NULL, &i2c4RxTask_attributes);
++
++  /* creation of i2c4ErrorTask */
++  //i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
++
+   /* USER CODE BEGIN RTOS_THREADS */
+   /* add threads, ... */
+   /* USER CODE END RTOS_THREADS */
+@@ -1099,8 +1185,8 @@ void StartDebugTask(void *argument)
+   for(;;)
+   {
+ 		osDelay(10000);
+-	    vTaskList(debugInfoBuffer);
+-	    printf("Name\t\t\tState\tPriority\tStack\tNum\n%s", debugInfoBuffer);
++	    //vTaskList(debugInfoBuffer);
++	    //printf("Name\t\t\tState\tPriority\tStack\tNum\n%s", debugInfoBuffer);
+ 
+   }
+   /* USER CODE END StartDebugTask */
+@@ -1254,6 +1340,60 @@ void StartUsbDmaRxTask(void *argument)
+   /* USER CODE END StartUsbDmaRxTask */
+ }
+ 
++/* USER CODE BEGIN Header_StartI2C4TxTask */
++/**
++* @brief Function implementing the i2c4TxTask thread.
++* @param argument: Not used
++* @retval None
++*/
++/* USER CODE END Header_StartI2C4TxTask */
++void StartI2C4TxTask(void *argument)
++{
++  /* USER CODE BEGIN StartI2C4TxTask */
++  /* Infinite loop */
++  for(;;)
++  {
++    osDelay(1);
++  }
++  /* USER CODE END StartI2C4TxTask */
++}
++
++/* USER CODE BEGIN Header_StartI2C4RxTask */
++/**
++* @brief Function implementing the i2c4RxTask thread.
++* @param argument: Not used
++* @retval None
++*/
++/* USER CODE END Header_StartI2C4RxTask */
++void StartI2C4RxTask(void *argument)
++{
++  /* USER CODE BEGIN StartI2C4RxTask */
++  /* Infinite loop */
++  for(;;)
++  {
++    osDelay(1);
++  }
++  /* USER CODE END StartI2C4RxTask */
++}
++
++/* USER CODE BEGIN Header_StartI2C4ErrorTask */
++/**
++* @brief Function implementing the i2c4ErrorTask thread.
++* @param argument: Not used
++* @retval None
++*/
++/* USER CODE END Header_StartI2C4ErrorTask */
++void StartI2C4ErrorTask(void *argument)
++{
++  /* USER CODE BEGIN StartI2C4ErrorTask */
++  /* Infinite loop */
++  for(;;)
++  {
++    osDelay(1);
++  }
++  /* USER CODE END StartI2C4ErrorTask */
++}
++
+ /* Private application code --------------------------------------------------*/
+ /* USER CODE BEGIN Application */
+ 
+diff --git a/Core/Src/gpio.c b/Core/Src/gpio.c
+index e8d4fbd..42702b1 100644
+--- a/Core/Src/gpio.c
++++ b/Core/Src/gpio.c
+@@ -58,7 +58,7 @@ void MX_GPIO_Init(void)
+   __HAL_RCC_GPIOD_CLK_ENABLE();
+ 
+   /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(SPI1_CS2_GPIO_Port, SPI1_CS2_Pin, GPIO_PIN_RESET);
++  HAL_GPIO_WritePin(SPI1_CS2_GPIO_Port, SPI1_CS2_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin Output Level */
+   HAL_GPIO_WritePin(MAX30003_CS_GPIO_Port, MAX30003_CS_Pin, GPIO_PIN_SET);
+@@ -67,23 +67,20 @@ void MX_GPIO_Init(void)
+   HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(GPIOH, MAXM86161_RIGHT_EN_Pin|MAXM86161_LEFT_EN_Pin, GPIO_PIN_RESET);
++  HAL_GPIO_WritePin(GPIOH, LCD_3V3_EN_Pin|MAXM86161_RIGHT_EN_Pin|MAXM86161_LEFT_EN_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin Output Level */
+   HAL_GPIO_WritePin(GPIOB, LCD_PWR_EN_Pin|LCD_BL_EN_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_RESET);
++  HAL_GPIO_WritePin(TOUCH_PWR_EN_GPIO_Port, TOUCH_PWR_EN_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(GPIOG, LCD_STBY_Pin|LCD_RESET_Pin, GPIO_PIN_SET);
++  HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_RESET);
+ 
+   /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(LCD_3V3_EN_GPIO_Port, LCD_3V3_EN_Pin, GPIO_PIN_SET);
+-
++  HAL_GPIO_WritePin(GPIOG, LCD_STBY_Pin|LCD_RESET_Pin, GPIO_PIN_SET);
+ 
+-  /*Configure GPIO pin Output Level */
+-  HAL_GPIO_WritePin(TOUCH_PWR_EN_GPIO_Port, TOUCH_PWR_EN_Pin, GPIO_PIN_SET);
+ 
+   /*Configure GPIO pin : PtPin */
+   GPIO_InitStruct.Pin = SPI1_CS2_Pin;
+@@ -96,7 +93,7 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pin = MAX30003_CS_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(MAX30003_CS_GPIO_Port, &GPIO_InitStruct);
+ 
+   /*Configure GPIO pin : PtPin */
+@@ -106,13 +103,25 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(TOUCH_CS_GPIO_Port, &GPIO_InitStruct);
+ 
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = TOUCH_BUSY_Pin;
++  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
++  GPIO_InitStruct.Pull = GPIO_NOPULL;
++  HAL_GPIO_Init(TOUCH_BUSY_GPIO_Port, &GPIO_InitStruct);
++
+   /*Configure GPIO pin : PtPin */
+   GPIO_InitStruct.Pin = LCD_3V3_EN_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(LCD_3V3_EN_GPIO_Port, &GPIO_InitStruct);
+ 
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = SDCARD_PLG_Pin;
++  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
++  GPIO_InitStruct.Pull = GPIO_PULLUP;
++  HAL_GPIO_Init(SDCARD_PLG_GPIO_Port, &GPIO_InitStruct);
++
+   /*Configure GPIO pins : PBPin PBPin */
+   GPIO_InitStruct.Pin = LCD_PWR_EN_Pin|LCD_BL_EN_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+@@ -124,15 +133,9 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pin = TOUCH_PWR_EN_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(TOUCH_PWR_EN_GPIO_Port, &GPIO_InitStruct);
+ 
+-  /*Configure GPIO pins : PDPin PDPin */
+-  GPIO_InitStruct.Pin = TOUCH_BUSY_Pin|SDCARD_PLG_Pin;
+-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+-
+   /*Configure GPIO pins : PGPin PGPin */
+   GPIO_InitStruct.Pin = MAX30003_INT2B_Pin|MAX30003_INTB_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+@@ -151,14 +154,14 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pin = MAXM86161_RIGHT_EN_Pin|MAXM86161_LEFT_EN_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_NOPULL;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
+ 
+-  /*Configure GPIO pins : PIPin PIPin */
+-  GPIO_InitStruct.Pin = TOUCH_PIRQ_Pin|MAX30102_INT_Pin;
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = TOUCH_PIRQ_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
++  HAL_GPIO_Init(TOUCH_PIRQ_GPIO_Port, &GPIO_InitStruct);
+ 
+   /*Configure GPIO pin : PtPin */
+   GPIO_InitStruct.Pin = MAXM86161_RIGHT_INT_Pin;
+@@ -166,18 +169,25 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+   HAL_GPIO_Init(MAXM86161_RIGHT_INT_GPIO_Port, &GPIO_InitStruct);
+ 
+-  /*Configure GPIO pins : PDPin PDPin */
+-  GPIO_InitStruct.Pin = MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin;
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = MAX30003_PWR_EN_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_NOPULL;
+   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
++  HAL_GPIO_Init(MAX30003_PWR_EN_GPIO_Port, &GPIO_InitStruct);
++
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = OLIMEX_PWR_EN_Pin;
++  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
++  GPIO_InitStruct.Pull = GPIO_NOPULL;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
++  HAL_GPIO_Init(OLIMEX_PWR_EN_GPIO_Port, &GPIO_InitStruct);
+ 
+   /*Configure GPIO pins : PGPin PGPin */
+   GPIO_InitStruct.Pin = LCD_STBY_Pin|LCD_RESET_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+ 
+   /*Configure GPIO pin : PtPin */
+@@ -185,6 +195,29 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+   HAL_GPIO_Init(MAXM86161_LEFT_INT_GPIO_Port, &GPIO_InitStruct);
++
++  /*Configure GPIO pin : PtPin */
++  GPIO_InitStruct.Pin = MAX30102_INT_Pin;
++  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
++  GPIO_InitStruct.Pull = GPIO_PULLUP;
++  HAL_GPIO_Init(MAX30102_INT_GPIO_Port, &GPIO_InitStruct);
++
++  /* EXTI interrupt init*/
++  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI3_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
++
+ }
+ 
+ /* USER CODE BEGIN 2 */
+diff --git a/Core/Src/i2c.c b/Core/Src/i2c.c
+index 358f06f..5322ab9 100644
+--- a/Core/Src/i2c.c
++++ b/Core/Src/i2c.c
+@@ -26,17 +26,20 @@
+ 
+ I2C_HandleTypeDef hi2c1;
+ I2C_HandleTypeDef hi2c2;
++I2C_HandleTypeDef hi2c4;
+ DMA_HandleTypeDef hdma_i2c1_rx;
+ DMA_HandleTypeDef hdma_i2c1_tx;
+ DMA_HandleTypeDef hdma_i2c2_rx;
+ DMA_HandleTypeDef hdma_i2c2_tx;
++DMA_HandleTypeDef hdma_i2c4_rx;
++DMA_HandleTypeDef hdma_i2c4_tx;
+ 
+ /* I2C1 init function */
+ void MX_I2C1_Init(void)
+ {
+ 
+   hi2c1.Instance = I2C1;
+-  hi2c1.Init.Timing = 0x307075B1;
++  hi2c1.Init.Timing = 0x00B03FDB;
+   hi2c1.Init.OwnAddress1 = 0;
+   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+@@ -67,7 +70,7 @@ void MX_I2C2_Init(void)
+ {
+ 
+   hi2c2.Instance = I2C2;
+-  hi2c2.Init.Timing = 0x307075B1;
++  hi2c2.Init.Timing = 0x00B03FDB;
+   hi2c2.Init.OwnAddress1 = 0;
+   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+@@ -92,6 +95,37 @@ void MX_I2C2_Init(void)
+     Error_Handler();
+   }
+ 
++}
++/* I2C4 init function */
++void MX_I2C4_Init(void)
++{
++
++  hi2c4.Instance = I2C4;
++  hi2c4.Init.Timing = 0x00B03FDB;
++  hi2c4.Init.OwnAddress1 = 0;
++  hi2c4.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
++  hi2c4.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
++  hi2c4.Init.OwnAddress2 = 0;
++  hi2c4.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
++  hi2c4.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
++  hi2c4.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
++  if (HAL_I2C_Init(&hi2c4) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  /** Configure Analogue filter
++  */
++  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c4, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  /** Configure Digital filter
++  */
++  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c4, 0) != HAL_OK)
++  {
++    Error_Handler();
++  }
++
+ }
+ 
+ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+@@ -129,7 +163,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     hdma_i2c1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_i2c1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_i2c1_rx.Init.Mode = DMA_NORMAL;
+-    hdma_i2c1_rx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_i2c1_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_i2c1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_i2c1_rx) != HAL_OK)
+     {
+@@ -147,7 +181,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     hdma_i2c1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_i2c1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_i2c1_tx.Init.Mode = DMA_NORMAL;
+-    hdma_i2c1_tx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_i2c1_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_i2c1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_i2c1_tx) != HAL_OK)
+     {
+@@ -156,6 +190,11 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+ 
+     __HAL_LINKDMA(i2cHandle,hdmatx,hdma_i2c1_tx);
+ 
++    /* I2C1 interrupt Init */
++    HAL_NVIC_SetPriority(I2C1_EV_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
++    HAL_NVIC_SetPriority(I2C1_ER_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C1_ER_IRQn);
+   /* USER CODE BEGIN I2C1_MspInit 1 */
+     HAL_NVIC_SetPriority(I2C1_EV_IRQn, 5, 1);
+     HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
+@@ -185,7 +224,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_11;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
+     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 
+@@ -202,7 +241,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     hdma_i2c2_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_i2c2_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_i2c2_rx.Init.Mode = DMA_NORMAL;
+-    hdma_i2c2_rx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_i2c2_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_i2c2_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_i2c2_rx) != HAL_OK)
+     {
+@@ -220,7 +259,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     hdma_i2c2_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_i2c2_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_i2c2_tx.Init.Mode = DMA_NORMAL;
+-    hdma_i2c2_tx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_i2c2_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_i2c2_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_i2c2_tx) != HAL_OK)
+     {
+@@ -229,6 +268,11 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+ 
+     __HAL_LINKDMA(i2cHandle,hdmatx,hdma_i2c2_tx);
+ 
++    /* I2C2 interrupt Init */
++    HAL_NVIC_SetPriority(I2C2_EV_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
++    HAL_NVIC_SetPriority(I2C2_ER_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C2_ER_IRQn);
+   /* USER CODE BEGIN I2C2_MspInit 1 */
+     HAL_NVIC_SetPriority(I2C2_EV_IRQn, 5, 2);
+     HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
+@@ -236,6 +280,71 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     HAL_NVIC_EnableIRQ(I2C2_ER_IRQn);
+   /* USER CODE END I2C2_MspInit 1 */
+   }
++  else if(i2cHandle->Instance==I2C4)
++  {
++  /* USER CODE BEGIN I2C4_MspInit 0 */
++
++  /* USER CODE END I2C4_MspInit 0 */
++
++    __HAL_RCC_GPIOD_CLK_ENABLE();
++    /**I2C4 GPIO Configuration
++    PD12     ------> I2C4_SCL
++    PD13     ------> I2C4_SDA
++    */
++    GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13;
++    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
++    GPIO_InitStruct.Pull = GPIO_NOPULL;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
++    GPIO_InitStruct.Alternate = GPIO_AF4_I2C4;
++    HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
++
++    /* I2C4 clock enable */
++    __HAL_RCC_I2C4_CLK_ENABLE();
++
++    /* I2C4 DMA Init */
++    /* I2C4_RX Init */
++    hdma_i2c4_rx.Instance = BDMA_Channel0;
++    hdma_i2c4_rx.Init.Request = BDMA_REQUEST_I2C4_RX;
++    hdma_i2c4_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
++    hdma_i2c4_rx.Init.PeriphInc = DMA_PINC_DISABLE;
++    hdma_i2c4_rx.Init.MemInc = DMA_MINC_ENABLE;
++    hdma_i2c4_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
++    hdma_i2c4_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
++    hdma_i2c4_rx.Init.Mode = DMA_NORMAL;
++    hdma_i2c4_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
++    if (HAL_DMA_Init(&hdma_i2c4_rx) != HAL_OK)
++    {
++      Error_Handler();
++    }
++
++    __HAL_LINKDMA(i2cHandle,hdmarx,hdma_i2c4_rx);
++
++    /* I2C4_TX Init */
++    hdma_i2c4_tx.Instance = BDMA_Channel1;
++    hdma_i2c4_tx.Init.Request = BDMA_REQUEST_I2C4_TX;
++    hdma_i2c4_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
++    hdma_i2c4_tx.Init.PeriphInc = DMA_PINC_DISABLE;
++    hdma_i2c4_tx.Init.MemInc = DMA_MINC_ENABLE;
++    hdma_i2c4_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
++    hdma_i2c4_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
++    hdma_i2c4_tx.Init.Mode = DMA_NORMAL;
++    hdma_i2c4_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
++    if (HAL_DMA_Init(&hdma_i2c4_tx) != HAL_OK)
++    {
++      Error_Handler();
++    }
++
++    __HAL_LINKDMA(i2cHandle,hdmatx,hdma_i2c4_tx);
++
++    /* I2C4 interrupt Init */
++    HAL_NVIC_SetPriority(I2C4_EV_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C4_EV_IRQn);
++    HAL_NVIC_SetPriority(I2C4_ER_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(I2C4_ER_IRQn);
++  /* USER CODE BEGIN I2C4_MspInit 1 */
++
++  /* USER CODE END I2C4_MspInit 1 */
++  }
+ }
+ 
+ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+@@ -260,6 +369,10 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+     /* I2C1 DMA DeInit */
+     HAL_DMA_DeInit(i2cHandle->hdmarx);
+     HAL_DMA_DeInit(i2cHandle->hdmatx);
++
++    /* I2C1 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(I2C1_EV_IRQn);
++    HAL_NVIC_DisableIRQ(I2C1_ER_IRQn);
+   /* USER CODE BEGIN I2C1_MspDeInit 1 */
+ 
+   /* USER CODE END I2C1_MspDeInit 1 */
+@@ -283,10 +396,41 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
+     /* I2C2 DMA DeInit */
+     HAL_DMA_DeInit(i2cHandle->hdmarx);
+     HAL_DMA_DeInit(i2cHandle->hdmatx);
++
++    /* I2C2 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(I2C2_EV_IRQn);
++    HAL_NVIC_DisableIRQ(I2C2_ER_IRQn);
+   /* USER CODE BEGIN I2C2_MspDeInit 1 */
+ 
+   /* USER CODE END I2C2_MspDeInit 1 */
+   }
++  else if(i2cHandle->Instance==I2C4)
++  {
++  /* USER CODE BEGIN I2C4_MspDeInit 0 */
++
++  /* USER CODE END I2C4_MspDeInit 0 */
++    /* Peripheral clock disable */
++    __HAL_RCC_I2C4_CLK_DISABLE();
++
++    /**I2C4 GPIO Configuration
++    PD12     ------> I2C4_SCL
++    PD13     ------> I2C4_SDA
++    */
++    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_12);
++
++    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_13);
++
++    /* I2C4 DMA DeInit */
++    HAL_DMA_DeInit(i2cHandle->hdmarx);
++    HAL_DMA_DeInit(i2cHandle->hdmatx);
++
++    /* I2C4 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(I2C4_EV_IRQn);
++    HAL_NVIC_DisableIRQ(I2C4_ER_IRQn);
++  /* USER CODE BEGIN I2C4_MspDeInit 1 */
++
++  /* USER CODE END I2C4_MspDeInit 1 */
++  }
+ }
+ 
+ /* USER CODE BEGIN 1 */
+diff --git a/Core/Src/jpeg.c b/Core/Src/jpeg.c
+index 8023849..544ae9f 100644
+--- a/Core/Src/jpeg.c
++++ b/Core/Src/jpeg.c
+@@ -48,6 +48,10 @@ void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
+   /* USER CODE END JPEG_MspInit 0 */
+     /* JPEG clock enable */
+     __HAL_RCC_JPEG_CLK_ENABLE();
++
++    /* JPEG interrupt Init */
++    HAL_NVIC_SetPriority(JPEG_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(JPEG_IRQn);
+   /* USER CODE BEGIN JPEG_MspInit 1 */
+ 
+   /* USER CODE END JPEG_MspInit 1 */
+@@ -64,6 +68,9 @@ void HAL_JPEG_MspDeInit(JPEG_HandleTypeDef* jpegHandle)
+   /* USER CODE END JPEG_MspDeInit 0 */
+     /* Peripheral clock disable */
+     __HAL_RCC_JPEG_CLK_DISABLE();
++
++    /* JPEG interrupt Deinit */
++    HAL_NVIC_DisableIRQ(JPEG_IRQn);
+   /* USER CODE BEGIN JPEG_MspDeInit 1 */
+ 
+   /* USER CODE END JPEG_MspDeInit 1 */
+diff --git a/Core/Src/ltdc.c b/Core/Src/ltdc.c
+index f4b05a4..0115443 100644
+--- a/Core/Src/ltdc.c
++++ b/Core/Src/ltdc.c
+@@ -44,7 +44,6 @@ void MX_LTDC_Init(void)
+   hltdc.Init.AccumulatedActiveH = 511;
+   hltdc.Init.TotalWidth = 927;
+   hltdc.Init.TotalHeigh = 524;
+-  // 485748 pixel clocks in total
+   hltdc.Init.Backcolor.Blue = 0;
+   hltdc.Init.Backcolor.Green = 0;
+   hltdc.Init.Backcolor.Red = 0;
+diff --git a/Core/Src/main.c b/Core/Src/main.c
+index 1cd6790..fcee8db 100644
+--- a/Core/Src/main.c
++++ b/Core/Src/main.c
+@@ -21,6 +21,7 @@
+ #include "main.h"
+ #include "cmsis_os.h"
+ #include "adc.h"
++#include "bdma.h"
+ #include "crc.h"
+ #include "dma.h"
+ #include "dma2d.h"
+@@ -118,6 +119,12 @@ int main(void)
+ 
+   /* USER CODE END 1 */
+ 
++  /* Enable I-Cache---------------------------------------------------------*/
++  //SCB_EnableICache();
++
++  /* Enable D-Cache---------------------------------------------------------*/
++  //SCB_EnableDCache();
++
+   /* MCU Configuration--------------------------------------------------------*/
+ 
+   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+@@ -136,10 +143,9 @@ int main(void)
+ 
+   /* Initialize all configured peripherals */
+   MX_GPIO_Init();
++  MX_BDMA_Init();
+   MX_DMA_Init();
+   MX_DMA2D_Init();
+-  MX_FMC_Init();
+-  SDRAM_InitSequence();
+   MX_I2C1_Init();
+   MX_I2C2_Init();
+   MX_LTDC_Init();
+@@ -152,6 +158,7 @@ int main(void)
+   MX_USART6_UART_Init();
+   MX_FATFS_Init();
+   MX_LIBJPEG_Init();
++  MX_FMC_Init();
+   MX_JPEG_Init();
+   MX_ADC1_Init();
+   MX_CRC_Init();
+@@ -160,6 +167,7 @@ int main(void)
+   MX_TIM7_Init();
+   MX_TIM12_Init();
+   MX_TIM13_Init();
++  MX_I2C4_Init();
+   MX_TouchGFX_Init();
+   /* USER CODE BEGIN 2 */
+   HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_SET);
+@@ -181,6 +189,7 @@ int main(void)
+   while (1)
+   {
+     /* USER CODE END WHILE */
++
+     /* USER CODE BEGIN 3 */
+   }
+   /* USER CODE END 3 */
+@@ -254,7 +263,8 @@ void SystemClock_Config(void)
+                               |RCC_PERIPHCLK_SPI5|RCC_PERIPHCLK_SPI1
+                               |RCC_PERIPHCLK_SDMMC|RCC_PERIPHCLK_I2C2
+                               |RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C1
+-                              |RCC_PERIPHCLK_USB|RCC_PERIPHCLK_FMC;
++                              |RCC_PERIPHCLK_I2C4|RCC_PERIPHCLK_USB
++                              |RCC_PERIPHCLK_FMC;
+   PeriphClkInitStruct.PLL2.PLL2M = 8;
+   PeriphClkInitStruct.PLL2.PLL2N = 256;
+   PeriphClkInitStruct.PLL2.PLL2P = 2;
+@@ -267,12 +277,11 @@ void SystemClock_Config(void)
+   PeriphClkInitStruct.PLL3.PLL3N = 192;
+   PeriphClkInitStruct.PLL3.PLL3P = 4;
+   PeriphClkInitStruct.PLL3.PLL3Q = 4;
+-  // 19.2MHz pixel clock for LTDC
+-  PeriphClkInitStruct.PLL3.PLL3R = 11;
++  PeriphClkInitStruct.PLL3.PLL3R = 10;
+   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_0;
+   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
+   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
+-  PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_D1HCLK;//RCC_FMCCLKSOURCE_PLL2
++  PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_D1HCLK;
+   PeriphClkInitStruct.SdmmcClockSelection = RCC_SDMMCCLKSOURCE_PLL;
+   PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
+   PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
+@@ -280,6 +289,7 @@ void SystemClock_Config(void)
+   PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;
+   PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
+   PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLL3;
++  PeriphClkInitStruct.I2c4ClockSelection = RCC_I2C4CLKSOURCE_D3PCLK1;
+   PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+   PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+diff --git a/Core/Src/rtc.c b/Core/Src/rtc.c
+index 402a49b..23c6a08 100644
+--- a/Core/Src/rtc.c
++++ b/Core/Src/rtc.c
+@@ -42,35 +42,9 @@ void MX_RTC_Init(void)
+   hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+   hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+   hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
+-
+-  if((RCC->BDCR & RCC_BDCR_RTCEN) == 0) {
+-	  if (HAL_RTC_Init(&hrtc) != HAL_OK)
+-	  {
+-	    Error_Handler();
+-	  }
+-	  //if(isTimeSet()) {
+-
+-	  //} else {
+-		  sTime.Hours = 16U;
+-		  sTime.Minutes = 41U;
+-		  sTime.Seconds = 0U;
+-		  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+-		  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+-		  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+-		  {
+-		    Error_Handler();
+-		  }
+-		  sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
+-		  sDate.Month = RTC_MONTH_NOVEMBER;
+-		  sDate.Date = 29U;
+-		  sDate.Year = 20U;
+-
+-		  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+-		  {
+-		    Error_Handler();
+-		  }
+-	//	  setTimeSet(1);
+-	  //}
++  if (HAL_RTC_Init(&hrtc) != HAL_OK)
++  {
++    Error_Handler();
+   }
+ 
+   /* USER CODE BEGIN Check_RTC_BKUP */
+@@ -82,6 +56,25 @@ void MX_RTC_Init(void)
+ 
+   /** Initialize RTC and set the Time and Date
+   */
++  sTime.Hours = 0x0;
++  sTime.Minutes = 0x0;
++  sTime.Seconds = 0x0;
++  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
++  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
++  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
++  sDate.Month = RTC_MONTH_JANUARY;
++  sDate.Date = 0x1;
++  sDate.Year = 0x0;
++
++  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
++  {
++    Error_Handler();
++  }
++
+ }
+ 
+ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
+diff --git a/Core/Src/sdmmc.c b/Core/Src/sdmmc.c
+index e8d7b1c..4b15de6 100644
+--- a/Core/Src/sdmmc.c
++++ b/Core/Src/sdmmc.c
+@@ -36,7 +36,7 @@ void MX_SDMMC1_SD_Init(void)
+   hsd1.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
+   hsd1.Init.BusWide = SDMMC_BUS_WIDE_4B;
+   hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
+-  hsd1.Init.ClockDiv = 1;
++  hsd1.Init.ClockDiv = 20;
+   hsd1.Init.TranceiverPresent = SDMMC_TRANSCEIVER_NOT_PRESENT;
+ 
+ }
+@@ -78,6 +78,9 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
+     GPIO_InitStruct.Alternate = GPIO_AF12_SDIO1;
+     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+ 
++    /* SDMMC1 interrupt Init */
++    HAL_NVIC_SetPriority(SDMMC1_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(SDMMC1_IRQn);
+   /* USER CODE BEGIN SDMMC1_MspInit 1 */
+ 
+   /* USER CODE END SDMMC1_MspInit 1 */
+@@ -108,6 +111,8 @@ void HAL_SD_MspDeInit(SD_HandleTypeDef* sdHandle)
+ 
+     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_2);
+ 
++    /* SDMMC1 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(SDMMC1_IRQn);
+   /* USER CODE BEGIN SDMMC1_MspDeInit 1 */
+ 
+   /* USER CODE END SDMMC1_MspDeInit 1 */
+diff --git a/Core/Src/spi.c b/Core/Src/spi.c
+index cdb08c0..11f8425 100644
+--- a/Core/Src/spi.c
++++ b/Core/Src/spi.c
+@@ -117,15 +117,15 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     */
+     GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_7;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Pull = GPIO_PULLUP;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 
+     GPIO_InitStruct.Pin = GPIO_PIN_4;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Pull = GPIO_PULLUP;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 
+@@ -139,7 +139,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     hdma_spi1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_spi1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_spi1_rx.Init.Mode = DMA_NORMAL;
+-    hdma_spi1_rx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_spi1_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_spi1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_spi1_rx) != HAL_OK)
+     {
+@@ -157,7 +157,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     hdma_spi1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_spi1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_spi1_tx.Init.Mode = DMA_NORMAL;
+-    hdma_spi1_tx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_spi1_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_spi1_tx) != HAL_OK)
+     {
+@@ -189,8 +189,8 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     */
+     GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Pull = GPIO_PULLUP;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF5_SPI5;
+     HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+ 
+@@ -204,7 +204,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     hdma_spi5_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_spi5_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_spi5_rx.Init.Mode = DMA_NORMAL;
+-    hdma_spi5_rx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_spi5_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_spi5_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_spi5_rx) != HAL_OK)
+     {
+@@ -222,7 +222,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     hdma_spi5_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_spi5_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_spi5_tx.Init.Mode = DMA_NORMAL;
+-    hdma_spi5_tx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_spi5_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_spi5_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_spi5_tx) != HAL_OK)
+     {
+diff --git a/Core/Src/stm32h7xx_hal_msp.c b/Core/Src/stm32h7xx_hal_msp.c
+index ccc9528..621e91e 100644
+--- a/Core/Src/stm32h7xx_hal_msp.c
++++ b/Core/Src/stm32h7xx_hal_msp.c
+@@ -73,6 +73,11 @@ void HAL_MspInit(void)
+   /* PendSV_IRQn interrupt configuration */
+   HAL_NVIC_SetPriority(PendSV_IRQn, 15, 0);
+ 
++  /* Peripheral interrupt init */
++  /* FPU_IRQn interrupt configuration */
++  HAL_NVIC_SetPriority(FPU_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(FPU_IRQn);
++
+   /* USER CODE BEGIN MspInit 1 */
+ 
+   /* USER CODE END MspInit 1 */
+diff --git a/Core/Src/stm32h7xx_it.c b/Core/Src/stm32h7xx_it.c
+index 1897246..b00ca34 100644
+--- a/Core/Src/stm32h7xx_it.c
++++ b/Core/Src/stm32h7xx_it.c
+@@ -92,12 +92,20 @@ extern TIM_HandleTypeDef htim6;
+ 
+ /* External variables --------------------------------------------------------*/
+ extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
++extern ADC_HandleTypeDef hadc1;
+ extern DMA2D_HandleTypeDef hdma2d;
+ extern DMA_HandleTypeDef hdma_i2c1_rx;
+ extern DMA_HandleTypeDef hdma_i2c1_tx;
+ extern DMA_HandleTypeDef hdma_i2c2_rx;
+ extern DMA_HandleTypeDef hdma_i2c2_tx;
++extern DMA_HandleTypeDef hdma_i2c4_rx;
++extern DMA_HandleTypeDef hdma_i2c4_tx;
++extern I2C_HandleTypeDef hi2c1;
++extern I2C_HandleTypeDef hi2c2;
++extern I2C_HandleTypeDef hi2c4;
++extern JPEG_HandleTypeDef hjpeg;
+ extern LTDC_HandleTypeDef hltdc;
++extern SD_HandleTypeDef hsd1;
+ extern DMA_HandleTypeDef hdma_spi1_rx;
+ extern DMA_HandleTypeDef hdma_spi1_tx;
+ extern DMA_HandleTypeDef hdma_spi5_rx;
+@@ -112,6 +120,10 @@ extern DMA_HandleTypeDef hdma_usart2_rx;
+ extern DMA_HandleTypeDef hdma_usart2_tx;
+ extern DMA_HandleTypeDef hdma_usart6_rx;
+ extern DMA_HandleTypeDef hdma_usart6_tx;
++extern UART_HandleTypeDef huart4;
++extern UART_HandleTypeDef huart1;
++extern UART_HandleTypeDef huart2;
++extern UART_HandleTypeDef huart6;
+ extern TIM_HandleTypeDef htim6;
+ 
+ /* USER CODE BEGIN EV */
+@@ -332,6 +344,62 @@ void DebugMon_Handler(void)
+ /* please refer to the startup file (startup_stm32h7xx.s).                    */
+ /******************************************************************************/
+ 
++/**
++  * @brief This function handles EXTI line1 interrupt.
++  */
++void EXTI1_IRQHandler(void)
++{
++  /* USER CODE BEGIN EXTI1_IRQn 0 */
++
++  /* USER CODE END EXTI1_IRQn 0 */
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
++  /* USER CODE BEGIN EXTI1_IRQn 1 */
++
++  /* USER CODE END EXTI1_IRQn 1 */
++}
++
++/**
++  * @brief This function handles EXTI line2 interrupt.
++  */
++void EXTI2_IRQHandler(void)
++{
++  /* USER CODE BEGIN EXTI2_IRQn 0 */
++
++  /* USER CODE END EXTI2_IRQn 0 */
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
++  /* USER CODE BEGIN EXTI2_IRQn 1 */
++
++  /* USER CODE END EXTI2_IRQn 1 */
++}
++
++/**
++  * @brief This function handles EXTI line3 interrupt.
++  */
++void EXTI3_IRQHandler(void)
++{
++  /* USER CODE BEGIN EXTI3_IRQn 0 */
++
++  /* USER CODE END EXTI3_IRQn 0 */
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
++  /* USER CODE BEGIN EXTI3_IRQn 1 */
++
++  /* USER CODE END EXTI3_IRQn 1 */
++}
++
++/**
++  * @brief This function handles EXTI line4 interrupt.
++  */
++void EXTI4_IRQHandler(void)
++{
++  /* USER CODE BEGIN EXTI4_IRQn 0 */
++
++  /* USER CODE END EXTI4_IRQn 0 */
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
++  /* USER CODE BEGIN EXTI4_IRQn 1 */
++
++  /* USER CODE END EXTI4_IRQn 1 */
++}
++
+ /**
+   * @brief This function handles DMA1 stream0 global interrupt.
+   */
+@@ -430,6 +498,91 @@ void DMA1_Stream6_IRQHandler(void)
+   /* USER CODE END DMA1_Stream6_IRQn 1 */
+ }
+ 
++/**
++  * @brief This function handles ADC1 and ADC2 global interrupts.
++  */
++void ADC_IRQHandler(void)
++{
++  /* USER CODE BEGIN ADC_IRQn 0 */
++
++  /* USER CODE END ADC_IRQn 0 */
++  HAL_ADC_IRQHandler(&hadc1);
++  /* USER CODE BEGIN ADC_IRQn 1 */
++
++  /* USER CODE END ADC_IRQn 1 */
++}
++
++/**
++  * @brief This function handles EXTI line[9:5] interrupts.
++  */
++void EXTI9_5_IRQHandler(void)
++{
++  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
++
++  /* USER CODE END EXTI9_5_IRQn 0 */
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
++  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
++  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
++
++  /* USER CODE END EXTI9_5_IRQn 1 */
++}
++
++/**
++  * @brief This function handles I2C1 event interrupt.
++  */
++void I2C1_EV_IRQHandler(void)
++{
++  /* USER CODE BEGIN I2C1_EV_IRQn 0 */
++
++  /* USER CODE END I2C1_EV_IRQn 0 */
++  HAL_I2C_EV_IRQHandler(&hi2c1);
++  /* USER CODE BEGIN I2C1_EV_IRQn 1 */
++
++  /* USER CODE END I2C1_EV_IRQn 1 */
++}
++
++/**
++  * @brief This function handles I2C1 error interrupt.
++  */
++void I2C1_ER_IRQHandler(void)
++{
++  /* USER CODE BEGIN I2C1_ER_IRQn 0 */
++
++  /* USER CODE END I2C1_ER_IRQn 0 */
++  HAL_I2C_ER_IRQHandler(&hi2c1);
++  /* USER CODE BEGIN I2C1_ER_IRQn 1 */
++
++  /* USER CODE END I2C1_ER_IRQn 1 */
++}
++
++/**
++  * @brief This function handles I2C2 event interrupt.
++  */
++void I2C2_EV_IRQHandler(void)
++{
++  /* USER CODE BEGIN I2C2_EV_IRQn 0 */
++
++  /* USER CODE END I2C2_EV_IRQn 0 */
++  HAL_I2C_EV_IRQHandler(&hi2c2);
++  /* USER CODE BEGIN I2C2_EV_IRQn 1 */
++
++  /* USER CODE END I2C2_EV_IRQn 1 */
++}
++
++/**
++  * @brief This function handles I2C2 error interrupt.
++  */
++void I2C2_ER_IRQHandler(void)
++{
++  /* USER CODE BEGIN I2C2_ER_IRQn 0 */
++
++  /* USER CODE END I2C2_ER_IRQn 0 */
++  HAL_I2C_ER_IRQHandler(&hi2c2);
++  /* USER CODE BEGIN I2C2_ER_IRQn 1 */
++
++  /* USER CODE END I2C2_ER_IRQn 1 */
++}
++
+ /**
+   * @brief This function handles SPI1 global interrupt.
+   */
+@@ -444,6 +597,34 @@ void SPI1_IRQHandler(void)
+   /* USER CODE END SPI1_IRQn 1 */
+ }
+ 
++/**
++  * @brief This function handles USART1 global interrupt.
++  */
++void USART1_IRQHandler(void)
++{
++  /* USER CODE BEGIN USART1_IRQn 0 */
++
++  /* USER CODE END USART1_IRQn 0 */
++  HAL_UART_IRQHandler(&huart1);
++  /* USER CODE BEGIN USART1_IRQn 1 */
++
++  /* USER CODE END USART1_IRQn 1 */
++}
++
++/**
++  * @brief This function handles USART2 global interrupt.
++  */
++void USART2_IRQHandler(void)
++{
++  /* USER CODE BEGIN USART2_IRQn 0 */
++
++  /* USER CODE END USART2_IRQn 0 */
++  HAL_UART_IRQHandler(&huart2);
++  /* USER CODE BEGIN USART2_IRQn 1 */
++
++  /* USER CODE END USART2_IRQn 1 */
++}
++
+ /**
+   * @brief This function handles DMA1 stream7 global interrupt.
+   */
+@@ -458,6 +639,34 @@ void DMA1_Stream7_IRQHandler(void)
+   /* USER CODE END DMA1_Stream7_IRQn 1 */
+ }
+ 
++/**
++  * @brief This function handles SDMMC1 global interrupt.
++  */
++void SDMMC1_IRQHandler(void)
++{
++  /* USER CODE BEGIN SDMMC1_IRQn 0 */
++
++  /* USER CODE END SDMMC1_IRQn 0 */
++  HAL_SD_IRQHandler(&hsd1);
++  /* USER CODE BEGIN SDMMC1_IRQn 1 */
++
++  /* USER CODE END SDMMC1_IRQn 1 */
++}
++
++/**
++  * @brief This function handles UART4 global interrupt.
++  */
++void UART4_IRQHandler(void)
++{
++  /* USER CODE BEGIN UART4_IRQn 0 */
++
++  /* USER CODE END UART4_IRQn 0 */
++  HAL_UART_IRQHandler(&huart4);
++  /* USER CODE BEGIN UART4_IRQn 1 */
++
++  /* USER CODE END UART4_IRQn 1 */
++}
++
+ /**
+   * @brief This function handles TIM6 global interrupt, DAC1_CH1 and DAC1_CH2 underrun error interrupts.
+   */
+@@ -584,6 +793,33 @@ void DMA2_Stream7_IRQHandler(void)
+   /* USER CODE END DMA2_Stream7_IRQn 1 */
+ }
+ 
++/**
++  * @brief This function handles USART6 global interrupt.
++  */
++void USART6_IRQHandler(void)
++{
++  /* USER CODE BEGIN USART6_IRQn 0 */
++
++  /* USER CODE END USART6_IRQn 0 */
++  HAL_UART_IRQHandler(&huart6);
++  /* USER CODE BEGIN USART6_IRQn 1 */
++
++  /* USER CODE END USART6_IRQn 1 */
++}
++
++/**
++  * @brief This function handles FPU global interrupt.
++  */
++void FPU_IRQHandler(void)
++{
++  /* USER CODE BEGIN FPU_IRQn 0 */
++
++  /* USER CODE END FPU_IRQn 0 */
++  /* USER CODE BEGIN FPU_IRQn 1 */
++
++  /* USER CODE END FPU_IRQn 1 */
++}
++
+ /**
+   * @brief This function handles SPI5 global interrupt.
+   */
+@@ -641,154 +877,119 @@ void DMA2D_IRQHandler(void)
+ }
+ 
+ /**
+-  * @brief This function handles USB On The Go FS global interrupt.
++  * @brief This function handles I2C4 event interrupt.
+   */
+-void OTG_FS_IRQHandler(void)
+-{
+-  /* USER CODE BEGIN OTG_FS_IRQn 0 */
+-
+-  /* USER CODE END OTG_FS_IRQn 0 */
+-  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+-  /* USER CODE BEGIN OTG_FS_IRQn 1 */
+-
+-  /* USER CODE END OTG_FS_IRQn 1 */
+-}
+-
+-/* USER CODE BEGIN 1 */
+-void ADC_IRQHandler(void)
+-{
+-  /* USER CODE BEGIN ADC_IRQn 0 */
+-
+-  /* USER CODE END ADC_IRQn 0 */
+-  HAL_ADC_IRQHandler(&hadc1);
+-  /* USER CODE BEGIN ADC_IRQn 1 */
+-
+-  /* USER CODE END ADC_IRQn 1 */
+-}
+-
+-void EXTI1_IRQHandler(void)
++void I2C4_EV_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN EXTI1_IRQn 0 */
++  /* USER CODE BEGIN I2C4_EV_IRQn 0 */
+ 
+-  /* USER CODE END EXTI1_IRQn 0 */
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
+-  /* USER CODE BEGIN EXTI1_IRQn 1 */
++  /* USER CODE END I2C4_EV_IRQn 0 */
++  HAL_I2C_EV_IRQHandler(&hi2c4);
++  /* USER CODE BEGIN I2C4_EV_IRQn 1 */
+ 
+-  /* USER CODE END EXTI1_IRQn 1 */
++  /* USER CODE END I2C4_EV_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles EXTI line2 interrupt.
++  * @brief This function handles I2C4 error interrupt.
+   */
+-void EXTI2_IRQHandler(void)
++void I2C4_ER_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN EXTI2_IRQn 0 */
++  /* USER CODE BEGIN I2C4_ER_IRQn 0 */
+ 
+-  /* USER CODE END EXTI2_IRQn 0 */
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+-  /* USER CODE BEGIN EXTI2_IRQn 1 */
++  /* USER CODE END I2C4_ER_IRQn 0 */
++  HAL_I2C_ER_IRQHandler(&hi2c4);
++  /* USER CODE BEGIN I2C4_ER_IRQn 1 */
+ 
+-  /* USER CODE END EXTI2_IRQn 1 */
++  /* USER CODE END I2C4_ER_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles EXTI line3 interrupt.
++  * @brief This function handles USB On The Go FS End Point 1 Out global interrupt.
+   */
+-void EXTI3_IRQHandler(void)
++void OTG_FS_EP1_OUT_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN EXTI3_IRQn 0 */
++  /* USER CODE BEGIN OTG_FS_EP1_OUT_IRQn 0 */
+ 
+-  /* USER CODE END EXTI3_IRQn 0 */
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_3);
+-  /* USER CODE BEGIN EXTI3_IRQn 1 */
++  /* USER CODE END OTG_FS_EP1_OUT_IRQn 0 */
++  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
++  /* USER CODE BEGIN OTG_FS_EP1_OUT_IRQn 1 */
+ 
+-  /* USER CODE END EXTI3_IRQn 1 */
++  /* USER CODE END OTG_FS_EP1_OUT_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles EXTI line4 interrupt.
++  * @brief This function handles USB On The Go FS End Point 1 In global interrupt.
+   */
+-void EXTI4_IRQHandler(void)
++void OTG_FS_EP1_IN_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN EXTI4_IRQn 0 */
++  /* USER CODE BEGIN OTG_FS_EP1_IN_IRQn 0 */
+ 
+-  /* USER CODE END EXTI4_IRQn 0 */
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+-  /* USER CODE BEGIN EXTI4_IRQn 1 */
++  /* USER CODE END OTG_FS_EP1_IN_IRQn 0 */
++  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
++  /* USER CODE BEGIN OTG_FS_EP1_IN_IRQn 1 */
+ 
+-  /* USER CODE END EXTI4_IRQn 1 */
++  /* USER CODE END OTG_FS_EP1_IN_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles I2C1 event interrupt.
++  * @brief This function handles USB On The Go FS global interrupt.
+   */
+-void I2C1_EV_IRQHandler(void)
++void OTG_FS_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN I2C1_EV_IRQn 0 */
++  /* USER CODE BEGIN OTG_FS_IRQn 0 */
+ 
+-  /* USER CODE END I2C1_EV_IRQn 0 */
+-  HAL_I2C_EV_IRQHandler(&hi2c1);
+-  /* USER CODE BEGIN I2C1_EV_IRQn 1 */
++  /* USER CODE END OTG_FS_IRQn 0 */
++  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
++  /* USER CODE BEGIN OTG_FS_IRQn 1 */
+ 
+-  /* USER CODE END I2C1_EV_IRQn 1 */
++  /* USER CODE END OTG_FS_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles I2C1 error interrupt.
++  * @brief This function handles JPEG global interrupt.
+   */
+-void I2C1_ER_IRQHandler(void)
++void JPEG_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN I2C1_ER_IRQn 0 */
++  /* USER CODE BEGIN JPEG_IRQn 0 */
+ 
+-  /* USER CODE END I2C1_ER_IRQn 0 */
+-  HAL_I2C_ER_IRQHandler(&hi2c1);
+-  /* USER CODE BEGIN I2C1_ER_IRQn 1 */
++  /* USER CODE END JPEG_IRQn 0 */
++  HAL_JPEG_IRQHandler(&hjpeg);
++  /* USER CODE BEGIN JPEG_IRQn 1 */
+ 
+-  /* USER CODE END I2C1_ER_IRQn 1 */
++  /* USER CODE END JPEG_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles I2C2 event interrupt.
++  * @brief This function handles BDMA channel0 global interrupt.
+   */
+-void I2C2_EV_IRQHandler(void)
++void BDMA_Channel0_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN I2C2_EV_IRQn 0 */
++  /* USER CODE BEGIN BDMA_Channel0_IRQn 0 */
+ 
+-  /* USER CODE END I2C2_EV_IRQn 0 */
+-  HAL_I2C_EV_IRQHandler(&hi2c2);
+-  /* USER CODE BEGIN I2C2_EV_IRQn 1 */
++  /* USER CODE END BDMA_Channel0_IRQn 0 */
++  HAL_DMA_IRQHandler(&hdma_i2c4_rx);
++  /* USER CODE BEGIN BDMA_Channel0_IRQn 1 */
+ 
+-  /* USER CODE END I2C2_EV_IRQn 1 */
++  /* USER CODE END BDMA_Channel0_IRQn 1 */
+ }
+ 
+ /**
+-  * @brief This function handles I2C2 error interrupt.
++  * @brief This function handles BDMA channel1 global interrupt.
+   */
+-void I2C2_ER_IRQHandler(void)
++void BDMA_Channel1_IRQHandler(void)
+ {
+-  /* USER CODE BEGIN I2C2_ER_IRQn 0 */
++  /* USER CODE BEGIN BDMA_Channel1_IRQn 0 */
+ 
+-  /* USER CODE END I2C2_ER_IRQn 0 */
+-  HAL_I2C_ER_IRQHandler(&hi2c2);
+-  /* USER CODE BEGIN I2C2_ER_IRQn 1 */
++  /* USER CODE END BDMA_Channel1_IRQn 0 */
++  HAL_DMA_IRQHandler(&hdma_i2c4_tx);
++  /* USER CODE BEGIN BDMA_Channel1_IRQn 1 */
+ 
+-  /* USER CODE END I2C2_ER_IRQn 1 */
++  /* USER CODE END BDMA_Channel1_IRQn 1 */
+ }
+ 
+-/**
+-  * @brief This function handles EXTI line[9:5] interrupts.
+-  */
+-void EXTI9_5_IRQHandler(void)
+-{
+-  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+-
+-  /* USER CODE END EXTI9_5_IRQn 0 */
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
+-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
+-  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
++/* USER CODE BEGIN 1 */
+ 
+-  /* USER CODE END EXTI9_5_IRQn 1 */
+-}
+ 
+ /* USER CODE END 1 */
+ /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+diff --git a/Core/Src/tim.c b/Core/Src/tim.c
+index 1e7a050..985b138 100644
+--- a/Core/Src/tim.c
++++ b/Core/Src/tim.c
+@@ -37,7 +37,7 @@ void MX_TIM3_Init(void)
+   TIM_OC_InitTypeDef sConfigOC = {0};
+ 
+   htim3.Instance = TIM3;
+-  htim3.Init.Prescaler = 15000 - 1;
++  htim3.Init.Prescaler = 14999;
+   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+   htim3.Init.Period = 4;
+   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+@@ -77,10 +77,9 @@ void MX_TIM7_Init(void)
+   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 
+   htim7.Instance = TIM7;
+-  htim7.Init.Prescaler = 60000 - 1;
++  htim7.Init.Prescaler = 44999;
+   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+   htim7.Init.Period = 99;
+-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
+   {
+@@ -100,7 +99,7 @@ void MX_TIM12_Init(void)
+   TIM_OC_InitTypeDef sConfigOC = {0};
+ 
+   htim12.Instance = TIM12;
+-  htim12.Init.Prescaler = 60 - 1;
++  htim12.Init.Prescaler = 59;
+   htim12.Init.CounterMode = TIM_COUNTERMODE_UP;
+   htim12.Init.Period = 999;
+   htim12.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+@@ -126,7 +125,7 @@ void MX_TIM13_Init(void)
+   TIM_OC_InitTypeDef sConfigOC = {0};
+ 
+   htim13.Instance = TIM13;
+-  htim13.Init.Prescaler = 60 - 1;
++  htim13.Init.Prescaler = 59;
+   htim13.Init.CounterMode = TIM_COUNTERMODE_UP;
+   htim13.Init.Period = 999;
+   htim13.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+@@ -220,7 +219,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_14;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF2_TIM12;
+     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 
+diff --git a/Core/Src/usart.c b/Core/Src/usart.c
+index eb96697..76e3abd 100644
+--- a/Core/Src/usart.c
++++ b/Core/Src/usart.c
+@@ -193,7 +193,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 
+@@ -234,6 +234,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 
+     __HAL_LINKDMA(uartHandle,hdmatx,hdma_uart4_tx);
+ 
++    /* UART4 interrupt Init */
++    HAL_NVIC_SetPriority(UART4_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(UART4_IRQn);
+   /* USER CODE BEGIN UART4_MspInit 1 */
+ 
+   /* USER CODE END UART4_MspInit 1 */
+@@ -254,7 +257,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 
+@@ -268,7 +271,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_usart1_rx.Init.Mode = DMA_NORMAL;
+-    hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_usart1_rx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_usart1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+     {
+@@ -286,7 +289,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     hdma_usart1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+     hdma_usart1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+     hdma_usart1_tx.Init.Mode = DMA_NORMAL;
+-    hdma_usart1_tx.Init.Priority = DMA_PRIORITY_LOW;
++    hdma_usart1_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
+     hdma_usart1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+     if (HAL_DMA_Init(&hdma_usart1_tx) != HAL_OK)
+     {
+@@ -295,6 +298,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 
+     __HAL_LINKDMA(uartHandle,hdmatx,hdma_usart1_tx);
+ 
++    /* USART1 interrupt Init */
++    HAL_NVIC_SetPriority(USART1_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(USART1_IRQn);
+   /* USER CODE BEGIN USART1_MspInit 1 */
+ 
+   /* USER CODE END USART1_MspInit 1 */
+@@ -315,7 +321,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 
+@@ -356,6 +362,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 
+     __HAL_LINKDMA(uartHandle,hdmatx,hdma_usart2_tx);
+ 
++    /* USART2 interrupt Init */
++    HAL_NVIC_SetPriority(USART2_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(USART2_IRQn);
+   /* USER CODE BEGIN USART2_MspInit 1 */
+ 
+   /* USER CODE END USART2_MspInit 1 */
+@@ -377,14 +386,14 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_6;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF7_USART6;
+     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 
+     GPIO_InitStruct.Pin = GPIO_PIN_9;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF7_USART6;
+     HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+ 
+@@ -425,6 +434,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+ 
+     __HAL_LINKDMA(uartHandle,hdmatx,hdma_usart6_tx);
+ 
++    /* USART6 interrupt Init */
++    HAL_NVIC_SetPriority(USART6_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(USART6_IRQn);
+   /* USER CODE BEGIN USART6_MspInit 1 */
+ 
+   /* USER CODE END USART6_MspInit 1 */
+@@ -451,6 +463,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+     /* UART4 DMA DeInit */
+     HAL_DMA_DeInit(uartHandle->hdmarx);
+     HAL_DMA_DeInit(uartHandle->hdmatx);
++
++    /* UART4 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(UART4_IRQn);
+   /* USER CODE BEGIN UART4_MspDeInit 1 */
+ 
+   /* USER CODE END UART4_MspDeInit 1 */
+@@ -472,6 +487,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+     /* USART1 DMA DeInit */
+     HAL_DMA_DeInit(uartHandle->hdmarx);
+     HAL_DMA_DeInit(uartHandle->hdmatx);
++
++    /* USART1 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(USART1_IRQn);
+   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 
+   /* USER CODE END USART1_MspDeInit 1 */
+@@ -493,6 +511,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+     /* USART2 DMA DeInit */
+     HAL_DMA_DeInit(uartHandle->hdmarx);
+     HAL_DMA_DeInit(uartHandle->hdmatx);
++
++    /* USART2 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(USART2_IRQn);
+   /* USER CODE BEGIN USART2_MspDeInit 1 */
+ 
+   /* USER CODE END USART2_MspDeInit 1 */
+@@ -516,6 +537,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+     /* USART6 DMA DeInit */
+     HAL_DMA_DeInit(uartHandle->hdmarx);
+     HAL_DMA_DeInit(uartHandle->hdmatx);
++
++    /* USART6 interrupt Deinit */
++    HAL_NVIC_DisableIRQ(USART6_IRQn);
+   /* USER CODE BEGIN USART6_MspDeInit 1 */
+ 
+   /* USER CODE END USART6_MspDeInit 1 */
+diff --git a/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h b/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
+index 67dc447..d2c6076 100644
+--- a/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
++++ b/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
+@@ -11401,6 +11401,7 @@ typedef struct
+ #define FMC_SDSR_MODES2            FMC_SDSR_MODES2_Msk                         /*!<MODES2[1:0]bits (Status mode for bank 2) */
+ #define FMC_SDSR_MODES2_0          (0x1UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000008 */
+ #define FMC_SDSR_MODES2_1          (0x2UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000010 */
++
+ #define FMC_SDSR_BUSY_Pos           (5U)
+ #define FMC_SDSR_BUSY_Msk           (0x1UL << FMC_SDSR_BUSY_Pos)                /*!< 0x00000020 */
+ #define FMC_SDSR_BUSY               FMC_SDSR_BUSY_Msk                          /*!<Busy status */
+diff --git a/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h b/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h
+index c611a03..9108365 100644
+--- a/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h
++++ b/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h
+@@ -735,7 +735,6 @@ uint32_t             HAL_I2C_GetError(I2C_HandleTypeDef *hi2c);
+ //#define I2C_RESET_CR2(__HANDLE__)                 ((__HANDLE__)->Instance->CR2 &= (uint32_t)~((uint32_t)(I2C_CR2_SADD | I2C_CR2_HEAD10R | I2C_CR2_NBYTES | I2C_CR2_RELOAD | I2C_CR2_RD_WRN)))
+ #define I2C_RESET_CR2(__HANDLE__)                 ((__HANDLE__)->Instance->CR2 &= (uint32_t)~((uint32_t)(I2C_CR2_HEAD10R | I2C_CR2_NBYTES | I2C_CR2_RELOAD | I2C_CR2_RD_WRN)))
+ 
+-
+ #define I2C_GET_ADDR_MATCH(__HANDLE__)            ((uint16_t)(((__HANDLE__)->Instance->ISR & I2C_ISR_ADDCODE) >> 16U))
+ #define I2C_GET_DIR(__HANDLE__)                   ((uint8_t)(((__HANDLE__)->Instance->ISR & I2C_ISR_DIR) >> 16U))
+ #define I2C_GET_STOP_MODE(__HANDLE__)             ((__HANDLE__)->Instance->CR2 & I2C_CR2_AUTOEND)
+diff --git a/FATFS/Target/fatfs_platform.h b/FATFS/Target/fatfs_platform.h
+index 75b120e..52f6068 100644
+--- a/FATFS/Target/fatfs_platform.h
++++ b/FATFS/Target/fatfs_platform.h
+@@ -20,7 +20,7 @@
+ /* Defines ------------------------------------------------------------------*/
+ #define SD_PRESENT               ((uint8_t)0x01)  /* also in bsp_driver_sd.h */
+ #define SD_NOT_PRESENT           ((uint8_t)0x00)  /* also in bsp_driver_sd.h */
+-#define SD_DETECT_PIN         GPIO_PIN_13
+-#define SD_DETECT_GPIO_PORT   GPIOD
++#define SD_DETECT_PIN         GPIO_PIN_12
++#define SD_DETECT_GPIO_PORT   GPIOB
+ /* Prototypes ---------------------------------------------------------------*/
+ uint8_t	BSP_PlatformIsDetected(void);
+diff --git a/SS3RDH7.ioc b/SS3RDH7.ioc
+index 399460e..be56e8c 100644
+--- a/SS3RDH7.ioc
++++ b/SS3RDH7.ioc
+@@ -1,6 +1,6 @@
+ #MicroXplorer Configuration settings - do not modify
+ ADC1.Channel-1\#ChannelRegularConversion=ADC_CHANNEL_4
+-ADC1.ClockPrescaler=ADC_CLOCK_ASYNC_DIV8
++ADC1.ClockPrescaler=ADC_CLOCK_ASYNC_DIV128
+ ADC1.EOCSelection=ADC_EOC_SEQ_CONV
+ ADC1.ExternalTrigConv=ADC_EXTERNALTRIG_T3_TRGO
+ ADC1.IPParameters=Rank-1\#ChannelRegularConversion,master,Channel-1\#ChannelRegularConversion,SamplingTime-1\#ChannelRegularConversion,OffsetNumber-1\#ChannelRegularConversion,OffsetSignedSaturation-1\#ChannelRegularConversion,NbrOfConversionFlag,ClockPrescaler,EOCSelection,ExternalTrigConv
+@@ -10,6 +10,46 @@ ADC1.OffsetSignedSaturation-1\#ChannelRegularConversion=DISABLE
+ ADC1.Rank-1\#ChannelRegularConversion=1
+ ADC1.SamplingTime-1\#ChannelRegularConversion=ADC_SAMPLETIME_1CYCLE_5
+ ADC1.master=1
++Bdma.I2C4_RX.0.Direction=DMA_PERIPH_TO_MEMORY
++Bdma.I2C4_RX.0.EventEnable=DISABLE
++Bdma.I2C4_RX.0.Instance=BDMA_Channel0
++Bdma.I2C4_RX.0.MemDataAlignment=DMA_MDATAALIGN_BYTE
++Bdma.I2C4_RX.0.MemInc=DMA_MINC_ENABLE
++Bdma.I2C4_RX.0.Mode=DMA_NORMAL
++Bdma.I2C4_RX.0.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
++Bdma.I2C4_RX.0.PeriphInc=DMA_PINC_DISABLE
++Bdma.I2C4_RX.0.Polarity=HAL_DMAMUX_REQ_GEN_RISING
++Bdma.I2C4_RX.0.Priority=DMA_PRIORITY_MEDIUM
++Bdma.I2C4_RX.0.RequestNumber=1
++Bdma.I2C4_RX.0.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
++Bdma.I2C4_RX.0.SignalID=NONE
++Bdma.I2C4_RX.0.SyncEnable=DISABLE
++Bdma.I2C4_RX.0.SyncPolarity=HAL_DMAMUX_SYNC_NO_EVENT
++Bdma.I2C4_RX.0.SyncRequestNumber=1
++Bdma.I2C4_RX.0.SyncSignalID=NONE
++Bdma.I2C4_TX.1.Direction=DMA_MEMORY_TO_PERIPH
++Bdma.I2C4_TX.1.EventEnable=DISABLE
++Bdma.I2C4_TX.1.Instance=BDMA_Channel1
++Bdma.I2C4_TX.1.MemDataAlignment=DMA_MDATAALIGN_BYTE
++Bdma.I2C4_TX.1.MemInc=DMA_MINC_ENABLE
++Bdma.I2C4_TX.1.Mode=DMA_NORMAL
++Bdma.I2C4_TX.1.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
++Bdma.I2C4_TX.1.PeriphInc=DMA_PINC_DISABLE
++Bdma.I2C4_TX.1.Polarity=HAL_DMAMUX_REQ_GEN_RISING
++Bdma.I2C4_TX.1.Priority=DMA_PRIORITY_MEDIUM
++Bdma.I2C4_TX.1.RequestNumber=1
++Bdma.I2C4_TX.1.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
++Bdma.I2C4_TX.1.SignalID=NONE
++Bdma.I2C4_TX.1.SyncEnable=DISABLE
++Bdma.I2C4_TX.1.SyncPolarity=HAL_DMAMUX_SYNC_NO_EVENT
++Bdma.I2C4_TX.1.SyncRequestNumber=1
++Bdma.I2C4_TX.1.SyncSignalID=NONE
++Bdma.Request0=I2C4_RX
++Bdma.Request1=I2C4_TX
++Bdma.RequestsNb=2
++CORTEX_M7.CPU_DCache=Enabled
++CORTEX_M7.CPU_ICache=Enabled
++CORTEX_M7.IPParameters=CPU_ICache,CPU_DCache
+ DMA2D.IPParameters=InputAlphaForeground
+ DMA2D.InputAlphaForeground=255
+ Dma.I2C1_RX.0.Direction=DMA_PERIPH_TO_MEMORY
+@@ -22,7 +62,7 @@ Dma.I2C1_RX.0.Mode=DMA_NORMAL
+ Dma.I2C1_RX.0.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.I2C1_RX.0.PeriphInc=DMA_PINC_DISABLE
+ Dma.I2C1_RX.0.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.I2C1_RX.0.Priority=DMA_PRIORITY_LOW
++Dma.I2C1_RX.0.Priority=DMA_PRIORITY_MEDIUM
+ Dma.I2C1_RX.0.RequestNumber=1
+ Dma.I2C1_RX.0.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.I2C1_RX.0.SignalID=NONE
+@@ -40,7 +80,7 @@ Dma.I2C1_TX.1.Mode=DMA_NORMAL
+ Dma.I2C1_TX.1.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.I2C1_TX.1.PeriphInc=DMA_PINC_DISABLE
+ Dma.I2C1_TX.1.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.I2C1_TX.1.Priority=DMA_PRIORITY_LOW
++Dma.I2C1_TX.1.Priority=DMA_PRIORITY_MEDIUM
+ Dma.I2C1_TX.1.RequestNumber=1
+ Dma.I2C1_TX.1.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.I2C1_TX.1.SignalID=NONE
+@@ -58,7 +98,7 @@ Dma.I2C2_RX.2.Mode=DMA_NORMAL
+ Dma.I2C2_RX.2.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.I2C2_RX.2.PeriphInc=DMA_PINC_DISABLE
+ Dma.I2C2_RX.2.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.I2C2_RX.2.Priority=DMA_PRIORITY_LOW
++Dma.I2C2_RX.2.Priority=DMA_PRIORITY_MEDIUM
+ Dma.I2C2_RX.2.RequestNumber=1
+ Dma.I2C2_RX.2.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.I2C2_RX.2.SignalID=NONE
+@@ -76,7 +116,7 @@ Dma.I2C2_TX.3.Mode=DMA_NORMAL
+ Dma.I2C2_TX.3.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.I2C2_TX.3.PeriphInc=DMA_PINC_DISABLE
+ Dma.I2C2_TX.3.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.I2C2_TX.3.Priority=DMA_PRIORITY_LOW
++Dma.I2C2_TX.3.Priority=DMA_PRIORITY_MEDIUM
+ Dma.I2C2_TX.3.RequestNumber=1
+ Dma.I2C2_TX.3.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.I2C2_TX.3.SignalID=NONE
+@@ -111,7 +151,7 @@ Dma.SPI1_RX.12.Mode=DMA_NORMAL
+ Dma.SPI1_RX.12.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.SPI1_RX.12.PeriphInc=DMA_PINC_DISABLE
+ Dma.SPI1_RX.12.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.SPI1_RX.12.Priority=DMA_PRIORITY_LOW
++Dma.SPI1_RX.12.Priority=DMA_PRIORITY_MEDIUM
+ Dma.SPI1_RX.12.RequestNumber=1
+ Dma.SPI1_RX.12.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.SPI1_RX.12.SignalID=NONE
+@@ -129,7 +169,7 @@ Dma.SPI1_TX.13.Mode=DMA_NORMAL
+ Dma.SPI1_TX.13.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.SPI1_TX.13.PeriphInc=DMA_PINC_DISABLE
+ Dma.SPI1_TX.13.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.SPI1_TX.13.Priority=DMA_PRIORITY_LOW
++Dma.SPI1_TX.13.Priority=DMA_PRIORITY_MEDIUM
+ Dma.SPI1_TX.13.RequestNumber=1
+ Dma.SPI1_TX.13.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.SPI1_TX.13.SignalID=NONE
+@@ -147,7 +187,7 @@ Dma.SPI5_RX.14.Mode=DMA_NORMAL
+ Dma.SPI5_RX.14.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.SPI5_RX.14.PeriphInc=DMA_PINC_DISABLE
+ Dma.SPI5_RX.14.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.SPI5_RX.14.Priority=DMA_PRIORITY_LOW
++Dma.SPI5_RX.14.Priority=DMA_PRIORITY_MEDIUM
+ Dma.SPI5_RX.14.RequestNumber=1
+ Dma.SPI5_RX.14.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.SPI5_RX.14.SignalID=NONE
+@@ -165,7 +205,7 @@ Dma.SPI5_TX.15.Mode=DMA_NORMAL
+ Dma.SPI5_TX.15.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.SPI5_TX.15.PeriphInc=DMA_PINC_DISABLE
+ Dma.SPI5_TX.15.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.SPI5_TX.15.Priority=DMA_PRIORITY_LOW
++Dma.SPI5_TX.15.Priority=DMA_PRIORITY_MEDIUM
+ Dma.SPI5_TX.15.RequestNumber=1
+ Dma.SPI5_TX.15.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.SPI5_TX.15.SignalID=NONE
+@@ -219,7 +259,7 @@ Dma.USART1_RX.8.Mode=DMA_NORMAL
+ Dma.USART1_RX.8.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.USART1_RX.8.PeriphInc=DMA_PINC_DISABLE
+ Dma.USART1_RX.8.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.USART1_RX.8.Priority=DMA_PRIORITY_LOW
++Dma.USART1_RX.8.Priority=DMA_PRIORITY_MEDIUM
+ Dma.USART1_RX.8.RequestNumber=1
+ Dma.USART1_RX.8.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.USART1_RX.8.SignalID=NONE
+@@ -237,7 +277,7 @@ Dma.USART1_TX.9.Mode=DMA_NORMAL
+ Dma.USART1_TX.9.PeriphDataAlignment=DMA_PDATAALIGN_BYTE
+ Dma.USART1_TX.9.PeriphInc=DMA_PINC_DISABLE
+ Dma.USART1_TX.9.Polarity=HAL_DMAMUX_REQ_GEN_RISING
+-Dma.USART1_TX.9.Priority=DMA_PRIORITY_LOW
++Dma.USART1_TX.9.Priority=DMA_PRIORITY_MEDIUM
+ Dma.USART1_TX.9.RequestNumber=1
+ Dma.USART1_TX.9.RequestParameters=Instance,Direction,PeriphInc,MemInc,PeriphDataAlignment,MemDataAlignment,Mode,Priority,FIFOMode,SignalID,Polarity,RequestNumber,SyncSignalID,SyncPolarity,SyncEnable,EventEnable,SyncRequestNumber
+ Dma.USART1_TX.9.SignalID=NONE
+@@ -324,12 +364,12 @@ FATFS0.BSP.component=
+ FATFS0.BSP.condition=
+ FATFS0.BSP.i2caddr=0
+ FATFS0.BSP.i2creg=
+-FATFS0.BSP.instance=PD13
++FATFS0.BSP.instance=PB12
+ FATFS0.BSP.ip=GPIO
+ FATFS0.BSP.mode=Input
+ FATFS0.BSP.name=Detect_SDIO
+ FATFS0.BSP.semaphore=
+-FATFS0.BSP.solution=PD13
++FATFS0.BSP.solution=PB12
+ FMC.CASLatency1=FMC_SDRAM_CAS_LATENCY_3
+ FMC.ExitSelfRefreshDelay1=7
+ FMC.IPParameters=CASLatency1,SDClockPeriod1,SDClockPeriod2,ReadBurst1,ReadBurst2,ReadPipeDelay1,ReadPipeDelay2,LoadToActiveDelay1,ExitSelfRefreshDelay1,SelfRefreshTime1,RowCycleDelay1,RowCycleDelay2,WriteRecoveryTime1,RPDelay1,RPDelay2,RCDDelay1
+@@ -347,17 +387,27 @@ FMC.SDClockPeriod1=FMC_SDRAM_CLOCK_PERIOD_2
+ FMC.SDClockPeriod2=FMC_SDRAM_CLOCK_PERIOD_2
+ FMC.SelfRefreshTime1=4
+ FMC.WriteRecoveryTime1=2
+-FREERTOS.FootprintOK=false
+-FREERTOS.IPParameters=Tasks01,configMINIMAL_STACK_SIZE,configTOTAL_HEAP_SIZE,FootprintOK
+-FREERTOS.Tasks01=defaultTask,24,1024,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;touchTask,24,1024,StartTouchTask,Default,NULL,Dynamic,NULL,NULL;touchIRQTask,24,1024,StartTouchIRQTask,Default,NULL,Dynamic,NULL,NULL;max30003Task,24,2048,StartMAX30003Task,Default,NULL,Dynamic,NULL,NULL;max30003IRQTask,24,1024,StartMAX30003IRQTask,Default,NULL,Dynamic,NULL,NULL;max30102Task,8,1024,StartMAX30102Task,Default,NULL,Dynamic,NULL,NULL;max30102IRQTask,24,1024,StartMAX30102IRQTask,Default,NULL,Dynamic,NULL,NULL;maxm86161RTask,24,1024,StartMAXM86161RTask,Default,NULL,Dynamic,NULL,NULL;maxm86161IRTask,24,1024,StartMAXM86161IRQRTask,Default,NULL,Dynamic,NULL,NULL;maxm86161LTask,24,1024,StartMAXM86161LTask,Default,NULL,Dynamic,NULL,NULL;maxm86161ILTask,24,1024,StartMAXM86161IRQLTask,Default,NULL,Dynamic,NULL,NULL;i2c1TxTask,24,2048,StartI2C1TxTask,Default,NULL,Dynamic,NULL,NULL;i2c1RxTask,24,2048,StartI2C1RxTask,Default,NULL,Dynamic,NULL,NULL;i2c1ErrorTask,24,2048,StartI2C1ErrorTask,Default,NULL,Dynamic,NULL,NULL;i2c2TxTask,24,2048,StartI2C2TxTask,Default,NULL,Dynamic,NULL,NULL;i2c2RxTask,24,2048,StartI2C2RxTask,Default,NULL,Dynamic,NULL,NULL;i2c2ErrorTask,24,2048,StartI2C2ErrorTask,Default,NULL,Dynamic,NULL,NULL;debugTask,24,2048,StartDebugTask,Default,NULL,Dynamic,NULL,NULL;fatFsTask,24,4096,StartFatFsTask,Default,NULL,Dynamic,NULL,NULL;usbTask,24,4096,StartUsbTask,Default,NULL,Dynamic,NULL,NULL;usbDmaTxTask,24,2048,StartUsbDmaTxTask,Default,NULL,Dynamic,NULL,NULL;usbDmaRxTask,24,2048,StartUsbDmaRxTask,Default,NULL,Dynamic,NULL,NULL
++FREERTOS.FootprintOK=true
++FREERTOS.IPParameters=Tasks01,configMINIMAL_STACK_SIZE,configTOTAL_HEAP_SIZE,FootprintOK,configENABLE_FPU,configUSE_IDLE_HOOK,configUSE_TICK_HOOK,configUSE_MALLOC_FAILED_HOOK,configUSE_DAEMON_TASK_STARTUP_HOOK
++FREERTOS.Tasks01=defaultTask,24,1024,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;touchTask,24,1024,StartTouchTask,Default,NULL,Dynamic,NULL,NULL;touchIRQTask,24,1024,StartTouchIRQTask,Default,NULL,Dynamic,NULL,NULL;max30003Task,24,1024,StartMAX30003Task,Default,NULL,Dynamic,NULL,NULL;max30003IRQTask,24,1024,StartMAX30003IRQTask,Default,NULL,Dynamic,NULL,NULL;max30102Task,8,1024,StartMAX30102Task,Default,NULL,Dynamic,NULL,NULL;max30102IRQTask,24,1024,StartMAX30102IRQTask,Default,NULL,Dynamic,NULL,NULL;maxm86161RTask,24,1024,StartMAXM86161RTask,Default,NULL,Dynamic,NULL,NULL;maxm86161IRTask,24,1024,StartMAXM86161IRQRTask,Default,NULL,Dynamic,NULL,NULL;maxm86161LTask,24,1024,StartMAXM86161LTask,Default,NULL,Dynamic,NULL,NULL;maxm86161ILTask,24,1024,StartMAXM86161IRQLTask,Default,NULL,Dynamic,NULL,NULL;i2c1TxTask,24,1024,StartI2C1TxTask,Default,NULL,Dynamic,NULL,NULL;i2c1RxTask,24,1024,StartI2C1RxTask,Default,NULL,Dynamic,NULL,NULL;i2c1ErrorTask,24,1024,StartI2C1ErrorTask,Default,NULL,Dynamic,NULL,NULL;i2c2TxTask,24,1024,StartI2C2TxTask,Default,NULL,Dynamic,NULL,NULL;i2c2RxTask,24,1024,StartI2C2RxTask,Default,NULL,Dynamic,NULL,NULL;i2c2ErrorTask,24,1024,StartI2C2ErrorTask,Default,NULL,Dynamic,NULL,NULL;debugTask,24,1024,StartDebugTask,Default,NULL,Dynamic,NULL,NULL;fatFsTask,24,1024,StartFatFsTask,Default,NULL,Dynamic,NULL,NULL;usbTask,24,1024,StartUsbTask,Default,NULL,Dynamic,NULL,NULL;usbDmaTxTask,24,1024,StartUsbDmaTxTask,Default,NULL,Dynamic,NULL,NULL;usbDmaRxTask,24,1024,StartUsbDmaRxTask,Default,NULL,Dynamic,NULL,NULL;i2c4TxTask,24,1024,StartI2C4TxTask,Default,NULL,Dynamic,NULL,NULL;i2c4RxTask,8,1024,StartI2C4RxTask,Default,NULL,Dynamic,NULL,NULL;i2c4ErrorTask,8,1024,StartI2C4ErrorTask,Default,NULL,Dynamic,NULL,NULL
++FREERTOS.configENABLE_FPU=1
+ FREERTOS.configMINIMAL_STACK_SIZE=1024
+ FREERTOS.configTOTAL_HEAP_SIZE=159744
++FREERTOS.configUSE_DAEMON_TASK_STARTUP_HOOK=1
++FREERTOS.configUSE_IDLE_HOOK=1
++FREERTOS.configUSE_MALLOC_FAILED_HOOK=1
++FREERTOS.configUSE_TICK_HOOK=1
+ File.Version=6
+-GPIO.groupedBy=Group By Peripherals
+-I2C1.IPParameters=Timing
+-I2C1.Timing=0x307075B1
+-I2C2.IPParameters=Timing
+-I2C2.Timing=0x307075B1
++GPIO.groupedBy=Expand Peripherals
++I2C1.I2C_Speed_Mode=I2C_Fast
++I2C1.IPParameters=Timing,I2C_Speed_Mode
++I2C1.Timing=0x00B03FDB
++I2C2.I2C_Speed_Mode=I2C_Fast
++I2C2.IPParameters=Timing,I2C_Speed_Mode
++I2C2.Timing=0x00B03FDB
++I2C4.I2C_Speed_Mode=I2C_Fast
++I2C4.IPParameters=Timing,I2C_Speed_Mode
++I2C4.Timing=0x00B03FDB
+ KeepUserPlacement=false
+ LTDC.ActiveW=800
+ LTDC.Alpha0_L0=255
+@@ -384,86 +434,90 @@ LTDC.WindowY1_L0=480
+ LTDC.WindowY1_L1=480
+ Mcu.Family=STM32H7
+ Mcu.IP0=ADC1
+-Mcu.IP1=CORTEX_M7
+-Mcu.IP10=I2C2
+-Mcu.IP11=JPEG
+-Mcu.IP12=LIBJPEG
+-Mcu.IP13=LTDC
+-Mcu.IP14=NVIC
+-Mcu.IP15=RCC
+-Mcu.IP16=RTC
+-Mcu.IP17=SDMMC1
+-Mcu.IP18=SPI1
+-Mcu.IP19=SPI5
+-Mcu.IP2=CRC
+-Mcu.IP20=SYS
+-Mcu.IP21=TIM3
+-Mcu.IP22=TIM7
+-Mcu.IP23=TIM12
+-Mcu.IP24=TIM13
+-Mcu.IP25=UART4
+-Mcu.IP26=USART1
+-Mcu.IP27=USART2
+-Mcu.IP28=USART6
+-Mcu.IP29=USB_DEVICE
+-Mcu.IP3=DEBUG
+-Mcu.IP30=USB_OTG_FS
+-Mcu.IP4=DMA
+-Mcu.IP5=DMA2D
+-Mcu.IP6=FATFS
+-Mcu.IP7=FMC
+-Mcu.IP8=FREERTOS
+-Mcu.IP9=I2C1
+-Mcu.IPNb=31
++Mcu.IP1=BDMA
++Mcu.IP10=I2C1
++Mcu.IP11=I2C2
++Mcu.IP12=I2C4
++Mcu.IP13=JPEG
++Mcu.IP14=LIBJPEG
++Mcu.IP15=LTDC
++Mcu.IP16=NVIC
++Mcu.IP17=RCC
++Mcu.IP18=RTC
++Mcu.IP19=SDMMC1
++Mcu.IP2=CORTEX_M7
++Mcu.IP20=SPI1
++Mcu.IP21=SPI5
++Mcu.IP22=SYS
++Mcu.IP23=TIM3
++Mcu.IP24=TIM7
++Mcu.IP25=TIM12
++Mcu.IP26=TIM13
++Mcu.IP27=UART4
++Mcu.IP28=USART1
++Mcu.IP29=USART2
++Mcu.IP3=CRC
++Mcu.IP30=USART6
++Mcu.IP31=USB_DEVICE
++Mcu.IP32=USB_OTG_FS
++Mcu.IP4=DEBUG
++Mcu.IP5=DMA
++Mcu.IP6=DMA2D
++Mcu.IP7=FATFS
++Mcu.IP8=FMC
++Mcu.IP9=FREERTOS
++Mcu.IPNb=33
+ Mcu.Name=STM32H743IITx
+ Mcu.Package=LQFP176
+ Mcu.Pin0=PE4
+ Mcu.Pin1=PE5
+ Mcu.Pin10=PF2
+-Mcu.Pin100=PD1
+-Mcu.Pin101=PD2
+-Mcu.Pin102=PD4
+-Mcu.Pin103=PD5
+-Mcu.Pin104=PD6
+-Mcu.Pin105=PD7
+-Mcu.Pin106=PG9
+-Mcu.Pin107=PG10
+-Mcu.Pin108=PG11
+-Mcu.Pin109=PG12
++Mcu.Pin100=PC12
++Mcu.Pin101=PD0
++Mcu.Pin102=PD1
++Mcu.Pin103=PD2
++Mcu.Pin104=PD4
++Mcu.Pin105=PD5
++Mcu.Pin106=PD6
++Mcu.Pin107=PD7
++Mcu.Pin108=PG9
++Mcu.Pin109=PG10
+ Mcu.Pin11=PF3
+-Mcu.Pin110=PG13
+-Mcu.Pin111=PG15
+-Mcu.Pin112=PB3 (JTDO/TRACESWO)
+-Mcu.Pin113=PB4 (NJTRST)
+-Mcu.Pin114=PB5
+-Mcu.Pin115=PB6
+-Mcu.Pin116=PB7
+-Mcu.Pin117=PB8
+-Mcu.Pin118=PB9
+-Mcu.Pin119=PE0
++Mcu.Pin110=PG11
++Mcu.Pin111=PG12
++Mcu.Pin112=PG13
++Mcu.Pin113=PG15
++Mcu.Pin114=PB3 (JTDO/TRACESWO)
++Mcu.Pin115=PB4 (NJTRST)
++Mcu.Pin116=PB5
++Mcu.Pin117=PB6
++Mcu.Pin118=PB7
++Mcu.Pin119=PB8
+ Mcu.Pin12=PF4
+-Mcu.Pin120=PE1
+-Mcu.Pin121=PI4
+-Mcu.Pin122=PI5
+-Mcu.Pin123=PI6
+-Mcu.Pin124=VP_CRC_VS_CRC
+-Mcu.Pin125=VP_DMA2D_VS_DMA2D
+-Mcu.Pin126=VP_FATFS_VS_SDIO
+-Mcu.Pin127=VP_FREERTOS_VS_CMSIS_V2
+-Mcu.Pin128=VP_JPEG_VS_JPEG
+-Mcu.Pin129=VP_LIBJPEG_VS_JPEGLIB
++Mcu.Pin120=PB9
++Mcu.Pin121=PE0
++Mcu.Pin122=PE1
++Mcu.Pin123=PI4
++Mcu.Pin124=PI5
++Mcu.Pin125=PI6
++Mcu.Pin126=VP_CRC_VS_CRC
++Mcu.Pin127=VP_DMA2D_VS_DMA2D
++Mcu.Pin128=VP_FATFS_VS_SDIO
++Mcu.Pin129=VP_FREERTOS_VS_CMSIS_V2
+ Mcu.Pin13=PF5
+-Mcu.Pin130=VP_RTC_VS_RTC_Activate
+-Mcu.Pin131=VP_RTC_VS_RTC_Calendar
+-Mcu.Pin132=VP_SYS_VS_tim6
+-Mcu.Pin133=VP_TIM3_VS_ClockSourceINT
+-Mcu.Pin134=VP_TIM3_VS_no_output1
+-Mcu.Pin135=VP_TIM7_VS_ClockSourceINT
+-Mcu.Pin136=VP_TIM13_VS_ClockSourceINT
+-Mcu.Pin137=VP_TIM13_VS_no_output1
+-Mcu.Pin138=VP_USB_DEVICE_VS_USB_DEVICE_MSC_FS
+-Mcu.Pin139=VP_STMicroelectronics.X-CUBE-TOUCHGFX_VS_GraphicsJjApplication_4.15.0
++Mcu.Pin130=VP_JPEG_VS_JPEG
++Mcu.Pin131=VP_LIBJPEG_VS_JPEGLIB
++Mcu.Pin132=VP_RTC_VS_RTC_Activate
++Mcu.Pin133=VP_RTC_VS_RTC_Calendar
++Mcu.Pin134=VP_SYS_VS_tim6
++Mcu.Pin135=VP_TIM3_VS_ClockSourceINT
++Mcu.Pin136=VP_TIM3_VS_no_output1
++Mcu.Pin137=VP_TIM7_VS_ClockSourceINT
++Mcu.Pin138=VP_TIM13_VS_ClockSourceINT
++Mcu.Pin139=VP_TIM13_VS_no_output1
+ Mcu.Pin14=PF6
++Mcu.Pin140=VP_USB_DEVICE_VS_USB_DEVICE_MSC_FS
++Mcu.Pin141=VP_STMicroelectronics.X-CUBE-TOUCHGFX_VS_GraphicsJjApplication_4.15.0
+ Mcu.Pin15=PF7
+ Mcu.Pin16=PF8
+ Mcu.Pin17=PF9
+@@ -511,59 +565,62 @@ Mcu.Pin54=PB11
+ Mcu.Pin55=PH6
+ Mcu.Pin56=PH7
+ Mcu.Pin57=PH8
+-Mcu.Pin58=PH10
+-Mcu.Pin59=PH11
++Mcu.Pin58=PH9
++Mcu.Pin59=PH10
+ Mcu.Pin6=PI9
+-Mcu.Pin60=PH12
+-Mcu.Pin61=PB13
+-Mcu.Pin62=PB14
+-Mcu.Pin63=PB15
+-Mcu.Pin64=PD8
+-Mcu.Pin65=PD9
+-Mcu.Pin66=PD10
+-Mcu.Pin67=PD11
+-Mcu.Pin68=PD12
+-Mcu.Pin69=PD13
++Mcu.Pin60=PH11
++Mcu.Pin61=PH12
++Mcu.Pin62=PB12
++Mcu.Pin63=PB13
++Mcu.Pin64=PB14
++Mcu.Pin65=PB15
++Mcu.Pin66=PD8
++Mcu.Pin67=PD9
++Mcu.Pin68=PD10
++Mcu.Pin69=PD11
+ Mcu.Pin7=PI10
+-Mcu.Pin70=PD14
+-Mcu.Pin71=PD15
+-Mcu.Pin72=PG2
+-Mcu.Pin73=PG3
+-Mcu.Pin74=PG4
+-Mcu.Pin75=PG5
+-Mcu.Pin76=PG6
+-Mcu.Pin77=PG7
+-Mcu.Pin78=PG8
+-Mcu.Pin79=PC6
++Mcu.Pin70=PD12
++Mcu.Pin71=PD13
++Mcu.Pin72=PD14
++Mcu.Pin73=PD15
++Mcu.Pin74=PG2
++Mcu.Pin75=PG3
++Mcu.Pin76=PG4
++Mcu.Pin77=PG5
++Mcu.Pin78=PG6
++Mcu.Pin79=PG7
+ Mcu.Pin8=PF0
+-Mcu.Pin80=PC7
+-Mcu.Pin81=PC8
+-Mcu.Pin82=PC9
+-Mcu.Pin83=PA8
+-Mcu.Pin84=PA9
+-Mcu.Pin85=PA10
+-Mcu.Pin86=PA11
+-Mcu.Pin87=PA12
+-Mcu.Pin88=PA13 (JTMS/SWDIO)
+-Mcu.Pin89=PH13
++Mcu.Pin80=PG8
++Mcu.Pin81=PC6
++Mcu.Pin82=PC7
++Mcu.Pin83=PC8
++Mcu.Pin84=PC9
++Mcu.Pin85=PA8
++Mcu.Pin86=PA9
++Mcu.Pin87=PA10
++Mcu.Pin88=PA11
++Mcu.Pin89=PA12
+ Mcu.Pin9=PF1
+-Mcu.Pin90=PH14
+-Mcu.Pin91=PH15
+-Mcu.Pin92=PI0
+-Mcu.Pin93=PI1
+-Mcu.Pin94=PI2
+-Mcu.Pin95=PA14 (JTCK/SWCLK)
+-Mcu.Pin96=PC10
+-Mcu.Pin97=PC11
+-Mcu.Pin98=PC12
+-Mcu.Pin99=PD0
+-Mcu.PinsNb=140
++Mcu.Pin90=PA13 (JTMS/SWDIO)
++Mcu.Pin91=PH13
++Mcu.Pin92=PH14
++Mcu.Pin93=PH15
++Mcu.Pin94=PI0
++Mcu.Pin95=PI1
++Mcu.Pin96=PI2
++Mcu.Pin97=PA14 (JTCK/SWCLK)
++Mcu.Pin98=PC10
++Mcu.Pin99=PC11
++Mcu.PinsNb=142
+ Mcu.ThirdParty0=STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0
+ Mcu.ThirdPartyNb=1
+ Mcu.UserConstants=
+ Mcu.UserName=STM32H743IITx
+ MxCube.Version=6.1.0
+ MxDb.Version=DB.6.0.10
++NVIC.ADC_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.BDMA_Channel0_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
++NVIC.BDMA_Channel1_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.BusFault_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
+ NVIC.DMA1_Stream0_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.DMA1_Stream1_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+@@ -583,15 +640,31 @@ NVIC.DMA2_Stream5_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.DMA2_Stream6_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.DMA2_Stream7_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.DebugMonitor_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
++NVIC.EXTI1_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.EXTI2_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.EXTI3_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.EXTI4_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.EXTI9_5_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.FPU_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:false
+ NVIC.ForceEnableDMAVector=true
+ NVIC.HardFault_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
++NVIC.I2C1_ER_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.I2C1_EV_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.I2C2_ER_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.I2C2_EV_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.I2C4_ER_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.I2C4_EV_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.JPEG_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.LTDC_ER_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.LTDC_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.MemoryManagement_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
+ NVIC.NonMaskableInt_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
++NVIC.OTG_FS_EP1_IN_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.OTG_FS_EP1_OUT_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.OTG_FS_IRQn=true\:5\:0\:false\:false\:true\:true\:false\:true
+ NVIC.PendSV_IRQn=true\:15\:0\:false\:false\:false\:true\:false\:false
+ NVIC.PriorityGroup=NVIC_PRIORITYGROUP_4
++NVIC.SDMMC1_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.SPI1_IRQn=true\:5\:0\:false\:false\:true\:false\:false\:true
+ NVIC.SPI5_IRQn=true\:5\:0\:false\:false\:true\:false\:false\:true
+ NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:false\:false\:false\:false
+@@ -602,65 +675,109 @@ NVIC.SysTick_IRQn=true\:15\:0\:false\:false\:false\:true\:false\:true
+ NVIC.TIM6_DAC_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:true
+ NVIC.TimeBase=TIM6_DAC_IRQn
+ NVIC.TimeBaseIP=TIM6
++NVIC.UART4_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.USART1_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.USART2_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
++NVIC.USART6_IRQn=true\:5\:0\:false\:false\:true\:true\:true\:true
+ NVIC.UsageFault_IRQn=true\:0\:0\:false\:false\:true\:false\:false\:false
++PA0.GPIOParameters=GPIO_Speed
++PA0.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA0.Mode=Asynchronous
+ PA0.Signal=UART4_TX
++PA1.GPIOParameters=GPIO_Speed
++PA1.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA1.Locked=true
+ PA1.Mode=Asynchronous
+ PA1.Signal=UART4_RX
++PA10.GPIOParameters=GPIO_Speed
++PA10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA10.Locked=true
+ PA10.Mode=Asynchronous
+ PA10.Signal=USART1_RX
++PA11.GPIOParameters=GPIO_Speed
++PA11.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA11.Mode=Device_Only
+ PA11.Signal=USB_OTG_FS_DM
++PA12.GPIOParameters=GPIO_Speed
++PA12.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA12.Mode=Device_Only
+ PA12.Signal=USB_OTG_FS_DP
+ PA13\ (JTMS/SWDIO).Mode=Trace_Asynchronous_SW
+ PA13\ (JTMS/SWDIO).Signal=DEBUG_JTMS-SWDIO
+ PA14\ (JTCK/SWCLK).Mode=Trace_Asynchronous_SW
+ PA14\ (JTCK/SWCLK).Signal=DEBUG_JTCK-SWCLK
++PA2.GPIOParameters=GPIO_Speed
++PA2.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA2.Locked=true
+ PA2.Mode=Asynchronous
+ PA2.Signal=USART2_TX
++PA3.GPIOParameters=GPIO_Speed
++PA3.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA3.Locked=true
+ PA3.Mode=Asynchronous
+ PA3.Signal=USART2_RX
+-PA4.GPIOParameters=GPIO_Speed,GPIO_PuPd,GPIO_Label
++PA4.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PA4.GPIO_Label=TOUCH_CS
+ PA4.GPIO_PuPd=GPIO_PULLUP
+ PA4.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA4.Locked=true
++PA4.PinState=GPIO_PIN_SET
+ PA4.Signal=GPIO_Output
++PA5.GPIOParameters=GPIO_Speed,GPIO_PuPd
++PA5.GPIO_PuPd=GPIO_PULLUP
++PA5.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA5.Mode=Full_Duplex_Master
+ PA5.Signal=SPI1_SCK
++PA6.GPIOParameters=GPIO_Speed
++PA6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA6.Locked=true
+ PA6.Mode=RGB888
+ PA6.Signal=LTDC_G2
++PA7.GPIOParameters=GPIO_Speed,GPIO_PuPd
++PA7.GPIO_PuPd=GPIO_PULLUP
++PA7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA7.Mode=Full_Duplex_Master
+ PA7.Signal=SPI1_MOSI
+ PA8.GPIOParameters=GPIO_Label
+ PA8.GPIO_Label=MAX30003_CLK
+ PA8.Mode=Clock-out-1
+ PA8.Signal=RCC_MCO_1
++PA9.GPIOParameters=GPIO_Speed
++PA9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA9.Locked=true
+ PA9.Mode=Asynchronous
+ PA9.Signal=USART1_TX
++PB0.GPIOParameters=GPIO_Speed
++PB0.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB0.Locked=true
+ PB0.Mode=RGB888
+ PB0.Signal=LTDC_R3
++PB1.GPIOParameters=GPIO_Speed
++PB1.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB1.Locked=true
+ PB1.Mode=RGB888
+ PB1.Signal=LTDC_R6
++PB10.GPIOParameters=GPIO_Speed
++PB10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB10.Locked=true
+ PB10.Mode=RGB888
+ PB10.Signal=LTDC_G4
++PB11.GPIOParameters=GPIO_Speed
++PB11.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB11.Mode=I2C
+ PB11.Signal=I2C2_SDA
++PB12.GPIOParameters=GPIO_PuPd,GPIO_Label
++PB12.GPIO_Label=SDCARD_PLG
++PB12.GPIO_PuPd=GPIO_PULLUP
++PB12.Locked=true
++PB12.Signal=GPIO_Input
+ PB13.GPIOParameters=GPIO_PuPd,GPIO_Label
+ PB13.GPIO_Label=LCD_PWR_EN
+ PB13.GPIO_PuPd=GPIO_PULLUP
+ PB13.Locked=true
+ PB13.Signal=GPIO_Output
++PB14.GPIOParameters=GPIO_Speed
++PB14.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB14.Locked=true
+ PB14.Signal=S_TIM12_CH1
+ PB15.GPIOParameters=GPIO_PuPd,GPIO_Label
+@@ -670,19 +787,33 @@ PB15.Locked=true
+ PB15.Signal=GPIO_Output
+ PB3\ (JTDO/TRACESWO).Mode=Trace_Asynchronous_SW
+ PB3\ (JTDO/TRACESWO).Signal=DEBUG_JTDO-SWO
++PB4\ (NJTRST).GPIOParameters=GPIO_Speed,GPIO_PuPd
++PB4\ (NJTRST).GPIO_PuPd=GPIO_PULLUP
++PB4\ (NJTRST).GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB4\ (NJTRST).Locked=true
+ PB4\ (NJTRST).Mode=Full_Duplex_Master
+ PB4\ (NJTRST).Signal=SPI1_MISO
+-PB5.GPIOParameters=GPIO_Label
++PB5.GPIOParameters=GPIO_PuPd,GPIO_Label,GPIO_ModeDefaultEXTI
+ PB5.GPIO_Label=MAXM86161_LEFT_INT
++PB5.GPIO_ModeDefaultEXTI=GPIO_MODE_IT_FALLING
++PB5.GPIO_PuPd=GPIO_PULLUP
+ PB5.Locked=true
+ PB5.Signal=GPXTI5
++PB6.GPIOParameters=GPIO_Speed
++PB6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB6.Mode=I2C
+ PB6.Signal=I2C1_SCL
++PB7.GPIOParameters=GPIO_Speed
++PB7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB7.Mode=I2C
+ PB7.Signal=I2C1_SDA
++PB8.GPIOParameters=GPIO_Speed
++PB8.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PB8.Mode=RGB888
+ PB8.Signal=LTDC_B6
++PB9.GPIOParameters=GPIO_Speed
++PB9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
++PB9.Locked=true
+ PB9.Mode=RGB888
+ PB9.Signal=LTDC_B7
+ PC0.Locked=true
+@@ -693,10 +824,11 @@ PC11.Mode=SD_4_bits_Wide_bus
+ PC11.Signal=SDMMC1_D3
+ PC12.Mode=SD_4_bits_Wide_bus
+ PC12.Signal=SDMMC1_CK
+-PC13.GPIOParameters=GPIO_PuPd,GPIO_Label
++PC13.GPIOParameters=PinState,GPIO_PuPd,GPIO_Label
+ PC13.GPIO_Label=SPI1_CS2
+ PC13.GPIO_PuPd=GPIO_PULLUP
+ PC13.Locked=true
++PC13.PinState=GPIO_PIN_SET
+ PC13.Signal=GPIO_Output
+ PC14-OSC32_IN\ (OSC32_IN).Mode=LSE-External-Oscillator
+ PC14-OSC32_IN\ (OSC32_IN).Signal=RCC_OSC32_IN
+@@ -704,8 +836,12 @@ PC15-OSC32_OUT\ (OSC32_OUT).Mode=LSE-External-Oscillator
+ PC15-OSC32_OUT\ (OSC32_OUT).Signal=RCC_OSC32_OUT
+ PC4.Locked=true
+ PC4.Signal=ADCx_INP4
++PC6.GPIOParameters=GPIO_Speed
++PC6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PC6.Mode=Asynchronous
+ PC6.Signal=USART6_TX
++PC7.GPIOParameters=GPIO_Speed
++PC7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PC7.Locked=true
+ PC7.Mode=RGB888
+ PC7.Signal=LTDC_G6
+@@ -716,38 +852,45 @@ PC9.Signal=SDMMC1_D1
+ PD0.Signal=FMC_D2_DA2
+ PD1.Signal=FMC_D3_DA3
+ PD10.Signal=FMC_D15_DA15
+-PD11.GPIOParameters=GPIO_PuPd,GPIO_Label
++PD11.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PD11.GPIO_Label=TOUCH_PWR_EN
+ PD11.GPIO_PuPd=GPIO_PULLUP
++PD11.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PD11.Locked=true
++PD11.PinState=GPIO_PIN_SET
+ PD11.Signal=GPIO_Output
+-PD12.GPIOParameters=GPIO_PuPd,GPIO_Label
+-PD12.GPIO_Label=TOUCH_BUSY
+-PD12.GPIO_PuPd=GPIO_PULLUP
++PD12.GPIOParameters=GPIO_Speed
++PD12.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PD12.Locked=true
+-PD12.Signal=GPIO_Input
+-PD13.GPIOParameters=GPIO_PuPd,GPIO_Label
+-PD13.GPIO_Label=SDCARD_PLG
+-PD13.GPIO_PuPd=GPIO_PULLUP
++PD12.Mode=I2C
++PD12.Signal=I2C4_SCL
++PD13.GPIOParameters=GPIO_Speed
++PD13.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PD13.Locked=true
+-PD13.Signal=GPIO_Input
++PD13.Mode=I2C
++PD13.Signal=I2C4_SDA
+ PD14.Signal=FMC_D0_DA0
+ PD15.Signal=FMC_D1_DA1
+ PD2.Mode=SD_4_bits_Wide_bus
+ PD2.Signal=SDMMC1_CMD
+-PD4.GPIOParameters=GPIO_Label
++PD4.GPIOParameters=GPIO_PuPd,GPIO_Label,GPIO_ModeDefaultEXTI
+ PD4.GPIO_Label=MAXM86161_RIGHT_INT
++PD4.GPIO_ModeDefaultEXTI=GPIO_MODE_IT_FALLING
++PD4.GPIO_PuPd=GPIO_PULLUP
+ PD4.Locked=true
+ PD4.Signal=GPXTI4
+ PD5.GPIOParameters=GPIO_Label
+ PD5.GPIO_Label=MAX30003_PWR_EN
+ PD5.Locked=true
+ PD5.Signal=GPIO_Output
++PD6.GPIOParameters=GPIO_Speed
++PD6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PD6.Locked=true
+ PD6.Mode=RGB888
+ PD6.Signal=LTDC_B2
+-PD7.GPIOParameters=GPIO_Label
++PD7.GPIOParameters=GPIO_Speed,GPIO_Label
+ PD7.GPIO_Label=OLIMEX_PWR_EN
++PD7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PD7.Locked=true
+ PD7.Signal=GPIO_Output
+ PD8.Signal=FMC_D13_DA13
+@@ -762,10 +905,16 @@ PE12.Signal=FMC_D9_DA9
+ PE13.Signal=FMC_D10_DA10
+ PE14.Signal=FMC_D11_DA11
+ PE15.Signal=FMC_D12_DA12
++PE4.GPIOParameters=GPIO_Speed
++PE4.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PE4.Mode=RGB888
+ PE4.Signal=LTDC_B0
++PE5.GPIOParameters=GPIO_Speed
++PE5.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PE5.Mode=RGB888
+ PE5.Signal=LTDC_G0
++PE6.GPIOParameters=GPIO_Speed
++PE6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PE6.Locked=true
+ PE6.Mode=RGB888
+ PE6.Signal=LTDC_G1
+@@ -776,6 +925,8 @@ PF0.Locked=true
+ PF0.Signal=FMC_A0
+ PF1.Locked=true
+ PF1.Signal=FMC_A1
++PF10.GPIOParameters=GPIO_Speed
++PF10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PF10.Locked=true
+ PF10.Mode=RGB888
+ PF10.Signal=LTDC_DE
+@@ -797,34 +948,53 @@ PF4.Locked=true
+ PF4.Signal=FMC_A4
+ PF5.Locked=true
+ PF5.Signal=FMC_A5
+-PF6.GPIOParameters=GPIO_PuPd,GPIO_Label
++PF6.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PF6.GPIO_Label=MAX30003_CS
+ PF6.GPIO_PuPd=GPIO_PULLUP
++PF6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PF6.Locked=true
++PF6.PinState=GPIO_PIN_SET
+ PF6.Signal=GPIO_Output
++PF7.GPIOParameters=GPIO_Speed,GPIO_PuPd
++PF7.GPIO_PuPd=GPIO_PULLUP
++PF7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PF7.Mode=Full_Duplex_Master
+ PF7.Signal=SPI5_SCK
++PF8.GPIOParameters=GPIO_Speed,GPIO_PuPd
++PF8.GPIO_PuPd=GPIO_PULLUP
++PF8.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PF8.Mode=Full_Duplex_Master
+ PF8.Signal=SPI5_MISO
++PF9.GPIOParameters=GPIO_Speed,GPIO_PuPd
++PF9.GPIO_PuPd=GPIO_PULLUP
++PF9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PF9.Mode=Full_Duplex_Master
+ PF9.Signal=SPI5_MOSI
+ PG0.Locked=true
+ PG0.Signal=FMC_A10
+ PG1.Locked=true
+ PG1.Signal=FMC_A11
+-PG10.GPIOParameters=GPIO_PuPd,GPIO_Label
++PG10.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PG10.GPIO_Label=LCD_STBY
+ PG10.GPIO_PuPd=GPIO_PULLUP
++PG10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG10.Locked=true
++PG10.PinState=GPIO_PIN_SET
+ PG10.Signal=GPIO_Output
++PG11.GPIOParameters=GPIO_Speed
++PG11.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG11.Mode=RGB888
+ PG11.Signal=LTDC_B3
++PG12.GPIOParameters=GPIO_Speed
++PG12.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG12.Mode=RGB888
+ PG12.Signal=LTDC_B1
+-PG13.GPIOParameters=GPIO_PuPd,GPIO_Label
++PG13.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PG13.GPIO_Label=LCD_RESET
+ PG13.GPIO_PuPd=GPIO_PULLUP
++PG13.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG13.Locked=true
++PG13.PinState=GPIO_PIN_SET
+ PG13.Signal=GPIO_Output
+ PG15.Signal=FMC_SDNCAS
+ PG2.GPIOParameters=GPIO_PuPd,GPIO_Label
+@@ -839,13 +1009,19 @@ PG3.Locked=true
+ PG3.Signal=GPXTI3
+ PG4.Signal=FMC_A14_BA0
+ PG5.Signal=FMC_A15_BA1
++PG6.GPIOParameters=GPIO_Speed
++PG6.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG6.Locked=true
+ PG6.Mode=RGB888
+ PG6.Signal=LTDC_R7
++PG7.GPIOParameters=GPIO_Speed
++PG7.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG7.Locked=true
+ PG7.Mode=RGB888
+ PG7.Signal=LTDC_CLK
+ PG8.Signal=FMC_SDCLK
++PG9.GPIOParameters=GPIO_Speed
++PG9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PG9.Locked=true
+ PG9.Mode=Asynchronous
+ PG9.Signal=USART6_RX
+@@ -853,33 +1029,52 @@ PH0-OSC_IN\ (PH0).Mode=HSE-External-Oscillator
+ PH0-OSC_IN\ (PH0).Signal=RCC_OSC_IN
+ PH1-OSC_OUT\ (PH1).Mode=HSE-External-Oscillator
+ PH1-OSC_OUT\ (PH1).Signal=RCC_OSC_OUT
++PH10.GPIOParameters=GPIO_Speed
++PH10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH10.Locked=true
+ PH10.Mode=RGB888
+ PH10.Signal=LTDC_R4
++PH11.GPIOParameters=GPIO_Speed
++PH11.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH11.Locked=true
+ PH11.Mode=RGB888
+ PH11.Signal=LTDC_R5
+-PH12.GPIOParameters=GPIO_PuPd,GPIO_Label
++PH12.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PH12.GPIO_Label=LCD_3V3_EN
+ PH12.GPIO_PuPd=GPIO_PULLUP
++PH12.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH12.Locked=true
++PH12.PinState=GPIO_PIN_SET
+ PH12.Signal=GPIO_Output
+-PH13.GPIOParameters=GPIO_Label
++PH13.GPIOParameters=GPIO_Speed,PinState,GPIO_PuPd,GPIO_Label
+ PH13.GPIO_Label=MAXM86161_RIGHT_EN
++PH13.GPIO_PuPd=GPIO_NOPULL
++PH13.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH13.Locked=true
++PH13.PinState=GPIO_PIN_SET
+ PH13.Signal=GPIO_Output
++PH14.GPIOParameters=GPIO_Speed
++PH14.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH14.Mode=RGB888
+ PH14.Signal=LTDC_G3
+-PH15.GPIOParameters=GPIO_Label
++PH15.GPIOParameters=GPIO_Speed,PinState,GPIO_Label
+ PH15.GPIO_Label=MAXM86161_LEFT_EN
++PH15.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH15.Locked=true
++PH15.PinState=GPIO_PIN_SET
+ PH15.Signal=GPIO_Output
++PH2.GPIOParameters=GPIO_Speed
++PH2.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH2.Locked=true
+ PH2.Mode=RGB888
+ PH2.Signal=LTDC_R0
++PH3.GPIOParameters=GPIO_Speed
++PH3.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH3.Locked=true
+ PH3.Mode=RGB888
+ PH3.Signal=LTDC_R1
++PH4.GPIOParameters=GPIO_Speed
++PH4.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH4.Mode=I2C
+ PH4.Signal=I2C2_SCL
+ PH5.Locked=true
+@@ -890,30 +1085,52 @@ PH6.Signal=FMC_SDNE1
+ PH7.Locked=true
+ PH7.Mode=SdramChipSelect2_1
+ PH7.Signal=FMC_SDCKE1
++PH8.GPIOParameters=GPIO_Speed
++PH8.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PH8.Locked=true
+ PH8.Mode=RGB888
+ PH8.Signal=LTDC_R2
++PH9.GPIOParameters=GPIO_PuPd,GPIO_Label
++PH9.GPIO_Label=TOUCH_BUSY
++PH9.GPIO_PuPd=GPIO_NOPULL
++PH9.Locked=true
++PH9.Signal=GPIO_Input
++PI0.GPIOParameters=GPIO_Speed
++PI0.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI0.Locked=true
+ PI0.Mode=RGB888
+ PI0.Signal=LTDC_G5
+-PI1.GPIOParameters=GPIO_Label
++PI1.GPIOParameters=GPIO_PuPd,GPIO_Label,GPIO_ModeDefaultEXTI
+ PI1.GPIO_Label=TOUCH_PIRQ
++PI1.GPIO_ModeDefaultEXTI=GPIO_MODE_IT_FALLING
++PI1.GPIO_PuPd=GPIO_PULLUP
+ PI1.Locked=true
+ PI1.Signal=GPXTI1
++PI10.GPIOParameters=GPIO_Speed
++PI10.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI10.Locked=true
+ PI10.Mode=RGB888
+ PI10.Signal=LTDC_HSYNC
++PI2.GPIOParameters=GPIO_Speed
++PI2.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI2.Mode=RGB888
+ PI2.Signal=LTDC_G7
++PI4.GPIOParameters=GPIO_Speed
++PI4.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI4.Mode=RGB888
+ PI4.Signal=LTDC_B4
++PI5.GPIOParameters=GPIO_Speed
++PI5.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI5.Locked=true
+ PI5.Mode=RGB888
+ PI5.Signal=LTDC_B5
+-PI6.GPIOParameters=GPIO_Label
++PI6.GPIOParameters=GPIO_PuPd,GPIO_Label
+ PI6.GPIO_Label=MAX30102_INT
++PI6.GPIO_PuPd=GPIO_PULLUP
+ PI6.Locked=true
+ PI6.Signal=GPXTI6
++PI9.GPIOParameters=GPIO_Speed
++PI9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI9.Locked=true
+ PI9.Mode=RGB888
+ PI9.Signal=LTDC_VSYNC
+@@ -945,7 +1162,7 @@ ProjectManager.StackSize=0x3E00
+ ProjectManager.TargetToolchain=STM32CubeIDE
+ ProjectManager.ToolChainLocation=
+ ProjectManager.UnderRoot=true
+-ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-MX_DMA_Init-DMA-false-HAL-true,3-SystemClock_Config-RCC-false-HAL-false,4-MX_DMA2D_Init-DMA2D-false-HAL-true,5-MX_I2C1_Init-I2C1-false-HAL-true,6-MX_I2C2_Init-I2C2-false-HAL-true,7-MX_LTDC_Init-LTDC-false-HAL-true,8-MX_SDMMC1_SD_Init-SDMMC1-false-HAL-true,9-MX_SPI1_Init-SPI1-false-HAL-true,10-MX_SPI5_Init-SPI5-false-HAL-true,11-MX_UART4_Init-UART4-false-HAL-true,12-MX_USART1_UART_Init-USART1-false-HAL-true,13-MX_USART2_UART_Init-USART2-false-HAL-true,14-MX_USART6_UART_Init-USART6-false-HAL-true,15-MX_FATFS_Init-FATFS-false-HAL-false,16-MX_LIBJPEG_Init-LIBJPEG-false-HAL-false,17-MX_FMC_Init-FMC-false-HAL-true,18-MX_JPEG_Init-JPEG-false-HAL-true,19-MX_ADC1_Init-ADC1-false-HAL-true,20-MX_CRC_Init-CRC-false-HAL-true,21-MX_RTC_Init-RTC-false-HAL-true,22-MX_TIM3_Init-TIM3-false-HAL-true,23-MX_TIM7_Init-TIM7-false-HAL-true,24-MX_TIM12_Init-TIM12-false-HAL-true,25-MX_TIM13_Init-TIM13-false-HAL-true,26-MX_USB_DEVICE_Init-USB_DEVICE-false-HAL-false,28-MX_TouchGFX_Init-STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0-false-HAL-false,29-MX_TouchGFX_Process-STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0-false-HAL-false,0-MX_CORTEX_M7_Init-CORTEX_M7-false-HAL-true
++ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-MX_BDMA_Init-BDMA-false-HAL-true,3-MX_DMA_Init-DMA-false-HAL-true,4-SystemClock_Config-RCC-false-HAL-false,5-MX_DMA2D_Init-DMA2D-false-HAL-true,6-MX_I2C1_Init-I2C1-false-HAL-true,7-MX_I2C2_Init-I2C2-false-HAL-true,8-MX_LTDC_Init-LTDC-false-HAL-true,9-MX_SDMMC1_SD_Init-SDMMC1-false-HAL-true,10-MX_SPI1_Init-SPI1-false-HAL-true,11-MX_SPI5_Init-SPI5-false-HAL-true,12-MX_UART4_Init-UART4-false-HAL-true,13-MX_USART1_UART_Init-USART1-false-HAL-true,14-MX_USART2_UART_Init-USART2-false-HAL-true,15-MX_USART6_UART_Init-USART6-false-HAL-true,16-MX_FATFS_Init-FATFS-false-HAL-false,17-MX_LIBJPEG_Init-LIBJPEG-false-HAL-false,18-MX_FMC_Init-FMC-false-HAL-true,19-MX_JPEG_Init-JPEG-false-HAL-true,20-MX_ADC1_Init-ADC1-false-HAL-true,21-MX_CRC_Init-CRC-false-HAL-true,22-MX_RTC_Init-RTC-false-HAL-true,23-MX_TIM3_Init-TIM3-false-HAL-true,24-MX_TIM7_Init-TIM7-false-HAL-true,25-MX_TIM12_Init-TIM12-false-HAL-true,26-MX_TIM13_Init-TIM13-false-HAL-true,27-MX_USB_DEVICE_Init-USB_DEVICE-false-HAL-false,28-MX_I2C4_Init-I2C4-false-HAL-true,30-MX_TouchGFX_Init-STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0-false-HAL-false,31-MX_TouchGFX_Process-STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0-false-HAL-false,0-MX_CORTEX_M7_Init-CORTEX_M7-false-HAL-true
+ RCC.ADCFreq_Value=128000000
+ RCC.AHB12Freq_Value=240000000
+ RCC.AHB4Freq_Value=240000000
+@@ -982,8 +1199,8 @@ RCC.DIVQ3=4
+ RCC.DIVQ3Freq_Value=48000000
+ RCC.DIVR1Freq_Value=480000000
+ RCC.DIVR2Freq_Value=128000000
+-RCC.DIVR3=4
+-RCC.DIVR3Freq_Value=48000000
++RCC.DIVR3=10
++RCC.DIVR3Freq_Value=19200000
+ RCC.FDCANFreq_Value=480000000
+ RCC.FMCFreq_Value=240000000
+ RCC.FamilyName=M
+@@ -994,14 +1211,15 @@ RCC.HRTIMFreq_Value=240000000
+ RCC.HSE_VALUE=8000000
+ RCC.I2C123Freq_Value=120000000
+ RCC.I2C4Freq_Value=120000000
+-RCC.IPParameters=ADCFreq_Value,AHB12Freq_Value,AHB4Freq_Value,APB1Freq_Value,APB2Freq_Value,APB3Freq_Value,APB4Freq_Value,AXIClockFreq_Value,CECFreq_Value,CKPERFreq_Value,CKPERSourceSelection,CortexFreq_Value,CpuClockFreq_Value,D1CPREFreq_Value,D1PPRE,D2PPRE1,D2PPRE2,D3PPRE,DFSDMACLkFreq_Value,DFSDMFreq_Value,DIVM1,DIVM2,DIVM3,DIVN1,DIVN2,DIVN3,DIVP1Freq_Value,DIVP2Freq_Value,DIVP3,DIVP3Freq_Value,DIVQ1Freq_Value,DIVQ2Freq_Value,DIVQ3,DIVQ3Freq_Value,DIVR1Freq_Value,DIVR2Freq_Value,DIVR3,DIVR3Freq_Value,FDCANFreq_Value,FMCFreq_Value,FamilyName,HCLK3ClockFreq_Value,HCLKFreq_Value,HPRE,HRTIMFreq_Value,HSE_VALUE,I2C123Freq_Value,I2C4Freq_Value,LPTIM1Freq_Value,LPTIM2Freq_Value,LPTIM345Freq_Value,LPUART1Freq_Value,LTDCFreq_Value,MCO1PinFreq_Value,MCO2PinFreq_Value,PLL2FRACN,PLL3FRACN,PLLFRACN,PLLSourceVirtual,QSPIFreq_Value,RCC_MCO1Source,RNGFreq_Value,RTCClockSelection,RTCFreq_Value,SAI1Freq_Value,SAI23Freq_Value,SAI4AFreq_Value,SAI4BFreq_Value,SDMMCFreq_Value,SPDIFRXFreq_Value,SPI123Freq_Value,SPI45Freq_Value,SPI6Freq_Value,SWPMI1Freq_Value,SYSCLKFreq_VALUE,SYSCLKSource,Tim1OutputFreq_Value,Tim2OutputFreq_Value,TraceFreq_Value,USART16Freq_Value,USART234578Freq_Value,USBCLockSelection,USBFreq_Value,VCO1OutputFreq_Value,VCO2OutputFreq_Value,VCO3OutputFreq_Value,VCOInput1Freq_Value,VCOInput2Freq_Value,VCOInput3Freq_Value
++RCC.IPParameters=ADCFreq_Value,AHB12Freq_Value,AHB4Freq_Value,APB1Freq_Value,APB2Freq_Value,APB3Freq_Value,APB4Freq_Value,AXIClockFreq_Value,CECFreq_Value,CKPERFreq_Value,CKPERSourceSelection,CortexFreq_Value,CpuClockFreq_Value,D1CPREFreq_Value,D1PPRE,D2PPRE1,D2PPRE2,D3PPRE,DFSDMACLkFreq_Value,DFSDMFreq_Value,DIVM1,DIVM2,DIVM3,DIVN1,DIVN2,DIVN3,DIVP1Freq_Value,DIVP2Freq_Value,DIVP3,DIVP3Freq_Value,DIVQ1Freq_Value,DIVQ2Freq_Value,DIVQ3,DIVQ3Freq_Value,DIVR1Freq_Value,DIVR2Freq_Value,DIVR3,DIVR3Freq_Value,FDCANFreq_Value,FMCFreq_Value,FamilyName,HCLK3ClockFreq_Value,HCLKFreq_Value,HPRE,HRTIMFreq_Value,HSE_VALUE,I2C123Freq_Value,I2C4Freq_Value,LPTIM1Freq_Value,LPTIM2Freq_Value,LPTIM345Freq_Value,LPUART1Freq_Value,LTDCFreq_Value,MCO1PinFreq_Value,MCO2PinFreq_Value,PLL1_VCI_Range-AdvancedSettings,PLL2FRACN,PLL3FRACN,PLLFRACN,PLLSourceVirtual,QSPIFreq_Value,RCC_MCO1Source,RNGFreq_Value,RTCClockSelection,RTCFreq_Value,SAI1Freq_Value,SAI23Freq_Value,SAI4AFreq_Value,SAI4BFreq_Value,SDMMCFreq_Value,SPDIFRXFreq_Value,SPI123CLockSelection,SPI123Freq_Value,SPI45Freq_Value,SPI6Freq_Value,SWPMI1Freq_Value,SYSCLKFreq_VALUE,SYSCLKSource,Spi45ClockSelection,Tim1OutputFreq_Value,Tim2OutputFreq_Value,TraceFreq_Value,USART16Freq_Value,USART234578Freq_Value,USBCLockSelection,USBFreq_Value,VCO1OutputFreq_Value,VCO2OutputFreq_Value,VCO3OutputFreq_Value,VCOInput1Freq_Value,VCOInput2Freq_Value,VCOInput3Freq_Value
+ RCC.LPTIM1Freq_Value=120000000
+ RCC.LPTIM2Freq_Value=120000000
+ RCC.LPTIM345Freq_Value=120000000
+ RCC.LPUART1Freq_Value=120000000
+-RCC.LTDCFreq_Value=48000000
++RCC.LTDCFreq_Value=19200000
+ RCC.MCO1PinFreq_Value=32768
+ RCC.MCO2PinFreq_Value=480000000
++RCC.PLL1_VCI_Range-AdvancedSettings=RCC_PLL1VCIRANGE_0
+ RCC.PLL2FRACN=0
+ RCC.PLL3FRACN=0
+ RCC.PLLFRACN=0
+@@ -1017,12 +1235,14 @@ RCC.SAI4AFreq_Value=480000000
+ RCC.SAI4BFreq_Value=480000000
+ RCC.SDMMCFreq_Value=480000000
+ RCC.SPDIFRXFreq_Value=480000000
+-RCC.SPI123Freq_Value=480000000
+-RCC.SPI45Freq_Value=120000000
++RCC.SPI123CLockSelection=RCC_SPI123CLKSOURCE_PLL2
++RCC.SPI123Freq_Value=128000000
++RCC.SPI45Freq_Value=128000000
+ RCC.SPI6Freq_Value=120000000
+ RCC.SWPMI1Freq_Value=120000000
+ RCC.SYSCLKFreq_VALUE=480000000
+ RCC.SYSCLKSource=RCC_SYSCLKSOURCE_PLLCLK
++RCC.Spi45ClockSelection=RCC_SPI45CLKSOURCE_PLL2
+ RCC.Tim1OutputFreq_Value=240000000
+ RCC.Tim2OutputFreq_Value=240000000
+ RCC.TraceFreq_Value=480000000
+@@ -1036,7 +1256,7 @@ RCC.VCO3OutputFreq_Value=192000000
+ RCC.VCOInput1Freq_Value=8000000
+ RCC.VCOInput2Freq_Value=1000000
+ RCC.VCOInput3Freq_Value=1000000
+-SDMMC1.ClockDiv=1
++SDMMC1.ClockDiv=20
+ SDMMC1.IPParameters=ClockDiv
+ SH.ADCx_INP10.0=ADC1_INP10
+ SH.ADCx_INP10.ConfNb=1
+@@ -1129,14 +1349,14 @@ SH.GPXTI6.ConfNb=1
+ SH.S_TIM12_CH1.0=TIM12_CH1,PWM Generation1 CH1
+ SH.S_TIM12_CH1.ConfNb=1
+ SPI1.BaudRatePrescaler=SPI_BAUDRATEPRESCALER_256
+-SPI1.CalculateBaudRate=1.875 MBits/s
++SPI1.CalculateBaudRate=500.0 KBits/s
+ SPI1.DataSize=SPI_DATASIZE_8BIT
+ SPI1.Direction=SPI_DIRECTION_2LINES
+-SPI1.IPParameters=VirtualType,Mode,Direction,BaudRatePrescaler,CalculateBaudRate,DataSize
++SPI1.IPParameters=VirtualType,Mode,BaudRatePrescaler,CalculateBaudRate,DataSize,Direction
+ SPI1.Mode=SPI_MODE_MASTER
+ SPI1.VirtualType=VM_MASTER
+ SPI5.BaudRatePrescaler=SPI_BAUDRATEPRESCALER_128
+-SPI5.CalculateBaudRate=937.5 KBits/s
++SPI5.CalculateBaudRate=1000.0 KBits/s
+ SPI5.DataSize=SPI_DATASIZE_8BIT
+ SPI5.Direction=SPI_DIRECTION_2LINES
+ SPI5.IPParameters=VirtualType,Mode,Direction,CalculateBaudRate,BaudRatePrescaler,DataSize
+@@ -1154,19 +1374,22 @@ STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0.tgfx_location=By Address
+ STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0.tgfx_vsync=vsync_ltdc
+ STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0_SwParameter=ApplicationCcGraphicsJjApplication\:TouchGFXOoGenerator;
+ TIM12.Channel-PWM\ Generation1\ CH1=TIM_CHANNEL_1
+-TIM12.IPParameters=Prescaler,Period,Channel-PWM Generation1 CH1,Pulse-PWM Generation1 CH1,OCPolarity_1
++TIM12.ClockDivision=TIM_CLOCKDIVISION_DIV4
++TIM12.IPParameters=Prescaler,Period,Channel-PWM Generation1 CH1,Pulse-PWM Generation1 CH1,OCPolarity_1,ClockDivision
+ TIM12.OCPolarity_1=TIM_OCPOLARITY_LOW
+ TIM12.Period=999
+-TIM12.Prescaler=44
++TIM12.Prescaler=59
+ TIM12.Pulse-PWM\ Generation1\ CH1=499
+ TIM13.Channel=TIM_CHANNEL_1
+-TIM13.IPParameters=Channel,Prescaler,Period
++TIM13.ClockDivision=TIM_CLOCKDIVISION_DIV4
++TIM13.IPParameters=Channel,Prescaler,Period,ClockDivision
+ TIM13.Period=999
+-TIM13.Prescaler=44
++TIM13.Prescaler=59
+ TIM3.Channel-Output\ Compare1\ No\ Output=TIM_CHANNEL_1
+-TIM3.IPParameters=Prescaler,Period,Channel-Output Compare1 No Output,TIM_MasterOutputTrigger
++TIM3.ClockDivision=TIM_CLOCKDIVISION_DIV4
++TIM3.IPParameters=Prescaler,Period,Channel-Output Compare1 No Output,TIM_MasterOutputTrigger,ClockDivision
+ TIM3.Period=4
+-TIM3.Prescaler=47999
++TIM3.Prescaler=14999
+ TIM3.TIM_MasterOutputTrigger=TIM_TRGO_UPDATE
+ TIM7.IPParameters=Prescaler,Period,TIM_MasterOutputTrigger
+ TIM7.Period=99
+diff --git a/STM32H743IITX_FLASH.ld b/STM32H743IITX_FLASH.ld
+index 03e5acb..1a7935f 100644
+--- a/STM32H743IITX_FLASH.ld
++++ b/STM32H743IITX_FLASH.ld
+@@ -34,8 +34,8 @@ ENTRY(Reset_Handler)
+ /* Highest address of the user mode stack */
+ _estack = ORIGIN(RAM_D1) + LENGTH(RAM_D1);	/* end of "RAM_D1" Ram type memory */
+ 
+-_Min_Heap_Size = 0x20000;	/* required amount of heap  */
+-_Min_Stack_Size = 0x20000;	/* required amount of stack */
++_Min_Heap_Size = 0x20000 ;	/* required amount of heap  */
++_Min_Stack_Size = 0x20000 ;	/* required amount of stack */
+ 
+ /* Memories definition */
+ MEMORY
+diff --git a/USB_DEVICE/Target/usbd_conf.c b/USB_DEVICE/Target/usbd_conf.c
+index 1c69cbb..aa5ba2d 100644
+--- a/USB_DEVICE/Target/usbd_conf.c
++++ b/USB_DEVICE/Target/usbd_conf.c
+@@ -80,7 +80,7 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
+     GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF10_OTG1_FS;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 
+@@ -88,6 +88,10 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
+     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+ 
+     /* Peripheral interrupt init */
++    HAL_NVIC_SetPriority(OTG_FS_EP1_OUT_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(OTG_FS_EP1_OUT_IRQn);
++    HAL_NVIC_SetPriority(OTG_FS_EP1_IN_IRQn, 5, 0);
++    HAL_NVIC_EnableIRQ(OTG_FS_EP1_IN_IRQn);
+     HAL_NVIC_SetPriority(OTG_FS_IRQn, 5, 0);
+     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+   /* USER CODE BEGIN USB_OTG_FS_MspInit 1 */
+@@ -113,6 +117,10 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef* pcdHandle)
+     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_11|GPIO_PIN_12);
+ 
+     /* Peripheral interrupt Deinit*/
++    HAL_NVIC_DisableIRQ(OTG_FS_EP1_OUT_IRQn);
++
++    HAL_NVIC_DisableIRQ(OTG_FS_EP1_IN_IRQn);
++
+     HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
+ 
+   /* USER CODE BEGIN USB_OTG_FS_MspDeInit 1 */

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    i2c.h
+  * @file    bdma.h
   * @brief   This file contains all the function prototypes for
-  *          the i2c.c file
+  *          the bdma.c file
   ******************************************************************************
   * @attention
   *
@@ -17,8 +17,8 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __I2C_H__
-#define __I2C_H__
+#ifndef __BDMA_H__
+#define __BDMA_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,21 +27,17 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+/* DMA memory to memory transfer handles -------------------------------------*/
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-
-extern I2C_HandleTypeDef hi2c1;
-extern I2C_HandleTypeDef hi2c2;
-extern I2C_HandleTypeDef hi2c4;
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_I2C1_Init(void);
-void MX_I2C2_Init(void);
-void MX_I2C4_Init(void);
+void MX_BDMA_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -51,6 +47,6 @@ void MX_I2C4_Init(void);
 }
 #endif
 
-#endif /* __I2C_H__ */
+#endif /* __BDMA_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
