@@ -182,4 +182,9 @@ SECTIONS
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
+  
+  .buffers(NOLOAD) : {
+    . = ALIGN(2);
+    *(.buffers*)
+	} > RAM_D2
 }

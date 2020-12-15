@@ -68,14 +68,58 @@ uint8_t max30102Counter = 0;
 uint8_t max86161RightCounter = 0;
 uint8_t max86161LeftCounter = 0;
 
+__attribute__ ((section(".buffers"), used))
 uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
 uint16_t ecgDataBufferIndex = 0;
 uint8_t ecgDataBufferNumberIndex = 0;
 
+__attribute__ ((section(".buffers"), used))
 int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
 uint16_t earEcgDataBufferIndex = 0;
 uint8_t earEcgDataBufferNumberIndex = 0;
 
+__attribute__ ((section(".buffers"), used))
+int16_t fingerPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t fingerPPGRedDataBufferIndex = 0;
+uint8_t fingerPPGRedDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t fingerPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t fingerPPGIRDataBufferIndex = 0;
+uint8_t fingerPPGIRDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t leftEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t leftEarPPGreenDataBufferIndex = 0;
+uint8_t leftEarPPGGreenDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t leftEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t leftEarPPRedDataBufferIndex = 0;
+uint8_t leftEarPPGRedDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t leftEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t leftEarPPIRDataBufferIndex = 0;
+uint8_t leftEarPPGIRDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t rightEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t rightEarPPGreenDataBufferIndex = 0;
+uint8_t rightEarPPGGreenDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t rightEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t rightEarPPRedDataBufferIndex = 0;
+uint8_t rightEarPPGRedDataBufferNumberIndex = 0;
+
+__attribute__ ((section(".buffers"), used))
+int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t rightEarPPIRDataBufferIndex = 0;
+uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
+
+//__attribute__ ((section(".buffers"), used))
+//char wtext[ECG_BUFFER_SIZE * 10 * 3];
 char wtext[ECG_BUFFER_SIZE * 6];
 /* USER CODE END PTD */
 
@@ -453,6 +497,24 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin) {
     	}
     }
 }
+
+/**
+  * @brief This function handles USB On The Go FS global interrupt.
+  */
+void OTG_FS_IRQHandler(void)
+{
+  /* USER CODE BEGIN OTG_FS_IRQn 0 */
+    //HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
+  /* USER CODE END OTG_FS_IRQn 0 */
+  //HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+  /* USER CODE BEGIN OTG_FS_IRQn 1 */
+	//xSemaphoreGiveFromISR(usbBinarySemaphore, pdTRUE);
+	//portYIELD_FROM_ISR(pdTRUE);
+  /* USER CODE END OTG_FS_IRQn 1 */
+
+
+	HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
+}
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -775,7 +837,7 @@ void MX_FREERTOS_Init(void) {
   debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
   /* creation of fatFsTask */
-  //fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
+  fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
   /* creation of usbTask */
   //usbTaskHandle = osThreadNew(StartUsbTask, NULL, &usbTask_attributes);
@@ -1229,31 +1291,32 @@ void StartDebugTask(void *argument)
 /* USER CODE END Header_StartFatFsTask */
 void StartFatFsTask(void *argument)
 {
-  /* USER CODE BEGIN StartFatFsTask */
+    /* USER CODE BEGIN StartFatFsTask */
 	FIL MyFile;
-		uint32_t totalWrittenBytes = 0;
-		uint32_t wbytes;
-		//char currentLine[20] = {'\0'};
-		FRESULT fresult = FR_OK;
+	uint32_t totalWrittenBytes = 0;
+	uint32_t wbytes;
+	//char currentLine[20] = {'\0'};
+	FRESULT fresult = FR_OK;
+	generateFilename(currentFilename);
 
-		generateFilename(currentFilename);
+	for (;;) {
+		if(BSP_PlatformIsDetected() == SD_PRESENT) {
+			if(xSemaphoreTake(storeEcgBinarySemaphore, 5000) == pdTRUE) {
+				if(retSD == 0) {
+					fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
+					if(fresult == FR_OK) {
 
-		if(retSD == 0) {
-			if(fresult == FR_OK) {
-				fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
-			} else {
-				printf("Can't mount a SD card, fresult: %d\n", fresult);
-			}
-		} else {
-			printf("Can't link a driver!\n");
-		}
+					} else {
+						printf("Can't mount a SD card, fresult: %d\n", fresult);
+					}
+				} else {
+					printf("Can't link a driver!\n");
+				}
 
-		for (;;) {
-			if(BSP_PlatformIsDetected() == SD_PRESENT) {
-				if(xSemaphoreTake(storeEcgBinarySemaphore, 5000) == pdTRUE) {
-					//if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
-						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
-						FRESULT fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
+				if(fresult == FR_OK) {
+					if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
+						fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
 						if(fresult == FR_OK) {
 							totalWrittenBytes = f_size(&MyFile);
 							fresult = f_lseek(&MyFile, totalWrittenBytes);
@@ -1294,14 +1357,18 @@ void StartFatFsTask(void *argument)
 						} else {
 							printf("Can't open a file, fresult: %d\n", fresult);
 						}
-						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
-					//}
-					//xSemaphoreGive(fsMutexSemaphore);
+
+						fresult = f_mount(NULL, (TCHAR const*)SDPath, 1);
+						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
+						xSemaphoreGive(fsMutexSemaphore);
+					}
 				}
+
 			}
-			vTaskDelay(100);
 		}
-  /* USER CODE END StartFatFsTask */
+		vTaskDelay(100);
+	}
+    /* USER CODE END StartFatFsTask */
 }
 
 /* USER CODE BEGIN Header_StartUsbTask */
@@ -1314,14 +1381,18 @@ void StartFatFsTask(void *argument)
 void StartUsbTask(void *argument)
 {
   /* USER CODE BEGIN StartUsbTask */
+	MX_USB_DEVICE_Init();
 	for( ;; ) {
+		/*
 		if(xSemaphoreTake(usbBinarySemaphore, 1000) == pdTRUE ) {
 			if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
 				HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
 				xSemaphoreGive(fsMutexSemaphore);
 			}
+			HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
 		}
-		//vTaskDelay(1);
+		*/
+		vTaskDelay(1);
 	}
   /* USER CODE END StartUsbTask */
 }
