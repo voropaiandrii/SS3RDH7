@@ -41,6 +41,7 @@
 #include "semphr.h"
 #include "usbd_def.h"
 #include "utils/file_utils.h"
+#include "domain/use_cases/recording_use_case.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,59 +69,8 @@ uint8_t max30102Counter = 0;
 uint8_t max86161RightCounter = 0;
 uint8_t max86161LeftCounter = 0;
 
-__attribute__ ((section(".buffers"), used))
-uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t ecgDataBufferIndex = 0;
-uint8_t ecgDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t earEcgDataBufferIndex = 0;
-uint8_t earEcgDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t fingerPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t fingerPPGRedDataBufferIndex = 0;
-uint8_t fingerPPGRedDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t fingerPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t fingerPPGIRDataBufferIndex = 0;
-uint8_t fingerPPGIRDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t leftEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t leftEarPPGreenDataBufferIndex = 0;
-uint8_t leftEarPPGGreenDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t leftEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t leftEarPPRedDataBufferIndex = 0;
-uint8_t leftEarPPGRedDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t leftEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t leftEarPPIRDataBufferIndex = 0;
-uint8_t leftEarPPGIRDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t rightEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t rightEarPPGreenDataBufferIndex = 0;
-uint8_t rightEarPPGGreenDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t rightEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t rightEarPPRedDataBufferIndex = 0;
-uint8_t rightEarPPGRedDataBufferNumberIndex = 0;
-
-__attribute__ ((section(".buffers"), used))
-int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t rightEarPPIRDataBufferIndex = 0;
-uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
-
 //__attribute__ ((section(".buffers"), used))
 //char wtext[ECG_BUFFER_SIZE * 10 * 3];
-char wtext[ECG_BUFFER_SIZE * 6];
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -185,7 +135,7 @@ static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityLow,
   .stack_size = 1024 * 4
 };
 /* Definitions for touchTask */
@@ -305,14 +255,14 @@ osThreadId_t debugTaskHandle;
 const osThreadAttr_t debugTask_attributes = {
   .name = "debugTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .stack_size = 1024 * 2
 };
 /* Definitions for fatFsTask */
 osThreadId_t fatFsTaskHandle;
 const osThreadAttr_t fatFsTask_attributes = {
   .name = "fatFsTask",
-  .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 1024 * 5
 };
 /* Definitions for usbTask */
 osThreadId_t usbTaskHandle;
@@ -407,20 +357,7 @@ void max30003ECGDataCallback(ECGData_t* ecgEvent) {
 void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 	max30003ECGEvent.sample = ecgEvent->sample;
 
-	earEcgDataBuffer[earEcgDataBufferNumberIndex][earEcgDataBufferIndex] = (uint16_t)max30003ECGEvent.sample;
-
-	if(earEcgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
-		earEcgDataBufferIndex++;
-	} else {
-		earEcgDataBufferIndex = 0;
-		if(earEcgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-			earEcgDataBufferNumberIndex++;
-		} else {
-			earEcgDataBufferNumberIndex = 0;
-			xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
-			portYIELD_FROM_ISR(pdFALSE);
-		}
-	}
+	storeSampleECGEar((uint16_t)max30003ECGEvent.sample);
 
 	if(max300032Counter < GRAPH_DOWNSAMPLING_VALUE) {
 		max300032Counter++;
@@ -433,6 +370,10 @@ void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 void max30102PPGDataCallback(MAX30102PPGData_t* ppgEvent) {
 	max30102PPGEvent.redSample = ppgEvent->redSample;
 	max30102PPGEvent.irSample = ppgEvent->irSample;
+
+	storeSamplePPGFingerRed(max30102PPGEvent.redSample);
+	storeSamplePPGFingerIR(max30102PPGEvent.irSample);
+
 	if(max30102Counter < GRAPH_DOWNSAMPLING_VALUE) {
 		max30102Counter++;
 	} else {
@@ -459,6 +400,11 @@ void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	max86161LeftPPGEvent.redSample = ppgEvent->redSample;
 	max86161LeftPPGEvent.greenSample = ppgEvent->greenSample;
 	max86161LeftPPGEvent.irSample = ppgEvent->irSample;
+
+	storeSamplePPGEarGreenLeft(max86161LeftPPGEvent.redSample);
+	storeSamplePPGEarRedLeft(max86161LeftPPGEvent.greenSample);
+	storeSamplePPGEarIRLeft(max86161LeftPPGEvent.irSample);
+
 	if(max86161LeftCounter < GRAPH_DOWNSAMPLING_VALUE) {
 		max86161LeftCounter++;
 	} else {
@@ -707,6 +653,8 @@ void MX_FREERTOS_Init(void) {
 	 printf("Can't create storeEcgBinarySemaphore");
   }
 
+  setDoubleBufferSemaphore(storeEcgBinarySemaphore);
+
   i2c1MutexSemaphore = xSemaphoreCreateMutex();
   if(i2c1MutexSemaphore == NULL) {
 	 printf("Can't create i2c1MutexSemaphore");
@@ -800,12 +748,6 @@ void MX_FREERTOS_Init(void) {
   /* creation of max30003IRQTask */
   max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
 
-  /* creation of max30102Task */
-  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
-
-  /* creation of max30102IRQTask */
-  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
-
   /* creation of i2c1TxTask */
   i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
 
@@ -833,6 +775,24 @@ void MX_FREERTOS_Init(void) {
   /* creation of i2c4ErrorTask */
   i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
 
+  /* creation of max30102Task */
+  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+
+  /* creation of max30102IRQTask */
+  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
+
+  /* creation of maxm86161RTask */
+  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+
+  /* creation of maxm86161IRTask */
+  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+
+  /* creation of maxm86161LTask */
+  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+
+  /* creation of maxm86161ILTask */
+  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+
   /* creation of debugTask */
   debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
@@ -847,18 +807,6 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of usbDmaRxTask */
   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
-
-  /* creation of maxm86161RTask */
-  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
-
-  /* creation of maxm86161IRTask */
-  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
-
-  /* creation of maxm86161LTask */
-  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
-
-  /* creation of maxm86161ILTask */
-  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -1275,8 +1223,8 @@ void StartDebugTask(void *argument)
   for(;;)
   {
 		osDelay(10000);
-	    //vTaskList(debugInfoBuffer);
-	    //printf("Name\t\t\tState\tPriority\tStack\tNum\n%s", debugInfoBuffer);
+	    vTaskList(debugInfoBuffer);
+	    printf("Name\t\t\tState\tPriority\tStack\tNum\n%s", debugInfoBuffer);
 
   }
   /* USER CODE END StartDebugTask */
@@ -1291,57 +1239,48 @@ void StartDebugTask(void *argument)
 /* USER CODE END Header_StartFatFsTask */
 void StartFatFsTask(void *argument)
 {
-    /* USER CODE BEGIN StartFatFsTask */
+  /* USER CODE BEGIN StartFatFsTask */
 	FIL MyFile;
-	uint32_t totalWrittenBytes = 0;
-	uint32_t wbytes;
+	uint32_t totalFileBytes = 0;
+	uint32_t writtenBytes = 0;
 	//char currentLine[20] = {'\0'};
 	FRESULT fresult = FR_OK;
 	generateFilename(currentFilename);
+	osDelay(250);
+	if(retSD == 0) {
+		fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
+		if(fresult == FR_OK) {
+
+		} else {
+			printf("Can't mount a SD card, fresult: %d\n", fresult);
+		}
+	} else {
+		printf("Can't link a driver!\n");
+	}
 
 	for (;;) {
 		if(BSP_PlatformIsDetected() == SD_PRESENT) {
 			if(xSemaphoreTake(storeEcgBinarySemaphore, 5000) == pdTRUE) {
-				if(retSD == 0) {
-					fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
-					if(fresult == FR_OK) {
 
-					} else {
-						printf("Can't mount a SD card, fresult: %d\n", fresult);
-					}
-				} else {
-					printf("Can't link a driver!\n");
-				}
-
-				if(fresult == FR_OK) {
+				//if(fresult == FR_OK) {
 					if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
 						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
 						fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
 						if(fresult == FR_OK) {
-							totalWrittenBytes = f_size(&MyFile);
-							fresult = f_lseek(&MyFile, totalWrittenBytes);
+							totalFileBytes = f_size(&MyFile);
+							fresult = f_lseek(&MyFile, totalFileBytes);
 							if(fresult == FR_OK) {
 
 							} else {
 								printf("Failed to seek\n");
 							}
 
-							for(int i = 0; i < ECG_BUFFER_SIZE; i++) {
-								uint16_t newIndex = i * 6;
-								wtext[newIndex] = ecgDataBuffer[0][i] >> 8;
-								wtext[newIndex + 1] = ecgDataBuffer[0][i];
-								wtext[newIndex + 2] = ',';
-								wtext[newIndex + 3] = earEcgDataBuffer[0][i] >> 8;
-								wtext[newIndex + 4] = earEcgDataBuffer[0][i];
-								wtext[newIndex + 5] = '\n';
-							}
+							char* bufferPointer = NULL;
+							uint32_t stringLength = combineWritingBuffer(&bufferPointer);
+							fresult = f_write(&MyFile, bufferPointer, stringLength, (void *)&writtenBytes);
 
-							uint32_t stringLength = ECG_BUFFER_SIZE * 6;//strlen(wtext);
-							fresult = f_write(&MyFile, wtext, stringLength, (void *)&wbytes);
-							// Set string length to 0
-							wtext[0] = '\0';
 							if(fresult == FR_OK) {
-								printf("Written bytes: %lu, string length: %lu\n", wbytes, stringLength);
+								printf("Written bytes: %lu, string length: %lu\n", writtenBytes, stringLength);
 								//fresult = f_sync(&MyFile);
 								if(fresult == FR_OK) {
 
@@ -1358,17 +1297,17 @@ void StartFatFsTask(void *argument)
 							printf("Can't open a file, fresult: %d\n", fresult);
 						}
 
-						fresult = f_mount(NULL, (TCHAR const*)SDPath, 1);
+						//fresult = f_mount(NULL, (TCHAR const*)SDPath, 1);
 						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
 						xSemaphoreGive(fsMutexSemaphore);
 					}
-				}
+				//}
 
 			}
 		}
-		vTaskDelay(100);
+		vTaskDelay(1);
 	}
-    /* USER CODE END StartFatFsTask */
+  /* USER CODE END StartFatFsTask */
 }
 
 /* USER CODE BEGIN Header_StartUsbTask */

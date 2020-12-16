@@ -43,9 +43,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-#define RTOS_DEBUG_BUFFER_SIZE 					500
-#define ECG_BUFFER_SIZE							1000
-#define ECG_BUFFER_NUMBER						2
+#define RTOS_DEBUG_BUFFER_SIZE 					2000
 
 #define GRAPH_DOWNSAMPLING_VALUE				19
 /* USER CODE END EC */

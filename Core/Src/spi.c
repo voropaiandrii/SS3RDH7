@@ -146,7 +146,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
       Error_Handler();
     }
 
-    //__HAL_LINKDMA(spiHandle,hdmarx,hdma_spi1_rx);
+    __HAL_LINKDMA(spiHandle,hdmarx,hdma_spi1_rx);
 
     /* SPI1_TX Init */
     hdma_spi1_tx.Instance = DMA2_Stream5;
@@ -164,7 +164,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
       Error_Handler();
     }
 
-    //__HAL_LINKDMA(spiHandle,hdmatx,hdma_spi1_tx);
+    __HAL_LINKDMA(spiHandle,hdmatx,hdma_spi1_tx);
 
     /* SPI1 interrupt Init */
     HAL_NVIC_SetPriority(SPI1_IRQn, 6, 14);
@@ -189,7 +189,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
     */
     GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI5;
     HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
@@ -211,7 +211,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
       Error_Handler();
     }
 
-    //__HAL_LINKDMA(spiHandle,hdmarx,hdma_spi5_rx);
+    __HAL_LINKDMA(spiHandle,hdmarx,hdma_spi5_rx);
 
     /* SPI5_TX Init */
     hdma_spi5_tx.Instance = DMA2_Stream7;
@@ -229,7 +229,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
       Error_Handler();
     }
 
-    //__HAL_LINKDMA(spiHandle,hdmatx,hdma_spi5_tx);
+    __HAL_LINKDMA(spiHandle,hdmatx,hdma_spi5_tx);
 
     /* SPI5 interrupt Init */
     HAL_NVIC_SetPriority(SPI5_IRQn, 6, 15);

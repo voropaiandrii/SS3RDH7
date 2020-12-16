@@ -169,6 +169,8 @@ int main(void)
   MX_TIM12_Init();
   MX_TIM13_Init();
   MX_I2C4_Init();
+  MX_TIM2_Init();
+  MX_TIM8_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   HAL_Delay(100);

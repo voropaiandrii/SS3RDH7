@@ -11405,7 +11405,6 @@ typedef struct
 #define FMC_SDSR_BUSY_Pos           (5U)
 #define FMC_SDSR_BUSY_Msk           (0x1UL << FMC_SDSR_BUSY_Pos)                /*!< 0x00000020 */
 #define FMC_SDSR_BUSY               FMC_SDSR_BUSY_Msk                          /*!<Busy status */
-
 /******************************************************************************/
 /*                                                                            */
 /*                            General Purpose I/O                             */

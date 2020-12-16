@@ -27,11 +27,6 @@
 
 #define ADC_BUFFER_LENGHT 4
 extern QueueHandle_t standartECGQueue;
-extern SemaphoreHandle_t storeEcgBinarySemaphore;
-
-extern uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-extern uint16_t ecgDataBufferIndex;
-extern uint8_t ecgDataBufferNumberIndex;
 
 uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
 uint8_t bufferCounter = 0;
@@ -166,25 +161,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 		}
 		averageValue = averageValue / ADC_BUFFER_LENGHT;
 
-		if(storeEcgBinarySemaphore != NULL) {
-
-			ecgDataBuffer[ecgDataBufferNumberIndex][ecgDataBufferIndex] = (uint16_t)averageValue;
-
-
-			if(ecgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
-				ecgDataBufferIndex++;
-			} else {
-				ecgDataBufferIndex = 0;
-				if(ecgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-					ecgDataBufferNumberIndex++;
-				} else {
-					ecgDataBufferNumberIndex = 0;
-				}
-				//xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
-				//portYIELD_FROM_ISR(pdFALSE);
-			}
-
-		}
+		storeSampleECG(averageValue);
 
 		if(standartECGQueue != 0) {
 			if(graphCounter < GRAPH_DOWNSAMPLING_VALUE) {
