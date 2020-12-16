@@ -262,7 +262,7 @@ osThreadId_t fatFsTaskHandle;
 const osThreadAttr_t fatFsTask_attributes = {
   .name = "fatFsTask",
   .priority = (osPriority_t) osPriorityHigh,
-  .stack_size = 1024 * 5
+  .stack_size = 1024 * 4
 };
 /* Definitions for usbTask */
 osThreadId_t usbTaskHandle;

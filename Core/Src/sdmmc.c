@@ -37,7 +37,7 @@ void MX_SDMMC1_SD_Init(void)
   hsd1.Init.BusWide = SDMMC_BUS_WIDE_4B;
   hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
   // 480MHz / 10 = 48MHz
-  hsd1.Init.ClockDiv = 40;
+  hsd1.Init.ClockDiv = 20;
   hsd1.Init.TranceiverPresent = SDMMC_TRANSCEIVER_NOT_PRESENT;
 
 }

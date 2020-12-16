@@ -57,7 +57,7 @@ int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
 uint16_t rightEarPPIRDataBufferIndex = 0;
 uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
 
-//USE_SPECIAL_RAM_REGION
+USE_SPECIAL_RAM_REGION
 char writingBuffer[WRITING_BUFFER_SIZE];
 
 static SemaphoreHandle_t* doubleBufferBinarySemaphore = NULL;
