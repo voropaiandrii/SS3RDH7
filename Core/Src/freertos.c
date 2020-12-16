@@ -135,7 +135,7 @@ static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
 /* Definitions for touchTask */
@@ -143,126 +143,126 @@ osThreadId_t touchTaskHandle;
 const osThreadAttr_t touchTask_attributes = {
   .name = "touchTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for touchIRQTask */
 osThreadId_t touchIRQTaskHandle;
 const osThreadAttr_t touchIRQTask_attributes = {
   .name = "touchIRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for max30003Task */
 osThreadId_t max30003TaskHandle;
 const osThreadAttr_t max30003Task_attributes = {
   .name = "max30003Task",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for max30003IRQTask */
 osThreadId_t max30003IRQTaskHandle;
 const osThreadAttr_t max30003IRQTask_attributes = {
   .name = "max30003IRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for max30102Task */
 osThreadId_t max30102TaskHandle;
 const osThreadAttr_t max30102Task_attributes = {
   .name = "max30102Task",
   .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for max30102IRQTask */
 osThreadId_t max30102IRQTaskHandle;
 const osThreadAttr_t max30102IRQTask_attributes = {
   .name = "max30102IRQTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161RTask */
 osThreadId_t maxm86161RTaskHandle;
 const osThreadAttr_t maxm86161RTask_attributes = {
   .name = "maxm86161RTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161IRTask */
 osThreadId_t maxm86161IRTaskHandle;
 const osThreadAttr_t maxm86161IRTask_attributes = {
   .name = "maxm86161IRTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161LTask */
 osThreadId_t maxm86161LTaskHandle;
 const osThreadAttr_t maxm86161LTask_attributes = {
   .name = "maxm86161LTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161ILTask */
 osThreadId_t maxm86161ILTaskHandle;
 const osThreadAttr_t maxm86161ILTask_attributes = {
   .name = "maxm86161ILTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c1TxTask */
 osThreadId_t i2c1TxTaskHandle;
 const osThreadAttr_t i2c1TxTask_attributes = {
   .name = "i2c1TxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c1RxTask */
 osThreadId_t i2c1RxTaskHandle;
 const osThreadAttr_t i2c1RxTask_attributes = {
   .name = "i2c1RxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c1ErrorTask */
 osThreadId_t i2c1ErrorTaskHandle;
 const osThreadAttr_t i2c1ErrorTask_attributes = {
   .name = "i2c1ErrorTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c2TxTask */
 osThreadId_t i2c2TxTaskHandle;
 const osThreadAttr_t i2c2TxTask_attributes = {
   .name = "i2c2TxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c2RxTask */
 osThreadId_t i2c2RxTaskHandle;
 const osThreadAttr_t i2c2RxTask_attributes = {
   .name = "i2c2RxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c2ErrorTask */
 osThreadId_t i2c2ErrorTaskHandle;
 const osThreadAttr_t i2c2ErrorTask_attributes = {
   .name = "i2c2ErrorTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for debugTask */
 osThreadId_t debugTaskHandle;
 const osThreadAttr_t debugTask_attributes = {
   .name = "debugTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for fatFsTask */
 osThreadId_t fatFsTaskHandle;
 const osThreadAttr_t fatFsTask_attributes = {
   .name = "fatFsTask",
-  .priority = (osPriority_t) osPriorityHigh,
-  .stack_size = 1024 * 4
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 1024 * 6
 };
 /* Definitions for usbTask */
 osThreadId_t usbTaskHandle;
@@ -290,21 +290,21 @@ osThreadId_t i2c4TxTaskHandle;
 const osThreadAttr_t i2c4TxTask_attributes = {
   .name = "i2c4TxTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c4RxTask */
 osThreadId_t i2c4RxTaskHandle;
 const osThreadAttr_t i2c4RxTask_attributes = {
   .name = "i2c4RxTask",
   .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 /* Definitions for i2c4ErrorTask */
 osThreadId_t i2c4ErrorTaskHandle;
 const osThreadAttr_t i2c4ErrorTask_attributes = {
   .name = "i2c4ErrorTask",
   .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 1024 * 2
+  .stack_size = 1024 * 4
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -444,23 +444,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin) {
     }
 }
 
-/**
-  * @brief This function handles USB On The Go FS global interrupt.
-  */
-void OTG_FS_IRQHandler(void)
-{
-  /* USER CODE BEGIN OTG_FS_IRQn 0 */
-    //HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
-  /* USER CODE END OTG_FS_IRQn 0 */
-  //HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
-  /* USER CODE BEGIN OTG_FS_IRQn 1 */
-	//xSemaphoreGiveFromISR(usbBinarySemaphore, pdTRUE);
-	//portYIELD_FROM_ISR(pdTRUE);
-  /* USER CODE END OTG_FS_IRQn 1 */
-
-
-	HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
-}
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -807,6 +790,8 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of usbDmaRxTask */
   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
+
+
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
