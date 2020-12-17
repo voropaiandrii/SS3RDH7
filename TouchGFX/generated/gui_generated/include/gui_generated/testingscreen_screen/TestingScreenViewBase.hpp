@@ -21,6 +21,24 @@ public:
     virtual ~TestingScreenViewBase() {}
     virtual void setupScreen();
 
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void startTesting()
+    {
+        // Override and implement this function in TestingScreen
+    }
+
+    virtual void pauseTesting()
+    {
+        // Override and implement this function in TestingScreen
+    }
+
+    virtual void stopTesting()
+    {
+        // Override and implement this function in TestingScreen
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -46,6 +64,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textOutputBuffer[TEXTOUTPUT_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<TestingScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

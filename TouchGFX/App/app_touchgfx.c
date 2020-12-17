@@ -20,6 +20,7 @@
 void touchgfx_init(void);
 void touchgfx_taskEntry(void);
 
+
 /**
  * Initialize TouchGFX application
  */
@@ -45,6 +46,10 @@ void TouchGFX_Task(void *argument)
 {
   // Calling farward to touchgfx_init in C++ domain
   touchgfx_taskEntry();
+}
+
+void printForTesting(char* string) {
+	printTesting(string);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -31,6 +31,18 @@ public:
 
     virtual void updateTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {}
 
+    virtual void makeScreenshot() {}
+    virtual void startRecording() {}
+    virtual void stopRecording() {}
+    virtual void connectDevices() {}
+    virtual void disconnectDevices() {}
+    virtual void cleanGraphs() {}
+
+    virtual void updateButtonsState(uint8_t isRecording, uint8_t isConnected) {}
+    virtual void updateTestingButtonsState(uint8_t testingState) {}
+
+    virtual void printTestingOutput(char* string) {}
+
     virtual ~ModelListener() {}
 
     void bind(Model* m)

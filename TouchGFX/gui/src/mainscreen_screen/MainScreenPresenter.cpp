@@ -100,3 +100,61 @@ void MainScreenPresenter::setFingerPPGIRLimits(int minValue, int maxValue) {
 void MainScreenPresenter::updateTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
 	view.updateTime(years, months, days, hours, minutes, seconds);
 }
+
+void MainScreenPresenter::makeScreenshot()
+{
+    // Override and implement this function in MainScreen
+	model->makeScreenshot();
+}
+
+void MainScreenPresenter::startRecording()
+{
+    // Override and implement this function in MainScreen
+	model->startRecording();
+}
+
+void MainScreenPresenter::stopRecording()
+{
+    // Override and implement this function in MainScreen
+	model->stopRecording();
+}
+
+void MainScreenPresenter::connectDevices()
+{
+    // Override and implement this function in MainScreen
+	model->connectDevices();
+}
+
+void MainScreenPresenter::disconnectDevices()
+{
+    // Override and implement this function in MainScreen
+	model->disconnectDevices();
+}
+
+void MainScreenPresenter::cleanGraphs()
+{
+    // Override and implement this function in MainScreen
+	//model->cleanGraphs();
+	view.cleanUI();
+
+}
+
+void MainScreenPresenter::updateButtonsState(uint8_t isRecording, uint8_t isConnected) {
+	if(isRecording) {
+		view.changeButtonState(BUTTON_ID_START_RECORDING, BUTTON_STATE_DISABLED);
+		view.changeButtonState(BUTTON_ID_STOP_RECORDING, BUTTON_STATE_ENABLED);
+		view.showRecordingCounter();
+	} else {
+		view.changeButtonState(BUTTON_ID_START_RECORDING, BUTTON_STATE_ENABLED);
+		view.changeButtonState(BUTTON_ID_STOP_RECORDING, BUTTON_STATE_DISABLED);
+		view.hideRecordingCounter();
+	}
+
+	if(isConnected) {
+		view.changeButtonState(BUTTON_ID_CONNECT_DEVICES, BUTTON_STATE_DISABLED);
+		view.changeButtonState(BUTTON_ID_DISCONNECT_DEVICES, BUTTON_STATE_ENABLED);
+	} else {
+		view.changeButtonState(BUTTON_ID_CONNECT_DEVICES, BUTTON_STATE_ENABLED);
+		view.changeButtonState(BUTTON_ID_DISCONNECT_DEVICES, BUTTON_STATE_DISABLED);
+	}
+}

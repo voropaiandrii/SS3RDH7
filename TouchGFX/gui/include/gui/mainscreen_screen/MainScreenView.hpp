@@ -35,6 +35,21 @@ public:
     virtual ~MainScreenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void makeScreenshot();
+    void startRecording();
+    void stopRecording();
+    void connectDevices();
+    void disconnectDevices();
+    void cleanGraphs();
+
+
+    void changeButtonState(ButtonID buttonId, ButtonState state);
+
+    void showRecordingCounter();
+    void hideRecordingCounter();
+
+    void cleanUI();
 protected:
 };
 

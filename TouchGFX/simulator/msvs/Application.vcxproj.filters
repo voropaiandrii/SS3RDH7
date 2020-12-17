@@ -291,6 +291,9 @@
     <ClCompile Include="..\..\generated\gui_generated\src\testingscreen_screen\TestingScreenViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\testingscreen_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\ViewUtils.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx">
@@ -765,6 +768,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\testingscreen_screen\TestingScreenViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\testingscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\ViewUtils.hpp">
+      <Filter>Header Files\gui\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

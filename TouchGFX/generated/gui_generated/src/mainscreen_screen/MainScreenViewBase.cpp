@@ -25,7 +25,7 @@ MainScreenViewBase::MainScreenViewBase() :
     standardECGGraph.setGraphAreaMargin(0, 15, 0, 12);
     standardECGGraph.setGraphAreaPadding(0, 0, 0, 0);
     standardECGGraph.setGraphRangeY(0, 100);
-    //standardECGGraph.setClickAction(graphClickedCallback);
+    standardECGGraph.setClickAction(graphClickedCallback);
 
     standardECGGraphMajorYAxisGrid.setScale(1);
     standardECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(248, 250, 251));
@@ -44,7 +44,7 @@ MainScreenViewBase::MainScreenViewBase() :
     earECGGraph.setGraphAreaMargin(0, 15, 0, 12);
     earECGGraph.setGraphAreaPadding(0, 0, 0, 0);
     earECGGraph.setGraphRangeY(0, 100);
-    //earECGGraph.setClickAction(graphClickedCallback);
+    earECGGraph.setClickAction(graphClickedCallback);
 
     earECGGraphMajorYAxisGrid.setScale(1);
     earECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(252, 253, 254));
@@ -63,7 +63,7 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGGreenGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGGreenGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGGreenGraph.setGraphRangeY(0, 100);
-    //leftEarPPGGreenGraph.setClickAction(graphClickedCallback);
+    leftEarPPGGreenGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGGreenGraphMajorYAxisGrid.setScale(1);
     leftEarPPGGreenGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -82,7 +82,7 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGRedGraph.setGraphRangeY(0, 100);
-    //leftEarPPGRedGraph.setClickAction(graphClickedCallback);
+    leftEarPPGRedGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGRedGraphMajorYAxisGrid.setScale(1);
     leftEarPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(247, 248, 249));
@@ -101,7 +101,7 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGIRGraph.setGraphRangeY(0, 100);
-    //leftEarPPGIRGraph.setClickAction(graphClickedCallback);
+    leftEarPPGIRGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGIRGraphMajorYAxisGrid.setScale(1);
     leftEarPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 253, 254));
@@ -120,7 +120,7 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGIRGraph.setGraphRangeY(0, 100);
-    //rightEarPPGIRGraph.setClickAction(graphClickedCallback);
+    rightEarPPGIRGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGIRGraphMajorYAxisGrid.setScale(1);
     rightEarPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 252, 252));
@@ -139,7 +139,7 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGRedGraph.setGraphRangeY(0, 100);
-    //rightEarPPGRedGraph.setClickAction(graphClickedCallback);
+    rightEarPPGRedGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGRedGraphMajorYAxisGrid.setScale(1);
     rightEarPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 252, 252));
@@ -158,7 +158,7 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGGreenGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGGreenGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGGreenGraph.setGraphRangeY(0, 100);
-    //rightEarPPGGreenGraph.setClickAction(graphClickedCallback);
+    rightEarPPGGreenGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGGreenGraphMajorYAxisGrid.setScale(1);
     rightEarPPGGreenGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -177,7 +177,7 @@ MainScreenViewBase::MainScreenViewBase() :
     fingerPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     fingerPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     fingerPPGIRGraph.setGraphRangeY(0, 100);
-    //fingerPPGIRGraph.setClickAction(graphClickedCallback);
+    fingerPPGIRGraph.setClickAction(graphClickedCallback);
 
     fingerPPGIRGraphMajorYAxisGrid.setScale(1);
     fingerPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -196,7 +196,7 @@ MainScreenViewBase::MainScreenViewBase() :
     fingerPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     fingerPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     fingerPPGRedGraph.setGraphRangeY(0, 100);
-    //fingerPPGRedGraph.setClickAction(graphClickedCallback);
+    fingerPPGRedGraph.setClickAction(graphClickedCallback);
 
     fingerPPGRedGraphMajorYAxisGrid.setScale(1);
     fingerPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(248, 250, 251));
@@ -217,7 +217,7 @@ MainScreenViewBase::MainScreenViewBase() :
     realTimeDigitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
     realTimeDigitalClock.setTime24Hour(10, 10, 0);
 
-    cpuUsageTextProgress.setXY(715, -2);
+    cpuUsageTextProgress.setXY(715, -1);
     cpuUsageTextProgress.setProgressIndicatorPosition(0, 0, 84, 34);
     cpuUsageTextProgress.setRange(0, 100);
     cpuUsageTextProgress.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 250, 250));
@@ -225,8 +225,6 @@ MainScreenViewBase::MainScreenViewBase() :
     cpuUsageTextProgress.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
     cpuUsageTextProgress.setBackground(touchgfx::Bitmap(BITMAP_DARK_PROGRESSINDICATORS_BG_MEDIUM_TEXT_PROGRESS_BG_SQUARE_ID));
     cpuUsageTextProgress.setValue(0);
-    cpuUsageTextProgress.setHeight(25);
-
 
     recordingDigitalClock.setPosition(175, 0, 100, 25);
     recordingDigitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(254, 3, 3));

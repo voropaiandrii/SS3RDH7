@@ -3,6 +3,7 @@
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
+#include <gui/common/CustomButtons.hpp>
 
 using namespace touchgfx;
 
@@ -26,6 +27,14 @@ public:
     virtual void deactivate();
 
     virtual ~TestingScreenPresenter() {};
+
+    void startTesting();
+    void pauseTesting();
+    void stopTesting();
+
+    void updateTestingButtonsState(uint8_t testingState);
+
+    void printTestingOutput(char* string);
 
 private:
     TestingScreenPresenter();

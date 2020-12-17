@@ -20,6 +20,14 @@
 #define NUMBER_OF_CHANNELS						10
 #define WRITING_BUFFER_SIZE						ECG_BUFFER_SIZE * ((BYTES_PER_SAMPLE * NUMBER_OF_CHANNELS) + 1)
 
+#define RECORDING_STATE_STARTED					1
+#define RECORDING_STATE_STOPPED					0
+#define RECORDING_STATE_DEFAULT					RECORDING_STATE_STOPPED
+
+#define CONNECTING_STATE_CONNECTED				1
+#define CONNECTING_STATE_DISCONNECTED			0
+#define CONNECTING_STATE_DEFAULT				CONNECTING_STATE_DISCONNECTED
+
 void setDoubleBufferSemaphore(SemaphoreHandle_t* semaphore);
 void storeSampleECG(uint16_t sample);
 void storeSampleECGEar(uint16_t sample);
@@ -32,5 +40,11 @@ void storeSamplePPGEarGreenRight(uint16_t sample);
 void storeSamplePPGEarRedRight(uint16_t sample);
 void storeSamplePPGEarIRRight(uint16_t sample);
 uint32_t combineWritingBuffer(char** bufferPointer);
+uint8_t isRecordingUseCase();
+void startRecordingUseCase();
+void stopRecordingUseCase();
+uint8_t isDevicesConnectedUseCase();
+void connectAllDevicesUseCase();
+void disconnectAllDevicesUseCase();
 
 #endif /* INC_DOMAIN_USE_CASES_RECORDING_USE_CASE_H_ */

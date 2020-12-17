@@ -11,6 +11,14 @@ public:
     virtual ~TestingScreenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void startTesting();
+    void pauseTesting();
+    void stopTesting();
+
+    void changeButtonState(ButtonID buttonId, ButtonState state);
+
+    void printTestingOutput(char* string);
 protected:
 };
 

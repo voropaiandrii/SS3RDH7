@@ -6,6 +6,8 @@ extern "C" {
 	#include "time/time.h"
 	#include "display/display.h"
 	#include "data/saved_data_application.h"
+	#include "domain/use_cases/recording_use_case.h"
+	#include "domain/use_cases/testing_use_case.h"
 }
 
 extern "C" QueueHandle_t standartECGQueue;
@@ -21,6 +23,7 @@ extern "C" QueueHandle_t fingerPPGIRQueue;
 
 int counter = 0;
 int value = 0;
+uint8_t initModel = 0;
 
 GraphLimits standardECGLimits;
 GraphLimits inEarECGMLimits;
@@ -32,6 +35,13 @@ GraphLimits rightEarPPGRedLimits;
 GraphLimits rightEarPPGIRLimits;
 GraphLimits fingerPPGRedLimits;
 GraphLimits fingerPPGIIRLimits;
+
+void GraphLimits::clean() {
+	this->counter = 0;
+	this->minValue = 0;
+	this->maxValue = 0;
+	this->lastUpdateMillis = 0;
+}
 
 Model::Model() : modelListener(0)
 {
@@ -94,6 +104,13 @@ void Model::tick()
 	}
 
 	updateRTCTime();
+
+	if(initModel == 0) {
+		initModel = 1;
+		modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+		//modelListener->updateTestingButtonsState(getTestingState());
+	}
+
 }
 
 void Model::setDisplayBrigthness(int percentage) {
@@ -248,5 +265,67 @@ void Model::updateRTCTime() {
 			currentDate.minutes,
 			currentDate.seconds);
 
+}
+
+void Model::makeScreenshot()
+{
+    // Override and implement this function in MainScreen
+}
+
+void Model::startRecording()
+{
+	startRecordingUseCase();
+	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+void Model::stopRecording()
+{
+	stopRecordingUseCase();
+	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+void Model::connectDevices()
+{
+	connectAllDevicesUseCase();
+	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+void Model::disconnectDevices()
+{
+	disconnectAllDevicesUseCase();
+	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+void Model::cleanGraphs()
+{
+	standardECGLimits.clean();
+	inEarECGMLimits.clean();
+	leftEarPPGGreenLimits.clean();
+	leftEarPPGRedLimits.clean();
+	leftEarPPGIRLimits.clean();
+	rightEarPPGGreenLimits.clean();
+	rightEarPPGRedLimits.clean();
+	rightEarPPGIRLimits.clean();
+	fingerPPGRedLimits.clean();
+	fingerPPGIIRLimits.clean();
+}
+
+void Model::startTesting() {
+	startTestingUseCase();
+	modelListener->updateTestingButtonsState(getTestingState());
+}
+
+void Model::pauseTesting() {
+	pauseTestingUseCase();
+	modelListener->updateTestingButtonsState(getTestingState());
+}
+
+void Model::stopTesting() {
+	stopTestingUseCase();
+	modelListener->updateTestingButtonsState(getTestingState());
+}
+
+void Model::printTestingOutput(char* string) {
+	modelListener->printTestingOutput(string);
 }
 

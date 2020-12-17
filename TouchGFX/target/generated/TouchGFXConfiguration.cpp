@@ -26,6 +26,7 @@
 
 extern "C" void touchgfx_init();
 extern "C" void touchgfx_taskEntry();
+extern "C" void printTesting(char* string);
 
 static STM32TouchController tc;
 static STM32H7DMA dma;
@@ -63,6 +64,11 @@ void touchgfx_taskEntry()
   * Note This function never returns
   */
   hal.taskEntry();
+}
+
+void printTesting(char* string) {
+	FrontendHeap& heap = FrontendHeap::getInstance();
+	heap.model.printTestingOutput(string);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

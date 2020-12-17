@@ -908,7 +908,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -967,7 +967,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1026,7 +1026,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1086,7 +1086,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1146,7 +1146,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1206,7 +1206,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1266,7 +1266,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1326,7 +1326,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1386,7 +1386,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1446,7 +1446,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1501,7 +1501,7 @@
             "Name": "cpuUsageTextProgress",
             "X": 715,
             "Y": -1,
-            "Width": 85,
+            "Width": 84,
             "Height": 24,
             "Visible": true,
             "LockPosition": true,
@@ -1629,7 +1629,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1653,7 +1653,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -1677,7 +1677,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           },
@@ -2235,7 +2235,44 @@
             "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "runTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "startTesting"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "pauseTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "pauseTesting"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "stopTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "stopTesting"
+            }
+          }
+        ],
         "Name": "TestingScreen",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0

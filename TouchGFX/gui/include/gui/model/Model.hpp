@@ -6,12 +6,15 @@
 
 class ModelListener;
 
-typedef struct {
-	int minValue = 0;
-	int maxValue = 0;
-	uint32_t lastUpdateMillis = 0;
-	uint8_t counter = 0;
-} GraphLimits;
+class GraphLimits {
+	public:
+		void clean();
+
+		int minValue = 0;
+		int maxValue = 0;
+		uint32_t lastUpdateMillis = 0;
+		uint8_t counter = 0;
+};
 
 class Model
 {
@@ -26,6 +29,20 @@ public:
     void tick();
     void setDisplayBrigthness(int percentage);
     int getDisplayBrigthness();
+
+    void makeScreenshot();
+    void startRecording();
+    void stopRecording();
+    void connectDevices();
+    void disconnectDevices();
+    void cleanGraphs();
+
+    void startTesting();
+    void pauseTesting();
+    void stopTesting();
+
+    void printTestingOutput(char* string);
+
 protected:
     ModelListener* modelListener;
 private:

@@ -6,7 +6,8 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-TestingScreenViewBase::TestingScreenViewBase()
+TestingScreenViewBase::TestingScreenViewBase() :
+    buttonCallback(this, &TestingScreenViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 800, 480);
@@ -26,18 +27,21 @@ TestingScreenViewBase::TestingScreenViewBase()
     stopTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
     stopTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     stopTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    stopTestingButton.setAction(buttonCallback);
 
     pauseTestingButton.setXY(315, 90);
     pauseTestingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     pauseTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID58));
     pauseTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     pauseTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    pauseTestingButton.setAction(buttonCallback);
 
     runTestingButton.setXY(315, 25);
     runTestingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     runTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID56));
     runTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     runTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    runTestingButton.setAction(buttonCallback);
 
     textOutputScrollableContainer.setPosition(50, 240, 700, 240);
     textOutputScrollableContainer.enableHorizontalScroll(false);
@@ -67,4 +71,29 @@ TestingScreenViewBase::TestingScreenViewBase()
 void TestingScreenViewBase::setupScreen()
 {
     navigationMenu1.initialize();
+}
+
+void TestingScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &stopTestingButton)
+    {
+        //Interaction3
+        //When stopTestingButton clicked call virtual function
+        //Call stopTesting
+        stopTesting();
+    }
+    else if (&src == &pauseTestingButton)
+    {
+        //Interaction2
+        //When pauseTestingButton clicked call virtual function
+        //Call pauseTesting
+        pauseTesting();
+    }
+    else if (&src == &runTestingButton)
+    {
+        //Interaction1
+        //When runTestingButton clicked call virtual function
+        //Call startTesting
+        startTesting();
+    }
 }

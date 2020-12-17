@@ -16,7 +16,6 @@
 #include <touchgfx/containers/progress_indicators/TextProgress.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <gui/containers/NavigationMenu.hpp>
-#include <touchgfx/mixins/ClickListener.hpp>
 
 class MainScreenViewBase : public touchgfx::View<MainScreenPresenter>
 {
@@ -118,43 +117,43 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::TiledImage MainBackgroundTiledImage1;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > standardECGGraph;
+    touchgfx::GraphWrapAndOverwrite<100> standardECGGraph;
     touchgfx::GraphElementLine standardECGGraphLine1;
     touchgfx::PainterRGB888 standardECGGraphLine1Painter;
     touchgfx::GraphElementGridY standardECGGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > earECGGraph;
+    touchgfx::GraphWrapAndOverwrite<100> earECGGraph;
     touchgfx::GraphElementLine earECGGraphLine1;
     touchgfx::PainterRGB888 earECGGraphLine1Painter;
     touchgfx::GraphElementGridY earECGGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > leftEarPPGGreenGraph;
+    touchgfx::GraphWrapAndOverwrite<100> leftEarPPGGreenGraph;
     touchgfx::GraphElementLine leftEarPPGGreenGraphLine1;
     touchgfx::PainterRGB888 leftEarPPGGreenGraphLine1Painter;
     touchgfx::GraphElementGridY leftEarPPGGreenGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > leftEarPPGRedGraph;
+    touchgfx::GraphWrapAndOverwrite<100> leftEarPPGRedGraph;
     touchgfx::GraphElementLine leftEarPPGRedGraphLine1;
     touchgfx::PainterRGB888 leftEarPPGRedGraphLine1Painter;
     touchgfx::GraphElementGridY leftEarPPGRedGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > leftEarPPGIRGraph;
+    touchgfx::GraphWrapAndOverwrite<100> leftEarPPGIRGraph;
     touchgfx::GraphElementLine leftEarPPGIRGraphLine1;
     touchgfx::PainterRGB888 leftEarPPGIRGraphLine1Painter;
     touchgfx::GraphElementGridY leftEarPPGIRGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > rightEarPPGIRGraph;
+    touchgfx::GraphWrapAndOverwrite<100> rightEarPPGIRGraph;
     touchgfx::GraphElementLine rightEarPPGIRGraphLine1;
     touchgfx::PainterRGB888 rightEarPPGIRGraphLine1Painter;
     touchgfx::GraphElementGridY rightEarPPGIRGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > rightEarPPGRedGraph;
+    touchgfx::GraphWrapAndOverwrite<100> rightEarPPGRedGraph;
     touchgfx::GraphElementLine rightEarPPGRedGraphLine1;
     touchgfx::PainterRGB888 rightEarPPGRedGraphLine1Painter;
     touchgfx::GraphElementGridY rightEarPPGRedGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > rightEarPPGGreenGraph;
+    touchgfx::GraphWrapAndOverwrite<100> rightEarPPGGreenGraph;
     touchgfx::GraphElementLine rightEarPPGGreenGraphLine1;
     touchgfx::PainterRGB888 rightEarPPGGreenGraphLine1Painter;
     touchgfx::GraphElementGridY rightEarPPGGreenGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > fingerPPGIRGraph;
+    touchgfx::GraphWrapAndOverwrite<100> fingerPPGIRGraph;
     touchgfx::GraphElementLine fingerPPGIRGraphLine1;
     touchgfx::PainterRGB888 fingerPPGIRGraphLine1Painter;
     touchgfx::GraphElementGridY fingerPPGIRGraphMajorYAxisGrid;
-    touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > fingerPPGRedGraph;
+    touchgfx::GraphWrapAndOverwrite<100> fingerPPGRedGraph;
     touchgfx::GraphElementLine fingerPPGRedGraphLine1;
     touchgfx::PainterRGB888 fingerPPGRedGraphLine1Painter;
     touchgfx::GraphElementGridY fingerPPGRedGraphMajorYAxisGrid;
@@ -164,9 +163,9 @@ protected:
     touchgfx::ButtonWithIcon cleanButton;
     touchgfx::ButtonWithIcon disconnectDevicesButton;
     touchgfx::ButtonWithIcon connectDevicesButton;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > stopRecordingButton;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > startRecordingButton;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > makeScreenshotButton;
+    touchgfx::ButtonWithIcon stopRecordingButton;
+    touchgfx::ButtonWithIcon startRecordingButton;
+    touchgfx::ButtonWithIcon makeScreenshotButton;
     NavigationMenu navigationMenu1;
 
 private:

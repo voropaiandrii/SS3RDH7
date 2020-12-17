@@ -1,4 +1,5 @@
 #include <gui/mainscreen_screen/MainScreenView.hpp>
+#include <gui/common/ViewUtils.hpp>
 
 MainScreenView::MainScreenView()
 {
@@ -39,7 +40,7 @@ void MainScreenView::setupScreen()
     rightEarPPGIRGraph.setGraphRangeY(0, 0x1FFFFF);
     rightEarPPGIRGraphMajorYAxisGrid.setInterval(80000);
 
-
+    recordingDigitalClock.setVisible(false);
 }
 
 void MainScreenView::tearDownScreen()
@@ -129,4 +130,87 @@ void MainScreenView::setFingerPPGIRLimits(int minValue, int maxValue) {
 
 void MainScreenView::updateTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
 	realTimeDigitalClock.setTime24Hour(hours, minutes, seconds);
+}
+
+void MainScreenView::makeScreenshot()
+{
+	presenter->makeScreenshot();
+}
+
+void MainScreenView::startRecording()
+{
+	presenter->startRecording();
+}
+
+void MainScreenView::stopRecording()
+{
+	presenter->stopRecording();
+}
+
+void MainScreenView::connectDevices()
+{
+	presenter->connectDevices();
+}
+
+void MainScreenView::disconnectDevices()
+{
+	presenter->disconnectDevices();
+}
+
+void MainScreenView::cleanGraphs()
+{
+	presenter->cleanGraphs();
+}
+
+void MainScreenView::changeButtonState(ButtonID buttonId, ButtonState state) {
+	Button* button = NULL;
+	switch(buttonId) {
+		case BUTTON_ID_MAKE_SCREENSHOT:
+			button = &makeScreenshotButton;
+			break;
+		case BUTTON_ID_START_RECORDING:
+			button = &startRecordingButton;
+			break;
+		case BUTTON_ID_STOP_RECORDING:
+			button = &stopRecordingButton;
+			break;
+		case BUTTON_ID_CONNECT_DEVICES:
+			button = &connectDevicesButton;
+			break;
+		case BUTTON_ID_DISCONNECT_DEVICES:
+			button = &disconnectDevicesButton;
+			break;
+		case BUTTON_ID_CLEAN:
+			button = &cleanButton;
+			break;
+	}
+
+	if(button != NULL) {
+		if(state == BUTTON_STATE_ENABLED) {
+			ViewUtils::enableButton(button);
+		} else {
+			ViewUtils::disableButton(button);
+		}
+	}
+}
+
+void MainScreenView::showRecordingCounter() {
+	recordingDigitalClock.setVisible(true);
+}
+
+void MainScreenView::hideRecordingCounter() {
+	recordingDigitalClock.setVisible(false);
+}
+
+void MainScreenView::cleanUI() {
+	standardECGGraph.clear();
+	earECGGraph.clear();
+	fingerPPGRedGraph.clear();
+	fingerPPGIRGraph.clear();
+	leftEarPPGGreenGraph.clear();
+	leftEarPPGRedGraph.clear();
+	leftEarPPGIRGraph.clear();
+	rightEarPPGGreenGraph.clear();
+	rightEarPPGRedGraph.clear();
+	rightEarPPGIRGraph.clear();
 }

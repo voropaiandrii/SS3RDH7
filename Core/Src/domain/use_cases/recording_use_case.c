@@ -60,6 +60,9 @@ uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
 USE_SPECIAL_RAM_REGION
 char writingBuffer[WRITING_BUFFER_SIZE];
 
+uint8_t	currentRecordingState = RECORDING_STATE_DEFAULT;
+uint8_t	currentConnectingState = CONNECTING_STATE_DEFAULT;
+
 static SemaphoreHandle_t* doubleBufferBinarySemaphore = NULL;
 static uint8_t writingDataBufferNumberIndex = 0;
 
@@ -246,3 +249,26 @@ uint32_t combineWritingBuffer(char** bufferPointer) {
 	return WRITING_BUFFER_SIZE;
 }
 
+uint8_t isRecordingUseCase() {
+	return currentRecordingState;
+}
+
+void startRecordingUseCase() {
+	currentRecordingState = RECORDING_STATE_STARTED;
+}
+
+void stopRecordingUseCase() {
+	currentRecordingState = RECORDING_STATE_STOPPED;
+}
+
+uint8_t isDevicesConnectedUseCase() {
+	return currentConnectingState;
+}
+
+void connectAllDevicesUseCase() {
+	currentConnectingState = CONNECTING_STATE_CONNECTED;
+}
+
+void disconnectAllDevicesUseCase() {
+	currentConnectingState = CONNECTING_STATE_DISCONNECTED;
+}
