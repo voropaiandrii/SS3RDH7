@@ -81,6 +81,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId60",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "dayTextArea",
             "X": 55,
             "Y": 240,
@@ -105,6 +110,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId61",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "textMonthArea",
             "X": 155,
             "Y": 240,
@@ -129,6 +139,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId62",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yearTextArea",
             "X": 240,
             "Y": 240,
@@ -153,6 +168,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId63",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "hoursTextArea",
             "X": 495,
             "Y": 240,
@@ -177,6 +197,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId64",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "minutesTextArea",
             "X": 595,
             "Y": 240,
@@ -201,6 +226,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId65",
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "secondsTextArea",
             "X": 695,
             "Y": 240,
@@ -594,7 +624,7 @@
             "Width": 683,
             "Height": 68,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -609,7 +639,7 @@
             "Width": 260,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -641,6 +671,162 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "MainScreen"
             }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "saveSettingsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "saveSettings"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseSecondsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseSeconds"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseSecondsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseSeconds"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseMinutesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseMinutes"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseMinutesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseMinutes"
+            }
+          },
+          {
+            "InteractionName": "Interaction7",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseHoursButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseHours"
+            }
+          },
+          {
+            "InteractionName": "Interaction8",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseHoursButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseHours"
+            }
+          },
+          {
+            "InteractionName": "Interaction9",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseYearButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseYear"
+            }
+          },
+          {
+            "InteractionName": "Interaction10",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseYearButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseYear"
+            }
+          },
+          {
+            "InteractionName": "Interaction11",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseMonthButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseMonths"
+            }
+          },
+          {
+            "InteractionName": "Interaction12",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseMonthButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseMonths"
+            }
+          },
+          {
+            "InteractionName": "Interaction13",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseDayButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseDays"
+            }
+          },
+          {
+            "InteractionName": "Interaction14",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseDayButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseDays"
+            }
           }
         ],
         "Name": "SettingsScreen",
@@ -661,7 +847,7 @@
             "Width": 800,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -720,7 +906,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -779,7 +965,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -838,7 +1024,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -898,7 +1084,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -952,28 +1138,13 @@
               "LineWidth": 1,
               "Alpha": 255
             },
-            "XAxisLabel": {
-              "Type": "GraphLabel",
-              "Interval": 10.0,
-              "NumberOfDecimals": 0,
-              "DecimalSeparator": "Point",
-              "TextColor": {
-                "Red": 255,
-                "Green": 255,
-                "Blue": 255
-              },
-              "TextId": "SingleUseId16",
-              "Alpha": 255,
-              "TextRotation": "0",
-              "Position": "Bottom"
-            },
             "Name": "leftEarPPGIRGraph",
             "X": 50,
             "Y": 390,
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1027,28 +1198,13 @@
               "LineWidth": 1,
               "Alpha": 255
             },
-            "XAxisLabel": {
-              "Type": "GraphLabel",
-              "Interval": 10.0,
-              "NumberOfDecimals": 0,
-              "DecimalSeparator": "Point",
-              "TextColor": {
-                "Red": 255,
-                "Green": 255,
-                "Blue": 255
-              },
-              "TextId": "SingleUseId14",
-              "Alpha": 255,
-              "TextRotation": "0",
-              "Position": "Bottom"
-            },
             "Name": "rightEarPPGIRGraph",
             "X": 425,
             "Y": 390,
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1108,7 +1264,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1168,7 +1324,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1228,7 +1384,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1288,7 +1444,7 @@
             "Width": 375,
             "Height": 90,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -1315,120 +1471,7 @@
             "Width": 100,
             "Height": 25,
             "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId48",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 250,
-              "Green": 247,
-              "Blue": 247
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "recordingStateTextArea",
-            "X": 541,
-            "Y": 0,
-            "Width": 102,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "IconPressed": "__designer\\Dark_Icons_Stop_32.png",
-            "IconReleased": "__designer\\Dark_Icons_Stop_32.png",
-            "IconX": 14,
-            "IconY": 14,
-            "IconHeight": 32,
-            "IconWidth": 32,
-            "ButtonStyle": "Style1",
-            "IconStyle": "Icon61",
-            "Name": "stopRecordingButton",
-            "X": -5,
-            "Y": 115,
-            "Width": 60,
-            "Height": 60,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "IconPressed": "__designer\\Dark_Icons_Inbox_32.png",
-            "IconReleased": "__designer\\Dark_Icons_Inbox_32.png",
-            "IconX": 14,
-            "IconY": 16,
-            "IconHeight": 28,
-            "IconWidth": 32,
-            "ButtonStyle": "Style1",
-            "Name": "makeScreenshotButton",
-            "X": -5,
-            "Y": -5,
-            "Width": 60,
-            "Height": 60,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
-            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
-            "Alpha": 255,
-            "IconPressed": "__designer\\Dark_Icons_Play_32.png",
-            "IconReleased": "__designer\\Dark_Icons_Play_32.png",
-            "IconX": 19,
-            "IconY": 14,
-            "IconHeight": 32,
-            "IconWidth": 23,
-            "ButtonStyle": "Style1",
-            "IconStyle": "Icon45",
-            "Name": "startRecordingButton",
-            "X": -5,
-            "Y": 55,
-            "Width": 60,
-            "Height": 60,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": true,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "CustomContainerDefinitionName": "NavigationMenu",
-            "Type": "CustomContainerInstance",
-            "Name": "navigationMenu1",
-            "X": 0,
-            "Y": 0,
-            "Width": 260,
-            "Height": 480,
-            "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1459,7 +1502,193 @@
             "X": 715,
             "Y": -1,
             "Width": 85,
-            "Height": 26,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DigitalClock",
+            "TextColor": {
+              "Red": 254,
+              "Green": 3,
+              "Blue": 3
+            },
+            "TextId": "SingleUseId59",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "Alpha": 255,
+            "UseAmPm": false,
+            "InitialHour": 10,
+            "InitialMinute": 10,
+            "InitialSecond": 0,
+            "Name": "recordingDigitalClock",
+            "X": 175,
+            "Y": 0,
+            "Width": 100,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "CleanButton2_32px.png",
+            "IconReleased": "CleanButton2_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "cleanButton",
+            "X": -5,
+            "Y": 295,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "DisconnectDevices_32px.png",
+            "IconReleased": "DisconnectDevices_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "disconnectDevicesButton",
+            "X": -5,
+            "Y": 235,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "ConnectDevices_32px.png",
+            "IconReleased": "ConnectDevices_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "connectDevicesButton",
+            "X": -5,
+            "Y": 175,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "StopRecordingButton_32px.png",
+            "IconReleased": "StopRecordingButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "stopRecordingButton",
+            "X": -5,
+            "Y": 115,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "StartRecordingButton_32px.png",
+            "IconReleased": "StartRecordingButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "startRecordingButton",
+            "X": -5,
+            "Y": 55,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "ScreenshotButton_32px.png",
+            "IconReleased": "ScreenshotButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "makeScreenshotButton",
+            "X": -5,
+            "Y": -5,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -1477,9 +1706,68 @@
               "TriggerComponent": "makeScreenshotButton"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "FullGraphScreen"
+              "Type": "ActionCustom",
+              "FunctionName": "makeScreenshot"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "startRecordingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "startRecording"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "stopRecordingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "stopRecording"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "connectDevicesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "connectDevices"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "disconnectDevicesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "disconnectDevices"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cleanButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "cleanGraphs"
             }
           }
         ],
@@ -1501,7 +1789,7 @@
             "Width": 800,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1627,6 +1915,210 @@
         "Name": "FullGraphScreen",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 12000
+      },
+      {
+        "Components": [
+          {
+            "Type": "TiledImage",
+            "FileName": "background2.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "backgroundTiledImage",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TiledImage",
+            "FileName": "NavigationMenuBackground0.png",
+            "Alpha": 127,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "tiledImage1",
+            "X": 50,
+            "Y": 240,
+            "Width": 700,
+            "Height": 240,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId57",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "stopTestingButton",
+            "X": 315,
+            "Y": 155,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId58",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "pauseTestingButton",
+            "X": 315,
+            "Y": 90,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId56",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "runTestingButton",
+            "X": 315,
+            "Y": 25,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId52",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 253,
+                  "Blue": 253
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 1,
+                "Wildcard1": {
+                  "TextId": "SingleUseId53",
+                  "UseBuffer": true,
+                  "BufferSize": 1000
+                },
+                "Name": "textOutput",
+                "X": 0,
+                "Y": 0,
+                "Width": 700,
+                "Height": 1000,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "ScrollableContainer",
+            "HorizontalScrollEnabled": false,
+            "VerticalScrollEnabled": true,
+            "ScrollbarsVisible": true,
+            "ScrollbarsVisibleOnPressed": true,
+            "ScrollbarsColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "ScrollbarsAlpha": 255,
+            "Name": "textOutputScrollableContainer",
+            "X": 50,
+            "Y": 240,
+            "Width": 700,
+            "Height": 240,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "TestingScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
       }
     ],
     "CustomContainerDefinitions": [
@@ -1640,7 +2132,7 @@
                 "Alpha": 255,
                 "OffsetX": 0,
                 "OffsetY": 0,
-                "Name": "tiledImage1",
+                "Name": "backgroundNavigationTiledImage",
                 "X": 0,
                 "Y": 0,
                 "Width": 200,
@@ -1699,9 +2191,39 @@
                 },
                 "TextRotation": "0",
                 "Style": "Style4",
-                "Name": "SettingsNavigationButton",
+                "Name": "SettingsScreenNavigationButton",
                 "X": 15,
                 "Y": 75,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId54",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style4",
+                "Name": "TestingScreenNavigationButton",
+                "X": 15,
+                "Y": 140,
                 "Width": 170,
                 "Height": 60,
                 "Visible": true,
@@ -1729,7 +2251,7 @@
             "VisiblePixelsWhenCollapsed": 60,
             "HiddenPixelsWhenExpanded": 0,
             "ExpandedStateTimeout": 5000,
-            "Name": "slideMenu1",
+            "Name": "screenNavigationMenu",
             "X": 0,
             "Y": 0,
             "Width": 260,
@@ -1761,12 +2283,25 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "SettingsNavigationButton"
+              "TriggerComponent": "SettingsScreenNavigationButton"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "SettingsScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "TestingScreenNavigationButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "TestingScreen"
             }
           }
         ],
@@ -1792,14 +2327,6 @@
       },
       {
         "TextEntryId": "SingleUseId5",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId14",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId16",
         "IsResource": false
       },
       {
@@ -1851,11 +2378,59 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId48",
+        "TextEntryId": "SingleUseId51",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId51",
+        "TextEntryId": "SingleUseId52",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId53",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId54",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId56",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId57",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId58",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId59",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId60",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId61",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId62",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId63",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId64",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId65",
         "IsResource": false
       }
     ],
