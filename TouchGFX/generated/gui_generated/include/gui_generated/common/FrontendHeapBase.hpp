@@ -18,6 +18,8 @@
 #include <gui/mainscreen_screen/MainScreenPresenter.hpp>
 #include <gui/fullgraphscreen_screen/FullGraphScreenView.hpp>
 #include <gui/fullgraphscreen_screen/FullGraphScreenPresenter.hpp>
+#include <gui/testingscreen_screen/TestingScreenView.hpp>
+#include <gui/testingscreen_screen/TestingScreenPresenter.hpp>
 
 
 /**
@@ -43,7 +45,8 @@ public:
     typedef touchgfx::meta::TypeList< SettingsScreenView,
             touchgfx::meta::TypeList< MainScreenView,
             touchgfx::meta::TypeList< FullGraphScreenView,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< TestingScreenView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -58,7 +61,8 @@ public:
     typedef touchgfx::meta::TypeList< SettingsScreenPresenter,
             touchgfx::meta::TypeList< MainScreenPresenter,
             touchgfx::meta::TypeList< FullGraphScreenPresenter,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< TestingScreenPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**

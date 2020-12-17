@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TiledImage.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/containers/Slider.hpp>
@@ -31,6 +32,71 @@ public:
         // Override and implement this function in SettingsScreen
     }
 
+    virtual void saveSettings()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseSeconds()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseSeconds()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseMinutes()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseMinutes()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseHours()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseHours()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseYear()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseYear()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseMonths()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseMonths()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void increaseDays()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
+    virtual void decreaseDays()
+    {
+        // Override and implement this function in SettingsScreen
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -43,12 +109,12 @@ protected:
     touchgfx::TiledImage SettingsBackgroundTiledImage1;
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea2;
-    touchgfx::TextArea dayTextArea;
-    touchgfx::TextArea textMonthArea;
-    touchgfx::TextArea yearTextArea;
-    touchgfx::TextArea hoursTextArea;
-    touchgfx::TextArea minutesTextArea;
-    touchgfx::TextArea secondsTextArea;
+    touchgfx::TextAreaWithOneWildcard dayTextArea;
+    touchgfx::TextAreaWithOneWildcard textMonthArea;
+    touchgfx::TextAreaWithOneWildcard yearTextArea;
+    touchgfx::TextAreaWithOneWildcard hoursTextArea;
+    touchgfx::TextAreaWithOneWildcard minutesTextArea;
+    touchgfx::TextAreaWithOneWildcard secondsTextArea;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > cancelSettingsButton;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > saveSettingsButton;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > decreaseDayButton;
@@ -64,7 +130,7 @@ protected:
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > decreaseSecondsButton;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > increaseSecondsButton;
     touchgfx::Slider screenBrightnessSlider;
-    touchgfx::ClickListener< NavigationMenu > navigationMenu1;
+    NavigationMenu navigationMenu1;
 
 private:
 

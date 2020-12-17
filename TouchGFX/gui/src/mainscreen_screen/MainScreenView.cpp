@@ -128,5 +128,5 @@ void MainScreenView::setFingerPPGIRLimits(int minValue, int maxValue) {
 }
 
 void MainScreenView::updateTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
-	digitalClock1.setTime24Hour(hours, minutes, seconds);
+	realTimeDigitalClock.setTime24Hour(hours, minutes, seconds);
 }

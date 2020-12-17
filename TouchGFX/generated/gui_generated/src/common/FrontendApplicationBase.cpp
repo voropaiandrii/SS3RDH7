@@ -15,6 +15,8 @@
 #include <gui/mainscreen_screen/MainScreenPresenter.hpp>
 #include <gui/fullgraphscreen_screen/FullGraphScreenView.hpp>
 #include <gui/fullgraphscreen_screen/FullGraphScreenPresenter.hpp>
+#include <gui/testingscreen_screen/TestingScreenView.hpp>
+#include <gui/testingscreen_screen/TestingScreenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -59,15 +61,15 @@ void FrontendApplicationBase::gotoMainScreenScreenNoTransitionImpl()
     touchgfx::makeTransition<MainScreenView, MainScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// FullGraphScreen
+// TestingScreen
 
-void FrontendApplicationBase::gotoFullGraphScreenScreenNoTransition()
+void FrontendApplicationBase::gotoTestingScreenScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoFullGraphScreenScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTestingScreenScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoFullGraphScreenScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoTestingScreenScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<FullGraphScreenView, FullGraphScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<TestingScreenView, TestingScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

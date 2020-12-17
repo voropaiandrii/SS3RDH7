@@ -21,8 +21,8 @@ public:
     // MainScreen
     void gotoMainScreenScreenNoTransition();
 
-    // FullGraphScreen
-    void gotoFullGraphScreenScreenNoTransition();
+    // TestingScreen
+    void gotoTestingScreenScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -35,8 +35,8 @@ protected:
     // MainScreen
     void gotoMainScreenScreenNoTransitionImpl();
 
-    // FullGraphScreen
-    void gotoFullGraphScreenScreenNoTransitionImpl();
+    // TestingScreen
+    void gotoTestingScreenScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

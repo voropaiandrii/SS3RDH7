@@ -25,10 +25,11 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::SlideMenu slideMenu1;
-    touchgfx::TiledImage tiledImage1;
+    touchgfx::SlideMenu screenNavigationMenu;
+    touchgfx::TiledImage backgroundNavigationTiledImage;
     touchgfx::ButtonWithLabel MainScreenNavigationButton;
-    touchgfx::ButtonWithLabel SettingsNavigationButton;
+    touchgfx::ButtonWithLabel SettingsScreenNavigationButton;
+    touchgfx::ButtonWithLabel TestingScreenNavigationButton;
 
 private:
 

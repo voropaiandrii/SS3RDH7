@@ -11,23 +11,23 @@ NavigationMenuBase::NavigationMenuBase() :
 {
     setWidth(260);
     setHeight(480);
-    slideMenu1.setup(touchgfx::SlideMenu::EAST,
+    screenNavigationMenu.setup(touchgfx::SlideMenu::EAST,
         touchgfx::Bitmap(BITMAP_BACKGROUNDTRANSPARENT_ID),
         touchgfx::Bitmap(BITMAP_MENUBUTTON_ID),
         touchgfx::Bitmap(BITMAP_MENUBUTTONCLICKED_ID),
         250, 480, 195, 425);
-    slideMenu1.setState(touchgfx::SlideMenu::COLLAPSED);
-    slideMenu1.setVisiblePixelsWhenCollapsed(60);
-    slideMenu1.setHiddenPixelsWhenExpanded(0);
-    slideMenu1.setAnimationEasingEquation(touchgfx::EasingEquations::cubicEaseInOut);
-    slideMenu1.setAnimationDuration(6);
-    slideMenu1.setExpandedStateTimeout(300);
-    slideMenu1.setXY(0, 0);
+    screenNavigationMenu.setState(touchgfx::SlideMenu::COLLAPSED);
+    screenNavigationMenu.setVisiblePixelsWhenCollapsed(60);
+    screenNavigationMenu.setHiddenPixelsWhenExpanded(0);
+    screenNavigationMenu.setAnimationEasingEquation(touchgfx::EasingEquations::cubicEaseInOut);
+    screenNavigationMenu.setAnimationDuration(6);
+    screenNavigationMenu.setExpandedStateTimeout(300);
+    screenNavigationMenu.setXY(0, 0);
 
-    tiledImage1.setBitmap(touchgfx::Bitmap(BITMAP_NAVIGATIONMENUBACKGROUND1_ID));
-    tiledImage1.setPosition(0, 0, 200, 480);
-    tiledImage1.setOffset(0, 0);
-    slideMenu1.add(tiledImage1);
+    backgroundNavigationTiledImage.setBitmap(touchgfx::Bitmap(BITMAP_NAVIGATIONMENUBACKGROUND1_ID));
+    backgroundNavigationTiledImage.setPosition(0, 0, 200, 480);
+    backgroundNavigationTiledImage.setOffset(0, 0);
+    screenNavigationMenu.add(backgroundNavigationTiledImage);
 
     MainScreenNavigationButton.setXY(15, 10);
     MainScreenNavigationButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -35,17 +35,25 @@ NavigationMenuBase::NavigationMenuBase() :
     MainScreenNavigationButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     MainScreenNavigationButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     MainScreenNavigationButton.setAction(buttonCallback);
-    slideMenu1.add(MainScreenNavigationButton);
+    screenNavigationMenu.add(MainScreenNavigationButton);
 
-    SettingsNavigationButton.setXY(15, 75);
-    SettingsNavigationButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    SettingsNavigationButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID26));
-    SettingsNavigationButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    SettingsNavigationButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    SettingsNavigationButton.setAction(buttonCallback);
-    slideMenu1.add(SettingsNavigationButton);
+    SettingsScreenNavigationButton.setXY(15, 75);
+    SettingsScreenNavigationButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    SettingsScreenNavigationButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID26));
+    SettingsScreenNavigationButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    SettingsScreenNavigationButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    SettingsScreenNavigationButton.setAction(buttonCallback);
+    screenNavigationMenu.add(SettingsScreenNavigationButton);
 
-    add(slideMenu1);
+    TestingScreenNavigationButton.setXY(15, 140);
+    TestingScreenNavigationButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    TestingScreenNavigationButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID54));
+    TestingScreenNavigationButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    TestingScreenNavigationButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    TestingScreenNavigationButton.setAction(buttonCallback);
+    screenNavigationMenu.add(TestingScreenNavigationButton);
+
+    add(screenNavigationMenu);
 }
 
 void NavigationMenuBase::initialize()
@@ -62,11 +70,18 @@ void NavigationMenuBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //Go to MainScreen with no screen transition
         application().gotoMainScreenScreenNoTransition();
     }
-    else if (&src == &SettingsNavigationButton)
+    else if (&src == &SettingsScreenNavigationButton)
     {
         //Interaction2
-        //When SettingsNavigationButton clicked change screen to SettingsScreen
+        //When SettingsScreenNavigationButton clicked change screen to SettingsScreen
         //Go to SettingsScreen with no screen transition
         application().gotoSettingsScreenScreenNoTransition();
+    }
+    else if (&src == &TestingScreenNavigationButton)
+    {
+        //Interaction3
+        //When TestingScreenNavigationButton clicked change screen to TestingScreen
+        //Go to TestingScreen with no screen transition
+        application().gotoTestingScreenScreenNoTransition();
     }
 }

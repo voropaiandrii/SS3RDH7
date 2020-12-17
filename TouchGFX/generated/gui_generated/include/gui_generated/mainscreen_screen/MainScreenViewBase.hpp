@@ -12,12 +12,10 @@
 #include <touchgfx/widgets/graph/GraphWrapAndOverwrite.hpp>
 #include <touchgfx/widgets/graph/GraphElements.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB888.hpp>
-#include <touchgfx/widgets/graph/GraphLabels.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/progress_indicators/TextProgress.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <gui/containers/NavigationMenu.hpp>
-#include <touchgfx/containers/progress_indicators/TextProgress.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class MainScreenViewBase : public touchgfx::View<MainScreenPresenter>
@@ -26,6 +24,89 @@ public:
     MainScreenViewBase();
     virtual ~MainScreenViewBase() {}
     virtual void setupScreen();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void makeScreenshot()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void startRecording()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void stopRecording()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void connectDevices()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void disconnectDevices()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void cleanGraphs()
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void standartECGGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void earECGGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void fingerPPGGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void fingerPPGIRGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void leftEarPPGGreenGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void leftEarPPGRedGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void leftEarPPGIRGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void rightEarPPGGreenGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void rightEarPPGRedGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
+
+    virtual void rightEarPPGIRGraphClicked(AbstractDataGraph::GraphClickEvent value)
+    {
+        // Override and implement this function in MainScreen
+    }
 
 protected:
     FrontendApplication& application() {
@@ -57,12 +138,10 @@ protected:
     touchgfx::GraphElementLine leftEarPPGIRGraphLine1;
     touchgfx::PainterRGB888 leftEarPPGIRGraphLine1Painter;
     touchgfx::GraphElementGridY leftEarPPGIRGraphMajorYAxisGrid;
-    touchgfx::GraphLabelsX leftEarPPGIRGraphMajorXAxisLabel;
     touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > rightEarPPGIRGraph;
     touchgfx::GraphElementLine rightEarPPGIRGraphLine1;
     touchgfx::PainterRGB888 rightEarPPGIRGraphLine1Painter;
     touchgfx::GraphElementGridY rightEarPPGIRGraphMajorYAxisGrid;
-    touchgfx::GraphLabelsX rightEarPPGIRGraphMajorXAxisLabel;
     touchgfx::ClickListener< touchgfx::GraphWrapAndOverwrite<100> > rightEarPPGRedGraph;
     touchgfx::GraphElementLine rightEarPPGRedGraphLine1;
     touchgfx::PainterRGB888 rightEarPPGRedGraphLine1Painter;
@@ -79,13 +158,16 @@ protected:
     touchgfx::GraphElementLine fingerPPGRedGraphLine1;
     touchgfx::PainterRGB888 fingerPPGRedGraphLine1Painter;
     touchgfx::GraphElementGridY fingerPPGRedGraphMajorYAxisGrid;
-    touchgfx::DigitalClock digitalClock1;
-    touchgfx::TextArea recordingStateTextArea;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > stopRecordingButton;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > makeScreenshotButton;
-    touchgfx::ClickListener< touchgfx::ButtonWithIcon > startRecordingButton;
-    NavigationMenu navigationMenu1;
+    touchgfx::DigitalClock realTimeDigitalClock;
     touchgfx::TextProgress cpuUsageTextProgress;
+    touchgfx::DigitalClock recordingDigitalClock;
+    touchgfx::ButtonWithIcon cleanButton;
+    touchgfx::ButtonWithIcon disconnectDevicesButton;
+    touchgfx::ButtonWithIcon connectDevicesButton;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > stopRecordingButton;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > startRecordingButton;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > makeScreenshotButton;
+    NavigationMenu navigationMenu1;
 
 private:
 
@@ -93,11 +175,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<MainScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<MainScreenViewBase, const touchgfx::AbstractDataGraph&, const touchgfx::AbstractDataGraph::GraphClickEvent&> graphClickedCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void graphClickedCallbackHandler(const touchgfx::AbstractDataGraph& src, const touchgfx::AbstractDataGraph::GraphClickEvent& value);
 
     /*
      * Canvas Buffer Size

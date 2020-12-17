@@ -208,6 +208,18 @@
     <Filter Include="Header Files\generated\gui_generated\mainscreen_screen">
       <UniqueIdentifier>0F25CCE2-8DE8-57B4-7E8F-DDAD2E611AB2</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\testingscreen_screen">
+      <UniqueIdentifier>51B68B2D-F666-5BAB-D10C-B81422EB7AE6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\testingscreen_screen">
+      <UniqueIdentifier>68318FC9-E55B-EB21-0866-A7D39252D394</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\testingscreen_screen">
+      <UniqueIdentifier>1F16E47B-E26B-A0EB-1AF8-D831FF62C577</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\testingscreen_screen">
+      <UniqueIdentifier>C86516BE-B96F-7B04-2330-67DB5699261B</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -269,6 +281,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\settingsscreen_screen\SettingsScreenViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\settingsscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\testingscreen_screen\TestingScreenPresenter.cpp">
+      <Filter>Source Files\gui\testingscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\testingscreen_screen\TestingScreenView.cpp">
+      <Filter>Source Files\gui\testingscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\testingscreen_screen\TestingScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\testingscreen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -735,6 +756,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\testingscreen_screen\TestingScreenPresenter.hpp">
+      <Filter>Header Files\gui\testingscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\testingscreen_screen\TestingScreenView.hpp">
+      <Filter>Header Files\gui\testingscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\testingscreen_screen\TestingScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\testingscreen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

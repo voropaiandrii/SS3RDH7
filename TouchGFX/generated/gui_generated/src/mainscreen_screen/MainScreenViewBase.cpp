@@ -7,7 +7,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 MainScreenViewBase::MainScreenViewBase() :
-    buttonCallback(this, &MainScreenViewBase::buttonCallbackHandler)
+    buttonCallback(this, &MainScreenViewBase::buttonCallbackHandler),
+    graphClickedCallback(this, &MainScreenViewBase::graphClickedCallbackHandler)
 {
 
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
@@ -24,6 +25,7 @@ MainScreenViewBase::MainScreenViewBase() :
     standardECGGraph.setGraphAreaMargin(0, 15, 0, 12);
     standardECGGraph.setGraphAreaPadding(0, 0, 0, 0);
     standardECGGraph.setGraphRangeY(0, 100);
+    //standardECGGraph.setClickAction(graphClickedCallback);
 
     standardECGGraphMajorYAxisGrid.setScale(1);
     standardECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(248, 250, 251));
@@ -42,6 +44,7 @@ MainScreenViewBase::MainScreenViewBase() :
     earECGGraph.setGraphAreaMargin(0, 15, 0, 12);
     earECGGraph.setGraphAreaPadding(0, 0, 0, 0);
     earECGGraph.setGraphRangeY(0, 100);
+    //earECGGraph.setClickAction(graphClickedCallback);
 
     earECGGraphMajorYAxisGrid.setScale(1);
     earECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(252, 253, 254));
@@ -60,6 +63,7 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGGreenGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGGreenGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGGreenGraph.setGraphRangeY(0, 100);
+    //leftEarPPGGreenGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGGreenGraphMajorYAxisGrid.setScale(1);
     leftEarPPGGreenGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -78,6 +82,7 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGRedGraph.setGraphRangeY(0, 100);
+    //leftEarPPGRedGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGRedGraphMajorYAxisGrid.setScale(1);
     leftEarPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(247, 248, 249));
@@ -96,18 +101,13 @@ MainScreenViewBase::MainScreenViewBase() :
     leftEarPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     leftEarPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     leftEarPPGIRGraph.setGraphRangeY(0, 100);
+    //leftEarPPGIRGraph.setClickAction(graphClickedCallback);
 
     leftEarPPGIRGraphMajorYAxisGrid.setScale(1);
     leftEarPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 253, 254));
     leftEarPPGIRGraphMajorYAxisGrid.setInterval(1000);
     leftEarPPGIRGraphMajorYAxisGrid.setLineWidth(1);
     leftEarPPGIRGraph.addGraphElement(leftEarPPGIRGraphMajorYAxisGrid);
-
-    leftEarPPGIRGraphMajorXAxisLabel.setScale(1);
-    leftEarPPGIRGraphMajorXAxisLabel.setInterval(10);
-    leftEarPPGIRGraphMajorXAxisLabel.setLabelTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
-    leftEarPPGIRGraphMajorXAxisLabel.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    leftEarPPGIRGraph.addBottomElement(leftEarPPGIRGraphMajorXAxisLabel);
 
     leftEarPPGIRGraphLine1.setScale(1);
     leftEarPPGIRGraphLine1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 0, 255));
@@ -120,18 +120,13 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGIRGraph.setGraphRangeY(0, 100);
+    //rightEarPPGIRGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGIRGraphMajorYAxisGrid.setScale(1);
     rightEarPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 252, 252));
     rightEarPPGIRGraphMajorYAxisGrid.setInterval(1000);
     rightEarPPGIRGraphMajorYAxisGrid.setLineWidth(1);
     rightEarPPGIRGraph.addGraphElement(rightEarPPGIRGraphMajorYAxisGrid);
-
-    rightEarPPGIRGraphMajorXAxisLabel.setScale(1);
-    rightEarPPGIRGraphMajorXAxisLabel.setInterval(10);
-    rightEarPPGIRGraphMajorXAxisLabel.setLabelTypedText(touchgfx::TypedText(T_SINGLEUSEID14));
-    rightEarPPGIRGraphMajorXAxisLabel.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    rightEarPPGIRGraph.addBottomElement(rightEarPPGIRGraphMajorXAxisLabel);
 
     rightEarPPGIRGraphLine1.setScale(1);
     rightEarPPGIRGraphLine1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 0, 255));
@@ -144,6 +139,7 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGRedGraph.setGraphRangeY(0, 100);
+    //rightEarPPGRedGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGRedGraphMajorYAxisGrid.setScale(1);
     rightEarPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 252, 252));
@@ -162,6 +158,7 @@ MainScreenViewBase::MainScreenViewBase() :
     rightEarPPGGreenGraph.setGraphAreaMargin(0, 15, 0, 12);
     rightEarPPGGreenGraph.setGraphAreaPadding(0, 0, 0, 0);
     rightEarPPGGreenGraph.setGraphRangeY(0, 100);
+    //rightEarPPGGreenGraph.setClickAction(graphClickedCallback);
 
     rightEarPPGGreenGraphMajorYAxisGrid.setScale(1);
     rightEarPPGGreenGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -180,6 +177,7 @@ MainScreenViewBase::MainScreenViewBase() :
     fingerPPGIRGraph.setGraphAreaMargin(0, 15, 0, 12);
     fingerPPGIRGraph.setGraphAreaPadding(0, 0, 0, 0);
     fingerPPGIRGraph.setGraphRangeY(0, 100);
+    //fingerPPGIRGraph.setClickAction(graphClickedCallback);
 
     fingerPPGIRGraphMajorYAxisGrid.setScale(1);
     fingerPPGIRGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(246, 248, 249));
@@ -198,6 +196,7 @@ MainScreenViewBase::MainScreenViewBase() :
     fingerPPGRedGraph.setGraphAreaMargin(0, 15, 0, 12);
     fingerPPGRedGraph.setGraphAreaPadding(0, 0, 0, 0);
     fingerPPGRedGraph.setGraphRangeY(0, 100);
+    //fingerPPGRedGraph.setClickAction(graphClickedCallback);
 
     fingerPPGRedGraphMajorYAxisGrid.setScale(1);
     fingerPPGRedGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(248, 250, 251));
@@ -211,34 +210,14 @@ MainScreenViewBase::MainScreenViewBase() :
     fingerPPGRedGraphLine1.setLineWidth(2);
     fingerPPGRedGraph.addGraphElement(fingerPPGRedGraphLine1);
 
-    digitalClock1.setPosition(350, 0, 100, 25);
-    digitalClock1.setColor(touchgfx::Color::getColorFrom24BitRGB(254, 254, 254));
-    digitalClock1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
-    digitalClock1.displayLeadingZeroForHourIndicator(true);
-    digitalClock1.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
-    digitalClock1.setTime24Hour(10, 10, 0);
+    realTimeDigitalClock.setPosition(350, 0, 100, 25);
+    realTimeDigitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(254, 254, 254));
+    realTimeDigitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
+    realTimeDigitalClock.displayLeadingZeroForHourIndicator(true);
+    realTimeDigitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
+    realTimeDigitalClock.setTime24Hour(10, 10, 0);
 
-    recordingStateTextArea.setXY(541, 0);
-    recordingStateTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 247, 247));
-    recordingStateTextArea.setLinespacing(0);
-    recordingStateTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID48));
-
-    stopRecordingButton.setXY(-5, 115);
-    stopRecordingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_STOP_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_STOP_32_ID));
-    stopRecordingButton.setIconXY(14, 14);
-
-    makeScreenshotButton.setXY(-5, -5);
-    makeScreenshotButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_INBOX_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_INBOX_32_ID));
-    makeScreenshotButton.setIconXY(14, 16);
-    makeScreenshotButton.setAction(buttonCallback);
-
-    startRecordingButton.setXY(-5, 55);
-    startRecordingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_PLAY_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_PLAY_32_ID));
-    startRecordingButton.setIconXY(19, 14);
-
-    navigationMenu1.setXY(0, 0);
-
-    cpuUsageTextProgress.setXY(715, -1);
+    cpuUsageTextProgress.setXY(715, -2);
     cpuUsageTextProgress.setProgressIndicatorPosition(0, 0, 84, 34);
     cpuUsageTextProgress.setRange(0, 100);
     cpuUsageTextProgress.setColor(touchgfx::Color::getColorFrom24BitRGB(251, 250, 250));
@@ -246,6 +225,47 @@ MainScreenViewBase::MainScreenViewBase() :
     cpuUsageTextProgress.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
     cpuUsageTextProgress.setBackground(touchgfx::Bitmap(BITMAP_DARK_PROGRESSINDICATORS_BG_MEDIUM_TEXT_PROGRESS_BG_SQUARE_ID));
     cpuUsageTextProgress.setValue(0);
+    cpuUsageTextProgress.setHeight(25);
+
+
+    recordingDigitalClock.setPosition(175, 0, 100, 25);
+    recordingDigitalClock.setColor(touchgfx::Color::getColorFrom24BitRGB(254, 3, 3));
+    recordingDigitalClock.setTypedText(touchgfx::TypedText(T_SINGLEUSEID59));
+    recordingDigitalClock.displayLeadingZeroForHourIndicator(true);
+    recordingDigitalClock.setDisplayMode(touchgfx::DigitalClock::DISPLAY_24_HOUR);
+    recordingDigitalClock.setTime24Hour(10, 10, 0);
+
+    cleanButton.setXY(-5, 295);
+    cleanButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_CLEANBUTTON2_32PX_ID), touchgfx::Bitmap(BITMAP_CLEANBUTTON2_32PX_ID));
+    cleanButton.setIconXY(14, 14);
+    cleanButton.setAction(buttonCallback);
+
+    disconnectDevicesButton.setXY(-5, 235);
+    disconnectDevicesButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DISCONNECTDEVICES_32PX_ID), touchgfx::Bitmap(BITMAP_DISCONNECTDEVICES_32PX_ID));
+    disconnectDevicesButton.setIconXY(14, 14);
+    disconnectDevicesButton.setAction(buttonCallback);
+
+    connectDevicesButton.setXY(-5, 175);
+    connectDevicesButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_CONNECTDEVICES_32PX_ID), touchgfx::Bitmap(BITMAP_CONNECTDEVICES_32PX_ID));
+    connectDevicesButton.setIconXY(14, 14);
+    connectDevicesButton.setAction(buttonCallback);
+
+    stopRecordingButton.setXY(-5, 115);
+    stopRecordingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_STOPRECORDINGBUTTON_32PX_ID), touchgfx::Bitmap(BITMAP_STOPRECORDINGBUTTON_32PX_ID));
+    stopRecordingButton.setIconXY(14, 14);
+    stopRecordingButton.setAction(buttonCallback);
+
+    startRecordingButton.setXY(-5, 55);
+    startRecordingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_STARTRECORDINGBUTTON_32PX_ID), touchgfx::Bitmap(BITMAP_STARTRECORDINGBUTTON_32PX_ID));
+    startRecordingButton.setIconXY(14, 14);
+    startRecordingButton.setAction(buttonCallback);
+
+    makeScreenshotButton.setXY(-5, -5);
+    makeScreenshotButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_SCREENSHOTBUTTON_32PX_ID), touchgfx::Bitmap(BITMAP_SCREENSHOTBUTTON_32PX_ID));
+    makeScreenshotButton.setIconXY(14, 14);
+    makeScreenshotButton.setAction(buttonCallback);
+
+    navigationMenu1.setXY(0, 0);
 
     add(__background);
     add(MainBackgroundTiledImage1);
@@ -259,13 +279,16 @@ MainScreenViewBase::MainScreenViewBase() :
     add(rightEarPPGGreenGraph);
     add(fingerPPGIRGraph);
     add(fingerPPGRedGraph);
-    add(digitalClock1);
-    add(recordingStateTextArea);
-    add(stopRecordingButton);
-    add(makeScreenshotButton);
-    add(startRecordingButton);
-    add(navigationMenu1);
+    add(realTimeDigitalClock);
     add(cpuUsageTextProgress);
+    add(recordingDigitalClock);
+    add(cleanButton);
+    add(disconnectDevicesButton);
+    add(connectDevicesButton);
+    add(stopRecordingButton);
+    add(startRecordingButton);
+    add(makeScreenshotButton);
+    add(navigationMenu1);
 }
 
 void MainScreenViewBase::setupScreen()
@@ -275,11 +298,120 @@ void MainScreenViewBase::setupScreen()
 
 void MainScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &makeScreenshotButton)
+    if (&src == &cleanButton)
+    {
+        //Interaction6
+        //When cleanButton clicked call virtual function
+        //Call cleanGraphs
+        cleanGraphs();
+    }
+    else if (&src == &disconnectDevicesButton)
+    {
+        //Interaction5
+        //When disconnectDevicesButton clicked call virtual function
+        //Call disconnectDevices
+        disconnectDevices();
+    }
+    else if (&src == &connectDevicesButton)
+    {
+        //Interaction4
+        //When connectDevicesButton clicked call virtual function
+        //Call connectDevices
+        connectDevices();
+    }
+    else if (&src == &stopRecordingButton)
+    {
+        //Interaction3
+        //When stopRecordingButton clicked call virtual function
+        //Call stopRecording
+        stopRecording();
+    }
+    else if (&src == &startRecordingButton)
+    {
+        //Interaction2
+        //When startRecordingButton clicked call virtual function
+        //Call startRecording
+        startRecording();
+    }
+    else if (&src == &makeScreenshotButton)
     {
         //Interaction1
-        //When makeScreenshotButton clicked change screen to FullGraphScreen
-        //Go to FullGraphScreen with no screen transition
-        application().gotoFullGraphScreenScreenNoTransition();
+        //When makeScreenshotButton clicked call virtual function
+        //Call makeScreenshot
+        makeScreenshot();
+    }
+}
+
+void MainScreenViewBase::graphClickedCallbackHandler(const touchgfx::AbstractDataGraph& src, const touchgfx::AbstractDataGraph::GraphClickEvent& value)
+{
+    if (&src == &standardECGGraph)
+    {
+        //Interaction7
+        //When standardECGGraph clicked call virtual function
+        //Call standartECGGraphClicked
+        standartECGGraphClicked(value);
+    }
+    else if (&src == &earECGGraph)
+    {
+        //Interaction8
+        //When earECGGraph clicked call virtual function
+        //Call earECGGraphClicked
+        earECGGraphClicked(value);
+    }
+    else if (&src == &leftEarPPGGreenGraph)
+    {
+        //Interaction11
+        //When leftEarPPGGreenGraph clicked call virtual function
+        //Call leftEarPPGGreenGraphClicked
+        leftEarPPGGreenGraphClicked(value);
+    }
+    else if (&src == &leftEarPPGRedGraph)
+    {
+        //Interaction12
+        //When leftEarPPGRedGraph clicked call virtual function
+        //Call leftEarPPGRedGraphClicked
+        leftEarPPGRedGraphClicked(value);
+    }
+    else if (&src == &leftEarPPGIRGraph)
+    {
+        //Interaction13
+        //When leftEarPPGIRGraph clicked call virtual function
+        //Call leftEarPPGIRGraphClicked
+        leftEarPPGIRGraphClicked(value);
+    }
+    else if (&src == &rightEarPPGIRGraph)
+    {
+        //Interaction16
+        //When rightEarPPGIRGraph clicked call virtual function
+        //Call rightEarPPGIRGraphClicked
+        rightEarPPGIRGraphClicked(value);
+    }
+    else if (&src == &rightEarPPGRedGraph)
+    {
+        //Interaction15
+        //When rightEarPPGRedGraph clicked call virtual function
+        //Call rightEarPPGRedGraphClicked
+        rightEarPPGRedGraphClicked(value);
+    }
+    else if (&src == &rightEarPPGGreenGraph)
+    {
+        //Interaction14
+        //When rightEarPPGGreenGraph clicked call virtual function
+        //Call rightEarPPGGreenGraphClicked
+        rightEarPPGGreenGraphClicked(value);
+    }
+    else if (&src == &fingerPPGIRGraph)
+    {
+        //Interaction10
+        //When fingerPPGIRGraph clicked call virtual function
+        //Call fingerPPGIRGraphClicked
+        fingerPPGIRGraphClicked(value);
+    }
+    else if (&src == &fingerPPGRedGraph)
+    {
+        //Interaction9
+        //When fingerPPGRedGraph clicked call virtual function
+        //Call fingerPPGGraphClicked
+        fingerPPGGraphClicked(value);
     }
 }

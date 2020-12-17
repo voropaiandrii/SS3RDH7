@@ -15,7 +15,7 @@
             "Width": 800,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -39,7 +39,7 @@
             "Width": 373,
             "Height": 37,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -63,7 +63,7 @@
             "Width": 334,
             "Height": 37,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -79,7 +79,7 @@
               "Blue": 249
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId60",
@@ -92,7 +92,7 @@
             "Width": 51,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -108,7 +108,7 @@
               "Blue": 245
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId61",
@@ -121,7 +121,7 @@
             "Width": 51,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -137,7 +137,7 @@
               "Blue": 236
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId62",
@@ -150,7 +150,7 @@
             "Width": 102,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -166,7 +166,7 @@
               "Blue": 244
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId63",
@@ -179,7 +179,7 @@
             "Width": 51,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -195,7 +195,7 @@
               "Blue": 252
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId64",
@@ -208,7 +208,7 @@
             "Width": 51,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -224,7 +224,7 @@
               "Blue": 244
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId65",
@@ -237,7 +237,7 @@
             "Width": 51,
             "Height": 49,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -267,7 +267,7 @@
             "Width": 170,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -297,7 +297,7 @@
             "Width": 170,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -322,7 +322,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -347,7 +347,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -372,7 +372,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -397,7 +397,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -422,7 +422,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -447,7 +447,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -472,7 +472,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -497,7 +497,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -522,7 +522,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -547,7 +547,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -572,7 +572,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -597,7 +597,7 @@
             "Width": 60,
             "Height": 60,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
@@ -641,7 +641,7 @@
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
-            "Clickable": true,
+            "Clickable": false,
             "Fadeable": false,
             "Moveable": false
           }
@@ -1465,7 +1465,7 @@
             "InitialHour": 10,
             "InitialMinute": 10,
             "InitialSecond": 0,
-            "Name": "digitalClock1",
+            "Name": "realTimeDigitalClock",
             "X": 350,
             "Y": 0,
             "Width": 100,
@@ -1690,7 +1690,7 @@
             "Width": 260,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1768,6 +1768,126 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "cleanGraphs"
+            }
+          },
+          {
+            "InteractionName": "Interaction7",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "standardECGGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "standartECGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction8",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "earECGGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "earECGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction9",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "fingerPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "fingerPPGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction10",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "fingerPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "fingerPPGIRGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction11",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGGreenGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGGreenGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction12",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGRedGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction13",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGIRGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction14",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGGreenGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGGreenGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction15",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGRedGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction16",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGIRGraphClicked"
             }
           }
         ],
@@ -1889,7 +2009,7 @@
             "Width": 800,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1904,7 +2024,7 @@
             "Width": 260,
             "Height": 480,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1931,21 +2051,6 @@
             "Height": 480,
             "Visible": true,
             "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "CustomContainerDefinitionName": "NavigationMenu",
-            "Type": "CustomContainerInstance",
-            "Name": "navigationMenu1",
-            "X": 0,
-            "Y": 0,
-            "Width": 260,
-            "Height": 480,
-            "Visible": true,
-            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -2107,6 +2212,21 @@
             "Y": 240,
             "Width": 700,
             "Height": 240,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,

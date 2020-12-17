@@ -31,6 +31,9 @@
     <ClCompile Include="..\..\gui\src\settingsscreen_screen\SettingsScreenPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\settingsscreen_screen\SettingsScreenView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\settingsscreen_screen\SettingsScreenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\testingscreen_screen\TestingScreenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\testingscreen_screen\TestingScreenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\testingscreen_screen\TestingScreenViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -189,6 +192,9 @@
     <ClInclude Include="..\..\gui\include\gui\settingsscreen_screen\SettingsScreenView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settingsscreen_screen\SettingsScreenViewBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\testingscreen_screen\TestingScreenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\testingscreen_screen\TestingScreenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\testingscreen_screen\TestingScreenViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

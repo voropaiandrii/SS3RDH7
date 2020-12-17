@@ -28,34 +28,40 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     textArea2.setLinespacing(0);
     textArea2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    dayTextArea.setXY(55, 240);
+    dayTextArea.setPosition(55, 240, 51, 49);
     dayTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 249, 249));
     dayTextArea.setLinespacing(0);
+    dayTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID60).getText());
     dayTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID32));
 
-    textMonthArea.setXY(155, 240);
+    textMonthArea.setPosition(155, 240, 51, 49);
     textMonthArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 245, 245));
     textMonthArea.setLinespacing(0);
+    textMonthArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID61).getText());
     textMonthArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
 
-    yearTextArea.setXY(240, 240);
+    yearTextArea.setPosition(240, 240, 102, 49);
     yearTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 236, 236));
     yearTextArea.setLinespacing(0);
+    yearTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID62).getText());
     yearTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));
 
-    hoursTextArea.setXY(495, 240);
+    hoursTextArea.setPosition(495, 240, 51, 49);
     hoursTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 244, 244));
     hoursTextArea.setLinespacing(0);
+    hoursTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID63).getText());
     hoursTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID37));
 
-    minutesTextArea.setXY(595, 240);
+    minutesTextArea.setPosition(595, 240, 51, 49);
     minutesTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 252, 252));
     minutesTextArea.setLinespacing(0);
+    minutesTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID64).getText());
     minutesTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID38));
 
-    secondsTextArea.setXY(695, 240);
+    secondsTextArea.setPosition(695, 240, 51, 49);
     secondsTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(247, 244, 244));
     secondsTextArea.setLinespacing(0);
+    secondsTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID65).getText());
     secondsTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
     cancelSettingsButton.setXY(110, 391);
@@ -70,54 +76,67 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     saveSettingsButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID47));
     saveSettingsButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     saveSettingsButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    saveSettingsButton.setAction(buttonCallback);
 
     decreaseDayButton.setXY(50, 289);
     decreaseDayButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseDayButton.setIconXY(14, 21);
+    decreaseDayButton.setAction(buttonCallback);
 
     increaseDayButton.setXY(50, 180);
     increaseDayButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseDayButton.setIconXY(14, 21);
+    increaseDayButton.setAction(buttonCallback);
 
     decreaseMonthButton.setXY(150, 289);
     decreaseMonthButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseMonthButton.setIconXY(14, 21);
+    decreaseMonthButton.setAction(buttonCallback);
 
     increaseMonthButton.setXY(150, 180);
     increaseMonthButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseMonthButton.setIconXY(14, 21);
+    increaseMonthButton.setAction(buttonCallback);
 
     decreaseYearButton.setXY(261, 289);
     decreaseYearButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseYearButton.setIconXY(14, 21);
+    decreaseYearButton.setAction(buttonCallback);
 
     increaseYearButton.setXY(261, 180);
     increaseYearButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseYearButton.setIconXY(14, 21);
+    increaseYearButton.setAction(buttonCallback);
 
     decreaseHoursButton.setXY(490, 289);
     decreaseHoursButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseHoursButton.setIconXY(14, 21);
+    decreaseHoursButton.setAction(buttonCallback);
 
     increaseHoursButton.setXY(490, 180);
     increaseHoursButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseHoursButton.setIconXY(14, 21);
+    increaseHoursButton.setAction(buttonCallback);
 
     decreaseMinutesButton.setXY(590, 289);
     decreaseMinutesButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseMinutesButton.setIconXY(15, 21);
+    decreaseMinutesButton.setAction(buttonCallback);
 
     increaseMinutesButton.setXY(590, 180);
     increaseMinutesButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseMinutesButton.setIconXY(14, 21);
+    increaseMinutesButton.setAction(buttonCallback);
 
     decreaseSecondsButton.setXY(690, 289);
     decreaseSecondsButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_DOWN_ARROW_32_ID));
     decreaseSecondsButton.setIconXY(14, 21);
+    decreaseSecondsButton.setAction(buttonCallback);
 
     increaseSecondsButton.setXY(690, 180);
     increaseSecondsButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_UP_ARROW_32_ID));
     increaseSecondsButton.setIconXY(14, 21);
+    increaseSecondsButton.setAction(buttonCallback);
 
     screenBrightnessSlider.setXY(59, 50);
     screenBrightnessSlider.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_LARGE_SLIDER_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_LARGE_SLIDER_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_LARGE_INDICATORS_SLIDER_ROUND_NOB_ID));
@@ -169,6 +188,97 @@ void SettingsScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //When cancelSettingsButton clicked change screen to MainScreen
         //Go to MainScreen with no screen transition
         application().gotoMainScreenScreenNoTransition();
+    }
+    else if (&src == &saveSettingsButton)
+    {
+        //Interaction2
+        //When saveSettingsButton clicked call virtual function
+        //Call saveSettings
+        saveSettings();
+    }
+    else if (&src == &decreaseDayButton)
+    {
+        //Interaction14
+        //When decreaseDayButton clicked call virtual function
+        //Call decreaseDays
+        decreaseDays();
+    }
+    else if (&src == &increaseDayButton)
+    {
+        //Interaction13
+        //When increaseDayButton clicked call virtual function
+        //Call increaseDays
+        increaseDays();
+    }
+    else if (&src == &decreaseMonthButton)
+    {
+        //Interaction12
+        //When decreaseMonthButton clicked call virtual function
+        //Call decreaseMonths
+        decreaseMonths();
+    }
+    else if (&src == &increaseMonthButton)
+    {
+        //Interaction11
+        //When increaseMonthButton clicked call virtual function
+        //Call increaseMonths
+        increaseMonths();
+    }
+    else if (&src == &decreaseYearButton)
+    {
+        //Interaction10
+        //When decreaseYearButton clicked call virtual function
+        //Call decreaseYear
+        decreaseYear();
+    }
+    else if (&src == &increaseYearButton)
+    {
+        //Interaction9
+        //When increaseYearButton clicked call virtual function
+        //Call increaseYear
+        increaseYear();
+    }
+    else if (&src == &decreaseHoursButton)
+    {
+        //Interaction8
+        //When decreaseHoursButton clicked call virtual function
+        //Call decreaseHours
+        decreaseHours();
+    }
+    else if (&src == &increaseHoursButton)
+    {
+        //Interaction7
+        //When increaseHoursButton clicked call virtual function
+        //Call increaseHours
+        increaseHours();
+    }
+    else if (&src == &decreaseMinutesButton)
+    {
+        //Interaction6
+        //When decreaseMinutesButton clicked call virtual function
+        //Call decreaseMinutes
+        decreaseMinutes();
+    }
+    else if (&src == &increaseMinutesButton)
+    {
+        //Interaction5
+        //When increaseMinutesButton clicked call virtual function
+        //Call increaseMinutes
+        increaseMinutes();
+    }
+    else if (&src == &decreaseSecondsButton)
+    {
+        //Interaction4
+        //When decreaseSecondsButton clicked call virtual function
+        //Call decreaseSeconds
+        decreaseSeconds();
+    }
+    else if (&src == &increaseSecondsButton)
+    {
+        //Interaction3
+        //When increaseSecondsButton clicked call virtual function
+        //Call increaseSeconds
+        increaseSeconds();
     }
 }
 
