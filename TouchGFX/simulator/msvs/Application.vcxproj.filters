@@ -294,6 +294,9 @@
     <ClCompile Include="..\..\gui\src\common\ViewUtils.cpp">
       <Filter>Source Files\gui\common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\CustomScrollableContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx">
@@ -774,6 +777,9 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\common\CustomButtons.hpp">
       <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\CustomScrollableContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

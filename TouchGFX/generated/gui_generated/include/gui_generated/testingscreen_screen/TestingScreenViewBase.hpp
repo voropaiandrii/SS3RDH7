@@ -60,7 +60,7 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTOUTPUT_SIZE = 1000;
+    static const uint16_t TEXTOUTPUT_SIZE = 5000;
     touchgfx::Unicode::UnicodeChar textOutputBuffer[TEXTOUTPUT_SIZE];
 
 private:

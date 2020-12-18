@@ -18,36 +18,36 @@ TestingScreenViewBase::TestingScreenViewBase() :
     backgroundTiledImage.setOffset(0, 0);
 
     tiledImage1.setBitmap(touchgfx::Bitmap(BITMAP_NAVIGATIONMENUBACKGROUND0_ID));
-    tiledImage1.setPosition(50, 240, 700, 240);
+    tiledImage1.setPosition(50, 60, 700, 420);
     tiledImage1.setAlpha(127);
     tiledImage1.setOffset(0, 0);
 
-    stopTestingButton.setXY(315, 155);
+    stopTestingButton.setXY(580, 0);
     stopTestingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     stopTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID57));
     stopTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     stopTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     stopTestingButton.setAction(buttonCallback);
 
-    pauseTestingButton.setXY(315, 90);
+    pauseTestingButton.setXY(315, 0);
     pauseTestingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     pauseTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID58));
     pauseTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     pauseTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     pauseTestingButton.setAction(buttonCallback);
 
-    runTestingButton.setXY(315, 25);
+    runTestingButton.setXY(50, 0);
     runTestingButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     runTestingButton.setLabelText(touchgfx::TypedText(T_SINGLEUSEID56));
     runTestingButton.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     runTestingButton.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     runTestingButton.setAction(buttonCallback);
 
-    textOutputScrollableContainer.setPosition(50, 240, 700, 240);
+    textOutputScrollableContainer.setPosition(50, 60, 700, 420);
     textOutputScrollableContainer.enableHorizontalScroll(false);
     textOutputScrollableContainer.setScrollbarsColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    textOutput.setPosition(0, 0, 700, 1000);
+    textOutput.setPosition(0, 0, 700, 2000);
     textOutput.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 253, 253));
     textOutput.setLinespacing(1);
     Unicode::snprintf(textOutputBuffer, TEXTOUTPUT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID53).getText());

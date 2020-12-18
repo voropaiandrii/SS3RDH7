@@ -35,6 +35,7 @@
     <ClCompile Include="..\..\gui\src\testingscreen_screen\TestingScreenView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\testingscreen_screen\TestingScreenViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\common\ViewUtils.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\CustomScrollableContainer.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -198,6 +199,7 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\testingscreen_screen\TestingScreenViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\ViewUtils.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\CustomButtons.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\CustomScrollableContainer.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

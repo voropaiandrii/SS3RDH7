@@ -65,7 +65,7 @@ void TestingScreenView::printTestingOutput(char* string) {
 		index++;
 	}
 
-	if(numberOfLines > 11) {
+	if(numberOfLines > 20) {
 		textOutputScrollableContainer.doCustomScroll(0, -20);
 		textOutputScrollableContainer.invalidate();
 	}
