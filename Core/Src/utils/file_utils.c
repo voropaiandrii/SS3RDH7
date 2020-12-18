@@ -21,13 +21,16 @@ void generateFilename(char* name) {
 			currentTime.hours,
 			currentTime.minutes,
 			currentTime.seconds);
-
-	/*
-	sprintf(name, "%02u%02u%02u.csv",
-				//currentTime.months,
-				//currentTime.days,
-				currentTime.hours,
-				currentTime.minutes,
-				currentTime.seconds);
-	 */
 }
+
+void generateTestFilename(char* name) {
+	RTCDate currentTime = getCurrentRTCDate();
+	sprintf(name, "%02u%02u%02u%02u%02u%02u.TEST",
+			currentTime.years,
+			currentTime.months,
+			currentTime.days,
+			currentTime.hours,
+			currentTime.minutes,
+			currentTime.seconds);
+}
+

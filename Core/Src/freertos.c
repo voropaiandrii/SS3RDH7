@@ -42,6 +42,7 @@
 #include "usbd_def.h"
 #include "utils/file_utils.h"
 #include "domain/use_cases/recording_use_case.h"
+#include "domain/use_cases/testing_use_case.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,6 +118,7 @@ SemaphoreHandle_t usbDmaTxBinarySemaphore;
 SemaphoreHandle_t usbDmaRxBinarySemaphore;
 SemaphoreHandle_t usbReadBinarySemaphore;
 SemaphoreHandle_t usbWriteBinarySemaphore;
+SemaphoreHandle_t testBinarySemaphore;
 
 SemaphoreHandle_t i2c1MutexSemaphore;
 SemaphoreHandle_t i2c2MutexSemaphore;
@@ -307,6 +309,13 @@ const osThreadAttr_t i2c4ErrorTask_attributes = {
   .stack_size = 1024 * 4
 };
 
+osThreadId_t testTaskHandle;
+const osThreadAttr_t testTask_attributes = {
+  .name = "testTask",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 1024 * 8
+};
+
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c) {
@@ -471,6 +480,7 @@ void StartUsbDmaRxTask(void *argument);
 void StartI2C4TxTask(void *argument);
 void StartI2C4RxTask(void *argument);
 void StartI2C4ErrorTask(void *argument);
+void StartTestTask(void *argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -681,6 +691,9 @@ void MX_FREERTOS_Init(void) {
   usbBinarySemaphore = xSemaphoreCreateBinary();
   usbDmaTxBinarySemaphore = xSemaphoreCreateBinary();
   usbDmaRxBinarySemaphore = xSemaphoreCreateBinary();
+
+  testBinarySemaphore = xSemaphoreCreateBinary();
+
   fsMutexSemaphore = xSemaphoreCreateMutex();
 
   HAL_NVIC_SetPriority(EXTI1_IRQn, 10, 11);
@@ -726,61 +739,61 @@ void MX_FREERTOS_Init(void) {
   touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
 
   /* creation of max30003Task */
-  max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
+  //max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
 
   /* creation of max30003IRQTask */
-  max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
+  //max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
 
   /* creation of i2c1TxTask */
-  i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
+  //i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
 
   /* creation of i2c1RxTask */
-  i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
+  //i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
 
   /* creation of i2c1ErrorTask */
-  i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
+  //i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
 
   /* creation of i2c2TxTask */
-  i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
+  //i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
 
   /* creation of i2c2RxTask */
-  i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
+  //i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
 
   /* creation of i2c2ErrorTask */
-  i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
+  //i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
 
   /* creation of i2c4TxTask */
-  i2c4TxTaskHandle = osThreadNew(StartI2C4TxTask, NULL, &i2c4TxTask_attributes);
+  //i2c4TxTaskHandle = osThreadNew(StartI2C4TxTask, NULL, &i2c4TxTask_attributes);
 
   /* creation of i2c4RxTask */
-  i2c4RxTaskHandle = osThreadNew(StartI2C4RxTask, NULL, &i2c4RxTask_attributes);
+  //i2c4RxTaskHandle = osThreadNew(StartI2C4RxTask, NULL, &i2c4RxTask_attributes);
 
   /* creation of i2c4ErrorTask */
-  i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
+  //i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
 
   /* creation of max30102Task */
-  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+  //max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
 
   /* creation of max30102IRQTask */
-  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
+  //max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
 
   /* creation of maxm86161RTask */
-  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+  //maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
 
   /* creation of maxm86161IRTask */
-  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+  //maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
 
   /* creation of maxm86161LTask */
-  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+  //maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
 
   /* creation of maxm86161ILTask */
-  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+  //maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* creation of debugTask */
-  debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+  //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
   /* creation of fatFsTask */
-  fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
+  //fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
   /* creation of usbTask */
   //usbTaskHandle = osThreadNew(StartUsbTask, NULL, &usbTask_attributes);
@@ -791,6 +804,7 @@ void MX_FREERTOS_Init(void) {
   /* creation of usbDmaRxTask */
   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
 
+  testTaskHandle = osThreadNew(StartTestTask, NULL, &testTask_attributes);
 
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -1437,7 +1451,32 @@ void StartI2C4ErrorTask(void *argument)
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+void StartTestTask(void *argument)
+{
+  /* USER CODE BEGIN StartI2C4ErrorTask */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(xSemaphoreTake(testBinarySemaphore, 1000) == pdTRUE ) {
+		  sdcardTestingUseCase();
+		 // osDelay(5000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase();
+		  //osDelay(5000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase();
+		  //osDelay(5000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase();
+		  //osDelay(5000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase();
+	  }
+	  osDelay(100);
 
+  }
+  /* USER CODE END StartI2C4ErrorTask */
+}
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

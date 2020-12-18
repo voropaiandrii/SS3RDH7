@@ -22,6 +22,7 @@
 void startTestingUseCase();
 void pauseTestingUseCase();
 void stopTestingUseCase();
+void sdcardTestingUseCase();
 uint8_t getTestingState();
 void printt( const char * format, ... );
 

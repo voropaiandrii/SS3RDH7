@@ -11,6 +11,6 @@
 #define FILE_UTILS_GENERATED_NAME_LENGTH_BYTES				 			18
 
 void generateFilename(char* name);
-
+void generateTestFilename(char* name);
 
 #endif /* INC_UTILS_FILE_UTILS_H_ */
