@@ -772,6 +772,9 @@
     <ClInclude Include="..\..\gui\include\gui\common\ViewUtils.hpp">
       <Filter>Header Files\gui\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\CustomButtons.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc">

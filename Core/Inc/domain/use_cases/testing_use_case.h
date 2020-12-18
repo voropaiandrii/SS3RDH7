@@ -23,5 +23,6 @@ void startTestingUseCase();
 void pauseTestingUseCase();
 void stopTestingUseCase();
 uint8_t getTestingState();
+void printt( const char * format, ... );
 
 #endif /* INC_DOMAIN_USE_CASES_TESTING_USE_CASE_H_ */

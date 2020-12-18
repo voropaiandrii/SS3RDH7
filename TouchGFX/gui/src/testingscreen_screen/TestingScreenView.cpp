@@ -53,6 +53,22 @@ void TestingScreenView::changeButtonState(ButtonID buttonId, ButtonState state) 
 
 void TestingScreenView::printTestingOutput(char* string) {
 	//Unicode::snprintf(textOutputBuffer, TEXTOUTPUT_SIZE, "%s", string);
-	Unicode::fromUTF8((uint8_t*)string, textOutputBuffer, TEXTOUTPUT_SIZE);
+	uint32_t existingStringLength = Unicode::strlen(textOutputBuffer);
+	Unicode::fromUTF8((const uint8_t*)string, (textOutputBuffer + existingStringLength), TEXTOUTPUT_SIZE);
+
+	uint32_t index = 0;
+	uint32_t numberOfLines = 0;
+	while(textOutputBuffer[index] != 0) {
+		if(textOutputBuffer[index] == 10) {
+			numberOfLines++;
+		}
+		index++;
+	}
+
+	if(numberOfLines > 11) {
+		textOutputScrollableContainer.doCustomScroll(0, -20);
+		textOutputScrollableContainer.invalidate();
+	}
 	textOutput.invalidate();
+
 }

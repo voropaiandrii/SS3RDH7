@@ -10,7 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TiledImage.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
-#include <touchgfx/containers/ScrollableContainer.hpp>
+#include <gui/containers/CustomScrollableContainer.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/NavigationMenu.hpp>
 
@@ -53,7 +53,7 @@ protected:
     touchgfx::ButtonWithLabel stopTestingButton;
     touchgfx::ButtonWithLabel pauseTestingButton;
     touchgfx::ButtonWithLabel runTestingButton;
-    touchgfx::ScrollableContainer textOutputScrollableContainer;
+    touchgfx::CustomScrollableContainer textOutputScrollableContainer;
     touchgfx::TextAreaWithOneWildcard textOutput;
     NavigationMenu navigationMenu1;
 
