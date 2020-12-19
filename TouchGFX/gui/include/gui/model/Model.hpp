@@ -41,8 +41,9 @@ public:
     void pauseTesting();
     void stopTesting();
 
-    void printTestingOutput(char* string);
+    void printTestingOutput(const char* string);
 
+    void setCPUUsage(uint8_t cpuUsage);
 protected:
     ModelListener* modelListener;
 private:

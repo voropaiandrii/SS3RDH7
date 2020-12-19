@@ -18,7 +18,8 @@ public:
 
     void changeButtonState(ButtonID buttonId, ButtonState state);
 
-    void printTestingOutput(char* string);
+    void printTestingOutput(const char* string);
+    void invalidateTestingScreen();
 protected:
 };
 

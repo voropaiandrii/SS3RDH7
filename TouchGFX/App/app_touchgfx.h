@@ -18,5 +18,6 @@
 void MX_TouchGFX_Init(void);
 void MX_TouchGFX_Process(void);
 
-void printForTesting(char* string);
+void printForTesting(const char* string);
+void set_cpu_usage(unsigned char cpuUsage);
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

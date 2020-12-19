@@ -137,8 +137,8 @@ static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 4
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 1024 * 8
 };
 /* Definitions for touchTask */
 osThreadId_t touchTaskHandle;
@@ -312,8 +312,8 @@ const osThreadAttr_t i2c4ErrorTask_attributes = {
 osThreadId_t testTaskHandle;
 const osThreadAttr_t testTask_attributes = {
   .name = "testTask",
-  .priority = (osPriority_t) osPriorityHigh,
-  .stack_size = 1024 * 8
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 1024 * 20
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -1458,19 +1458,21 @@ void StartTestTask(void *argument)
   for(;;)
   {
 	  if(xSemaphoreTake(testBinarySemaphore, 1000) == pdTRUE ) {
-		  sdcardTestingUseCase();
-		 // osDelay(5000);
+		  sdcardTestingUseCase(512);
 		  vTaskDelay(1000);
-		  sdcardTestingUseCase();
-		  //osDelay(5000);
+		  sdcardTestingUseCase(1024);
 		  vTaskDelay(1000);
-		  sdcardTestingUseCase();
-		  //osDelay(5000);
+		  sdcardTestingUseCase(2048);
 		  vTaskDelay(1000);
-		  sdcardTestingUseCase();
-		  //osDelay(5000);
+		  sdcardTestingUseCase(4096);
 		  vTaskDelay(1000);
-		  sdcardTestingUseCase();
+		  sdcardTestingUseCase(1000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase(2000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase(3000);
+		  vTaskDelay(1000);
+		  sdcardTestingUseCase(4000);
 	  }
 	  osDelay(100);
 

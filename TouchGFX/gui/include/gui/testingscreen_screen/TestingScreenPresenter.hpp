@@ -34,7 +34,8 @@ public:
 
     void updateTestingButtonsState(uint8_t testingState);
 
-    void printTestingOutput(char* string);
+    void printTestingOutput(const char* string);
+    void invalidateTestingScreen();
 
 private:
     TestingScreenPresenter();

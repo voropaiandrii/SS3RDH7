@@ -111,6 +111,8 @@ void Model::tick()
 		//modelListener->updateTestingButtonsState(getTestingState());
 	}
 
+	//modelListener->invalidateTestingScreen();
+
 }
 
 void Model::setDisplayBrigthness(int percentage) {
@@ -325,7 +327,10 @@ void Model::stopTesting() {
 	modelListener->updateTestingButtonsState(getTestingState());
 }
 
-void Model::printTestingOutput(char* string) {
+void Model::printTestingOutput(const char* string) {
 	modelListener->printTestingOutput(string);
 }
 
+void Model::setCPUUsage(uint8_t cpuUsage) {
+
+}

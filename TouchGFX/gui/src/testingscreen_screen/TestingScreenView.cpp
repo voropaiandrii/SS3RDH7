@@ -51,7 +51,7 @@ void TestingScreenView::changeButtonState(ButtonID buttonId, ButtonState state) 
 	}
 }
 
-void TestingScreenView::printTestingOutput(char* string) {
+void TestingScreenView::printTestingOutput(const char* string) {
 	//Unicode::snprintf(textOutputBuffer, TEXTOUTPUT_SIZE, "%s", string);
 	uint32_t existingStringLength = Unicode::strlen(textOutputBuffer);
 	Unicode::fromUTF8((const uint8_t*)string, (textOutputBuffer + existingStringLength), TEXTOUTPUT_SIZE);
@@ -67,8 +67,15 @@ void TestingScreenView::printTestingOutput(char* string) {
 
 	if(numberOfLines > 20) {
 		textOutputScrollableContainer.doCustomScroll(0, -20);
-		textOutputScrollableContainer.invalidate();
+		//textOutputScrollableContainer.invalidate();
+	} else {
+		textOutputScrollableContainer.doCustomScroll(0, -1);
 	}
-	textOutput.invalidate();
+	//textOutput.invalidate();
+	//textOutput.invalidate();
 
+}
+
+void TestingScreenView::invalidateTestingScreen() {
+	textOutput.invalidate();
 }

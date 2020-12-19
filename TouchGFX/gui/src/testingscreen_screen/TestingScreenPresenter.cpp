@@ -49,7 +49,11 @@ void TestingScreenPresenter::updateTestingButtonsState(uint8_t testingState) {
 	}
 }
 
-void TestingScreenPresenter::printTestingOutput(char* string) {
+void TestingScreenPresenter::printTestingOutput(const char* string) {
 	view.printTestingOutput(string);
+}
+
+void TestingScreenPresenter::invalidateTestingScreen() {
+	view.invalidateTestingScreen();
 }
 

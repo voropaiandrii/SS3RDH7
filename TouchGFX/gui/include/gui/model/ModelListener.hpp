@@ -41,7 +41,9 @@ public:
     virtual void updateButtonsState(uint8_t isRecording, uint8_t isConnected) {}
     virtual void updateTestingButtonsState(uint8_t testingState) {}
 
-    virtual void printTestingOutput(char* string) {}
+    virtual void printTestingOutput(const char* string) {}
+
+    virtual void invalidateTestingScreen() {}
 
     virtual ~ModelListener() {}
 
