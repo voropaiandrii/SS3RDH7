@@ -83,8 +83,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId60",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "dayTextArea",
             "X": 55,
@@ -112,8 +112,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId61",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "textMonthArea",
             "X": 155,
@@ -141,8 +141,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId62",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "yearTextArea",
             "X": 240,
@@ -170,8 +170,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId63",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "hoursTextArea",
             "X": 495,
@@ -199,8 +199,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId64",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "minutesTextArea",
             "X": 595,
@@ -228,8 +228,8 @@
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId65",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "secondsTextArea",
             "X": 695,
@@ -2597,7 +2597,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "TestingScreen",
+    "StartupScreenName": "SettingsScreen",
     "SelectedStartupLanguage": "EN",
     "Skin": "Dark",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

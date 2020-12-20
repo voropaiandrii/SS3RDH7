@@ -132,6 +132,22 @@ protected:
     touchgfx::Slider screenBrightnessSlider;
     NavigationMenu navigationMenu1;
 
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t DAYTEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar dayTextAreaBuffer[DAYTEXTAREA_SIZE];
+    static const uint16_t TEXTMONTHAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textMonthAreaBuffer[TEXTMONTHAREA_SIZE];
+    static const uint16_t YEARTEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar yearTextAreaBuffer[YEARTEXTAREA_SIZE];
+    static const uint16_t HOURSTEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar hoursTextAreaBuffer[HOURSTEXTAREA_SIZE];
+    static const uint16_t MINUTESTEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar minutesTextAreaBuffer[MINUTESTEXTAREA_SIZE];
+    static const uint16_t SECONDSTEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar secondsTextAreaBuffer[SECONDSTEXTAREA_SIZE];
+
 private:
 
     /*

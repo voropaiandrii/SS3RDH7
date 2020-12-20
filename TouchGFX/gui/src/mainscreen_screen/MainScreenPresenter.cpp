@@ -1,6 +1,10 @@
 #include <gui/mainscreen_screen/MainScreenView.hpp>
 #include <gui/mainscreen_screen/MainScreenPresenter.hpp>
 
+extern "C" {
+	#include "domain/use_cases/recording_use_case.h"
+}
+
 MainScreenPresenter::MainScreenPresenter(MainScreenView& v)
     : view(v)
 {
@@ -9,7 +13,7 @@ MainScreenPresenter::MainScreenPresenter(MainScreenView& v)
 
 void MainScreenPresenter::activate()
 {
-
+	updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
 
 void MainScreenPresenter::deactivate()

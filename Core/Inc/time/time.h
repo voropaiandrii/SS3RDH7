@@ -21,5 +21,7 @@ typedef struct {
 
 
 RTCDate getCurrentRTCDate();
+void setCurrentRTCDate(RTCDate* date);
+
 
 #endif /* INC_TIME_TIME_H_ */

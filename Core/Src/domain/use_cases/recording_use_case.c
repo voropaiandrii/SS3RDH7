@@ -6,6 +6,7 @@
  */
 
 #include "domain/use_cases/recording_use_case.h"
+#include "app_touchgfx.h"
 
 USE_SPECIAL_RAM_REGION
 uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
@@ -249,16 +250,26 @@ uint32_t combineWritingBuffer(char** bufferPointer) {
 	return WRITING_BUFFER_SIZE;
 }
 
+static void changeRecordingState(uint8_t newState) {
+	currentRecordingState = newState;
+	notify_main_state_changed();
+}
+
+static void changeConnectingState(uint8_t newState) {
+	currentConnectingState = newState;
+	notify_main_state_changed();
+}
+
 uint8_t isRecordingUseCase() {
 	return currentRecordingState;
 }
 
 void startRecordingUseCase() {
-	currentRecordingState = RECORDING_STATE_STARTED;
+	changeRecordingState(RECORDING_STATE_STARTED);
 }
 
 void stopRecordingUseCase() {
-	currentRecordingState = RECORDING_STATE_STOPPED;
+	changeRecordingState(RECORDING_STATE_STOPPED);
 }
 
 uint8_t isDevicesConnectedUseCase() {
@@ -266,9 +277,9 @@ uint8_t isDevicesConnectedUseCase() {
 }
 
 void connectAllDevicesUseCase() {
-	currentConnectingState = CONNECTING_STATE_CONNECTED;
+	changeConnectingState(CONNECTING_STATE_CONNECTED);
 }
 
 void disconnectAllDevicesUseCase() {
-	currentConnectingState = CONNECTING_STATE_DISCONNECTED;
+	changeConnectingState(CONNECTING_STATE_DISCONNECTED);
 }

@@ -31,37 +31,43 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     dayTextArea.setPosition(55, 240, 51, 49);
     dayTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 249, 249));
     dayTextArea.setLinespacing(0);
-    dayTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID60).getText());
+    Unicode::snprintf(dayTextAreaBuffer, DAYTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID60).getText());
+    dayTextArea.setWildcard(dayTextAreaBuffer);
     dayTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID32));
 
     textMonthArea.setPosition(155, 240, 51, 49);
     textMonthArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 245, 245));
     textMonthArea.setLinespacing(0);
-    textMonthArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID61).getText());
+    Unicode::snprintf(textMonthAreaBuffer, TEXTMONTHAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID61).getText());
+    textMonthArea.setWildcard(textMonthAreaBuffer);
     textMonthArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
 
     yearTextArea.setPosition(240, 240, 102, 49);
     yearTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 236, 236));
     yearTextArea.setLinespacing(0);
-    yearTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID62).getText());
+    Unicode::snprintf(yearTextAreaBuffer, YEARTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID62).getText());
+    yearTextArea.setWildcard(yearTextAreaBuffer);
     yearTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID36));
 
     hoursTextArea.setPosition(495, 240, 51, 49);
     hoursTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(250, 244, 244));
     hoursTextArea.setLinespacing(0);
-    hoursTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID63).getText());
+    Unicode::snprintf(hoursTextAreaBuffer, HOURSTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID63).getText());
+    hoursTextArea.setWildcard(hoursTextAreaBuffer);
     hoursTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID37));
 
     minutesTextArea.setPosition(595, 240, 51, 49);
     minutesTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 252, 252));
     minutesTextArea.setLinespacing(0);
-    minutesTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID64).getText());
+    Unicode::snprintf(minutesTextAreaBuffer, MINUTESTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID64).getText());
+    minutesTextArea.setWildcard(minutesTextAreaBuffer);
     minutesTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID38));
 
     secondsTextArea.setPosition(695, 240, 51, 49);
     secondsTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(247, 244, 244));
     secondsTextArea.setLinespacing(0);
-    secondsTextArea.setWildcard(touchgfx::TypedText(T_SINGLEUSEID65).getText());
+    Unicode::snprintf(secondsTextAreaBuffer, SECONDSTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID65).getText());
+    secondsTextArea.setWildcard(secondsTextAreaBuffer);
     secondsTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
     cancelSettingsButton.setXY(110, 391);

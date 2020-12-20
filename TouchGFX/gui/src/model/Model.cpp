@@ -260,6 +260,7 @@ void Model::setGraphLimits(QueueHandle_t queueHandle, GraphLimits* limits, bool 
 void Model::updateRTCTime() {
 
 	RTCDate currentDate = getCurrentRTCDate();
+	//printf("currentDate.seconds: %u\n", currentDate.seconds);
 	modelListener->updateTime(currentDate.years,
 			currentDate.months,
 			currentDate.days,
@@ -277,25 +278,25 @@ void Model::makeScreenshot()
 void Model::startRecording()
 {
 	startRecordingUseCase();
-	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+	//modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
 
 void Model::stopRecording()
 {
 	stopRecordingUseCase();
-	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+	//modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
 
 void Model::connectDevices()
 {
 	connectAllDevicesUseCase();
-	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+	//modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
 
 void Model::disconnectDevices()
 {
 	disconnectAllDevicesUseCase();
-	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+	//modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
 
 void Model::cleanGraphs()
@@ -341,4 +342,15 @@ void Model::notifyTestStateChanged() {
 
 void Model::notifyMainStateChanged() {
 	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+void Model::changeTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
+	RTCDate currentDate;
+	currentDate.years = years;
+	currentDate.months = months;
+	currentDate.days = days;
+	currentDate.hours = hours;
+	currentDate.minutes = minutes;
+	currentDate.seconds = seconds;
+	setCurrentRTCDate(&currentDate);
 }

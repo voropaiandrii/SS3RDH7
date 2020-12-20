@@ -196,10 +196,12 @@ void MainScreenView::changeButtonState(ButtonID buttonId, ButtonState state) {
 
 void MainScreenView::showRecordingCounter() {
 	recordingDigitalClock.setVisible(true);
+	recordingDigitalClock.invalidate();
 }
 
 void MainScreenView::hideRecordingCounter() {
 	recordingDigitalClock.setVisible(false);
+	recordingDigitalClock.invalidate();
 }
 
 void MainScreenView::cleanUI() {

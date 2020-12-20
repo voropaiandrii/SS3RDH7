@@ -31,3 +31,7 @@ void SettingsScreenPresenter::updateTime(uint16_t years, uint8_t months, uint8_t
 	view.updateTime(years, months, days, hours, minutes, seconds);
 }
 
+
+void SettingsScreenPresenter::changeTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
+	model->changeTime(years, months, days, hours, minutes, seconds);
+}
