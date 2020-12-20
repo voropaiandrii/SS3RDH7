@@ -215,4 +215,15 @@ void MainScreenView::cleanUI() {
 	rightEarPPGGreenGraph.clear();
 	rightEarPPGRedGraph.clear();
 	rightEarPPGIRGraph.clear();
+
+	standardECGGraph.invalidate();
+	earECGGraph.invalidate();
+	fingerPPGRedGraph.invalidate();
+	fingerPPGIRGraph.invalidate();
+	leftEarPPGGreenGraph.invalidate();
+	leftEarPPGRedGraph.invalidate();
+	leftEarPPGIRGraph.invalidate();
+	rightEarPPGGreenGraph.invalidate();
+	rightEarPPGRedGraph.invalidate();
+	rightEarPPGIRGraph.invalidate();
 }

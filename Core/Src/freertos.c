@@ -59,6 +59,7 @@ extern I2C_HandleTypeDef hi2c4;
 extern DMA_HandleTypeDef hdma_sdio_rx;
 extern DMA_HandleTypeDef hdma_sdio_tx;
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
+extern XPT2046Device_t xpt2046Device;
 
 ECGData_t max30003ECGEvent;
 MAX30102PPGData_t max30102PPGEvent;
@@ -871,10 +872,13 @@ void StartTouchIRQTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(xSemaphoreTake(touchIRQBinarySemaphore, 1000) == pdTRUE) {
-		  xpt2046LowLevelPenInterruptBottomHalfHandler();
+	  if(xSemaphoreTake(touchIRQBinarySemaphore, 1) == pdTRUE) {
+		  while(xpt2046Device.settings->readPenStateFunction()) {
+			  xpt2046LowLevelPenInterruptBottomHalfHandler();
+			  osDelay(50);
+		  }
 	  }
-      osDelay(100);
+      osDelay(1);
   }
   /* USER CODE END StartTouchIRQTask */
 }

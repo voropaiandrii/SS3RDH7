@@ -281,5 +281,6 @@ void connectAllDevicesUseCase() {
 }
 
 void disconnectAllDevicesUseCase() {
+	stopRecordingUseCase();
 	changeConnectingState(CONNECTING_STATE_DISCONNECTED);
 }

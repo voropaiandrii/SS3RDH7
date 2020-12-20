@@ -13,6 +13,62 @@ static void readValue(XPT2046Device_t* device) {
 				device->settings->spi->chipEnable();
 			}
 
+			uint8_t vbat = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_SINGLE_ENDED
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_SINGLE_CHANNEL_VBAT
+					   | XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t aux = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_SINGLE_ENDED
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_SINGLE_CHANNEL_AUX
+					   | XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t temp = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_SINGLE_ENDED
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_SINGLE_CHANNEL_TEMP
+					   | XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t yAxis = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_DIFF_Y_POSITION
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t xAxis = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_DIFF_X_POSITION
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t z1Axis = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_DIFF_Z1_POSITION
+					   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
+
+			uint8_t z2Axis = (0x80
+					   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
+					   | XPT2046_CONTROL_BYTE_MODE_12_BIT
+					   | XPT2046_CONTROL_BYTE_ADC_DIFF_Z2_POSITION);
+
+
+			for(uint8_t i = 0; i < XPT2046_AVERAGE_MEASURE_COUNT; i++) {
+				device->txBuffer[i * 2] = vbat;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 2] = aux;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 4] = temp;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 6] = yAxis;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 8] = xAxis;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 10] = z1Axis;
+				device->txBuffer[i * 2 + XPT2046_AVERAGE_MEASURE_COUNT * 12] = z2Axis;
+			}
+
+			/*
 			device->txBuffer[0] = (0x80
 						   | XPT2046_CONTROL_BYTE_MODE_SINGLE_ENDED
 						   | XPT2046_CONTROL_BYTE_MODE_12_BIT
@@ -50,7 +106,6 @@ static void readValue(XPT2046Device_t* device) {
 						   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
 						   | XPT2046_CONTROL_BYTE_MODE_12_BIT
 						   | XPT2046_CONTROL_BYTE_ADC_DIFF_Y_POSITION
-						   //| XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON);
 						   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
 			device->txBuffer[26] = device->txBuffer[24];
 			device->txBuffer[28] = device->txBuffer[24];
@@ -61,7 +116,6 @@ static void readValue(XPT2046Device_t* device) {
 						   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
 						   | XPT2046_CONTROL_BYTE_MODE_12_BIT
 						   | XPT2046_CONTROL_BYTE_ADC_DIFF_X_POSITION
-						   //| XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON
 						   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
 			device->txBuffer[34] = device->txBuffer[32];
 			device->txBuffer[36] = device->txBuffer[32];
@@ -72,7 +126,6 @@ static void readValue(XPT2046Device_t* device) {
 						   | XPT2046_CONTROL_BYTE_MODE_DIFFERENTIAL_REFERENCE
 						   | XPT2046_CONTROL_BYTE_MODE_12_BIT
 						   | XPT2046_CONTROL_BYTE_ADC_DIFF_Z1_POSITION
-						   //| XPT2046_CONTROL_BYTE_POWER_INTERNAL_REFERENCE_ON
 						   | XPT2046_CONTROL_BYTE_POWER_FULL_POWER);
 			device->txBuffer[42] = device->txBuffer[40];
 			device->txBuffer[44] = device->txBuffer[40];
@@ -87,6 +140,7 @@ static void readValue(XPT2046Device_t* device) {
 			device->txBuffer[52] = device->txBuffer[48];
 			device->txBuffer[54] = device->txBuffer[48];
 
+			*/
 			if (device->settings->spi->operations.writeData != NULL) {
 				device->settings->spi->operations.writeData(device, device->txBuffer, XPT2046_DATA_TRANSFER_BUFFER_SIZE);
 			}
@@ -102,6 +156,31 @@ static void receiveData(void* device, uint8_t *buffer, uint8_t size) {
 		if (devicePointer->isReadStarted) {
 			if (size == XPT2046_DATA_TRANSFER_BUFFER_SIZE) {
 
+				uint32_t vBatSum = 0;
+				uint32_t auxSum = 0;
+				uint32_t tempSum = 0;
+				uint32_t yPositionSum = 0;
+				uint32_t xPositionSum = 0;
+				uint32_t z1PositionSum = 0;
+				uint32_t z2PositionSum = 0;
+
+				for(uint8_t i = 0; i < XPT2046_AVERAGE_MEASURE_COUNT; i++) {
+					vBatSum += ((buffer[(i * 2) + 1] & 0x7F) << 5 | buffer[(i * 2) + 2] >> 3);
+					auxSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 2] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 2] >> 3);
+					tempSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 4] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 4] >> 3);
+					yPositionSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 6] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 6] >> 3);
+					xPositionSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 8] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 8] >> 3);
+					z1PositionSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 10] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 10] >> 3);
+					z2PositionSum += ((buffer[(i * 2) + 1 + XPT2046_AVERAGE_MEASURE_COUNT * 12] & 0x7F) << 5 |
+							buffer[(i * 2) + 2 + XPT2046_AVERAGE_MEASURE_COUNT * 12] >> 3);
+				}
+
+				/*
 				uint32_t vBatSum = ((buffer[1] & 0x7F) << 5 | buffer[2] >> 3) +
 				((buffer[3] & 0x7F) << 5 | buffer[4] >> 3) +
 						((buffer[5] & 0x7F) << 5 | buffer[6] >> 3) +
@@ -137,6 +216,7 @@ static void receiveData(void* device, uint8_t *buffer, uint8_t size) {
 						((buffer[53] & 0x7F) << 5 | buffer[54] >> 3) +
 						((buffer[55] & 0x7F) << 5 | buffer[56] >> 3);
 
+				*/
 				uint16_t rawXPosition = xPositionSum/XPT2046_AVERAGE_MEASURE_COUNT;
 				uint16_t rawYPosition = yPositionSum/XPT2046_AVERAGE_MEASURE_COUNT;
 

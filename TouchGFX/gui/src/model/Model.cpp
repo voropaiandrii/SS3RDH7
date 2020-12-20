@@ -225,7 +225,7 @@ void Model::checkQueue(QueueHandle_t queueHandle, GraphLimits* limits) {
 
 void Model::setGraphLimits(QueueHandle_t queueHandle, GraphLimits* limits, bool resetLimits) {
 	if(limits->maxValue != 0 && limits->maxValue > limits->minValue) {
-		printf("limits->maxValue: %d, limits->minValue: %d\n", limits->maxValue, limits->minValue);
+		//printf("limits->maxValue: %d, limits->minValue: %d\n", limits->maxValue, limits->minValue);
 
 		if(queueHandle == standartECGQueue) {
 			modelListener->setStandardECGGraphLimits(limits->minValue, limits->maxValue);

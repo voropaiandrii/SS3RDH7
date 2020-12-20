@@ -55,6 +55,8 @@ void SettingsScreenView::increaseSeconds()
 {
     if(secondsOffset < 59) {
     	secondsOffset++;
+    } else {
+    	secondsOffset = 0;
     }
 }
 
@@ -62,6 +64,8 @@ void SettingsScreenView::decreaseSeconds()
 {
 	if(secondsOffset > -59) {
 		secondsOffset--;
+	} else {
+		secondsOffset = 0;
 	}
 }
 
@@ -69,6 +73,8 @@ void SettingsScreenView::increaseMinutes()
 {
 	if(minutesOffset < 59) {
 		minutesOffset++;
+	} else {
+		minutesOffset = 0;
 	}
 }
 
@@ -76,6 +82,8 @@ void SettingsScreenView::decreaseMinutes()
 {
 	if(minutesOffset > -59) {
 		minutesOffset--;
+	} else {
+		minutesOffset = 0;
 	}
 }
 
@@ -83,6 +91,8 @@ void SettingsScreenView::increaseHours()
 {
     if(hoursOffset < 23) {
     	hoursOffset++;
+    } else {
+    	hoursOffset = 0;
     }
 }
 
@@ -90,6 +100,8 @@ void SettingsScreenView::decreaseHours()
 {
 	if(hoursOffset > -23) {
 		hoursOffset--;
+	} else {
+		hoursOffset = 0;
 	}
 }
 
@@ -97,6 +109,8 @@ void SettingsScreenView::increaseYear()
 {
 	if(yearsOffset < 2050) {
 		yearsOffset++;
+	} else {
+		yearsOffset = 0;
 	}
 }
 
@@ -104,6 +118,8 @@ void SettingsScreenView::decreaseYear()
 {
 	if(yearsOffset > -2050) {
 		yearsOffset--;
+	} else {
+		yearsOffset = 0;
 	}
 }
 
@@ -111,6 +127,8 @@ void SettingsScreenView::increaseMonths()
 {
 	if(monthsOffset < 12) {
 		monthsOffset++;
+	} else {
+		monthsOffset = 0;
 	}
 }
 
@@ -118,6 +136,8 @@ void SettingsScreenView::decreaseMonths()
 {
 	if(monthsOffset > -12) {
 		monthsOffset--;
+	} else {
+		monthsOffset = 0;
 	}
 }
 
@@ -125,6 +145,8 @@ void SettingsScreenView::increaseDays()
 {
 	if(daysOffset < 31) {
 		daysOffset++;
+	} else {
+		daysOffset = 0;
 	}
 }
 
@@ -132,6 +154,8 @@ void SettingsScreenView::decreaseDays()
 {
 	if(daysOffset > -31) {
 		daysOffset--;
+	} else {
+		daysOffset = 0;
 	}
 }
 

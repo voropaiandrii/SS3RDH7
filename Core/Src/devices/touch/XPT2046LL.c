@@ -4,7 +4,7 @@
 #include "devices/touch/XPT2046.h"
 #include "devices/touch/XPT2046LL.h"
 
-static XPT2046Device_t xpt2046Device;
+XPT2046Device_t xpt2046Device;
 static SPI_t spiTouch;
 static XPT2046Settings_t xpt2046Settings;
 
