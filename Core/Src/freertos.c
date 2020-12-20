@@ -1473,6 +1473,7 @@ void StartTestTask(void *argument)
 		  sdcardTestingUseCase(3000);
 		  vTaskDelay(1000);
 		  sdcardTestingUseCase(4000);
+		  completeTestingUseCase();
 	  }
 	  osDelay(100);
 

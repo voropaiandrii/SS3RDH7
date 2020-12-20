@@ -2058,8 +2058,8 @@
           },
           {
             "Type": "TiledImage",
-            "FileName": "NavigationMenuBackground0.png",
-            "Alpha": 127,
+            "FileName": "backgroundDarkGrey.png",
+            "Alpha": 255,
             "OffsetX": 0,
             "OffsetY": 0,
             "Name": "tiledImage1",

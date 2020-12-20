@@ -21,6 +21,8 @@ void touchgfx_init(void);
 void touchgfx_taskEntry(void);
 void printTesting(const char*);
 void setCPUUsage(unsigned char);
+void notifyTestStateChanged();
+void notifyMainStateChanged();
 
 /**
  * Initialize TouchGFX application
@@ -55,6 +57,14 @@ void printForTesting(const char* string) {
 
 void set_cpu_usage(unsigned char cpuUsage) {
 	setCPUUsage(cpuUsage);
+}
+
+void notify_test_state_changed() {
+	notifyTestStateChanged();
+}
+
+void notify_main_state_changed() {
+	notifyMainStateChanged();
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

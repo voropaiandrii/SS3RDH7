@@ -44,6 +44,8 @@ public:
     void printTestingOutput(const char* string);
 
     void setCPUUsage(uint8_t cpuUsage);
+    void notifyTestStateChanged();
+    void notifyMainStateChanged();
 protected:
     ModelListener* modelListener;
 private:

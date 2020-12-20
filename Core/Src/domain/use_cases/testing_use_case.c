@@ -28,27 +28,37 @@ char testWritingBuffer[TESTING_BUFFER_SIZE];
 //USE_SPECIAL_RAM_REGION
 char testReadingBuffer[TESTING_BUFFER_SIZE];
 
+static void changeState(uint8_t newState) {
+	testingState = newState;
+	notify_test_state_changed();
+}
+
 void startTestingUseCase() {
-	testingState = TESTING_STATE_STARTED;
+	changeState(TESTING_STATE_STARTED);
 	printt("\nStart testing\n");
 	xSemaphoreGiveFromISR(testBinarySemaphore, pdTRUE);
 	portYIELD_FROM_ISR(pdTRUE);
 }
 
 void pauseTestingUseCase() {
-	testingState = TESTING_STATE_PAUSED;
+	changeState(TESTING_STATE_PAUSED);
 	printt("Pause testing\n");
 	//vTaskSuspend(testTaskHandle);
 }
 
 void stopTestingUseCase() {
-	testingState = TESTING_STATE_STOPPED;
+	changeState(TESTING_STATE_STOPPED);
 	printt("Stop testing\n");
 	//vTaskDelete(testTaskHandle);
 }
 
-void sdcardTestingUseCase(uint16_t blockSize) {
+void completeTestingUseCase() {
+	changeState(TESTING_STATE_COMPLETED);
+	printt("Completed testing\n");
+	//vTaskDelete(testTaskHandle);
+}
 
+void sdcardTestingUseCase(uint16_t blockSize) {
 	if(blockSize > TESTING_BUFFER_SIZE) {
 		blockSize = TESTING_BUFFER_SIZE;
 	}

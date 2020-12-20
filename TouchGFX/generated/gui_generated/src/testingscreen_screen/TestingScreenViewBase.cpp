@@ -17,9 +17,8 @@ TestingScreenViewBase::TestingScreenViewBase() :
     backgroundTiledImage.setPosition(0, 0, 800, 480);
     backgroundTiledImage.setOffset(0, 0);
 
-    tiledImage1.setBitmap(touchgfx::Bitmap(BITMAP_NAVIGATIONMENUBACKGROUND0_ID));
+    tiledImage1.setBitmap(touchgfx::Bitmap(BITMAP_BACKGROUNDDARKGREY_ID));
     tiledImage1.setPosition(50, 60, 700, 420);
-    tiledImage1.setAlpha(127);
     tiledImage1.setOffset(0, 0);
 
     stopTestingButton.setXY(580, 0);

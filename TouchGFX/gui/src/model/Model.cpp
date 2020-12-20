@@ -314,17 +314,17 @@ void Model::cleanGraphs()
 
 void Model::startTesting() {
 	startTestingUseCase();
-	modelListener->updateTestingButtonsState(getTestingState());
+	//modelListener->updateTestingButtonsState(getTestingState());
 }
 
 void Model::pauseTesting() {
 	pauseTestingUseCase();
-	modelListener->updateTestingButtonsState(getTestingState());
+	//modelListener->updateTestingButtonsState(getTestingState());
 }
 
 void Model::stopTesting() {
 	stopTestingUseCase();
-	modelListener->updateTestingButtonsState(getTestingState());
+	//modelListener->updateTestingButtonsState(getTestingState());
 }
 
 void Model::printTestingOutput(const char* string) {
@@ -333,4 +333,12 @@ void Model::printTestingOutput(const char* string) {
 
 void Model::setCPUUsage(uint8_t cpuUsage) {
 
+}
+
+void Model::notifyTestStateChanged() {
+	modelListener->updateTestingButtonsState(getTestingState());
+}
+
+void Model::notifyMainStateChanged() {
+	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
 }
