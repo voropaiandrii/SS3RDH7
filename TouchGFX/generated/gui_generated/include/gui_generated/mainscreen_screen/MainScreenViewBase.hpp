@@ -16,6 +16,7 @@
 #include <touchgfx/containers/progress_indicators/TextProgress.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <gui/containers/NavigationMenu.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class MainScreenViewBase : public touchgfx::View<MainScreenPresenter>
 {
@@ -167,6 +168,13 @@ protected:
     touchgfx::ButtonWithIcon startRecordingButton;
     touchgfx::ButtonWithIcon makeScreenshotButton;
     NavigationMenu navigationMenu1;
+    touchgfx::TextAreaWithOneWildcard errorTextArea;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t ERRORTEXTAREA_SIZE = 25;
+    touchgfx::Unicode::UnicodeChar errorTextAreaBuffer[ERRORTEXTAREA_SIZE];
 
 private:
 

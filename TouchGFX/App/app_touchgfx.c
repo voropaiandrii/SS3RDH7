@@ -22,7 +22,7 @@ void touchgfx_taskEntry(void);
 void printTesting(const char*);
 void setCPUUsage(unsigned char);
 void notifyTestStateChanged();
-void notifyMainStateChanged();
+void notifyMainStateChanged(const char* error);
 
 /**
  * Initialize TouchGFX application
@@ -63,8 +63,8 @@ void notify_test_state_changed() {
 	notifyTestStateChanged();
 }
 
-void notify_main_state_changed() {
-	notifyMainStateChanged();
+void notify_main_state_changed(const char* error) {
+	notifyMainStateChanged(error);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

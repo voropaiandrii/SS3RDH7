@@ -265,6 +265,15 @@ MainScreenViewBase::MainScreenViewBase() :
 
     navigationMenu1.setXY(0, 0);
 
+    errorTextArea.setXY(471, 0);
+    errorTextArea.setVisible(false);
+    errorTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(252, 3, 3));
+    errorTextArea.setLinespacing(0);
+    Unicode::snprintf(errorTextAreaBuffer, ERRORTEXTAREA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID67).getText());
+    errorTextArea.setWildcard(errorTextAreaBuffer);
+    errorTextArea.resizeToCurrentText();
+    errorTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID66));
+
     add(__background);
     add(MainBackgroundTiledImage1);
     add(standardECGGraph);
@@ -287,6 +296,7 @@ MainScreenViewBase::MainScreenViewBase() :
     add(startRecordingButton);
     add(makeScreenshotButton);
     add(navigationMenu1);
+    add(errorTextArea);
 }
 
 void MainScreenViewBase::setupScreen()

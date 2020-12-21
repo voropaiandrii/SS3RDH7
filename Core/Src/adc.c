@@ -24,6 +24,7 @@
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "semphr.h"
+#include "domain/use_cases/recording_use_case.h"
 
 #define ADC_BUFFER_LENGHT 4
 extern QueueHandle_t standartECGQueue;
@@ -110,8 +111,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /* ADC1 interrupt Init */
-    HAL_NVIC_SetPriority(ADC_IRQn, 5, 0);
-    HAL_NVIC_EnableIRQ(ADC_IRQn);
   /* USER CODE BEGIN ADC1_MspInit 1 */
     HAL_NVIC_SetPriority(ADC_IRQn, 10, 0);
     HAL_NVIC_EnableIRQ(ADC_IRQn);
@@ -172,6 +171,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 			}
 		}
 	}
+
+
 }
 /* USER CODE END 1 */
 

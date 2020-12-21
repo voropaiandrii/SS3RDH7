@@ -140,6 +140,7 @@ void MainScreenView::makeScreenshot()
 void MainScreenView::startRecording()
 {
 	presenter->startRecording();
+	hideRecordingError();
 }
 
 void MainScreenView::stopRecording()
@@ -204,6 +205,16 @@ void MainScreenView::hideRecordingCounter() {
 	recordingDigitalClock.invalidate();
 }
 
+void MainScreenView::showRecordingError() {
+	errorTextArea.setVisible(true);
+	errorTextArea.invalidate();
+}
+
+void MainScreenView::hideRecordingError() {
+	errorTextArea.setVisible(false);
+	errorTextArea.invalidate();
+}
+
 void MainScreenView::cleanUI() {
 	standardECGGraph.clear();
 	earECGGraph.clear();
@@ -226,4 +237,11 @@ void MainScreenView::cleanUI() {
 	rightEarPPGGreenGraph.invalidate();
 	rightEarPPGRedGraph.invalidate();
 	rightEarPPGIRGraph.invalidate();
+}
+
+void MainScreenView::setRecordingError(const char* error) {
+	if(error != NULL) {
+		Unicode::fromUTF8((const uint8_t*)error, errorTextAreaBuffer, ERRORTEXTAREA_SIZE);
+		showRecordingError();
+	}
 }

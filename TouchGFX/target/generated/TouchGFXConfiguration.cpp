@@ -29,7 +29,7 @@ extern "C" void touchgfx_taskEntry();
 extern "C" void printTesting(const char*);
 extern "C" void setCPUUsage(uint8_t);
 extern "C" void notifyTestStateChanged();
-extern "C" void notifyMainStateChanged();
+extern "C" void notifyMainStateChanged(const char* error);
 
 static STM32TouchController tc;
 static STM32H7DMA dma;
@@ -84,9 +84,9 @@ void notifyTestStateChanged() {
 	heap.model.notifyTestStateChanged();
 }
 
-void notifyMainStateChanged() {
+void notifyMainStateChanged(const char* error) {
 	FrontendHeap& heap = FrontendHeap::getInstance();
-	heap.model.notifyMainStateChanged();
+	heap.model.notifyMainStateChanged(error);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

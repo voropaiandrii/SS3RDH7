@@ -58,13 +58,14 @@ int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
 uint16_t rightEarPPIRDataBufferIndex = 0;
 uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
 
-USE_SPECIAL_RAM_REGION
+//USE_SPECIAL_RAM_REGION
 char writingBuffer[WRITING_BUFFER_SIZE];
 
 uint8_t	currentRecordingState = RECORDING_STATE_DEFAULT;
 uint8_t	currentConnectingState = CONNECTING_STATE_DEFAULT;
 
 static SemaphoreHandle_t* doubleBufferBinarySemaphore = NULL;
+
 static uint8_t writingDataBufferNumberIndex = 0;
 
 void setDoubleBufferSemaphore(SemaphoreHandle_t* semaphore) {
@@ -86,10 +87,13 @@ void storeSampleECG(uint16_t sample) {
 		ecgDataBufferIndex = 0;
 		if(ecgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
 			ecgDataBufferNumberIndex++;
+			writingDataBufferNumberIndex = 0;
 		} else {
 			ecgDataBufferNumberIndex = 0;
+			writingDataBufferNumberIndex++;
 		}
 	}
+	notifyDoubleBufferEvent();
 }
 
 void storeSampleECGEar(uint16_t sample) {
@@ -100,12 +104,9 @@ void storeSampleECGEar(uint16_t sample) {
 		earEcgDataBufferIndex = 0;
 		if(earEcgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
 			earEcgDataBufferNumberIndex++;
-			writingDataBufferNumberIndex = 0;
 		} else {
 			earEcgDataBufferNumberIndex = 0;
-			writingDataBufferNumberIndex++;
 		}
-		notifyDoubleBufferEvent();
 	}
 }
 
@@ -224,55 +225,55 @@ void storeSamplePPGEarIRRight(uint16_t sample) {
 uint32_t combineWritingBuffer(char** bufferPointer) {
 	*bufferPointer = writingBuffer;
 	for(int i = 0; i < ECG_BUFFER_SIZE; i++) {
-		uint16_t newIndex = i * BYTES_PER_SAMPLE * NUMBER_OF_CHANNELS;
-		writingBuffer[newIndex] = ecgDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 1] = ecgDataBuffer[0][i];
-		writingBuffer[newIndex + 2] = earEcgDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 3] = earEcgDataBuffer[0][i];
-		writingBuffer[newIndex + 4] = fingerPPGRedDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 5] = fingerPPGRedDataBuffer[0][i];
-		writingBuffer[newIndex + 6] = fingerPPGIRDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 7] = fingerPPGIRDataBuffer[0][i];
-		writingBuffer[newIndex + 8] = leftEarPPGGreenDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 9] = leftEarPPGGreenDataBuffer[0][i];
-		writingBuffer[newIndex + 10] = leftEarPPGRedDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 11] = leftEarPPGRedDataBuffer[0][i];
-		writingBuffer[newIndex + 12] = leftEarPPGIRDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 13] = leftEarPPGIRDataBuffer[0][i];
-		writingBuffer[newIndex + 14] = rightEarPPGGreenDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 15] = rightEarPPGGreenDataBuffer[0][i];
-		writingBuffer[newIndex + 16] = rightEarPPGRedDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 17] = rightEarPPGRedDataBuffer[0][i];
-		writingBuffer[newIndex + 18] = rightEarPPGIRDataBuffer[0][i] >> 8;
-		writingBuffer[newIndex + 19] = rightEarPPGIRDataBuffer[0][i];
-		writingBuffer[newIndex + 20] = '\n';
+		uint16_t newIndex = i * NUMBER_OF_BYTES_PER_SAMPLE;
+		writingBuffer[newIndex] = ecgDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 1] = ecgDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 2] = earEcgDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 3] = earEcgDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 4] = fingerPPGRedDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 5] = fingerPPGRedDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 6] = fingerPPGIRDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 7] = fingerPPGIRDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 8] = leftEarPPGGreenDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 9] = leftEarPPGGreenDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 10] = leftEarPPGRedDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 11] = leftEarPPGRedDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 12] = leftEarPPGIRDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 13] = leftEarPPGIRDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 14] = rightEarPPGGreenDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 15] = rightEarPPGGreenDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 16] = rightEarPPGRedDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 17] = rightEarPPGRedDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 18] = rightEarPPGIRDataBuffer[writingDataBufferNumberIndex][i] >> 8;
+		writingBuffer[newIndex + 19] = rightEarPPGIRDataBuffer[writingDataBufferNumberIndex][i];
+		writingBuffer[newIndex + 20] = END_OF_SAMPLE;
 	}
 	return WRITING_BUFFER_SIZE;
 }
 
-static void changeRecordingState(uint8_t newState) {
+static void changeRecordingState(uint8_t newState, const char* error) {
 	currentRecordingState = newState;
-	notify_main_state_changed();
+	notify_main_state_changed(error);
 }
 
 static void changeConnectingState(uint8_t newState) {
 	currentConnectingState = newState;
-	notify_main_state_changed();
+	notify_main_state_changed(NULL);
 }
 
-uint8_t isRecordingUseCase() {
+uint8_t getRecordingStateUseCase() {
 	return currentRecordingState;
 }
 
 void startRecordingUseCase() {
-	changeRecordingState(RECORDING_STATE_STARTED);
+	changeRecordingState(RECORDING_STATE_STARTED, NULL);
 }
 
 void stopRecordingUseCase() {
-	changeRecordingState(RECORDING_STATE_STOPPED);
+	changeRecordingState(RECORDING_STATE_STOPPED, NULL);
 }
 
-uint8_t isDevicesConnectedUseCase() {
+uint8_t getDevicesConnectedStateUseCase() {
 	return currentConnectingState;
 }
 
@@ -283,4 +284,8 @@ void connectAllDevicesUseCase() {
 void disconnectAllDevicesUseCase() {
 	stopRecordingUseCase();
 	changeConnectingState(CONNECTING_STATE_DISCONNECTED);
+}
+
+void errorRecordingUseCase(const char* error) {
+	changeRecordingState(RECORDING_STATE_ERROR, error);
 }

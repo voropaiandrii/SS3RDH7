@@ -13,7 +13,7 @@ MainScreenPresenter::MainScreenPresenter(MainScreenView& v)
 
 void MainScreenPresenter::activate()
 {
-	updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+	updateButtonsState(getRecordingStateUseCase(), getDevicesConnectedStateUseCase(), NULL);
 }
 
 void MainScreenPresenter::deactivate()
@@ -143,21 +143,25 @@ void MainScreenPresenter::cleanGraphs()
 
 }
 
-void MainScreenPresenter::updateButtonsState(uint8_t isRecording, uint8_t isConnected) {
+void MainScreenPresenter::updateButtonsState(uint8_t recordingState, uint8_t connectedState, const char* error) {
 
-	if(isConnected) {
+	if(connectedState == CONNECTING_STATE_CONNECTED) {
 		view.changeButtonState(BUTTON_ID_CONNECT_DEVICES, BUTTON_STATE_DISABLED);
 		view.changeButtonState(BUTTON_ID_DISCONNECT_DEVICES, BUTTON_STATE_ENABLED);
-		if(isRecording) {
+		if(recordingState == RECORDING_STATE_STARTED) {
 			view.changeButtonState(BUTTON_ID_START_RECORDING, BUTTON_STATE_DISABLED);
 			view.changeButtonState(BUTTON_ID_STOP_RECORDING, BUTTON_STATE_ENABLED);
 			view.showRecordingCounter();
-		} else {
+		} else if(recordingState == RECORDING_STATE_STOPPED) {
 			view.changeButtonState(BUTTON_ID_START_RECORDING, BUTTON_STATE_ENABLED);
 			view.changeButtonState(BUTTON_ID_STOP_RECORDING, BUTTON_STATE_DISABLED);
 			view.hideRecordingCounter();
+		} else if(recordingState == RECORDING_STATE_ERROR) {
+			view.changeButtonState(BUTTON_ID_START_RECORDING, BUTTON_STATE_ENABLED);
+			view.changeButtonState(BUTTON_ID_STOP_RECORDING, BUTTON_STATE_DISABLED);
+			view.setRecordingError(error);
 		}
-	} else {
+	} else if(connectedState == CONNECTING_STATE_DISCONNECTED) {
 		// Recording is not available if all devices are disconnected
 		view.changeButtonState(BUTTON_ID_CONNECT_DEVICES, BUTTON_STATE_ENABLED);
 		view.changeButtonState(BUTTON_ID_DISCONNECT_DEVICES, BUTTON_STATE_DISABLED);

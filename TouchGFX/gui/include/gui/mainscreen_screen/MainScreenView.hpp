@@ -50,6 +50,10 @@ public:
     void hideRecordingCounter();
 
     void cleanUI();
+
+    void showRecordingError();
+    void hideRecordingError();
+    void setRecordingError(const char* error);
 protected:
 };
 

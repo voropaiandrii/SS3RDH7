@@ -45,7 +45,7 @@ public:
     void disconnectDevices();
     void cleanGraphs();
 
-    void updateButtonsState(uint8_t isRecording, uint8_t isConnected);
+    void updateButtonsState(uint8_t recordingState, uint8_t connectedState, const char* error);
     /**
      * The activate function is called automatically when this screen is "switched in"
      * (ie. made active). Initialization logic can be placed here.

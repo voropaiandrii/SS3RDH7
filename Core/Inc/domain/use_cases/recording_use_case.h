@@ -18,14 +18,16 @@
 #define ECG_BUFFER_NUMBER						2
 #define BYTES_PER_SAMPLE						2
 #define NUMBER_OF_CHANNELS						10
-#define WRITING_BUFFER_SIZE						ECG_BUFFER_SIZE * ((BYTES_PER_SAMPLE * NUMBER_OF_CHANNELS) + 1)
+#define NUMBER_OF_BYTES_PER_SAMPLE				((BYTES_PER_SAMPLE * NUMBER_OF_CHANNELS) + 1)
+#define WRITING_BUFFER_SIZE						ECG_BUFFER_SIZE * NUMBER_OF_BYTES_PER_SAMPLE
 
-
+#define END_OF_SAMPLE							0x0A
 
 #define CONNECTING_STATE_CONNECTED				1
 #define CONNECTING_STATE_DISCONNECTED			0
 #define CONNECTING_STATE_DEFAULT				CONNECTING_STATE_CONNECTED
 
+#define RECORDING_STATE_ERROR					2
 #define RECORDING_STATE_STARTED					1
 #define RECORDING_STATE_STOPPED					0
 #if CONNECTING_STATE_DEFAULT == CONNECTING_STATE_CONNECTED
@@ -46,10 +48,11 @@ void storeSamplePPGEarGreenRight(uint16_t sample);
 void storeSamplePPGEarRedRight(uint16_t sample);
 void storeSamplePPGEarIRRight(uint16_t sample);
 uint32_t combineWritingBuffer(char** bufferPointer);
-uint8_t isRecordingUseCase();
+uint8_t getRecordingStateUseCase();
 void startRecordingUseCase();
 void stopRecordingUseCase();
-uint8_t isDevicesConnectedUseCase();
+void errorRecordingUseCase(const char* error);
+uint8_t getDevicesConnectedStateUseCase();
 void connectAllDevicesUseCase();
 void disconnectAllDevicesUseCase();
 

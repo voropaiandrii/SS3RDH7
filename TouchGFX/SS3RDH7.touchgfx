@@ -1695,6 +1695,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId66",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 252,
+              "Green": 3,
+              "Blue": 3
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId67",
+              "UseBuffer": true,
+              "BufferSize": 25
+            },
+            "Name": "errorTextArea",
+            "X": 471,
+            "Y": 0,
+            "Width": 222,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2589,6 +2618,14 @@
       {
         "TextEntryId": "SingleUseId65",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId66",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId67",
+        "IsResource": false
       }
     ],
     "Name": "SS3RDH7",
@@ -2597,7 +2634,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "SettingsScreen",
+    "StartupScreenName": "MainScreen",
     "SelectedStartupLanguage": "EN",
     "Skin": "Dark",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

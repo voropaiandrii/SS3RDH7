@@ -45,7 +45,7 @@ public:
 
     void setCPUUsage(uint8_t cpuUsage);
     void notifyTestStateChanged();
-    void notifyMainStateChanged();
+    void notifyMainStateChanged(const char* error);
 
     void changeTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds);
 protected:

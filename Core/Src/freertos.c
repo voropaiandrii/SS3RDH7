@@ -138,7 +138,7 @@ static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .priority = (osPriority_t) osPriorityHigh,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 8
 };
 /* Definitions for touchTask */
@@ -166,21 +166,21 @@ const osThreadAttr_t max30003Task_attributes = {
 osThreadId_t max30003IRQTaskHandle;
 const osThreadAttr_t max30003IRQTask_attributes = {
   .name = "max30003IRQTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for max30102Task */
 osThreadId_t max30102TaskHandle;
 const osThreadAttr_t max30102Task_attributes = {
   .name = "max30102Task",
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
 /* Definitions for max30102IRQTask */
 osThreadId_t max30102IRQTaskHandle;
 const osThreadAttr_t max30102IRQTask_attributes = {
   .name = "max30102IRQTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161RTask */
@@ -194,7 +194,7 @@ const osThreadAttr_t maxm86161RTask_attributes = {
 osThreadId_t maxm86161IRTaskHandle;
 const osThreadAttr_t maxm86161IRTask_attributes = {
   .name = "maxm86161IRTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161LTask */
@@ -208,49 +208,49 @@ const osThreadAttr_t maxm86161LTask_attributes = {
 osThreadId_t maxm86161ILTaskHandle;
 const osThreadAttr_t maxm86161ILTask_attributes = {
   .name = "maxm86161ILTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c1TxTask */
 osThreadId_t i2c1TxTaskHandle;
 const osThreadAttr_t i2c1TxTask_attributes = {
   .name = "i2c1TxTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c1RxTask */
 osThreadId_t i2c1RxTaskHandle;
 const osThreadAttr_t i2c1RxTask_attributes = {
   .name = "i2c1RxTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c1ErrorTask */
 osThreadId_t i2c1ErrorTaskHandle;
 const osThreadAttr_t i2c1ErrorTask_attributes = {
   .name = "i2c1ErrorTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c2TxTask */
 osThreadId_t i2c2TxTaskHandle;
 const osThreadAttr_t i2c2TxTask_attributes = {
   .name = "i2c2TxTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c2RxTask */
 osThreadId_t i2c2RxTaskHandle;
 const osThreadAttr_t i2c2RxTask_attributes = {
   .name = "i2c2RxTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c2ErrorTask */
 osThreadId_t i2c2ErrorTaskHandle;
 const osThreadAttr_t i2c2ErrorTask_attributes = {
   .name = "i2c2ErrorTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for debugTask */
@@ -292,21 +292,21 @@ const osThreadAttr_t usbDmaRxTask_attributes = {
 osThreadId_t i2c4TxTaskHandle;
 const osThreadAttr_t i2c4TxTask_attributes = {
   .name = "i2c4TxTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c4RxTask */
 osThreadId_t i2c4RxTaskHandle;
 const osThreadAttr_t i2c4RxTask_attributes = {
   .name = "i2c4RxTask",
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c4ErrorTask */
 osThreadId_t i2c4ErrorTaskHandle;
 const osThreadAttr_t i2c4ErrorTask_attributes = {
   .name = "i2c4ErrorTask",
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityISR,
   .stack_size = 1024 * 4
 };
 
@@ -314,7 +314,7 @@ osThreadId_t testTaskHandle;
 const osThreadAttr_t testTask_attributes = {
   .name = "testTask",
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1024 * 20
+  .stack_size = 1024 * 16
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -397,6 +397,13 @@ void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	max86161RightPPGEvent.redSample = ppgEvent->redSample;
 	max86161RightPPGEvent.greenSample = ppgEvent->greenSample;
 	max86161RightPPGEvent.irSample = ppgEvent->irSample;
+
+	storeSamplePPGEarGreenRight(max86161RightPPGEvent.redSample);
+	storeSamplePPGEarRedRight(max86161RightPPGEvent.greenSample);
+	storeSamplePPGEarIRRight(max86161RightPPGEvent.irSample);
+
+	HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
+
 	if(max86161RightCounter < GRAPH_DOWNSAMPLING_VALUE) {
 		max86161RightCounter++;
 	} else {
@@ -552,7 +559,7 @@ void MX_FREERTOS_Init(void) {
 	  printf("Can't create a queue");
   }
 
-  earECGQueue = xQueueCreate( 10, sizeof(int));
+  earECGQueue = xQueueCreate( 50, sizeof(int));
   if(earECGQueue == 0) {
 	  printf("Can't create a queue");
   }
@@ -740,61 +747,61 @@ void MX_FREERTOS_Init(void) {
   touchIRQTaskHandle = osThreadNew(StartTouchIRQTask, NULL, &touchIRQTask_attributes);
 
   /* creation of max30003Task */
-  //max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
+  max30003TaskHandle = osThreadNew(StartMAX30003Task, NULL, &max30003Task_attributes);
 
   /* creation of max30003IRQTask */
-  //max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
+  max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
 
   /* creation of i2c1TxTask */
-  //i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
+  i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
 
   /* creation of i2c1RxTask */
-  //i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
+  i2c1RxTaskHandle = osThreadNew(StartI2C1RxTask, NULL, &i2c1RxTask_attributes);
 
   /* creation of i2c1ErrorTask */
-  //i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
+  i2c1ErrorTaskHandle = osThreadNew(StartI2C1ErrorTask, NULL, &i2c1ErrorTask_attributes);
 
   /* creation of i2c2TxTask */
-  //i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
+  i2c2TxTaskHandle = osThreadNew(StartI2C2TxTask, NULL, &i2c2TxTask_attributes);
 
   /* creation of i2c2RxTask */
-  //i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
+  i2c2RxTaskHandle = osThreadNew(StartI2C2RxTask, NULL, &i2c2RxTask_attributes);
 
   /* creation of i2c2ErrorTask */
-  //i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
+  i2c2ErrorTaskHandle = osThreadNew(StartI2C2ErrorTask, NULL, &i2c2ErrorTask_attributes);
 
   /* creation of i2c4TxTask */
-  //i2c4TxTaskHandle = osThreadNew(StartI2C4TxTask, NULL, &i2c4TxTask_attributes);
+  i2c4TxTaskHandle = osThreadNew(StartI2C4TxTask, NULL, &i2c4TxTask_attributes);
 
   /* creation of i2c4RxTask */
-  //i2c4RxTaskHandle = osThreadNew(StartI2C4RxTask, NULL, &i2c4RxTask_attributes);
+  i2c4RxTaskHandle = osThreadNew(StartI2C4RxTask, NULL, &i2c4RxTask_attributes);
 
   /* creation of i2c4ErrorTask */
-  //i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
+  i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
 
   /* creation of max30102Task */
-  //max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
 
   /* creation of max30102IRQTask */
-  //max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
+  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
 
   /* creation of maxm86161RTask */
-  //maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
 
   /* creation of maxm86161IRTask */
-  //maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
 
   /* creation of maxm86161LTask */
-  //maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
 
   /* creation of maxm86161ILTask */
-  //maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* creation of debugTask */
   //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
   /* creation of fatFsTask */
-  //fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
+  fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
   /* creation of usbTask */
   //usbTaskHandle = osThreadNew(StartUsbTask, NULL, &usbTask_attributes);
@@ -1249,63 +1256,73 @@ void StartFatFsTask(void *argument)
 	//char currentLine[20] = {'\0'};
 	FRESULT fresult = FR_OK;
 	generateFilename(currentFilename);
-	osDelay(250);
-	if(retSD == 0) {
-		fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
-		if(fresult == FR_OK) {
-
-		} else {
-			printf("Can't mount a SD card, fresult: %d\n", fresult);
-		}
-	} else {
-		printf("Can't link a driver!\n");
-	}
 
 	for (;;) {
-		if(BSP_PlatformIsDetected() == SD_PRESENT) {
-			if(xSemaphoreTake(storeEcgBinarySemaphore, 5000) == pdTRUE) {
-
-				//if(fresult == FR_OK) {
-					if(xSemaphoreTake(fsMutexSemaphore, 1000) == pdTRUE) {
-						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
-						fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
-						if(fresult == FR_OK) {
-							totalFileBytes = f_size(&MyFile);
-							fresult = f_lseek(&MyFile, totalFileBytes);
+		if(getRecordingStateUseCase() == RECORDING_STATE_STARTED) {
+			if(BSP_PlatformIsDetected() == SD_PRESENT) {
+				if(xSemaphoreTake(storeEcgBinarySemaphore, 100) == pdTRUE) {
+					if(xSemaphoreTake(fsMutexSemaphore, 100) == pdTRUE) {
+						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
+						if(retSD == 0) {
+							fresult = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0);
 							if(fresult == FR_OK) {
+								fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
+								if(fresult == FR_OK) {
+									totalFileBytes = f_size(&MyFile);
+									fresult = f_lseek(&MyFile, totalFileBytes);
+									if(fresult == FR_OK) {
+										char* bufferPointer = NULL;
+										uint32_t stringLength = combineWritingBuffer(&bufferPointer);
+										fresult = f_write(&MyFile, bufferPointer, stringLength, (void *)&writtenBytes);
+										if(fresult == FR_OK) {
+											printf("Written bytes: %lu, string length: %lu\n", writtenBytes, stringLength);
+											/*
+											fresult = f_sync(&MyFile);
+											if(fresult == FR_OK) {
 
-							} else {
-								printf("Failed to seek\n");
-							}
+											} else {
+												printf("Failed to sync a file\n");
+												errorRecordingUseCase("SYNC FILE ERROR");
+											}
+											*/
+											f_close(&MyFile);
 
-							char* bufferPointer = NULL;
-							uint32_t stringLength = combineWritingBuffer(&bufferPointer);
-							fresult = f_write(&MyFile, bufferPointer, stringLength, (void *)&writtenBytes);
+										} else {
+											printf("Can't write a file, fresult: %d\n", fresult);
+											errorRecordingUseCase("WRITE FILE ERROR");
+										}
+										f_close(&MyFile);
+									} else {
+										printf("Failed to seek\n");
+										errorRecordingUseCase("SEEK FILE ERROR");
+									}
 
-							if(fresult == FR_OK) {
-								printf("Written bytes: %lu, string length: %lu\n", writtenBytes, stringLength);
-								//fresult = f_sync(&MyFile);
+								} else {
+									printf("Can't open a file, fresult: %d\n", fresult);
+									errorRecordingUseCase("OPEN FILE ERROR");
+								}
+
+								fresult = f_mount(NULL, (TCHAR const*)SDPath, 1);
 								if(fresult == FR_OK) {
 
 								} else {
-									printf("Failed to sync a file\n");
+									printf("Umount failed\n");
+									errorRecordingUseCase("SDCARD UNMOUNT ERROR");
 								}
-								f_close(&MyFile);
-
 							} else {
-								printf("Can't write a file, fresult: %d\n", fresult);
+								printf("Can't mount a SD card, fresult: %d\n", fresult);
+								errorRecordingUseCase("SDCARD MOUNT ERROR");
 							}
-							f_close(&MyFile);
 						} else {
-							printf("Can't open a file, fresult: %d\n", fresult);
+							printf("Can't link a driver!\n");
+							errorRecordingUseCase("SDCARD DRIVER ERROR");
 						}
-
-						//fresult = f_mount(NULL, (TCHAR const*)SDPath, 1);
-						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
+						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
 						xSemaphoreGive(fsMutexSemaphore);
 					}
-				//}
-
+				}
+			} else {
+				errorRecordingUseCase("NO SDCARD!");
 			}
 		}
 		vTaskDelay(1);
@@ -1461,26 +1478,27 @@ void StartTestTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(xSemaphoreTake(testBinarySemaphore, 1000) == pdTRUE ) {
-		  sdcardTestingUseCase(512);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(1024);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(2048);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(4096);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(1000);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(2000);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(3000);
-		  vTaskDelay(1000);
-		  sdcardTestingUseCase(4000);
-		  completeTestingUseCase();
+	  if(getRecordingStateUseCase() != RECORDING_STATE_STARTED) {
+		  if(xSemaphoreTake(testBinarySemaphore, 1000) == pdTRUE ) {
+			  sdcardTestingUseCase(512);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(1024);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(2048);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(4096);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(1000);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(2000);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(3000);
+			  vTaskDelay(1000);
+			  sdcardTestingUseCase(4000);
+			  completeTestingUseCase();
+		  }
 	  }
 	  osDelay(100);
-
   }
   /* USER CODE END StartI2C4ErrorTask */
 }

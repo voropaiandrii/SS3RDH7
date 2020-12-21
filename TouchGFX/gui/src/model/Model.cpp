@@ -107,7 +107,7 @@ void Model::tick()
 
 	if(initModel == 0) {
 		initModel = 1;
-		modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+		modelListener->updateButtonsState(getRecordingStateUseCase(), getDevicesConnectedStateUseCase(), NULL);
 		//modelListener->updateTestingButtonsState(getTestingState());
 	}
 
@@ -340,8 +340,8 @@ void Model::notifyTestStateChanged() {
 	modelListener->updateTestingButtonsState(getTestingState());
 }
 
-void Model::notifyMainStateChanged() {
-	modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+void Model::notifyMainStateChanged(const char* error) {
+	modelListener->updateButtonsState(getRecordingStateUseCase(), getDevicesConnectedStateUseCase(), error);
 }
 
 void Model::changeTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {

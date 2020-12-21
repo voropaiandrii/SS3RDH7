@@ -38,7 +38,7 @@ public:
     virtual void disconnectDevices() {}
     virtual void cleanGraphs() {}
 
-    virtual void updateButtonsState(uint8_t isRecording, uint8_t isConnected) {}
+    virtual void updateButtonsState(uint8_t isRecording, uint8_t isConnected, const char* error) {}
     virtual void updateTestingButtonsState(uint8_t testingState) {}
 
     virtual void printTestingOutput(const char* string) {}
