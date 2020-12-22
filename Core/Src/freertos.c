@@ -138,7 +138,7 @@ static char currentFilename[FILE_UTILS_GENERATED_NAME_LENGTH_BYTES];
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityLow,
   .stack_size = 1024 * 8
 };
 /* Definitions for touchTask */
@@ -194,7 +194,7 @@ const osThreadAttr_t maxm86161RTask_attributes = {
 osThreadId_t maxm86161IRTaskHandle;
 const osThreadAttr_t maxm86161IRTask_attributes = {
   .name = "maxm86161IRTask",
-  .priority = (osPriority_t) osPriorityISR,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
 /* Definitions for maxm86161LTask */
@@ -208,7 +208,7 @@ const osThreadAttr_t maxm86161LTask_attributes = {
 osThreadId_t maxm86161ILTaskHandle;
 const osThreadAttr_t maxm86161ILTask_attributes = {
   .name = "maxm86161ILTask",
-  .priority = (osPriority_t) osPriorityISR,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 1024 * 4
 };
 /* Definitions for i2c1TxTask */
@@ -574,32 +574,32 @@ void MX_FREERTOS_Init(void) {
 	  printf("Can't create a queue");
   }
 
-  earPPGRightGreenQueue = xQueueCreate( 50, sizeof(int));
+  earPPGRightGreenQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightGreenQueue == 0) {
 	printf("Can't create a queue");
   }
 
-  earPPGRightRedQueue = xQueueCreate( 50, sizeof(int));
+  earPPGRightRedQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightRedQueue == 0) {
 	printf("Can't create a queue");
   }
 
-  earPPGRightIRQueue = xQueueCreate( 50, sizeof(int));
+  earPPGRightIRQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightIRQueue == 0) {
 	printf("Can't create a queue");
   }
 
-  earPPGLeftGreenQueue = xQueueCreate( 50, sizeof(int));
+  earPPGLeftGreenQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightGreenQueue == 0) {
 	printf("Can't create a queue");
   }
 
-  earPPGLeftRedQueue = xQueueCreate( 50, sizeof(int));
+  earPPGLeftRedQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightRedQueue == 0) {
 	printf("Can't create a queue");
   }
 
-  earPPGLeftIRQueue = xQueueCreate( 50, sizeof(int));
+  earPPGLeftIRQueue = xQueueCreate(100, sizeof(int));
   if(earPPGRightIRQueue == 0) {
 	printf("Can't create a queue");
   }
@@ -812,7 +812,7 @@ void MX_FREERTOS_Init(void) {
   /* creation of usbDmaRxTask */
   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
 
-  testTaskHandle = osThreadNew(StartTestTask, NULL, &testTask_attributes);
+  //testTaskHandle = osThreadNew(StartTestTask, NULL, &testTask_attributes);
 
 
   /* USER CODE BEGIN RTOS_THREADS */

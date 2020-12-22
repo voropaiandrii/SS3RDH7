@@ -142,17 +142,17 @@ static void changeState(MAX86161Device_t* device, uint8_t *buffer, uint8_t size)
 		case MAX86161_STATE_READ_FIFO_DATA:
 			if(size == MAXM86161_BYTES_PER_CHANNEL * device->fifoAvailableDataCount) {
 				for(uint8_t i = 0; i < device->fifoAvailableDataCount / MAXM86161_BYTES_NUMBER_OF_CHANNELS; i++) {
-					device->currentDataSample.greenSample = buffer[i * MAXM86161_BYTES_PER_SAMPLE] << 16;
+					device->currentDataSample.greenSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE] & 0x07) << 16;
 					device->currentDataSample.greenSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 1] << 8;
 					device->currentDataSample.greenSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 2];
-					device->currentDataSample.irSample  = buffer[i * MAXM86161_BYTES_PER_SAMPLE + 3] << 16;
+					device->currentDataSample.irSample  = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 3] & 0x07) << 16;
 					device->currentDataSample.irSample  |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 4] << 8;
 					device->currentDataSample.irSample  |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 5];
-					device->currentDataSample.redSample = buffer[i * MAXM86161_BYTES_PER_SAMPLE + 6] << 16;
+					device->currentDataSample.redSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 6] & 0x07) << 16;
 					device->currentDataSample.redSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 7] << 8;
 					device->currentDataSample.redSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 8];
 					device->settings->ppgDataCallback(&(device->currentDataSample));
-					}
+				}
 				device->currentState = MAX86161_STATE_READ_INTERRUPT_STATUS1;
 				readInterruptStatus1(device);
 			} else {
@@ -173,8 +173,8 @@ void max86161Init(MAX86161Device_t* device) {
 	device->error = MAX86161_ERROR_NONE;
 	device->i2cState = MAX86161_I2C_STATE_START;
 
-	device->txSerialQueue = xQueueCreate(14, sizeof(uint16_t));
-	device->rxSerialQueue = xQueueCreate(14, sizeof(uint8_t));
+	device->txSerialQueue = xQueueCreate(15, sizeof(uint16_t));
+	device->rxSerialQueue = xQueueCreate(15, sizeof(uint8_t));
 }
 
 void max86161DeInit(MAX86161Device_t* device) {
@@ -300,7 +300,7 @@ static void configurate(MAX86161Device_t* device) {
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_PPG_CONFIGURATION_2,
-			MAX86161_REGISTER_PPG_CONFIGURATION_2_PPG_SR_4096_HZ |
+			MAX86161_REGISTER_PPG_CONFIGURATION_2_PPG_SR_1024_HZ |
 			MAX86161_REGISTER_PPG_CONFIGURATION_2_SMP_AVE_4,
 			0);
 
@@ -310,18 +310,24 @@ static void configurate(MAX86161Device_t* device) {
 			0);
 
 	enqueueRegisterDataRequest(device,
+				MAX86161_REGISTER_ADDRESS_PPG_SYNC_CONTROL,
+				MAX86161_REGISTER_PPG_SYNC_CONTROL_GPIO_CTRL_IN_TRIGGER,
+				0);
+
+	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_PHOTO_DIODE_BIAS,
-			MAX86161_REGISTER_PHOTO_DIODE_BIAS_PDBIAS1_130_PF,
+			MAX86161_REGISTER_PHOTO_DIODE_BIAS_PDBIAS1_65_PF |
+			MAX86161_REGISTER_PHOTO_DIODE_BIAS_PDBIAS2_65_PF,
 			0);
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_LED_RANGE_1,
 			MAX86161_REGISTER_LED_RANGE1_LED1_RGE_31 |
-			MAX86161_REGISTER_LED_RANGE1_LED2_RGE_31 |
-			MAX86161_REGISTER_LED_RANGE1_LED3_RGE_31,
+			MAX86161_REGISTER_LED_RANGE1_LED1_RGE_31 |
+			MAX86161_REGISTER_LED_RANGE1_LED1_RGE_31,
 			0);
 
-	uint8_t ledCurrent = MAX86161_REGISTER_LED_PA(MAX86161_REGISTER_LED_PA_LEDX_RGE_31, 30);
+	uint8_t ledCurrent = MAX86161_REGISTER_LED_PA(MAX86161_REGISTER_LED_RANGE1_LED1_RGE_31, 30);
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_LED1_PULSE_AMPLITUDE,
@@ -340,7 +346,7 @@ static void configurate(MAX86161Device_t* device) {
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_FIFO_CONFIGURATION_1,
-			MAX86161_REGISTER_FIFO_FIFO_CONFIGURATION_1_FIFO_A_FULL_30,
+			MAX86161_REGISTER_FIFO_FIFO_CONFIGURATION_1_FIFO_A_FULL_60,
 			0);
 
 	enqueueRegisterDataRequest(device,
@@ -357,12 +363,12 @@ static void configurate(MAX86161Device_t* device) {
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_LED_SEQ_CONTROL_1,
 			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_1_LEDC1_LED1 |
-			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_1_LEDC2_LED2,
+			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_1_LEDC2_LED3,
 			0);
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_LED_SEQ_CONTROL_2,
-			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_2_LEDC3_LED3 |
+			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_2_LEDC3_LED2 |
 			MAX86161_REGISTER_LED_SEQUENCE_REGISTER_2_LEDC4_NONE ,
 			0);
 
@@ -396,6 +402,11 @@ static void readConfigurationBack(MAX86161Device_t* device) {
 			MAX86161_REGISTER_ADDRESS_PPG_CONFIGURATION_3,
 			0,
 			1);
+
+	enqueueRegisterDataRequest(device,
+				MAX86161_REGISTER_ADDRESS_PPG_SYNC_CONTROL,
+				0,
+				1);
 
 	enqueueRegisterDataRequest(device,
 			MAX86161_REGISTER_ADDRESS_PHOTO_DIODE_BIAS,

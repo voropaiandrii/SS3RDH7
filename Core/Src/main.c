@@ -179,6 +179,12 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim7);
   HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1);
   HAL_ADC_Start_IT(&hadc1);
+
+  //HAL_TIM_Base_Start(&htim2);
+  //HAL_TIM_Base_Start(&htim8);
+
+  HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_OC_Start(&htim8, TIM_CHANNEL_3);
   /* USER CODE END 2 */
 
   /* Init scheduler */

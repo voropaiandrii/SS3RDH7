@@ -16,7 +16,7 @@
 #define MAXM86161_BYTES_PER_CHANNEL									3U
 #define MAXM86161_BYTES_NUMBER_OF_CHANNELS							3U
 #define MAXM86161_BYTES_PER_SAMPLE									MAXM86161_BYTES_PER_CHANNEL * MAXM86161_BYTES_NUMBER_OF_CHANNELS
-#define MAX86161_TXRX_BUFFER_LENGTH									128U * MAXM86161_BYTES_PER_CHANNEL * MAXM86161_BYTES_NUMBER_OF_CHANNELS
+#define MAX86161_TXRX_BUFFER_LENGTH									255U * MAXM86161_BYTES_PER_CHANNEL * MAXM86161_BYTES_NUMBER_OF_CHANNELS
 
 #define MAX86161_PART_ID											0x36
 /*
@@ -947,7 +947,7 @@ typedef struct {
 	uint8_t partId;
 	uint8_t i2cState;
 	uint8_t i2cAction;
-	uint8_t i2cDataSize;
+	uint16_t i2cDataSize;
 	uint8_t fifoWritePointer;
 	uint8_t fifoReadPointer;
 	uint8_t fifoAvailableDataCount;

@@ -178,6 +178,7 @@ void storeSamplePPGEarIRLeft(uint16_t sample) {
 			leftEarPPGIRDataBufferNumberIndex = 0;
 		}
 	}
+
 }
 
 void storeSamplePPGEarGreenRight(uint16_t sample) {
@@ -216,10 +217,13 @@ void storeSamplePPGEarIRRight(uint16_t sample) {
 		rightEarPPIRDataBufferIndex = 0;
 		if(rightEarPPGIRDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
 			rightEarPPGIRDataBufferNumberIndex++;
+			//writingDataBufferNumberIndex = 0;
 		} else {
 			rightEarPPGIRDataBufferNumberIndex = 0;
+			//writingDataBufferNumberIndex++;
 		}
 	}
+	//notifyDoubleBufferEvent();
 }
 
 uint32_t combineWritingBuffer(char** bufferPointer) {
