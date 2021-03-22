@@ -367,13 +367,13 @@ void max30003ECGDataCallback(ECGData_t* ecgEvent) {
 void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 	max30003ECGEvent.sample = ecgEvent->sample;
 
-	storeSampleECGEar((uint16_t)max30003ECGEvent.sample);
+	storeSampleECG((uint16_t)max30003ECGEvent.sample);
 
 	if(max300032Counter < GRAPH_DOWNSAMPLING_VALUE) {
 		max300032Counter++;
 	} else {
 		max300032Counter = 0;
-		xQueueSendFromISR(earECGQueue, (void *)&(max30003ECGEvent.sample), (TickType_t)0);
+		xQueueSendFromISR(standartECGQueue, (void *)&(max30003ECGEvent.sample), (TickType_t)0);
 	}
 }
 
@@ -798,7 +798,7 @@ void MX_FREERTOS_Init(void) {
   maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* creation of debugTask */
-  //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+  debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
   /* creation of fatFsTask */
   fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);

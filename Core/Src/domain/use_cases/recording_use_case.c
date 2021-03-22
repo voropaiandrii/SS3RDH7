@@ -8,53 +8,58 @@
 #include "domain/use_cases/recording_use_case.h"
 #include "app_touchgfx.h"
 
-USE_SPECIAL_RAM_REGION
-uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
-uint16_t ecgDataBufferIndex = 0;
-uint8_t ecgDataBufferNumberIndex = 0;
+#define BUFFER_IS_READY			1
+#define BUFFER_IS_NOT_READY		0
+
 
 USE_SPECIAL_RAM_REGION
-int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
+uint16_t ecgDataBufferIndex = 0;
+uint8_t ecgDataBufferNumberIndex = 0;
+uint8_t isBufferReady = BUFFER_IS_READY;
+
+USE_SPECIAL_RAM_REGION
+int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t earEcgDataBufferIndex = 0;
 uint8_t earEcgDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t fingerPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t fingerPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t fingerPPGRedDataBufferIndex = 0;
 uint8_t fingerPPGRedDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t fingerPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t fingerPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t fingerPPGIRDataBufferIndex = 0;
 uint8_t fingerPPGIRDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t leftEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t leftEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t leftEarPPGreenDataBufferIndex = 0;
 uint8_t leftEarPPGGreenDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t leftEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t leftEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t leftEarPPRedDataBufferIndex = 0;
 uint8_t leftEarPPGRedDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t leftEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t leftEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t leftEarPPIRDataBufferIndex = 0;
 uint8_t leftEarPPGIRDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t rightEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t rightEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t rightEarPPGreenDataBufferIndex = 0;
 uint8_t rightEarPPGGreenDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t rightEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t rightEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t rightEarPPRedDataBufferIndex = 0;
 uint8_t rightEarPPGRedDataBufferNumberIndex = 0;
 
 USE_SPECIAL_RAM_REGION
-int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE] = {0};
 uint16_t rightEarPPIRDataBufferIndex = 0;
 uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
 
@@ -87,13 +92,14 @@ void storeSampleECG(uint16_t sample) {
 		ecgDataBufferIndex = 0;
 		if(ecgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
 			ecgDataBufferNumberIndex++;
-			writingDataBufferNumberIndex = 0;
+			//writingDataBufferNumberIndex = 0;
 		} else {
 			ecgDataBufferNumberIndex = 0;
-			writingDataBufferNumberIndex++;
+			//writingDataBufferNumberIndex++;
+			//notifyDoubleBufferEvent();
 		}
 	}
-	notifyDoubleBufferEvent();
+
 }
 
 void storeSampleECGEar(uint16_t sample) {
@@ -104,9 +110,13 @@ void storeSampleECGEar(uint16_t sample) {
 		earEcgDataBufferIndex = 0;
 		if(earEcgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
 			earEcgDataBufferNumberIndex++;
+			writingDataBufferNumberIndex++;
 		} else {
 			earEcgDataBufferNumberIndex = 0;
+			writingDataBufferNumberIndex = 0;
+
 		}
+		notifyDoubleBufferEvent();
 	}
 }
 
@@ -270,6 +280,35 @@ uint8_t getRecordingStateUseCase() {
 }
 
 void startRecordingUseCase() {
+	ecgDataBufferIndex = 0;
+	earEcgDataBufferNumberIndex = 0;
+
+	earEcgDataBufferIndex = 0;
+	earEcgDataBufferNumberIndex = 0;
+
+	fingerPPGRedDataBufferIndex = 0;
+	fingerPPGRedDataBufferNumberIndex = 0;
+
+	fingerPPGIRDataBufferIndex = 0;
+	fingerPPGIRDataBufferNumberIndex = 0;
+
+	leftEarPPGreenDataBufferIndex = 0;
+	leftEarPPGreenDataBufferNumberIndex = 0;
+
+	leftEarPPRedDataBufferIndex = 0;
+	leftEarPPRedDataBufferNumberIndex = 0;
+
+	leftEarPPIRDataBufferIndex = 0;
+	leftEarPPIRDataBufferNumberIndex = 0;
+
+	rightEarPPGreenDataBufferIndex = 0;
+	rightEarPPGreenDataBufferNumberIndex = 0;
+
+	rightEarPPRedDataBufferIndex = 0;
+	rightEarPPRedDataBufferNumberIndex = 0;
+
+	rightEarPPIRDataBufferIndex = 0;
+	rightEarPPIRDataBufferNumberIndex = 0;
 	changeRecordingState(RECORDING_STATE_STARTED, NULL);
 }
 

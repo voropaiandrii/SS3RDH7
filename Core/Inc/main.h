@@ -46,6 +46,10 @@ extern "C" {
 #define RTOS_DEBUG_BUFFER_SIZE 					2000
 
 #define GRAPH_DOWNSAMPLING_VALUE				19
+
+#define RTC_CLOCK_SOURCE_LSE					0
+#define RTC_CLOCK_SOURCE_LSI					1
+#define RTC_CLOCK_SOURCE 						RTC_CLOCK_SOURCE_LSE
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

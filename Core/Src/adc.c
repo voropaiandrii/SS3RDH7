@@ -27,7 +27,7 @@
 #include "domain/use_cases/recording_use_case.h"
 
 #define ADC_BUFFER_LENGHT 4
-extern QueueHandle_t standartECGQueue;
+extern QueueHandle_t earECGQueue;
 
 uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
 uint8_t bufferCounter = 0;
@@ -160,14 +160,14 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 		}
 		averageValue = averageValue / ADC_BUFFER_LENGHT;
 
-		storeSampleECG(averageValue);
+		storeSampleECGEar(averageValue);
 
-		if(standartECGQueue != 0) {
+		if(earECGQueue != 0) {
 			if(graphCounter < GRAPH_DOWNSAMPLING_VALUE) {
 				graphCounter++;
 			} else {
 				graphCounter = 0;
-				xQueueSendFromISR(standartECGQueue, (void *)&averageValue, (TickType_t)0);
+				xQueueSendFromISR(earECGQueue, (void *)&averageValue, (TickType_t)0);
 			}
 		}
 	}

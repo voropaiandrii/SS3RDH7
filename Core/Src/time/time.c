@@ -10,8 +10,8 @@
 
 RTCDate getCurrentRTCDate() {
 	RTCDate date = {0};
-	RTC_TimeTypeDef currentTime;
-	RTC_DateTypeDef currentDate;
+	RTC_TimeTypeDef currentTime = {0};
+	RTC_DateTypeDef currentDate = {0};
 	HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
 	HAL_RTC_GetDate(&hrtc, &currentDate, RTC_FORMAT_BIN);
 	date.hours = currentTime.Hours;
@@ -24,8 +24,8 @@ RTCDate getCurrentRTCDate() {
 }
 
 void setCurrentRTCDate(RTCDate* date) {
-	RTC_TimeTypeDef currentTime;
-	RTC_DateTypeDef currentDate;
+	RTC_TimeTypeDef currentTime = {0};
+	RTC_DateTypeDef currentDate = {0};
 
 	currentTime.Hours = date->hours;
 	currentTime.Minutes = date->minutes;

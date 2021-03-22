@@ -10,11 +10,11 @@ void MainScreenView::setupScreen()
 {
     MainScreenViewBase::setupScreen();
 
-    standardECGGraph.setGraphRangeY(0, 0xFFFF);
+    standardECGGraph.setGraphRangeY(65535, -65535);
     standardECGGraphMajorYAxisGrid.setInterval(10000);
 
-    earECGGraph.setGraphRangeY(65535, -65535);
-    earECGGraphMajorYAxisGrid.setInterval(20000);
+    earECGGraph.setGraphRangeY(0, 0xFFFF);
+    earECGGraphMajorYAxisGrid.setInterval(10000);
 
     fingerPPGRedGraph.setGraphRangeY(0, 0xFFFFF);
     fingerPPGRedGraphMajorYAxisGrid.setInterval(40000);
