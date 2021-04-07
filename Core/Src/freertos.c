@@ -404,6 +404,9 @@ void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 
 	HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 
+
+	printf("R: %u, G: %u, I: %u", max86161LeftPPGEvent.redSample, max86161LeftPPGEvent.greenSample, max86161LeftPPGEvent.irSample);
+
 	if(max86161RightCounter < GRAPH_DOWNSAMPLING_VALUE) {
 		max86161RightCounter++;
 	} else {
@@ -421,6 +424,7 @@ void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	storeSamplePPGEarGreenLeft(max86161LeftPPGEvent.redSample);
 	storeSamplePPGEarRedLeft(max86161LeftPPGEvent.greenSample);
 	storeSamplePPGEarIRLeft(max86161LeftPPGEvent.irSample);
+
 
 	if(max86161LeftCounter < GRAPH_DOWNSAMPLING_VALUE) {
 		max86161LeftCounter++;

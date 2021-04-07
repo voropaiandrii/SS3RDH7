@@ -142,13 +142,13 @@ static void changeState(MAX86161Device_t* device, uint8_t *buffer, uint8_t size)
 		case MAX86161_STATE_READ_FIFO_DATA:
 			if(size == MAXM86161_BYTES_PER_CHANNEL * device->fifoAvailableDataCount) {
 				for(uint8_t i = 0; i < device->fifoAvailableDataCount / MAXM86161_BYTES_NUMBER_OF_CHANNELS; i++) {
-					device->currentDataSample.greenSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE] & 0x07) << 16;
+					device->currentDataSample.greenSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE] & 0x0007) << 16;
 					device->currentDataSample.greenSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 1] << 8;
 					device->currentDataSample.greenSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 2];
-					device->currentDataSample.irSample  = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 3] & 0x07) << 16;
+					device->currentDataSample.irSample  = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 3] & 0x0007) << 16;
 					device->currentDataSample.irSample  |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 4] << 8;
 					device->currentDataSample.irSample  |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 5];
-					device->currentDataSample.redSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 6] & 0x07) << 16;
+					device->currentDataSample.redSample = (buffer[i * MAXM86161_BYTES_PER_SAMPLE + 6] & 0x0007) << 16;
 					device->currentDataSample.redSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 7] << 8;
 					device->currentDataSample.redSample |= buffer[i * MAXM86161_BYTES_PER_SAMPLE + 8];
 					device->settings->ppgDataCallback(&(device->currentDataSample));
@@ -187,6 +187,9 @@ void max86161DeInit(MAX86161Device_t* device) {
 }
 
 void max86161Start(MAX86161Device_t* device) {
+	device->currentDataSample.greenSample = 0;
+	device->currentDataSample.redSample = 0;
+	device->currentDataSample.irSample = 0;
 	device->currentState = MAX86161_STATE_START;
 	changeState(device, 0, 0);
 }
