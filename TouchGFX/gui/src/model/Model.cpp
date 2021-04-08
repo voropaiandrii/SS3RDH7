@@ -127,7 +127,7 @@ int Model::getDisplayBrigthness() {
 void Model::checkQueue(QueueHandle_t queueHandle, GraphLimits* limits) {
 	if(queueHandle != 0) {
 		int message = 0;
-		while(xQueuePeek(queueHandle, (void*)&message, (TickType_t)10)) {
+		while(xQueuePeek(queueHandle, (void*)&message, (TickType_t)10) == pdTRUE) {
 			xQueueReceive(queueHandle, (void*)&message, (TickType_t)10);
 			if(modelListener != 0) {
 				uint32_t currentMillis = getTicks();

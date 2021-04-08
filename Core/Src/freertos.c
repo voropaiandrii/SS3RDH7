@@ -405,7 +405,7 @@ void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 
 
-	printf("R: %u, G: %u, I: %u", max86161LeftPPGEvent.redSample, max86161LeftPPGEvent.greenSample, max86161LeftPPGEvent.irSample);
+	//printf("R: %u, G: %u, I: %u", max86161LeftPPGEvent.redSample, max86161LeftPPGEvent.greenSample, max86161LeftPPGEvent.irSample);
 
 	if(max86161RightCounter < GRAPH_DOWNSAMPLING_VALUE) {
 		max86161RightCounter++;
@@ -804,6 +804,8 @@ void MX_FREERTOS_Init(void) {
   /* creation of debugTask */
   debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
+
+  initRecordingUseCase();
   /* creation of fatFsTask */
   fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
@@ -1264,6 +1266,7 @@ void StartFatFsTask(void *argument)
 	for (;;) {
 		if(getRecordingStateUseCase() == RECORDING_STATE_STARTED) {
 			if(BSP_PlatformIsDetected() == SD_PRESENT) {
+				prebuildWritingBuffer();
 				if(xSemaphoreTake(storeEcgBinarySemaphore, 100) == pdTRUE) {
 					if(xSemaphoreTake(fsMutexSemaphore, 100) == pdTRUE) {
 						//HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);

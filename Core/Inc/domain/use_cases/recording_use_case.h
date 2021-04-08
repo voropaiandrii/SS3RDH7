@@ -36,6 +36,7 @@
 	#define RECORDING_STATE_DEFAULT					RECORDING_STATE_STOPPED
 #endif
 
+void initRecordingUseCase();
 void setDoubleBufferSemaphore(SemaphoreHandle_t* semaphore);
 void storeSampleECG(uint16_t sample);
 void storeSampleECGEar(uint16_t sample);
@@ -48,6 +49,7 @@ void storeSamplePPGEarGreenRight(uint16_t sample);
 void storeSamplePPGEarRedRight(uint16_t sample);
 void storeSamplePPGEarIRRight(uint16_t sample);
 uint32_t combineWritingBuffer(char** bufferPointer);
+void prebuildWritingBuffer();
 uint8_t getRecordingStateUseCase();
 void startRecordingUseCase();
 void stopRecordingUseCase();
