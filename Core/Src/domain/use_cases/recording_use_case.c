@@ -20,6 +20,7 @@ typedef struct {
 	uint16_t bufferIndex;
 	uint8_t bufferNumberIndex;
 	uint8_t isBufferReady;
+	uint16_t prebildCallsWhenBufferReady;
 
 } BiosignalDataStruct;
 
@@ -95,49 +96,59 @@ uint8_t	currentConnectingState = CONNECTING_STATE_DEFAULT;
 
 static SemaphoreHandle_t* doubleBufferBinarySemaphore = NULL;
 
-static uint8_t writingDataBufferNumberIndex = 0;
+//static uint8_t writingDataBufferNumberIndex = 0;
 
 
 static void initDataStructs() {
 	ecgData.bufferIndex = 0;
 	ecgData.bufferNumberIndex = 0;
 	ecgData.isBufferReady = BUFFER_IS_NOT_READY;
+	ecgData.prebildCallsWhenBufferReady = 0;
 
 	earEcgData.bufferIndex = 0;
 	earEcgData.bufferNumberIndex = 0;
 	earEcgData.isBufferReady = BUFFER_IS_NOT_READY;
+	earEcgData.prebildCallsWhenBufferReady = 0;
 
 	fingerPPGRedData.bufferIndex = 0;
 	fingerPPGRedData.bufferNumberIndex = 0;
 	fingerPPGRedData.isBufferReady = BUFFER_IS_NOT_READY;
+	fingerPPGRedData.prebildCallsWhenBufferReady = 0;
 
 	fingerPPGIRData.bufferIndex = 0;
 	fingerPPGIRData.bufferNumberIndex = 0;
 	fingerPPGIRData.isBufferReady = BUFFER_IS_NOT_READY;
+	fingerPPGIRData.prebildCallsWhenBufferReady = 0;
 
 	leftEarPPGGreenData.bufferIndex = 0;
 	leftEarPPGGreenData.bufferNumberIndex = 0;
 	leftEarPPGGreenData.isBufferReady = BUFFER_IS_NOT_READY;
+	leftEarPPGGreenData.prebildCallsWhenBufferReady = 0;
 
 	leftEarPPGRedData.bufferIndex = 0;
 	leftEarPPGRedData.bufferNumberIndex = 0;
 	leftEarPPGRedData.isBufferReady = BUFFER_IS_NOT_READY;
+	leftEarPPGRedData.prebildCallsWhenBufferReady = 0;
 
 	leftEarPPGIRData.bufferIndex = 0;
 	leftEarPPGIRData.bufferNumberIndex = 0;
 	leftEarPPGIRData.isBufferReady = BUFFER_IS_NOT_READY;
+	leftEarPPGIRData.prebildCallsWhenBufferReady = 0;
 
 	rightEarPPGGreenData.bufferIndex = 0;
 	rightEarPPGGreenData.bufferNumberIndex = 0;
 	rightEarPPGGreenData.isBufferReady = BUFFER_IS_NOT_READY;
+	rightEarPPGGreenData.prebildCallsWhenBufferReady = 0;
 
 	rightEarPPGRedData.bufferIndex = 0;
 	rightEarPPGRedData.bufferNumberIndex = 0;
 	rightEarPPGRedData.isBufferReady = BUFFER_IS_NOT_READY;
+	rightEarPPGRedData.prebildCallsWhenBufferReady = 0;
 
 	rightEarPPGIRData.bufferIndex = 0;
 	rightEarPPGIRData.bufferNumberIndex = 0;
 	rightEarPPGIRData.isBufferReady = BUFFER_IS_NOT_READY;
+	rightEarPPGIRData.prebildCallsWhenBufferReady = 0;
 }
 
 void initRecordingUseCase() {
@@ -216,7 +227,11 @@ static void notifyDoubleBufferEvent() {
 
 void storeSampleECG(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(ecgData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(ecgData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		ecgData.dataBuffer[ecgData.bufferNumberIndex][ecgData.bufferIndex] = sample;
 		if(ecgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -239,7 +254,11 @@ void storeSampleECG(uint16_t sample) {
 
 void storeSampleECGEar(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(earEcgData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(earEcgData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		earEcgData.dataBuffer[earEcgData.bufferNumberIndex][earEcgData.bufferIndex] = sample;
 		if(earEcgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -263,7 +282,11 @@ void storeSampleECGEar(uint16_t sample) {
 
 void storeSamplePPGFingerRed(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(fingerPPGRedData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(fingerPPGRedData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		fingerPPGRedData.dataBuffer[fingerPPGRedData.bufferNumberIndex][fingerPPGRedData.bufferIndex] = sample;
 		if(fingerPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -283,7 +306,11 @@ void storeSamplePPGFingerRed(uint16_t sample) {
 
 void storeSamplePPGFingerIR(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(fingerPPGIRData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(fingerPPGIRData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		fingerPPGIRData.dataBuffer[fingerPPGIRData.bufferNumberIndex][fingerPPGIRData.bufferIndex] = sample;
 		if(fingerPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -303,7 +330,11 @@ void storeSamplePPGFingerIR(uint16_t sample) {
 
 void storeSamplePPGEarGreenLeft(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(leftEarPPGGreenData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(leftEarPPGGreenData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		leftEarPPGGreenData.dataBuffer[leftEarPPGGreenData.bufferNumberIndex][leftEarPPGGreenData.bufferIndex] = sample;
 		if(leftEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -323,7 +354,11 @@ void storeSamplePPGEarGreenLeft(uint16_t sample) {
 
 void storeSamplePPGEarRedLeft(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(leftEarPPGRedData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(leftEarPPGRedData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		leftEarPPGRedData.dataBuffer[leftEarPPGRedData.bufferNumberIndex][leftEarPPGRedData.bufferIndex] = sample;
 		if(leftEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -343,7 +378,11 @@ void storeSamplePPGEarRedLeft(uint16_t sample) {
 
 void storeSamplePPGEarIRLeft(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(leftEarPPGIRData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(leftEarPPGIRData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		leftEarPPGIRData.dataBuffer[leftEarPPGIRData.bufferNumberIndex][leftEarPPGIRData.bufferIndex] = sample;
 		if(leftEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -364,7 +403,11 @@ void storeSamplePPGEarIRLeft(uint16_t sample) {
 
 void storeSamplePPGEarGreenRight(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(rightEarPPGGreenData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(rightEarPPGGreenData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		rightEarPPGGreenData.dataBuffer[rightEarPPGGreenData.bufferNumberIndex][rightEarPPGGreenData.bufferIndex] = sample;
 		if(rightEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -384,7 +427,11 @@ void storeSamplePPGEarGreenRight(uint16_t sample) {
 
 void storeSamplePPGEarRedRight(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(rightEarPPGRedData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(rightEarPPGRedData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		rightEarPPGRedData.dataBuffer[rightEarPPGRedData.bufferNumberIndex][rightEarPPGRedData.bufferIndex] = sample;
 		if(rightEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -404,7 +451,11 @@ void storeSamplePPGEarRedRight(uint16_t sample) {
 
 void storeSamplePPGEarIRRight(uint16_t sample) {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
-		xQueueSendFromISR(rightEarPPGIRData.dataQueue, (void *)&sample, (TickType_t)0);
+		if(xQueueSendFromISR(rightEarPPGIRData.dataQueue, (void *)&sample, (TickType_t)0) == pdTRUE) {
+			// OK
+		} else {
+			// Error
+		}
 		/*
 		rightEarPPGIRData.dataBuffer[rightEarPPGIRData.bufferNumberIndex][rightEarPPGIRData.bufferIndex] = sample;
 		if(rightEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
@@ -428,31 +479,184 @@ void storeSamplePPGEarIRRight(uint16_t sample) {
 void prebuildWritingBuffer() {
 	if(currentRecordingState == RECORDING_STATE_STARTED) {
 		uint16_t itemValue;
-		while(xQueueReceive(ecgData.dataQueue, &itemValue, 5) == pdTRUE) {
-			writingBuffer[ecgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE] = itemValue >> 8;
-			writingBuffer[ecgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 1] = itemValue;
-			if(ecgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-				ecgData.bufferIndex++;
-			} else {
-				//ecgData.bufferIndex = 0;
-				ecgData.isBufferReady = BUFFER_IS_READY;
-				break;
+		// Standard ECG
+		if(ecgData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(ecgData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[ecgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE] = itemValue >> 8;
+				writingBuffer[ecgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 1] = itemValue;
+				if(ecgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					ecgData.bufferIndex++;
+				} else {
+					//ecgData.bufferIndex = 0;
+					ecgData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
 			}
+		} else {
+			ecgData.prebildCallsWhenBufferReady++;
 		}
 
-		while(xQueueReceive(earEcgData.dataQueue, &itemValue, 5) == pdTRUE) {
-			writingBuffer[earEcgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 2] = itemValue >> 8;
-			writingBuffer[earEcgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 3] = itemValue;
-			if(earEcgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-				earEcgData.bufferIndex++;
-			} else {
-				//earEcgData.bufferIndex = 0;
-				earEcgData.isBufferReady = BUFFER_IS_READY;
-				break;
+		// Ear ECG
+		if(earEcgData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(earEcgData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[earEcgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 2] = itemValue >> 8;
+				writingBuffer[earEcgData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 3] = itemValue;
+				if(earEcgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					earEcgData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					earEcgData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
 			}
+		} else {
+			earEcgData.prebildCallsWhenBufferReady++;
+		}
+		// Finger PPG
+		if(fingerPPGRedData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(fingerPPGRedData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[fingerPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 4] = itemValue >> 8;
+				writingBuffer[fingerPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 5] = itemValue;
+				if(fingerPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					fingerPPGRedData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					fingerPPGRedData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			fingerPPGRedData.prebildCallsWhenBufferReady++;
 		}
 
-		if(ecgData.isBufferReady == BUFFER_IS_READY && earEcgData.isBufferReady == BUFFER_IS_READY) {
+		if(fingerPPGIRData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(fingerPPGIRData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[fingerPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 6] = itemValue >> 8;
+				writingBuffer[fingerPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 7] = itemValue;
+				if(fingerPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					fingerPPGIRData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					fingerPPGIRData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			fingerPPGIRData.prebildCallsWhenBufferReady++;
+		}
+
+		// Left ear PPG
+		if(leftEarPPGGreenData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(leftEarPPGGreenData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[leftEarPPGGreenData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 8] = itemValue >> 8;
+				writingBuffer[leftEarPPGGreenData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 9] = itemValue;
+				if(leftEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					leftEarPPGGreenData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					leftEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			leftEarPPGGreenData.prebildCallsWhenBufferReady++;
+		}
+
+		if(leftEarPPGRedData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(leftEarPPGRedData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[leftEarPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 10] = itemValue >> 8;
+				writingBuffer[leftEarPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 11] = itemValue;
+				if(leftEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					leftEarPPGRedData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					leftEarPPGRedData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			leftEarPPGRedData.prebildCallsWhenBufferReady++;
+		}
+
+		if(leftEarPPGIRData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(leftEarPPGIRData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[leftEarPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 12] = itemValue >> 8;
+				writingBuffer[leftEarPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 13] = itemValue;
+				if(leftEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					leftEarPPGIRData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					leftEarPPGIRData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			leftEarPPGIRData.prebildCallsWhenBufferReady++;
+		}
+		// Right ear PPG
+		if(rightEarPPGGreenData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(rightEarPPGGreenData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[rightEarPPGGreenData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 14] = itemValue >> 8;
+				writingBuffer[rightEarPPGGreenData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 15] = itemValue;
+				if(rightEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					rightEarPPGGreenData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					rightEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			rightEarPPGGreenData.prebildCallsWhenBufferReady++;
+		}
+
+		if(rightEarPPGRedData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(rightEarPPGRedData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[rightEarPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 16] = itemValue >> 8;
+				writingBuffer[rightEarPPGRedData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 17] = itemValue;
+				if(rightEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					rightEarPPGRedData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					rightEarPPGRedData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			rightEarPPGRedData.prebildCallsWhenBufferReady++;
+		}
+
+		if(rightEarPPGIRData.isBufferReady != BUFFER_IS_READY) {
+			while(xQueueReceive(rightEarPPGIRData.dataQueue, &itemValue, 5) == pdTRUE) {
+				writingBuffer[rightEarPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 18] = itemValue >> 8;
+				writingBuffer[rightEarPPGIRData.bufferIndex * NUMBER_OF_BYTES_PER_SAMPLE + 19] = itemValue;
+				if(rightEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
+					rightEarPPGIRData.bufferIndex++;
+				} else {
+					//earEcgData.bufferIndex = 0;
+					rightEarPPGIRData.isBufferReady = BUFFER_IS_READY;
+					break;
+				}
+			}
+		} else {
+			rightEarPPGIRData.prebildCallsWhenBufferReady++;
+		}
+
+		if(ecgData.isBufferReady == BUFFER_IS_READY &&
+				earEcgData.isBufferReady == BUFFER_IS_READY &&
+				fingerPPGRedData.isBufferReady == BUFFER_IS_READY &&
+				fingerPPGIRData.isBufferReady == BUFFER_IS_READY &&
+				leftEarPPGGreenData.isBufferReady == BUFFER_IS_READY &&
+				leftEarPPGIRData.isBufferReady == BUFFER_IS_READY &&
+				leftEarPPGRedData.isBufferReady == BUFFER_IS_READY &&
+				rightEarPPGGreenData.isBufferReady == BUFFER_IS_READY &&
+				rightEarPPGRedData.isBufferReady == BUFFER_IS_READY &&
+				rightEarPPGIRData.isBufferReady == BUFFER_IS_READY) {
+			notifyDoubleBufferEvent();
+		} else if(ecgData.isBufferReady == BUFFER_IS_READY &&
+				earEcgData.isBufferReady == BUFFER_IS_READY &&
+				ecgData.prebildCallsWhenBufferReady > 1 &&
+				earEcgData.prebildCallsWhenBufferReady > 1){
 			notifyDoubleBufferEvent();
 		}
 	}

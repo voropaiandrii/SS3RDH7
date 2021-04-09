@@ -359,11 +359,6 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c) {
 }
 
 
-void max30003ECGDataCallback(ECGData_t* ecgEvent) {
-	max30003ECGDataHandler(ecgEvent);
-	max30003ECGDataHandler(ecgEvent);
-}
-
 void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 	max30003ECGEvent.sample = ecgEvent->sample;
 
@@ -376,6 +371,13 @@ void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 		xQueueSendFromISR(standartECGQueue, (void *)&(max30003ECGEvent.sample), (TickType_t)0);
 	}
 }
+
+void max30003ECGDataCallback(ECGData_t* ecgEvent) {
+	max30003ECGDataHandler(ecgEvent);
+	max30003ECGDataHandler(ecgEvent);
+}
+
+
 
 void max30102PPGDataCallback(MAX30102PPGData_t* ppgEvent) {
 	max30102PPGEvent.redSample = ppgEvent->redSample;
@@ -393,7 +395,8 @@ void max30102PPGDataCallback(MAX30102PPGData_t* ppgEvent) {
 	}
 }
 
-void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+
+void max86161RightPPGDataHandler(MAXM86161PPGData_t* ppgEvent) {
 	max86161RightPPGEvent.redSample = ppgEvent->redSample;
 	max86161RightPPGEvent.greenSample = ppgEvent->greenSample;
 	max86161RightPPGEvent.irSample = ppgEvent->irSample;
@@ -402,7 +405,7 @@ void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	storeSamplePPGEarRedRight(max86161RightPPGEvent.greenSample);
 	storeSamplePPGEarIRRight(max86161RightPPGEvent.irSample);
 
-	HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
+	//HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_3);
 
 
 	//printf("R: %u, G: %u, I: %u", max86161LeftPPGEvent.redSample, max86161LeftPPGEvent.greenSample, max86161LeftPPGEvent.irSample);
@@ -416,7 +419,13 @@ void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 		xQueueSendFromISR(earPPGRightIRQueue, (void *)&max86161RightPPGEvent.irSample, (TickType_t)0);
 	}
 }
-void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+
+void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+	max86161RightPPGDataHandler(ppgEvent);
+	max86161RightPPGDataHandler(ppgEvent);
+}
+
+void max86161LeftPPGDataCallbackHandler(MAXM86161PPGData_t* ppgEvent) {
 	max86161LeftPPGEvent.redSample = ppgEvent->redSample;
 	max86161LeftPPGEvent.greenSample = ppgEvent->greenSample;
 	max86161LeftPPGEvent.irSample = ppgEvent->irSample;
@@ -435,6 +444,13 @@ void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 		xQueueSendFromISR(earPPGLeftIRQueue, (void *)&max86161LeftPPGEvent.irSample, (TickType_t)0);
 	}
 }
+
+void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+	max86161LeftPPGDataCallbackHandler(ppgEvent);
+	max86161LeftPPGDataCallbackHandler(ppgEvent);
+}
+
+
 
 void HAL_GPIO_EXTI_Callback(uint16_t pin) {
     if(pin == TOUCH_PIRQ_Pin) {

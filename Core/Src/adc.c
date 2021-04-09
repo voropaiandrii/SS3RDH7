@@ -170,6 +170,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				xQueueSendFromISR(earECGQueue, (void *)&averageValue, (TickType_t)0);
 			}
 		}
+
+
 	}
 
 

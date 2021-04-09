@@ -41,6 +41,10 @@ void MainScreenView::setupScreen()
     rightEarPPGIRGraphMajorYAxisGrid.setInterval(80000);
 
     recordingDigitalClock.setVisible(false);
+
+    fingerPPGRedGraph.setVisible(false);
+    fingerPPGIRGraph.setVisible(false);
+
 }
 
 void MainScreenView::tearDownScreen()

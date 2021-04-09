@@ -169,14 +169,14 @@ static void configurate(MAX30003Device_t* device) {
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_10nA;						// Current magnitude = 10nA
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASV_RBIAS_50M;						// 200 MOhm bias
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_DCLOFF_DC_DETECTION_DISABLED;		// Enable DC lead-off detection
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32000HZ;						// Set Master Clock Frequency to 32000HZ to support 500 Hz sampling rate
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32768HZ;						// Set Master Clock Frequency to 32000HZ to support 500 Hz sampling rate
 		} else if(device->mode == MAX30003_MODE_CALIBRATION) {
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGN_DISCONNECTED;					// Enable resistive bias on negative input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGP_DISCONNECTED;					// Enable resistive bias on positive input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_RBIAS_RESISTIVE_BIAS_ENABLED;		// Enable resistive bias
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_10nA;						// Current magnitude = 10nA
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_DCLOFF_DC_DETECTION_DISABLED;		// Enable DC lead-off detection
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32000HZ;
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32768HZ;
 		}
 
 		// 0x2A

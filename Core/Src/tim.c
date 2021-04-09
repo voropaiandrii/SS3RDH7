@@ -40,7 +40,8 @@ void MX_TIM2_Init(void)
   // 12 KHz
 
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 4999;
+  //htim2.Init.Prescaler = 4999;
+  htim2.Init.Prescaler = 9999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -137,7 +138,10 @@ void MX_TIM8_Init(void)
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
 
   htim8.Instance = TIM8;
-  htim8.Init.Prescaler = 1874;
+  //htim8.Init.Prescaler = 1831;
+  //htim8.Init.Prescaler = 1875 - 1;
+  //htim8.Init.Prescaler = 1937;
+  htim8.Init.Prescaler = 1992;
   htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim8.Init.Period = 1;
   htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -354,7 +358,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
     */
     GPIO_InitStruct.Pin = GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF3_TIM8;
     HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
