@@ -123,6 +123,11 @@ void MainScreenPresenter::stopRecording()
 	model->stopRecording();
 }
 
+bool MainScreenPresenter::isRecording()
+{
+	return model->isRecording();
+}
+
 void MainScreenPresenter::connectDevices()
 {
     // Override and implement this function in MainScreen

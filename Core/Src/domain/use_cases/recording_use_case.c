@@ -8,6 +8,7 @@
 #include <string.h>
 #include "domain/use_cases/recording_use_case.h"
 #include "app_touchgfx.h"
+#include "stdio.h"
 
 #define BUFFER_IS_READY			1
 #define BUFFER_IS_NOT_READY		0
@@ -231,6 +232,7 @@ void storeSampleECG(uint16_t sample) {
 			// OK
 		} else {
 			// Error
+			printf("sECG queue is full!\n");
 		}
 		/*
 		ecgData.dataBuffer[ecgData.bufferNumberIndex][ecgData.bufferIndex] = sample;
@@ -258,6 +260,7 @@ void storeSampleECGEar(uint16_t sample) {
 			// OK
 		} else {
 			// Error
+			printf("eECG queue is full!\n");
 		}
 		/*
 		earEcgData.dataBuffer[earEcgData.bufferNumberIndex][earEcgData.bufferIndex] = sample;
@@ -642,6 +645,7 @@ void prebuildWritingBuffer() {
 			rightEarPPGIRData.prebildCallsWhenBufferReady++;
 		}
 
+		/*
 		if(ecgData.isBufferReady == BUFFER_IS_READY &&
 				earEcgData.isBufferReady == BUFFER_IS_READY &&
 				fingerPPGRedData.isBufferReady == BUFFER_IS_READY &&
@@ -657,6 +661,12 @@ void prebuildWritingBuffer() {
 				earEcgData.isBufferReady == BUFFER_IS_READY &&
 				ecgData.prebildCallsWhenBufferReady > 1 &&
 				earEcgData.prebildCallsWhenBufferReady > 1){
+			notifyDoubleBufferEvent();
+		}
+		*/
+
+		if(ecgData.isBufferReady == BUFFER_IS_READY &&
+						earEcgData.isBufferReady == BUFFER_IS_READY) {
 			notifyDoubleBufferEvent();
 		}
 	}

@@ -33,6 +33,7 @@ public:
     void makeScreenshot();
     void startRecording();
     void stopRecording();
+    bool isRecording();
     void connectDevices();
     void disconnectDevices();
     void cleanGraphs();

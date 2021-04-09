@@ -54,7 +54,12 @@ public:
     void showRecordingError();
     void hideRecordingError();
     void setRecordingError(const char* error);
+
 protected:
+
+private:
+    uint8_t currentSeconds = 0;
+    uint32_t recorderCounter = 0;
 };
 
 #endif // MAINSCREENVIEW_HPP

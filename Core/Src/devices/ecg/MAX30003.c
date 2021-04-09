@@ -125,11 +125,14 @@ static void changeState(MAX30003Device_t* device, uint8_t *buffer, uint8_t size)
 					//readECGData(device);
 
 				} else if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_FAST_MODE || etag == MAX30003_REGISTER_ECG_FIFO_ETAG_LAST_FAST_MODE) {
+					//device->isFastReading = 1;
 					device->currentState = MAX30003_STATE_READING_ECG;
 					readECGData(device);
+					printf("FAST!\n");
 				} else if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_FIFO_OVERFLOW) {
 					device->currentState = MAX30003_STATE_SYNC;
 					sync(device);
+					printf("OVERFLOW!\n");
 				} else {
 					//device->currentState = MAX30003_STATE_WAITING_FOR_ECG_INTERRUPT;
 					device->currentState = MAX30003_STATE_WAITING_FOR_TICK;
@@ -230,6 +233,7 @@ static void configurate(MAX30003Device_t* device) {
 
 		// 0x0A
 		registerTemp = (MAX30003_COMMAND_WRITE | (MAX30003_REGISTER_ADDRESS_MNGR_DYN << 1)) << 24;
+		//
 		registerTemp |= MAX30003_REGISTER_MNGR_DYN_FAST_NORMAL_MODE;						// Fast recovery mode disabled
 		xQueueSendFromISR(txSerialQueue, &registerTemp, pdFALSE);
 

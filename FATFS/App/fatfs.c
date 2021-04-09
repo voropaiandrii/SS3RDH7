@@ -17,6 +17,7 @@
   */
 
 #include "fatfs.h"
+#include "time/time.h"
 
 uint8_t retSD;    /* Return value for SD */
 char SDPath[4];   /* SD logical drive path */
@@ -45,7 +46,14 @@ void MX_FATFS_Init(void)
 DWORD get_fattime(void)
 {
   /* USER CODE BEGIN get_fattime */
-  return 0;
+  RTCDate date = getCurrentRTCDate();
+  DWORD bytes = date.seconds/2;
+  bytes |= date.minutes << 5;
+  bytes |= date.hours << 11;
+  bytes |= date.days << 16;
+  bytes |= date.months << 21;
+  bytes |= (date.years - 1980) << 25;
+  return bytes;
   /* USER CODE END get_fattime */
 }
 

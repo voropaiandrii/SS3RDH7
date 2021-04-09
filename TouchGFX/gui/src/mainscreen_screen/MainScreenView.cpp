@@ -11,10 +11,10 @@ void MainScreenView::setupScreen()
     MainScreenViewBase::setupScreen();
 
     standardECGGraph.setGraphRangeY(65535, -65535);
-    standardECGGraphMajorYAxisGrid.setInterval(10000);
+    standardECGGraphMajorYAxisGrid.setInterval(5000);
 
     earECGGraph.setGraphRangeY(0, 0xFFFF);
-    earECGGraphMajorYAxisGrid.setInterval(10000);
+    earECGGraphMajorYAxisGrid.setInterval(5000);
 
     fingerPPGRedGraph.setGraphRangeY(0, 0xFFFFF);
     fingerPPGRedGraphMajorYAxisGrid.setInterval(40000);
@@ -52,6 +52,8 @@ void MainScreenView::setupScreen()
     rightEarPPGGreenGraph.setVisible(false);
     rightEarPPGRedGraph.setVisible(false);
     rightEarPPGIRGraph.setVisible(false);
+
+    cpuUsageTextProgress.setVisible(false);
 
     standardECGGraph.setPosition(50, 30, 740, 225);
     earECGGraph.setPosition(50, 240, 740, 225);
@@ -144,7 +146,21 @@ void MainScreenView::setFingerPPGIRLimits(int minValue, int maxValue) {
 }
 
 void MainScreenView::updateTime(uint16_t years, uint8_t months, uint8_t days, uint8_t hours, uint8_t minutes, uint8_t seconds) {
-	realTimeDigitalClock.setTime24Hour(hours, minutes, seconds);
+	if(currentSeconds != seconds) {
+		currentSeconds = seconds;
+		realTimeDigitalClock.setTime24Hour(hours, minutes, seconds);
+		if(presenter->isRecording() && recordingDigitalClock.isVisible()) {
+			recorderCounter++;
+			uint32_t counterValue = recorderCounter;
+			uint32_t recordedHours = (counterValue / 3600);
+			counterValue -= recordedHours * 3600;
+			uint32_t recordedMinutes = (counterValue / 60);
+			counterValue -= recordedMinutes * 60;
+			uint32_t recordedSeconds = counterValue;
+			recordingDigitalClock.setTime24Hour(recordedHours, recordedMinutes, recordedSeconds);
+
+		}
+	}
 }
 
 void MainScreenView::makeScreenshot()
@@ -154,6 +170,7 @@ void MainScreenView::makeScreenshot()
 
 void MainScreenView::startRecording()
 {
+	recorderCounter = 0;
 	presenter->startRecording();
 	hideRecordingError();
 }
@@ -212,6 +229,7 @@ void MainScreenView::changeButtonState(ButtonID buttonId, ButtonState state) {
 
 void MainScreenView::showRecordingCounter() {
 	recordingDigitalClock.setVisible(true);
+	recordingDigitalClock.setTime24Hour(0, 0, 0);
 	recordingDigitalClock.invalidate();
 }
 
@@ -256,6 +274,7 @@ void MainScreenView::cleanUI() {
 
 void MainScreenView::setRecordingError(const char* error) {
 	if(error != NULL) {
+		//presenter->stopRecording();
 		Unicode::fromUTF8((const uint8_t*)error, errorTextAreaBuffer, ERRORTEXTAREA_SIZE);
 		showRecordingError();
 	}

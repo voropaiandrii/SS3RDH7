@@ -806,19 +806,19 @@ void MX_FREERTOS_Init(void) {
   max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
 
   /* creation of maxm86161RTask */
-  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+  //maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
 
   /* creation of maxm86161IRTask */
-  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+  //maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
 
   /* creation of maxm86161LTask */
-  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+  //maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
 
   /* creation of maxm86161ILTask */
-  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+  //maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
 
   /* creation of debugTask */
-  debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+  //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
 
   initRecordingUseCase();

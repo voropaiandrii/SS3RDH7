@@ -1190,6 +1190,7 @@ typedef struct {
 	uint8_t revisionID;
 	uint8_t error;
 	uint8_t mode;
+	uint8_t isFastReading;
 } MAX30003Device_t;
 
 void max30003Initilize(MAX30003Device_t* device);

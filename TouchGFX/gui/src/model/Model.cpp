@@ -1,6 +1,7 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 #include "stdio.h"
+#include "limits.h"
 
 extern "C" {
 	#include "time/time.h"
@@ -57,6 +58,16 @@ Model::Model() : modelListener(0)
 	modelListener->setFingerPPGRedLimits(0, 0xFFFFF);
 	modelListener->setFingerPPGIRLimits(0, 0xFFFFF);
 	*/
+
+	standardECGLimits.maxValue = 0;
+	standardECGLimits.minValue = 0;
+	standardECGLimits.counter = 0;
+	standardECGLimits.lastUpdateMillis = 0;
+
+	inEarECGMLimits.maxValue = 0;
+	inEarECGMLimits.minValue = 0;
+	inEarECGMLimits.counter = 0;
+	inEarECGMLimits.lastUpdateMillis = 0;
 
 	setDisplayBrigthness((int)readDisplayBrigthness());
 }
@@ -126,32 +137,37 @@ int Model::getDisplayBrigthness() {
 
 void Model::checkQueue(QueueHandle_t queueHandle, GraphLimits* limits) {
 	if(queueHandle != 0) {
-		int message = 0;
-		while(xQueuePeek(queueHandle, (void*)&message, (TickType_t)10) == pdTRUE) {
-			xQueueReceive(queueHandle, (void*)&message, (TickType_t)10);
+		int newValue = 0;
+		while(xQueuePeek(queueHandle, (void*)&newValue, (TickType_t)10) == pdTRUE) {
+			xQueueReceive(queueHandle, (void*)&newValue, (TickType_t)10);
 			if(modelListener != 0) {
 				uint32_t currentMillis = getTicks();
 				bool updateLimits = false;
 				bool resetLimits = false;
 
-				if(message > limits->maxValue) {
-					int newMaxLimit = ((message + limits->maxValue) / 2);
-					limits->maxValue = newMaxLimit + 100;
-					//limits->maxValue = message + 100;
+				if(newValue > limits->maxValue) {
+					//int newMaxLimit = ((newValue + limits->maxValue) / 2);
+					//limits->maxValue = newMaxLimit + 100;
+					limits->maxValue = newValue;
+					limits->maxValue = limits->maxValue + ((limits->maxValue - limits->minValue)/2);
+
 					updateLimits = currentMillis > limits->lastUpdateMillis + 5000;
 				}
-				if(message < limits->minValue) {
 
-					if(message > 0) {
-						int newMinLimit =  ((message + limits->minValue) / 2);
+				if(newValue < limits->minValue) {
+					limits->minValue = newValue;
+					limits->minValue = limits->minValue - ((limits->maxValue - limits->minValue)/2);
+
+
+					/*
+					if(newValue > 0) {
+						int newMinLimit =  ((newValue + limits->minValue) / 2);
 						limits->minValue = newMinLimit - 100;
-						//limits->minValue = newMinLimit;
 					} else {
-						int newMinLimit =  ((message - limits->minValue) / 2);
+						int newMinLimit =  ((newValue - limits->minValue) / 2);
 						limits->minValue = newMinLimit - 100;
-						//limits->minValue = newMinLimit;
 					}
-					//limits->minValue = message - 100;
+					*/
 					updateLimits = currentMillis > limits->lastUpdateMillis + 5000;
 				}
 
@@ -166,52 +182,52 @@ void Model::checkQueue(QueueHandle_t queueHandle, GraphLimits* limits) {
 
 
 				if(queueHandle == standartECGQueue) {
-					modelListener->updateStandardECGGraph(message);
+					modelListener->updateStandardECGGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(standartECGQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earECGQueue) {
-					modelListener->updateInEarECGGraph(message);
+					modelListener->updateInEarECGGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earECGQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGLeftGreenQueue) {
-					modelListener->updateLeftEarPPGGreenGraph(message);
+					modelListener->updateLeftEarPPGGreenGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGLeftGreenQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGLeftRedQueue) {
-					modelListener->updateLeftEarPPGRedGraph(message);
+					modelListener->updateLeftEarPPGRedGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGLeftRedQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGLeftIRQueue) {
-					modelListener->updateLeftEarPPGIRGraph(message);
+					modelListener->updateLeftEarPPGIRGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGLeftIRQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGRightGreenQueue) {
-					modelListener->updateRightEarPPGGreenGraph(message);
+					modelListener->updateRightEarPPGGreenGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGRightGreenQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGRightRedQueue) {
-					modelListener->updateRightEarPPGRedGraph(message);
+					modelListener->updateRightEarPPGRedGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGRightRedQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == earPPGRightIRQueue) {
-					modelListener->updateRightEarPPGIRGraph(message);
+					modelListener->updateRightEarPPGIRGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(earPPGRightIRQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == fingerPPGRedQueue) {
-					modelListener->updateFingerPPGRedGraph(message);
+					modelListener->updateFingerPPGRedGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(fingerPPGRedQueue, limits, resetLimits);
 					}
 				} else if(queueHandle == fingerPPGIRQueue) {
-					modelListener->updateFingerPPGIRGraph(message);
+					modelListener->updateFingerPPGIRGraph(newValue);
 					if(updateLimits) {
 						setGraphLimits(fingerPPGIRQueue, limits, resetLimits);
 					}
@@ -285,6 +301,11 @@ void Model::stopRecording()
 {
 	stopRecordingUseCase();
 	//modelListener->updateButtonsState(isRecordingUseCase(), isDevicesConnectedUseCase());
+}
+
+bool Model::isRecording()
+{
+	return getRecordingStateUseCase() == RECORDING_STATE_STARTED;
 }
 
 void Model::connectDevices()
