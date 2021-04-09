@@ -45,6 +45,17 @@ void MainScreenView::setupScreen()
     fingerPPGRedGraph.setVisible(false);
     fingerPPGIRGraph.setVisible(false);
 
+    leftEarPPGGreenGraph.setVisible(false);
+    leftEarPPGRedGraph.setVisible(false);
+    leftEarPPGIRGraph.setVisible(false);
+
+    rightEarPPGGreenGraph.setVisible(false);
+    rightEarPPGRedGraph.setVisible(false);
+    rightEarPPGIRGraph.setVisible(false);
+
+    standardECGGraph.setPosition(50, 30, 740, 225);
+    earECGGraph.setPosition(50, 240, 740, 225);
+
 }
 
 void MainScreenView::tearDownScreen()
