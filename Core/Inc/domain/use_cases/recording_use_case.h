@@ -36,7 +36,7 @@
 	#define RECORDING_STATE_DEFAULT					RECORDING_STATE_STOPPED
 #endif
 
-void initRecordingUseCase();
+void initRecordingUseCase(char* filenamePointer);
 void setDoubleBufferSemaphore(SemaphoreHandle_t* semaphore);
 void storeSampleECG(uint16_t sample);
 void storeSampleECGEar(uint16_t sample);

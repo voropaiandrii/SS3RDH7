@@ -821,7 +821,7 @@ void MX_FREERTOS_Init(void) {
   //debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
 
 
-  initRecordingUseCase();
+  initRecordingUseCase(&currentFilename);
   /* creation of fatFsTask */
   fatFsTaskHandle = osThreadNew(StartFatFsTask, NULL, &fatFsTask_attributes);
 
@@ -1277,7 +1277,6 @@ void StartFatFsTask(void *argument)
 	uint32_t writtenBytes = 0;
 	//char currentLine[20] = {'\0'};
 	FRESULT fresult = FR_OK;
-	generateFilename(currentFilename);
 
 	for (;;) {
 		if(getRecordingStateUseCase() == RECORDING_STATE_STARTED) {

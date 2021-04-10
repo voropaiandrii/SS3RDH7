@@ -9,9 +9,12 @@
 #include "domain/use_cases/recording_use_case.h"
 #include "app_touchgfx.h"
 #include "stdio.h"
+#include "utils/file_utils.h"
 
 #define BUFFER_IS_READY			1
 #define BUFFER_IS_NOT_READY		0
+
+char* filename = NULL;
 
 typedef struct {
 	//uint16_t dataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
@@ -152,7 +155,8 @@ static void initDataStructs() {
 	rightEarPPGIRData.prebildCallsWhenBufferReady = 0;
 }
 
-void initRecordingUseCase() {
+void initRecordingUseCase(char* filenamePointer) {
+	filename = filenamePointer;
 	initDataStructs();
 
 	/*
@@ -719,6 +723,7 @@ uint8_t getRecordingStateUseCase() {
 }
 
 void startRecordingUseCase() {
+	generateFilename(filename);
 	initDataStructs();
 	changeRecordingState(RECORDING_STATE_STARTED, NULL);
 }
