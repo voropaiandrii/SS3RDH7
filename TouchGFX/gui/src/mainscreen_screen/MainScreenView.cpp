@@ -42,6 +42,7 @@ void MainScreenView::setupScreen()
 
     recordingDigitalClock.setVisible(false);
 
+    /*
     fingerPPGRedGraph.setVisible(false);
     fingerPPGIRGraph.setVisible(false);
 
@@ -57,6 +58,7 @@ void MainScreenView::setupScreen()
 
     standardECGGraph.setPosition(50, 30, 740, 225);
     earECGGraph.setPosition(50, 240, 740, 225);
+    */
 
 }
 
@@ -215,6 +217,8 @@ void MainScreenView::changeButtonState(ButtonID buttonId, ButtonState state) {
 			break;
 		case BUTTON_ID_CLEAN:
 			button = &cleanButton;
+			break;
+		default:
 			break;
 	}
 

@@ -29,7 +29,7 @@ MainScreenViewBase::MainScreenViewBase() :
 
     standardECGGraphMajorYAxisGrid.setScale(1);
     standardECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(248, 250, 251));
-    standardECGGraphMajorYAxisGrid.setInterval(100);
+    standardECGGraphMajorYAxisGrid.setInterval(1000);
     standardECGGraphMajorYAxisGrid.setLineWidth(1);
     standardECGGraph.addGraphElement(standardECGGraphMajorYAxisGrid);
 
@@ -48,7 +48,7 @@ MainScreenViewBase::MainScreenViewBase() :
 
     earECGGraphMajorYAxisGrid.setScale(1);
     earECGGraphMajorYAxisGrid.setColor(touchgfx::Color::getColorFrom24BitRGB(252, 253, 254));
-    earECGGraphMajorYAxisGrid.setInterval(100);
+    earECGGraphMajorYAxisGrid.setInterval(1000);
     earECGGraphMajorYAxisGrid.setLineWidth(1);
     earECGGraph.addGraphElement(earECGGraphMajorYAxisGrid);
 
