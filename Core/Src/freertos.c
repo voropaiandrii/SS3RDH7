@@ -422,7 +422,7 @@ void max86161RightPPGDataHandler(MAXM86161PPGData_t* ppgEvent) {
 
 void max86161RightPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	max86161RightPPGDataHandler(ppgEvent);
-	max86161RightPPGDataHandler(ppgEvent);
+	//max86161RightPPGDataHandler(ppgEvent);
 }
 
 void max86161LeftPPGDataCallbackHandler(MAXM86161PPGData_t* ppgEvent) {
@@ -447,7 +447,7 @@ void max86161LeftPPGDataCallbackHandler(MAXM86161PPGData_t* ppgEvent) {
 
 void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
 	max86161LeftPPGDataCallbackHandler(ppgEvent);
-	max86161LeftPPGDataCallbackHandler(ppgEvent);
+	//max86161LeftPPGDataCallbackHandler(ppgEvent);
 }
 
 

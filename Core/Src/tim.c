@@ -37,11 +37,13 @@ void MX_TIM2_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
-  // 12 KHz
+  // PPG Clock
+  // 240 MHz / 10000 = 24 KHz
+  // 24 KHz / 2 = 12 KHz
 
   htim2.Instance = TIM2;
   //htim2.Init.Prescaler = 4999;
-  htim2.Init.Prescaler = 9999;
+  htim2.Init.Prescaler = 10000 - 1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

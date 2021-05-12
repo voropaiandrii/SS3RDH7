@@ -42,10 +42,10 @@ void MainScreenView::setupScreen()
 
     recordingDigitalClock.setVisible(false);
 
-    /*
+
     fingerPPGRedGraph.setVisible(false);
     fingerPPGIRGraph.setVisible(false);
-
+    /*
     leftEarPPGGreenGraph.setVisible(false);
     leftEarPPGRedGraph.setVisible(false);
     leftEarPPGIRGraph.setVisible(false);
