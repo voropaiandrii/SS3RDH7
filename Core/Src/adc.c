@@ -26,12 +26,18 @@
 #include "semphr.h"
 #include "domain/use_cases/recording_use_case.h"
 
-#define ADC_BUFFER_LENGHT 4
+//#define USE_SOFTWARE_OVERSAMPLING
+
+#ifdef USE_SOFTWARE_OVERSAMPLING
+	#define ADC_BUFFER_LENGHT 4
+#endif
 extern QueueHandle_t earECGQueue;
 
+#ifdef USE_SOFTWARE_OVERSAMPLING
 uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
 uint8_t bufferCounter = 0;
 uint16_t adcValue;
+#endif
 uint32_t averageValue;
 uint8_t graphCounter = 0;
 /* USER CODE END 0 */
@@ -60,7 +66,16 @@ void MX_ADC1_Init(void)
   hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DR;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
+
+#ifdef USE_SOFTWARE_OVERSAMPLING
   hadc1.Init.OversamplingMode = DISABLE;
+#else
+  hadc1.Init.OversamplingMode = ENABLE;
+  hadc1.Init.Oversampling.OversamplingStopReset = ADC_REGOVERSAMPLING_RESUMED_MODE;
+  hadc1.Init.Oversampling.Ratio = 4;
+  hadc1.Init.Oversampling.RightBitShift = ADC_RIGHTBITSHIFT_2;
+  hadc1.Init.Oversampling.TriggeredMode = ADC_TRIGGEREDMODE_MULTI_TRIGGER;
+#endif
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -146,8 +161,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 /* USER CODE BEGIN 1 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
+#ifdef USE_SOFTWARE_OVERSAMPLING
 	adcValue = HAL_ADC_GetValue(hadc);
-
 	if(bufferCounter < ADC_BUFFER_LENGHT - 1) {
 		adcBuffer[bufferCounter] = adcValue;
 		bufferCounter++;
@@ -159,7 +174,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 			averageValue += adcBuffer[i];
 		}
 		averageValue = averageValue / ADC_BUFFER_LENGHT;
-
+#else
+		averageValue = HAL_ADC_GetValue(hadc);
+#endif
 		storeSampleECGEar(averageValue);
 
 		if(earECGQueue != 0) {
@@ -171,9 +188,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 			}
 		}
 
-
+#ifdef USE_SOFTWARE_OVERSAMPLING
 	}
-
+#endif
 
 }
 /* USER CODE END 1 */

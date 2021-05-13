@@ -375,6 +375,11 @@ void max30003ECGDataHandler(ECGData_t* ecgEvent) {
 void max30003ECGDataCallback(ECGData_t* ecgEvent) {
 	max30003ECGDataHandler(ecgEvent);
 	max30003ECGDataHandler(ecgEvent);
+	max30003ECGDataHandler(ecgEvent);
+	max30003ECGDataHandler(ecgEvent);
+	max30003ECGDataHandler(ecgEvent);
+	//max30003ECGDataHandler(ecgEvent);
+	//max30003ECGDataHandler(ecgEvent);
 }
 
 

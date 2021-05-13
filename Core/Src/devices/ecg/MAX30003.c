@@ -112,31 +112,25 @@ static void changeState(MAX30003Device_t* device, uint8_t *buffer, uint8_t size)
 				if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_VALID) {
 					ecgEvent.sample = voltage;
 					device->settings->ecgDataCallback(&ecgEvent);
-
 					device->currentState = MAX30003_STATE_READING_ECG;
 					readECGData(device);
-
 				} else if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_LAST_VALID) {
-
 					ecgEvent.sample = voltage;
 					device->settings->ecgDataCallback(&ecgEvent);
-
 					device->currentState = MAX30003_STATE_WAITING_FOR_TICK;
-					//readECGData(device);
-
 				} else if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_FAST_MODE || etag == MAX30003_REGISTER_ECG_FIFO_ETAG_LAST_FAST_MODE) {
-					//device->isFastReading = 1;
+					// Increment the time base.
+					device->settings->ecgDataCallback(&ecgEvent);
 					device->currentState = MAX30003_STATE_READING_ECG;
 					readECGData(device);
+
 					printf("FAST!\n");
 				} else if(etag == MAX30003_REGISTER_ECG_FIFO_ETAG_FIFO_OVERFLOW) {
 					device->currentState = MAX30003_STATE_SYNC;
 					sync(device);
 					printf("OVERFLOW!\n");
 				} else {
-					//device->currentState = MAX30003_STATE_WAITING_FOR_ECG_INTERRUPT;
 					device->currentState = MAX30003_STATE_WAITING_FOR_TICK;
-					//readECGData(device);
 				}
 
 			}
@@ -169,10 +163,10 @@ static void configurate(MAX30003Device_t* device) {
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGN_CONNECTED;					// Enable resistive bias on negative input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGP_CONNECTED;					// Enable resistive bias on positive input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_RBIAS_RESISTIVE_BIAS_ENABLED;		// Enable resistive bias
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_10nA;						// Current magnitude = 10nA
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASV_RBIAS_50M;						// 200 MOhm bias
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_100nA;						// Current magnitude = 10nA
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASV_RBIAS_200M;						// 200 MOhm bias
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_DCLOFF_DC_DETECTION_DISABLED;		// Enable DC lead-off detection
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32768HZ;						// Set Master Clock Frequency to 32000HZ to support 500 Hz sampling rate
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32000HZ_2;						// Set Master Clock Frequency to 32000HZ to support 500 Hz sampling rate
 		} else if(device->mode == MAX30003_MODE_CALIBRATION) {
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGN_DISCONNECTED;					// Enable resistive bias on negative input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGP_DISCONNECTED;					// Enable resistive bias on positive input
@@ -217,7 +211,7 @@ static void configurate(MAX30003Device_t* device) {
 		//registerTemp |= MAX30003_REGISTER_MNGR_INT_CLR_SAMP;
 		//registerTemp |= MAX30003_REGISTER_MNGR_INT_SAMP_IT_EVERY_16ND_SAMPLE;				// Sync interrupt each 16 samples
 		//registerTemp |= MAX30003_REGISTER_MNGR_INT_CLR_RRINT_CLEAR_RRINT_ON_RTOR;		    // Clear R-to-R on RTOR reg. read back
-		registerTemp |= (0x07 << MAX30003_REGISTER_MNGR_INT_EFIT_POS);						// Interrupt if 8 samples is unread
+		registerTemp |= (15 << MAX30003_REGISTER_MNGR_INT_EFIT_POS);						// Interrupt if 8 samples is unread
 		xQueueSendFromISR(txSerialQueue, &registerTemp, pdFALSE);
 
 		// 0x04
@@ -234,7 +228,8 @@ static void configurate(MAX30003Device_t* device) {
 		// 0x0A
 		registerTemp = (MAX30003_COMMAND_WRITE | (MAX30003_REGISTER_ADDRESS_MNGR_DYN << 1)) << 24;
 		//
-		registerTemp |= MAX30003_REGISTER_MNGR_DYN_FAST_NORMAL_MODE;						// Fast recovery mode disabled
+		registerTemp |= MAX30003_REGISTER_MNGR_DYN_FAST_MASK;						// Fast recovery mode disabled
+		registerTemp |= MAX30003_REGISTER_MNGR_DYN_FAST_TH_MASK;
 		xQueueSendFromISR(txSerialQueue, &registerTemp, pdFALSE);
 
 		// 0x28

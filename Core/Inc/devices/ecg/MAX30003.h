@@ -12,7 +12,7 @@
 #include "devices/io_device_types.h"
 
 #define MAX30003_ONE_TRANSACTION_LENGTH										4
-#define MAX30003_TOTAL_BUFFER_LENGTH										4
+#define MAX30003_TOTAL_BUFFER_LENGTH										32
 #define MAX30003_CONFIGURATION_BUFFER_LENGTH								36
 
 #define MAX30003_COMMAND_WRITE												0x00

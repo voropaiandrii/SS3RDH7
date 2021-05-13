@@ -284,8 +284,8 @@ MainScreenViewBase::MainScreenViewBase() :
     add(rightEarPPGIRGraph);
     add(rightEarPPGRedGraph);
     add(rightEarPPGGreenGraph);
-    add(fingerPPGIRGraph);
-    add(fingerPPGRedGraph);
+    //add(fingerPPGIRGraph);
+    //add(fingerPPGRedGraph);
     add(realTimeDigitalClock);
     add(cpuUsageTextProgress);
     add(recordingDigitalClock);
