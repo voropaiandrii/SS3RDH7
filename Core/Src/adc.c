@@ -25,6 +25,7 @@
 #include "queue.h"
 #include "semphr.h"
 #include "domain/use_cases/recording_use_case.h"
+#include "tim.h"
 
 //#define USE_SOFTWARE_OVERSAMPLING
 
@@ -188,10 +189,16 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 			}
 		}
 
+
+
+
 #ifdef USE_SOFTWARE_OVERSAMPLING
 	}
 #endif
 
+	if((htim2.Instance->CR1 & TIM_CR1_CEN) == 0) {
+		//HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_1);
+	}
 }
 /* USER CODE END 1 */
 

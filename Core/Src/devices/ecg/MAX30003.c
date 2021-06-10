@@ -163,8 +163,8 @@ static void configurate(MAX30003Device_t* device) {
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGN_CONNECTED;					// Enable resistive bias on negative input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASP_ECGP_CONNECTED;					// Enable resistive bias on positive input
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_RBIAS_RESISTIVE_BIAS_ENABLED;		// Enable resistive bias
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_100nA;						// Current magnitude = 10nA
-			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASV_RBIAS_200M;						// 200 MOhm bias
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_DCLOFF_IMAG_10nA;						// Current magnitude = 10nA
+			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_RBIASV_RBIAS_50M;						// 200 MOhm bias
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_EN_DCLOFF_DC_DETECTION_DISABLED;		// Enable DC lead-off detection
 			firstRegisterTemp |= MAX30003_REGISTER_CNFG_GEN_FMSTR_32000HZ_2;						// Set Master Clock Frequency to 32000HZ to support 500 Hz sampling rate
 		} else if(device->mode == MAX30003_MODE_CALIBRATION) {
@@ -185,7 +185,7 @@ static void configurate(MAX30003Device_t* device) {
 			registerTemp |= MAX30003_REGISTER_CNFG_ECG_DLPF_BYPASS;								// Digital LPF turn off
 			registerTemp |= MAX30003_REGISTER_CNFG_ECG_DHPF_BYPASS;								// Digital HPF turn off
 		}
-		registerTemp |= MAX30003_REGISTER_CNFG_ECG_GAIN_160;									// ECG gain = 160V/V
+		registerTemp |= MAX30003_REGISTER_CNFG_ECG_GAIN_40;									// ECG gain = 160V/V
 		registerTemp |= MAX30003_REGISTER_CNFG_ECG_RATE_HIGH;								// Sample rate = 500 sps
 		xQueueSendFromISR(txSerialQueue, &registerTemp, pdFALSE);
 

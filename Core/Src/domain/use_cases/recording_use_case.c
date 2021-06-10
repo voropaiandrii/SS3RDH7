@@ -238,23 +238,6 @@ void storeSampleECG(uint16_t sample) {
 			// Error
 			printf("sECG queue is full!\n");
 		}
-		/*
-		ecgData.dataBuffer[ecgData.bufferNumberIndex][ecgData.bufferIndex] = sample;
-		if(ecgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			ecgData.bufferIndex++;
-		} else {
-			ecgData.bufferIndex = 0;
-			if(ecgData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				ecgData.bufferNumberIndex++;
-				//writingDataBufferNumberIndex = 0;
-			} else {
-				ecgData.bufferNumberIndex = 0;
-				//writingDataBufferNumberIndex++;
-				//notifyDoubleBufferEvent();
-			}
-			ecgData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -266,24 +249,6 @@ void storeSampleECGEar(uint16_t sample) {
 			// Error
 			printf("eECG queue is full!\n");
 		}
-		/*
-		earEcgData.dataBuffer[earEcgData.bufferNumberIndex][earEcgData.bufferIndex] = sample;
-		if(earEcgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			earEcgData.bufferIndex++;
-		} else {
-			earEcgData.bufferIndex = 0;
-			if(earEcgData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				earEcgData.bufferNumberIndex++;
-				writingDataBufferNumberIndex++;
-			} else {
-				earEcgData.bufferNumberIndex = 0;
-				writingDataBufferNumberIndex = 0;
-
-			}
-			earEcgData.isBufferReady = BUFFER_IS_READY;
-			notifyDoubleBufferEvent();
-		}
-		*/
 	}
 }
 
@@ -294,20 +259,6 @@ void storeSamplePPGFingerRed(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		fingerPPGRedData.dataBuffer[fingerPPGRedData.bufferNumberIndex][fingerPPGRedData.bufferIndex] = sample;
-		if(fingerPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			fingerPPGRedData.bufferIndex++;
-		} else {
-			fingerPPGRedData.bufferIndex = 0;
-			if(fingerPPGRedData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				fingerPPGRedData.bufferNumberIndex++;
-			} else {
-				fingerPPGRedData.bufferNumberIndex = 0;
-			}
-			fingerPPGRedData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -318,20 +269,6 @@ void storeSamplePPGFingerIR(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		fingerPPGIRData.dataBuffer[fingerPPGIRData.bufferNumberIndex][fingerPPGIRData.bufferIndex] = sample;
-		if(fingerPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			fingerPPGIRData.bufferIndex++;
-		} else {
-			fingerPPGIRData.bufferIndex = 0;
-			if(fingerPPGIRData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				fingerPPGIRData.bufferNumberIndex++;
-			} else {
-				fingerPPGIRData.bufferNumberIndex = 0;
-			}
-			fingerPPGIRData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -342,20 +279,6 @@ void storeSamplePPGEarGreenLeft(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		leftEarPPGGreenData.dataBuffer[leftEarPPGGreenData.bufferNumberIndex][leftEarPPGGreenData.bufferIndex] = sample;
-		if(leftEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			leftEarPPGGreenData.bufferIndex++;
-		} else {
-			leftEarPPGGreenData.bufferIndex = 0;
-			if(leftEarPPGGreenData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				leftEarPPGGreenData.bufferNumberIndex++;
-			} else {
-				leftEarPPGGreenData.bufferNumberIndex = 0;
-			}
-			leftEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -366,20 +289,6 @@ void storeSamplePPGEarRedLeft(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		leftEarPPGRedData.dataBuffer[leftEarPPGRedData.bufferNumberIndex][leftEarPPGRedData.bufferIndex] = sample;
-		if(leftEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			leftEarPPGRedData.bufferIndex++;
-		} else {
-			leftEarPPGRedData.bufferIndex = 0;
-			if(leftEarPPGRedData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				leftEarPPGRedData.bufferNumberIndex++;
-			} else {
-				leftEarPPGRedData.bufferNumberIndex = 0;
-			}
-			leftEarPPGRedData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -390,20 +299,6 @@ void storeSamplePPGEarIRLeft(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		leftEarPPGIRData.dataBuffer[leftEarPPGIRData.bufferNumberIndex][leftEarPPGIRData.bufferIndex] = sample;
-		if(leftEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			leftEarPPGIRData.bufferIndex++;
-		} else {
-			leftEarPPGIRData.bufferIndex = 0;
-			if(leftEarPPGIRData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				leftEarPPGIRData.bufferNumberIndex++;
-			} else {
-				leftEarPPGIRData.bufferNumberIndex = 0;
-			}
-			leftEarPPGIRData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 
 }
@@ -415,20 +310,6 @@ void storeSamplePPGEarGreenRight(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		rightEarPPGGreenData.dataBuffer[rightEarPPGGreenData.bufferNumberIndex][rightEarPPGGreenData.bufferIndex] = sample;
-		if(rightEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			rightEarPPGGreenData.bufferIndex++;
-		} else {
-			rightEarPPGGreenData.bufferIndex = 0;
-			if(rightEarPPGGreenData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				rightEarPPGGreenData.bufferNumberIndex++;
-			} else {
-				rightEarPPGGreenData.bufferNumberIndex = 0;
-			}
-			rightEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -439,20 +320,6 @@ void storeSamplePPGEarRedRight(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		rightEarPPGRedData.dataBuffer[rightEarPPGRedData.bufferNumberIndex][rightEarPPGRedData.bufferIndex] = sample;
-		if(rightEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			rightEarPPGRedData.bufferIndex++;
-		} else {
-			rightEarPPGRedData.bufferIndex = 0;
-			if(rightEarPPGRedData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				rightEarPPGRedData.bufferNumberIndex++;
-			} else {
-				rightEarPPGRedData.bufferNumberIndex = 0;
-			}
-			rightEarPPGRedData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 }
 
@@ -463,22 +330,6 @@ void storeSamplePPGEarIRRight(uint16_t sample) {
 		} else {
 			// Error
 		}
-		/*
-		rightEarPPGIRData.dataBuffer[rightEarPPGIRData.bufferNumberIndex][rightEarPPGIRData.bufferIndex] = sample;
-		if(rightEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
-			rightEarPPGIRData.bufferIndex++;
-		} else {
-			rightEarPPGIRData.bufferIndex = 0;
-			if(rightEarPPGIRData.bufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
-				rightEarPPGIRData.bufferNumberIndex++;
-				//writingDataBufferNumberIndex = 0;
-			} else {
-				rightEarPPGIRData.bufferNumberIndex = 0;
-				//writingDataBufferNumberIndex++;
-			}
-			rightEarPPGIRData.isBufferReady = BUFFER_IS_READY;
-		}
-		*/
 	}
 	//notifyDoubleBufferEvent();
 }
@@ -494,7 +345,6 @@ void prebuildWritingBuffer() {
 				if(ecgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					ecgData.bufferIndex++;
 				} else {
-					//ecgData.bufferIndex = 0;
 					ecgData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -511,7 +361,6 @@ void prebuildWritingBuffer() {
 				if(earEcgData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					earEcgData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					earEcgData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -527,7 +376,6 @@ void prebuildWritingBuffer() {
 				if(fingerPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					fingerPPGRedData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					fingerPPGRedData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -543,7 +391,6 @@ void prebuildWritingBuffer() {
 				if(fingerPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					fingerPPGIRData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					fingerPPGIRData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -560,7 +407,6 @@ void prebuildWritingBuffer() {
 				if(leftEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					leftEarPPGGreenData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					leftEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -576,7 +422,6 @@ void prebuildWritingBuffer() {
 				if(leftEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					leftEarPPGRedData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					leftEarPPGRedData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -592,7 +437,6 @@ void prebuildWritingBuffer() {
 				if(leftEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					leftEarPPGIRData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					leftEarPPGIRData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -608,7 +452,6 @@ void prebuildWritingBuffer() {
 				if(rightEarPPGGreenData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					rightEarPPGGreenData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					rightEarPPGGreenData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -624,7 +467,6 @@ void prebuildWritingBuffer() {
 				if(rightEarPPGRedData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					rightEarPPGRedData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					rightEarPPGRedData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -640,7 +482,6 @@ void prebuildWritingBuffer() {
 				if(rightEarPPGIRData.bufferIndex < ECG_BUFFER_SIZE - 1) {
 					rightEarPPGIRData.bufferIndex++;
 				} else {
-					//earEcgData.bufferIndex = 0;
 					rightEarPPGIRData.isBufferReady = BUFFER_IS_READY;
 					break;
 				}
@@ -669,8 +510,20 @@ void prebuildWritingBuffer() {
 		}
 		*/
 
+		/*
 		if(ecgData.isBufferReady == BUFFER_IS_READY &&
 						earEcgData.isBufferReady == BUFFER_IS_READY) {
+			notifyDoubleBufferEvent();
+		}
+		*/
+
+
+		/*
+		if(ecgData.isBufferReady == BUFFER_IS_READY && ecgData.prebildCallsWhenBufferReady > 1) {
+			notifyDoubleBufferEvent();
+		}
+		*/
+		if(earEcgData.isBufferReady == BUFFER_IS_READY && ecgData.prebildCallsWhenBufferReady > 10) {
 			notifyDoubleBufferEvent();
 		}
 	}
