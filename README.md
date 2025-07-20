@@ -1,6 +1,6 @@
 # SS3RDH7 - Multi-Channel Biometric Data Acquisition System
 
-A custom firmware for modular medical devices designed to recordone channe regular photoplethysmogram (PPG), one channel regular electrocardiogram (ECG) as well as 6-channel ear PPG and single-channel ear ECG from the ear area. This project was developed for PhD thesis research in 2021.
+A custom firmware for modular medical devices designed to record one regular photoplethysmogram (PPG) channel, one regular electrocardiogram channel (ECG) as well as 6-channel ear PPG and single-channel ear ECG from the ear area. This project was developed for PhD thesis research in 2021.
 
 
 ![Main screen view](images/PXL_20250720_051349531.jpg)
