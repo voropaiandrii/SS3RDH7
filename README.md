@@ -2,6 +2,25 @@
 
 A custom firmware for modular medical devices designed to recordone channe regular photoplethysmogram (PPG), one channel regular electrocardiogram (ECG) as well as 6-channel ear PPG and single-channel ear ECG from the ear area. This project was developed for PhD thesis research in 2021.
 
+
+![Main screen view](images/PXL_20250720_051349531.jpg)
+*Streaming 7 channels on the screen*
+
+![Connected analog module](images/PXL_20250720_050259142.jpg)
+*MAX30003 chip and a custom analog frontend*
+
+![Removed analog module](images/PXL_20250720_054326261.jpg)
+*The main PCB view*
+
+![User end sensor - over the ear ECG headphone](images/3b2e473b8eb2.jpeg)
+*https://www.researchgate.net/publication/362139775_A_wearable_heart_rate_monitoring_system_based_on_over-ear_headphones*
+
+![User end sensor - in-ear PPG/ECG sensor](images/3b2e473b8eb2.jpeg)
+*Not published yet*
+
+
+
+
 ## 📋 Project Overview
 
 This embedded system provides high-precision, real-time acquisition of multiple biometric signals simultaneously, making it ideal for medical research, clinical studies, and wearable device development. The system features a modern touchscreen interface and comprehensive data logging capabilities.
