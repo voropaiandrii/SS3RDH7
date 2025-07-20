@@ -15,7 +15,7 @@ A custom firmware for modular medical devices designed to recordone channe regul
 ![User end sensor - over the ear ECG headphone](images/3b2e473b8eb2.jpeg)
 *https://www.researchgate.net/publication/362139775_A_wearable_heart_rate_monitoring_system_based_on_over-ear_headphones*
 
-![User end sensor - in-ear PPG/ECG sensor](images/3b2e473b8eb2.jpeg)
+![User end sensor - in-ear PPG/ECG sensor](images/4ede2fd69765.jpeg)
 *Not published yet*
 
 
