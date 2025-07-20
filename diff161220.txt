@@ -1,0 +1,1099 @@
+diff --git a/Core/Inc/main.h b/Core/Inc/main.h
+index 563de77..e7d9310 100644
+--- a/Core/Inc/main.h
++++ b/Core/Inc/main.h
+@@ -44,7 +44,6 @@ extern "C" {
+ /* Exported constants --------------------------------------------------------*/
+ /* USER CODE BEGIN EC */
+ #define RTOS_DEBUG_BUFFER_SIZE 					500
+-#define ECG_BUFFER_SIZE							1000
+ #define ECG_BUFFER_NUMBER						2
+ 
+ #define GRAPH_DOWNSAMPLING_VALUE				19
+diff --git a/Core/Inc/tim.h b/Core/Inc/tim.h
+index 09d276b..9152424 100644
+--- a/Core/Inc/tim.h
++++ b/Core/Inc/tim.h
+@@ -31,8 +31,10 @@ extern "C" {
+ 
+ /* USER CODE END Includes */
+ 
++extern TIM_HandleTypeDef htim2;
+ extern TIM_HandleTypeDef htim3;
+ extern TIM_HandleTypeDef htim7;
++extern TIM_HandleTypeDef htim8;
+ extern TIM_HandleTypeDef htim12;
+ extern TIM_HandleTypeDef htim13;
+ 
+@@ -40,8 +42,10 @@ extern TIM_HandleTypeDef htim13;
+ 
+ /* USER CODE END Private defines */
+ 
++void MX_TIM2_Init(void);
+ void MX_TIM3_Init(void);
+ void MX_TIM7_Init(void);
++void MX_TIM8_Init(void);
+ void MX_TIM12_Init(void);
+ void MX_TIM13_Init(void);
+ 
+diff --git a/Core/Src/adc.c b/Core/Src/adc.c
+index eff095e..53be238 100644
+--- a/Core/Src/adc.c
++++ b/Core/Src/adc.c
+@@ -27,11 +27,6 @@
+ 
+ #define ADC_BUFFER_LENGHT 4
+ extern QueueHandle_t standartECGQueue;
+-extern SemaphoreHandle_t storeEcgBinarySemaphore;
+-
+-extern uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-extern uint16_t ecgDataBufferIndex;
+-extern uint8_t ecgDataBufferNumberIndex;
+ 
+ uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
+ uint8_t bufferCounter = 0;
+@@ -166,25 +161,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+ 		}
+ 		averageValue = averageValue / ADC_BUFFER_LENGHT;
+ 
+-		if(storeEcgBinarySemaphore != NULL) {
+-
+-			ecgDataBuffer[ecgDataBufferNumberIndex][ecgDataBufferIndex] = (uint16_t)averageValue;
+-
+-
+-			if(ecgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
+-				ecgDataBufferIndex++;
+-			} else {
+-				ecgDataBufferIndex = 0;
+-				if(ecgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
+-					ecgDataBufferNumberIndex++;
+-				} else {
+-					ecgDataBufferNumberIndex = 0;
+-				}
+-				//xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
+-				//portYIELD_FROM_ISR(pdFALSE);
+-			}
+-
+-		}
++		storeSampleECG(averageValue);
+ 
+ 		if(standartECGQueue != 0) {
+ 			if(graphCounter < GRAPH_DOWNSAMPLING_VALUE) {
+diff --git a/Core/Src/bdma.c b/Core/Src/bdma.c
+index b1cd2ce..9469384 100644
+--- a/Core/Src/bdma.c
++++ b/Core/Src/bdma.c
+@@ -43,10 +43,10 @@ void MX_BDMA_Init(void)
+ 
+   /* DMA interrupt init */
+   /* BDMA_Channel0_IRQn interrupt configuration */
+-  HAL_NVIC_SetPriority(BDMA_Channel0_IRQn, 4, 0);
++  HAL_NVIC_SetPriority(BDMA_Channel0_IRQn, 5, 0);
+   HAL_NVIC_EnableIRQ(BDMA_Channel0_IRQn);
+   /* BDMA_Channel1_IRQn interrupt configuration */
+-  HAL_NVIC_SetPriority(BDMA_Channel1_IRQn, 4, 0);
++  HAL_NVIC_SetPriority(BDMA_Channel1_IRQn, 5, 0);
+   HAL_NVIC_EnableIRQ(BDMA_Channel1_IRQn);
+ 
+ }
+diff --git a/Core/Src/freertos.c b/Core/Src/freertos.c
+index 50da9a5..62b715b 100644
+--- a/Core/Src/freertos.c
++++ b/Core/Src/freertos.c
+@@ -41,6 +41,7 @@
+ #include "semphr.h"
+ #include "usbd_def.h"
+ #include "utils/file_utils.h"
++#include "domain/use_cases/recording_use_case.h"
+ /* USER CODE END Includes */
+ 
+ /* Private typedef -----------------------------------------------------------*/
+@@ -68,59 +69,8 @@ uint8_t max30102Counter = 0;
+ uint8_t max86161RightCounter = 0;
+ uint8_t max86161LeftCounter = 0;
+ 
+-__attribute__ ((section(".buffers"), used))
+-uint16_t ecgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t ecgDataBufferIndex = 0;
+-uint8_t ecgDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t earEcgDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t earEcgDataBufferIndex = 0;
+-uint8_t earEcgDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t fingerPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t fingerPPGRedDataBufferIndex = 0;
+-uint8_t fingerPPGRedDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t fingerPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t fingerPPGIRDataBufferIndex = 0;
+-uint8_t fingerPPGIRDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t leftEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t leftEarPPGreenDataBufferIndex = 0;
+-uint8_t leftEarPPGGreenDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t leftEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t leftEarPPRedDataBufferIndex = 0;
+-uint8_t leftEarPPGRedDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t leftEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t leftEarPPIRDataBufferIndex = 0;
+-uint8_t leftEarPPGIRDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t rightEarPPGGreenDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t rightEarPPGreenDataBufferIndex = 0;
+-uint8_t rightEarPPGGreenDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t rightEarPPGRedDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t rightEarPPRedDataBufferIndex = 0;
+-uint8_t rightEarPPGRedDataBufferNumberIndex = 0;
+-
+-__attribute__ ((section(".buffers"), used))
+-int16_t rightEarPPGIRDataBuffer[ECG_BUFFER_NUMBER][ECG_BUFFER_SIZE];
+-uint16_t rightEarPPIRDataBufferIndex = 0;
+-uint8_t rightEarPPGIRDataBufferNumberIndex = 0;
+-
+ //__attribute__ ((section(".buffers"), used))
+ //char wtext[ECG_BUFFER_SIZE * 10 * 3];
+-char wtext[ECG_BUFFER_SIZE * 6];
+ /* USER CODE END PTD */
+ 
+ /* Private define ------------------------------------------------------------*/
+@@ -305,7 +255,7 @@ osThreadId_t debugTaskHandle;
+ const osThreadAttr_t debugTask_attributes = {
+   .name = "debugTask",
+   .priority = (osPriority_t) osPriorityNormal,
+-  .stack_size = 1024 * 4
++  .stack_size = 1024 * 2
+ };
+ /* Definitions for fatFsTask */
+ osThreadId_t fatFsTaskHandle;
+@@ -407,20 +357,7 @@ void max30003ECGDataCallback(ECGData_t* ecgEvent) {
+ void max30003ECGDataHandler(ECGData_t* ecgEvent) {
+ 	max30003ECGEvent.sample = ecgEvent->sample;
+ 
+-	earEcgDataBuffer[earEcgDataBufferNumberIndex][earEcgDataBufferIndex] = (uint16_t)max30003ECGEvent.sample;
+-
+-	if(earEcgDataBufferIndex < ECG_BUFFER_SIZE - 1) {
+-		earEcgDataBufferIndex++;
+-	} else {
+-		earEcgDataBufferIndex = 0;
+-		if(earEcgDataBufferNumberIndex < ECG_BUFFER_NUMBER - 1) {
+-			earEcgDataBufferNumberIndex++;
+-		} else {
+-			earEcgDataBufferNumberIndex = 0;
+-			xSemaphoreGiveFromISR(storeEcgBinarySemaphore, pdFALSE);
+-			portYIELD_FROM_ISR(pdFALSE);
+-		}
+-	}
++	storeSampleECGEar((uint16_t)max30003ECGEvent.sample);
+ 
+ 	if(max300032Counter < GRAPH_DOWNSAMPLING_VALUE) {
+ 		max300032Counter++;
+@@ -433,6 +370,10 @@ void max30003ECGDataHandler(ECGData_t* ecgEvent) {
+ void max30102PPGDataCallback(MAX30102PPGData_t* ppgEvent) {
+ 	max30102PPGEvent.redSample = ppgEvent->redSample;
+ 	max30102PPGEvent.irSample = ppgEvent->irSample;
++
++	storeSamplePPGFingerRed(max30102PPGEvent.redSample);
++	storeSamplePPGFingerIR(max30102PPGEvent.irSample);
++
+ 	if(max30102Counter < GRAPH_DOWNSAMPLING_VALUE) {
+ 		max30102Counter++;
+ 	} else {
+@@ -459,6 +400,11 @@ void max86161LeftPPGDataCallback(MAXM86161PPGData_t* ppgEvent) {
+ 	max86161LeftPPGEvent.redSample = ppgEvent->redSample;
+ 	max86161LeftPPGEvent.greenSample = ppgEvent->greenSample;
+ 	max86161LeftPPGEvent.irSample = ppgEvent->irSample;
++
++	storeSamplePPGEarGreenLeft(max86161LeftPPGEvent.redSample);
++	storeSamplePPGEarRedLeft(max86161LeftPPGEvent.greenSample);
++	storeSamplePPGEarIRLeft(max86161LeftPPGEvent.irSample);
++
+ 	if(max86161LeftCounter < GRAPH_DOWNSAMPLING_VALUE) {
+ 		max86161LeftCounter++;
+ 	} else {
+@@ -707,6 +653,8 @@ void MX_FREERTOS_Init(void) {
+ 	 printf("Can't create storeEcgBinarySemaphore");
+   }
+ 
++  setDoubleBufferSemaphore(storeEcgBinarySemaphore);
++
+   i2c1MutexSemaphore = xSemaphoreCreateMutex();
+   if(i2c1MutexSemaphore == NULL) {
+ 	 printf("Can't create i2c1MutexSemaphore");
+@@ -800,12 +748,6 @@ void MX_FREERTOS_Init(void) {
+   /* creation of max30003IRQTask */
+   max30003IRQTaskHandle = osThreadNew(StartMAX30003IRQTask, NULL, &max30003IRQTask_attributes);
+ 
+-  /* creation of max30102Task */
+-  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
+-
+-  /* creation of max30102IRQTask */
+-  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
+-
+   /* creation of i2c1TxTask */
+   i2c1TxTaskHandle = osThreadNew(StartI2C1TxTask, NULL, &i2c1TxTask_attributes);
+ 
+@@ -833,6 +775,24 @@ void MX_FREERTOS_Init(void) {
+   /* creation of i2c4ErrorTask */
+   i2c4ErrorTaskHandle = osThreadNew(StartI2C4ErrorTask, NULL, &i2c4ErrorTask_attributes);
+ 
++  /* creation of max30102Task */
++  max30102TaskHandle = osThreadNew(StartMAX30102Task, NULL, &max30102Task_attributes);
++
++  /* creation of max30102IRQTask */
++  max30102IRQTaskHandle = osThreadNew(StartMAX30102IRQTask, NULL, &max30102IRQTask_attributes);
++
++  /* creation of maxm86161RTask */
++  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
++
++  /* creation of maxm86161IRTask */
++  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
++
++  /* creation of maxm86161LTask */
++  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
++
++  /* creation of maxm86161ILTask */
++  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
++
+   /* creation of debugTask */
+   debugTaskHandle = osThreadNew(StartDebugTask, NULL, &debugTask_attributes);
+ 
+@@ -848,18 +808,6 @@ void MX_FREERTOS_Init(void) {
+   /* creation of usbDmaRxTask */
+   //usbDmaRxTaskHandle = osThreadNew(StartUsbDmaRxTask, NULL, &usbDmaRxTask_attributes);
+ 
+-  /* creation of maxm86161RTask */
+-  maxm86161RTaskHandle = osThreadNew(StartMAXM86161RTask, NULL, &maxm86161RTask_attributes);
+-
+-  /* creation of maxm86161IRTask */
+-  maxm86161IRTaskHandle = osThreadNew(StartMAXM86161IRQRTask, NULL, &maxm86161IRTask_attributes);
+-
+-  /* creation of maxm86161LTask */
+-  maxm86161LTaskHandle = osThreadNew(StartMAXM86161LTask, NULL, &maxm86161LTask_attributes);
+-
+-  /* creation of maxm86161ILTask */
+-  maxm86161ILTaskHandle = osThreadNew(StartMAXM86161IRQLTask, NULL, &maxm86161ILTask_attributes);
+-
+   /* USER CODE BEGIN RTOS_THREADS */
+   /* add threads, ... */
+   /* USER CODE END RTOS_THREADS */
+@@ -1291,10 +1239,10 @@ void StartDebugTask(void *argument)
+ /* USER CODE END Header_StartFatFsTask */
+ void StartFatFsTask(void *argument)
+ {
+-    /* USER CODE BEGIN StartFatFsTask */
++  /* USER CODE BEGIN StartFatFsTask */
+ 	FIL MyFile;
+-	uint32_t totalWrittenBytes = 0;
+-	uint32_t wbytes;
++	uint32_t totalFileBytes = 0;
++	uint32_t writtenBytes = 0;
+ 	//char currentLine[20] = {'\0'};
+ 	FRESULT fresult = FR_OK;
+ 	generateFilename(currentFilename);
+@@ -1318,30 +1266,20 @@ void StartFatFsTask(void *argument)
+ 						HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_SET);
+ 						fresult = f_open(&MyFile, (char*)currentFilename, FA_OPEN_APPEND | FA_WRITE);
+ 						if(fresult == FR_OK) {
+-							totalWrittenBytes = f_size(&MyFile);
+-							fresult = f_lseek(&MyFile, totalWrittenBytes);
++							totalFileBytes = f_size(&MyFile);
++							fresult = f_lseek(&MyFile, totalFileBytes);
+ 							if(fresult == FR_OK) {
+ 
+ 							} else {
+ 								printf("Failed to seek\n");
+ 							}
+ 
+-							for(int i = 0; i < ECG_BUFFER_SIZE; i++) {
+-								uint16_t newIndex = i * 6;
+-								wtext[newIndex] = ecgDataBuffer[0][i] >> 8;
+-								wtext[newIndex + 1] = ecgDataBuffer[0][i];
+-								wtext[newIndex + 2] = ',';
+-								wtext[newIndex + 3] = earEcgDataBuffer[0][i] >> 8;
+-								wtext[newIndex + 4] = earEcgDataBuffer[0][i];
+-								wtext[newIndex + 5] = '\n';
+-							}
++							char* bufferPointer = NULL;
++							uint32_t stringLength = combineWritingBuffer(&bufferPointer);
++							fresult = f_write(&MyFile, bufferPointer, stringLength, (void *)&writtenBytes);
+ 
+-							uint32_t stringLength = ECG_BUFFER_SIZE * 6;//strlen(wtext);
+-							fresult = f_write(&MyFile, wtext, stringLength, (void *)&wbytes);
+-							// Set string length to 0
+-							wtext[0] = '\0';
+ 							if(fresult == FR_OK) {
+-								printf("Written bytes: %lu, string length: %lu\n", wbytes, stringLength);
++								printf("Written bytes: %lu, string length: %lu\n", writtenBytes, stringLength);
+ 								//fresult = f_sync(&MyFile);
+ 								if(fresult == FR_OK) {
+ 
+@@ -1368,7 +1306,7 @@ void StartFatFsTask(void *argument)
+ 		}
+ 		vTaskDelay(100);
+ 	}
+-    /* USER CODE END StartFatFsTask */
++  /* USER CODE END StartFatFsTask */
+ }
+ 
+ /* USER CODE BEGIN Header_StartUsbTask */
+diff --git a/Core/Src/gpio.c b/Core/Src/gpio.c
+index a4c735e..93bb3b6 100644
+--- a/Core/Src/gpio.c
++++ b/Core/Src/gpio.c
+@@ -75,14 +75,15 @@ void MX_GPIO_Init(void)
+   /*Configure GPIO pin Output Level */
+   HAL_GPIO_WritePin(TOUCH_PWR_EN_GPIO_Port, TOUCH_PWR_EN_Pin, GPIO_PIN_SET);
+ 
++  /*Configure GPIO pin Output Level */
++  HAL_GPIO_WritePin(GPIOI, GPIO_PIN_3, GPIO_PIN_RESET);
++
+   /*Configure GPIO pin Output Level */
+   HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_RESET);
+ 
+   /*Configure GPIO pin Output Level */
+   HAL_GPIO_WritePin(GPIOG, LCD_STBY_Pin|LCD_RESET_Pin, GPIO_PIN_SET);
+ 
+-
+-
+   /*Configure GPIO pin : PtPin */
+   GPIO_InitStruct.Pin = SPI1_CS2_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+@@ -164,6 +165,13 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+   HAL_GPIO_Init(TOUCH_PIRQ_GPIO_Port, &GPIO_InitStruct);
+ 
++  /*Configure GPIO pin : PI3 */
++  GPIO_InitStruct.Pin = GPIO_PIN_3;
++  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
++  GPIO_InitStruct.Pull = GPIO_NOPULL;
++  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++  HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
++
+   /*Configure GPIO pin : PtPin */
+   GPIO_InitStruct.Pin = MAXM86161_RIGHT_INT_Pin;
+   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+@@ -203,13 +211,21 @@ void MX_GPIO_Init(void)
+   GPIO_InitStruct.Pull = GPIO_PULLUP;
+   HAL_GPIO_Init(MAX30102_INT_GPIO_Port, &GPIO_InitStruct);
+ 
+-  GPIO_InitStruct.Pin = GPIO_PIN_3;
+-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+-  HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
+   /* EXTI interrupt init*/
++  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI3_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
++
++  HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+ 
++  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
++  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+ 
+ }
+ 
+diff --git a/Core/Src/i2c.c b/Core/Src/i2c.c
+index 64a3aeb..47d0c59 100644
+--- a/Core/Src/i2c.c
++++ b/Core/Src/i2c.c
+@@ -43,7 +43,7 @@ void MX_I2C1_Init(void)
+ {
+ 
+   hi2c1.Instance = I2C1;
+-  hi2c1.Init.Timing = 0x307075B1;
++  hi2c1.Init.Timing = 0x00B03FDB;
+   hi2c1.Init.OwnAddress1 = 0;
+   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+@@ -74,7 +74,7 @@ void MX_I2C2_Init(void)
+ {
+ 
+   hi2c2.Instance = I2C2;
+-  hi2c2.Init.Timing = 0x307075B1;
++  hi2c2.Init.Timing = 0x00B03FDB;
+   hi2c2.Init.OwnAddress1 = 0;
+   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+@@ -105,7 +105,7 @@ void MX_I2C4_Init(void)
+ {
+ 
+   hi2c4.Instance = I2C4;
+-  hi2c4.Init.Timing = 0x307075B1;
++  hi2c4.Init.Timing = 0x00B03FDB;
+   hi2c4.Init.OwnAddress1 = 0;
+   hi2c4.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+   hi2c4.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+@@ -337,7 +337,6 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+     HAL_NVIC_EnableIRQ(I2C4_EV_IRQn);
+     HAL_NVIC_SetPriority(I2C4_ER_IRQn, 5, 5);
+     HAL_NVIC_EnableIRQ(I2C4_ER_IRQn);
+-
+   /* USER CODE BEGIN I2C4_MspInit 1 */
+ 
+   /* USER CODE END I2C4_MspInit 1 */
+diff --git a/Core/Src/main.c b/Core/Src/main.c
+index b9465cd..2bacea9 100644
+--- a/Core/Src/main.c
++++ b/Core/Src/main.c
+@@ -169,6 +169,8 @@ int main(void)
+   MX_TIM12_Init();
+   MX_TIM13_Init();
+   MX_I2C4_Init();
++  MX_TIM2_Init();
++  MX_TIM8_Init();
+   MX_TouchGFX_Init();
+   /* USER CODE BEGIN 2 */
+   HAL_Delay(100);
+diff --git a/Core/Src/rtc.c b/Core/Src/rtc.c
+index a6034ab..6c55196 100644
+--- a/Core/Src/rtc.c
++++ b/Core/Src/rtc.c
+@@ -43,6 +43,7 @@ void MX_RTC_Init(void)
+   hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+   hrtc.Init.OutPutRemap = RTC_OUTPUT_REMAP_NONE;
+ 
++
+   /* USER CODE BEGIN Check_RTC_BKUP */
+   //__HAL_RCC_PWR_CLK_ENABLE();
+   //__HAL_RCC_BKPSRAM_CLK_ENABLE();
+@@ -52,27 +53,28 @@ void MX_RTC_Init(void)
+ 
+   /** Initialize RTC and set the Time and Date
+   */
++
+   if((RCC->BDCR & RCC_BDCR_RTCEN) == 0) {
+-	  if (HAL_RTC_Init(&hrtc) != HAL_OK) {
+-	    Error_Handler();
+-	  }
+-	  sTime.Hours = 0x0;
+-	  sTime.Minutes = 0x0;
+-	  sTime.Seconds = 0x0;
+-	  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+-	  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+-	  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+-	  {
+-		Error_Handler();
+-	  }
+-	  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+-	  sDate.Month = RTC_MONTH_JANUARY;
+-	  sDate.Date = 0x1;
+-	  sDate.Year = 0x0;
+-
+-	  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+-	  {
+-		Error_Handler();
++	   if (HAL_RTC_Init(&hrtc) != HAL_OK) {
++		 Error_Handler();
++	   }
++	   sTime.Hours = 0x0;
++	   sTime.Minutes = 0x0;
++	   sTime.Seconds = 0x0;
++	   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
++	   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
++	   if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
++	   {
++			 Error_Handler();
++	   }
++	   sDate.WeekDay = RTC_WEEKDAY_MONDAY;
++	   sDate.Month = RTC_MONTH_JANUARY;
++	   sDate.Date = 0x1;
++	   sDate.Year = 0x0;
++
++	   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
++	   {
++			 Error_Handler();
+ 	  }
+   }
+ 
+diff --git a/Core/Src/spi.c b/Core/Src/spi.c
+index 5d7aa50..14d3451 100644
+--- a/Core/Src/spi.c
++++ b/Core/Src/spi.c
+@@ -146,7 +146,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+       Error_Handler();
+     }
+ 
+-    //__HAL_LINKDMA(spiHandle,hdmarx,hdma_spi1_rx);
++    __HAL_LINKDMA(spiHandle,hdmarx,hdma_spi1_rx);
+ 
+     /* SPI1_TX Init */
+     hdma_spi1_tx.Instance = DMA2_Stream5;
+@@ -164,7 +164,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+       Error_Handler();
+     }
+ 
+-    //__HAL_LINKDMA(spiHandle,hdmatx,hdma_spi1_tx);
++    __HAL_LINKDMA(spiHandle,hdmatx,hdma_spi1_tx);
+ 
+     /* SPI1 interrupt Init */
+     HAL_NVIC_SetPriority(SPI1_IRQn, 6, 14);
+@@ -189,7 +189,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+     */
+     GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+-    GPIO_InitStruct.Pull = GPIO_PULLUP;
++    GPIO_InitStruct.Pull = GPIO_NOPULL;
+     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF5_SPI5;
+     HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+@@ -211,7 +211,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+       Error_Handler();
+     }
+ 
+-    //__HAL_LINKDMA(spiHandle,hdmarx,hdma_spi5_rx);
++    __HAL_LINKDMA(spiHandle,hdmarx,hdma_spi5_rx);
+ 
+     /* SPI5_TX Init */
+     hdma_spi5_tx.Instance = DMA2_Stream7;
+@@ -229,7 +229,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+       Error_Handler();
+     }
+ 
+-    //__HAL_LINKDMA(spiHandle,hdmatx,hdma_spi5_tx);
++    __HAL_LINKDMA(spiHandle,hdmatx,hdma_spi5_tx);
+ 
+     /* SPI5 interrupt Init */
+     HAL_NVIC_SetPriority(SPI5_IRQn, 6, 15);
+diff --git a/Core/Src/stm32h7xx_it.c b/Core/Src/stm32h7xx_it.c
+index da33f2f..78180f5 100644
+--- a/Core/Src/stm32h7xx_it.c
++++ b/Core/Src/stm32h7xx_it.c
+@@ -932,6 +932,20 @@ void OTG_FS_EP1_IN_IRQHandler(void)
+   /* USER CODE END OTG_FS_EP1_IN_IRQn 1 */
+ }
+ 
++/**
++  * @brief This function handles USB On The Go FS global interrupt.
++  */
++//void OTG_FS_IRQHandler(void)
++//{
++  /* USER CODE BEGIN OTG_FS_IRQn 0 */
++
++  /* USER CODE END OTG_FS_IRQn 0 */
++//  HAL_PCD_IRQHandler(&hpcd_USB_OTG_FS);
++  /* USER CODE BEGIN OTG_FS_IRQn 1 */
++
++  /* USER CODE END OTG_FS_IRQn 1 */
++//}
++
+ /**
+   * @brief This function handles JPEG global interrupt.
+   */
+diff --git a/Core/Src/tim.c b/Core/Src/tim.c
+index 985b138..f5f11b4 100644
+--- a/Core/Src/tim.c
++++ b/Core/Src/tim.c
+@@ -24,11 +24,46 @@
+ 
+ /* USER CODE END 0 */
+ 
++TIM_HandleTypeDef htim2;
+ TIM_HandleTypeDef htim3;
+ TIM_HandleTypeDef htim7;
++TIM_HandleTypeDef htim8;
+ TIM_HandleTypeDef htim12;
+ TIM_HandleTypeDef htim13;
+ 
++/* TIM2 init function */
++void MX_TIM2_Init(void)
++{
++  TIM_MasterConfigTypeDef sMasterConfig = {0};
++  TIM_OC_InitTypeDef sConfigOC = {0};
++
++  htim2.Instance = TIM2;
++  htim2.Init.Prescaler = 119;
++  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
++  htim2.Init.Period = 0;
++  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
++  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
++  if (HAL_TIM_OC_Init(&htim2) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
++  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
++  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sConfigOC.OCMode = TIM_OCMODE_TIMING;
++  sConfigOC.Pulse = 0;
++  sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
++  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
++  if (HAL_TIM_OC_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  HAL_TIM_MspPostInit(&htim2);
++
++}
+ /* TIM3 init function */
+ void MX_TIM3_Init(void)
+ {
+@@ -92,6 +127,60 @@ void MX_TIM7_Init(void)
+     Error_Handler();
+   }
+ 
++}
++/* TIM8 init function */
++void MX_TIM8_Init(void)
++{
++  TIM_MasterConfigTypeDef sMasterConfig = {0};
++  TIM_OC_InitTypeDef sConfigOC = {0};
++  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
++
++  htim8.Instance = TIM8;
++  htim8.Init.Prescaler = 119;
++  htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
++  htim8.Init.Period = 0;
++  htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
++  htim8.Init.RepetitionCounter = 0;
++  htim8.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
++  if (HAL_TIM_OC_Init(&htim8) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
++  sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
++  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
++  if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sConfigOC.OCMode = TIM_OCMODE_TIMING;
++  sConfigOC.Pulse = 0;
++  sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
++  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
++  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
++  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
++  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
++  if (HAL_TIM_OC_ConfigChannel(&htim8, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
++  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
++  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
++  sBreakDeadTimeConfig.DeadTime = 0;
++  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
++  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
++  sBreakDeadTimeConfig.BreakFilter = 0;
++  sBreakDeadTimeConfig.Break2State = TIM_BREAK2_DISABLE;
++  sBreakDeadTimeConfig.Break2Polarity = TIM_BREAK2POLARITY_HIGH;
++  sBreakDeadTimeConfig.Break2Filter = 0;
++  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
++  if (HAL_TIMEx_ConfigBreakDeadTime(&htim8, &sBreakDeadTimeConfig) != HAL_OK)
++  {
++    Error_Handler();
++  }
++  HAL_TIM_MspPostInit(&htim8);
++
+ }
+ /* TIM12 init function */
+ void MX_TIM12_Init(void)
+@@ -149,6 +238,33 @@ void MX_TIM13_Init(void)
+ 
+ }
+ 
++void HAL_TIM_OC_MspInit(TIM_HandleTypeDef* tim_ocHandle)
++{
++
++  if(tim_ocHandle->Instance==TIM2)
++  {
++  /* USER CODE BEGIN TIM2_MspInit 0 */
++
++  /* USER CODE END TIM2_MspInit 0 */
++    /* TIM2 clock enable */
++    __HAL_RCC_TIM2_CLK_ENABLE();
++  /* USER CODE BEGIN TIM2_MspInit 1 */
++
++  /* USER CODE END TIM2_MspInit 1 */
++  }
++  else if(tim_ocHandle->Instance==TIM8)
++  {
++  /* USER CODE BEGIN TIM8_MspInit 0 */
++
++  /* USER CODE END TIM8_MspInit 0 */
++    /* TIM8 clock enable */
++    __HAL_RCC_TIM8_CLK_ENABLE();
++  /* USER CODE BEGIN TIM8_MspInit 1 */
++
++  /* USER CODE END TIM8_MspInit 1 */
++  }
++}
++
+ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle)
+ {
+ 
+@@ -206,7 +322,48 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
+ {
+ 
+   GPIO_InitTypeDef GPIO_InitStruct = {0};
+-  if(timHandle->Instance==TIM12)
++  if(timHandle->Instance==TIM2)
++  {
++  /* USER CODE BEGIN TIM2_MspPostInit 0 */
++
++  /* USER CODE END TIM2_MspPostInit 0 */
++    __HAL_RCC_GPIOA_CLK_ENABLE();
++    /**TIM2 GPIO Configuration
++    PA15 (JTDI)     ------> TIM2_CH1
++    */
++    GPIO_InitStruct.Pin = GPIO_PIN_15;
++    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
++    GPIO_InitStruct.Pull = GPIO_NOPULL;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
++    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
++
++  /* USER CODE BEGIN TIM2_MspPostInit 1 */
++
++  /* USER CODE END TIM2_MspPostInit 1 */
++  }
++  else if(timHandle->Instance==TIM8)
++  {
++  /* USER CODE BEGIN TIM8_MspPostInit 0 */
++
++  /* USER CODE END TIM8_MspPostInit 0 */
++
++    __HAL_RCC_GPIOI_CLK_ENABLE();
++    /**TIM8 GPIO Configuration
++    PI7     ------> TIM8_CH3
++    */
++    GPIO_InitStruct.Pin = GPIO_PIN_7;
++    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
++    GPIO_InitStruct.Pull = GPIO_NOPULL;
++    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
++    GPIO_InitStruct.Alternate = GPIO_AF3_TIM8;
++    HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
++
++  /* USER CODE BEGIN TIM8_MspPostInit 1 */
++
++  /* USER CODE END TIM8_MspPostInit 1 */
++  }
++  else if(timHandle->Instance==TIM12)
+   {
+   /* USER CODE BEGIN TIM12_MspPostInit 0 */
+ 
+@@ -230,6 +387,33 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
+ 
+ }
+ 
++void HAL_TIM_OC_MspDeInit(TIM_HandleTypeDef* tim_ocHandle)
++{
++
++  if(tim_ocHandle->Instance==TIM2)
++  {
++  /* USER CODE BEGIN TIM2_MspDeInit 0 */
++
++  /* USER CODE END TIM2_MspDeInit 0 */
++    /* Peripheral clock disable */
++    __HAL_RCC_TIM2_CLK_DISABLE();
++  /* USER CODE BEGIN TIM2_MspDeInit 1 */
++
++  /* USER CODE END TIM2_MspDeInit 1 */
++  }
++  else if(tim_ocHandle->Instance==TIM8)
++  {
++  /* USER CODE BEGIN TIM8_MspDeInit 0 */
++
++  /* USER CODE END TIM8_MspDeInit 0 */
++    /* Peripheral clock disable */
++    __HAL_RCC_TIM8_CLK_DISABLE();
++  /* USER CODE BEGIN TIM8_MspDeInit 1 */
++
++  /* USER CODE END TIM8_MspDeInit 1 */
++  }
++}
++
+ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
+ {
+ 
+diff --git a/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h b/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
+index d2c6076..d1989ea 100644
+--- a/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
++++ b/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h
+@@ -11405,7 +11405,6 @@ typedef struct
+ #define FMC_SDSR_BUSY_Pos           (5U)
+ #define FMC_SDSR_BUSY_Msk           (0x1UL << FMC_SDSR_BUSY_Pos)                /*!< 0x00000020 */
+ #define FMC_SDSR_BUSY               FMC_SDSR_BUSY_Msk                          /*!<Busy status */
+-
+ /******************************************************************************/
+ /*                                                                            */
+ /*                            General Purpose I/O                             */
+diff --git a/SS3RDH7.ioc b/SS3RDH7.ioc
+index be56e8c..5c3c128 100644
+--- a/SS3RDH7.ioc
++++ b/SS3RDH7.ioc
+@@ -449,75 +449,80 @@ Mcu.IP2=CORTEX_M7
+ Mcu.IP20=SPI1
+ Mcu.IP21=SPI5
+ Mcu.IP22=SYS
+-Mcu.IP23=TIM3
+-Mcu.IP24=TIM7
+-Mcu.IP25=TIM12
+-Mcu.IP26=TIM13
+-Mcu.IP27=UART4
+-Mcu.IP28=USART1
+-Mcu.IP29=USART2
++Mcu.IP23=TIM2
++Mcu.IP24=TIM3
++Mcu.IP25=TIM7
++Mcu.IP26=TIM8
++Mcu.IP27=TIM12
++Mcu.IP28=TIM13
++Mcu.IP29=UART4
+ Mcu.IP3=CRC
+-Mcu.IP30=USART6
+-Mcu.IP31=USB_DEVICE
+-Mcu.IP32=USB_OTG_FS
++Mcu.IP30=USART1
++Mcu.IP31=USART2
++Mcu.IP32=USART6
++Mcu.IP33=USB_DEVICE
++Mcu.IP34=USB_OTG_FS
+ Mcu.IP4=DEBUG
+ Mcu.IP5=DMA
+ Mcu.IP6=DMA2D
+ Mcu.IP7=FATFS
+ Mcu.IP8=FMC
+ Mcu.IP9=FREERTOS
+-Mcu.IPNb=33
++Mcu.IPNb=35
+ Mcu.Name=STM32H743IITx
+ Mcu.Package=LQFP176
+ Mcu.Pin0=PE4
+ Mcu.Pin1=PE5
+ Mcu.Pin10=PF2
+-Mcu.Pin100=PC12
+-Mcu.Pin101=PD0
+-Mcu.Pin102=PD1
+-Mcu.Pin103=PD2
+-Mcu.Pin104=PD4
+-Mcu.Pin105=PD5
+-Mcu.Pin106=PD6
+-Mcu.Pin107=PD7
+-Mcu.Pin108=PG9
+-Mcu.Pin109=PG10
++Mcu.Pin100=PC10
++Mcu.Pin101=PC11
++Mcu.Pin102=PC12
++Mcu.Pin103=PD0
++Mcu.Pin104=PD1
++Mcu.Pin105=PD2
++Mcu.Pin106=PD4
++Mcu.Pin107=PD5
++Mcu.Pin108=PD6
++Mcu.Pin109=PD7
+ Mcu.Pin11=PF3
+-Mcu.Pin110=PG11
+-Mcu.Pin111=PG12
+-Mcu.Pin112=PG13
+-Mcu.Pin113=PG15
+-Mcu.Pin114=PB3 (JTDO/TRACESWO)
+-Mcu.Pin115=PB4 (NJTRST)
+-Mcu.Pin116=PB5
+-Mcu.Pin117=PB6
+-Mcu.Pin118=PB7
+-Mcu.Pin119=PB8
++Mcu.Pin110=PG9
++Mcu.Pin111=PG10
++Mcu.Pin112=PG11
++Mcu.Pin113=PG12
++Mcu.Pin114=PG13
++Mcu.Pin115=PG15
++Mcu.Pin116=PB3 (JTDO/TRACESWO)
++Mcu.Pin117=PB4 (NJTRST)
++Mcu.Pin118=PB5
++Mcu.Pin119=PB6
+ Mcu.Pin12=PF4
+-Mcu.Pin120=PB9
+-Mcu.Pin121=PE0
+-Mcu.Pin122=PE1
+-Mcu.Pin123=PI4
+-Mcu.Pin124=PI5
+-Mcu.Pin125=PI6
+-Mcu.Pin126=VP_CRC_VS_CRC
+-Mcu.Pin127=VP_DMA2D_VS_DMA2D
+-Mcu.Pin128=VP_FATFS_VS_SDIO
+-Mcu.Pin129=VP_FREERTOS_VS_CMSIS_V2
++Mcu.Pin120=PB7
++Mcu.Pin121=PB8
++Mcu.Pin122=PB9
++Mcu.Pin123=PE0
++Mcu.Pin124=PE1
++Mcu.Pin125=PI4
++Mcu.Pin126=PI5
++Mcu.Pin127=PI6
++Mcu.Pin128=PI7
++Mcu.Pin129=VP_CRC_VS_CRC
+ Mcu.Pin13=PF5
+-Mcu.Pin130=VP_JPEG_VS_JPEG
+-Mcu.Pin131=VP_LIBJPEG_VS_JPEGLIB
+-Mcu.Pin132=VP_RTC_VS_RTC_Activate
+-Mcu.Pin133=VP_RTC_VS_RTC_Calendar
+-Mcu.Pin134=VP_SYS_VS_tim6
+-Mcu.Pin135=VP_TIM3_VS_ClockSourceINT
+-Mcu.Pin136=VP_TIM3_VS_no_output1
+-Mcu.Pin137=VP_TIM7_VS_ClockSourceINT
+-Mcu.Pin138=VP_TIM13_VS_ClockSourceINT
+-Mcu.Pin139=VP_TIM13_VS_no_output1
++Mcu.Pin130=VP_DMA2D_VS_DMA2D
++Mcu.Pin131=VP_FATFS_VS_SDIO
++Mcu.Pin132=VP_FREERTOS_VS_CMSIS_V2
++Mcu.Pin133=VP_JPEG_VS_JPEG
++Mcu.Pin134=VP_LIBJPEG_VS_JPEGLIB
++Mcu.Pin135=VP_RTC_VS_RTC_Activate
++Mcu.Pin136=VP_RTC_VS_RTC_Calendar
++Mcu.Pin137=VP_SYS_VS_tim6
++Mcu.Pin138=VP_TIM3_VS_ClockSourceINT
++Mcu.Pin139=VP_TIM3_VS_no_output1
+ Mcu.Pin14=PF6
+-Mcu.Pin140=VP_USB_DEVICE_VS_USB_DEVICE_MSC_FS
+-Mcu.Pin141=VP_STMicroelectronics.X-CUBE-TOUCHGFX_VS_GraphicsJjApplication_4.15.0
++Mcu.Pin140=VP_TIM7_VS_ClockSourceINT
++Mcu.Pin141=VP_TIM13_VS_ClockSourceINT
++Mcu.Pin142=VP_TIM13_VS_no_output1
++Mcu.Pin143=VP_USB_DEVICE_VS_USB_DEVICE_MSC_FS
++Mcu.Pin144=VP_STMicroelectronics.X-CUBE-TOUCHGFX_VS_GraphicsJjApplication_4.15.0
+ Mcu.Pin15=PF7
+ Mcu.Pin16=PF8
+ Mcu.Pin17=PF9
+@@ -608,10 +613,10 @@ Mcu.Pin93=PH15
+ Mcu.Pin94=PI0
+ Mcu.Pin95=PI1
+ Mcu.Pin96=PI2
+-Mcu.Pin97=PA14 (JTCK/SWCLK)
+-Mcu.Pin98=PC10
+-Mcu.Pin99=PC11
+-Mcu.PinsNb=142
++Mcu.Pin97=PI3
++Mcu.Pin98=PA14 (JTCK/SWCLK)
++Mcu.Pin99=PA15 (JTDI)
++Mcu.PinsNb=145
+ Mcu.ThirdParty0=STMicroelectronics.X-CUBE-TOUCHGFX.4.15.0
+ Mcu.ThirdPartyNb=1
+ Mcu.UserConstants=
+@@ -706,6 +711,8 @@ PA13\ (JTMS/SWDIO).Mode=Trace_Asynchronous_SW
+ PA13\ (JTMS/SWDIO).Signal=DEBUG_JTMS-SWDIO
+ PA14\ (JTCK/SWCLK).Mode=Trace_Asynchronous_SW
+ PA14\ (JTCK/SWCLK).Signal=DEBUG_JTCK-SWCLK
++PA15\ (JTDI).Locked=true
++PA15\ (JTDI).Signal=S_TIM2_CH1
+ PA2.GPIOParameters=GPIO_Speed
+ PA2.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PA2.Locked=true
+@@ -1115,6 +1122,8 @@ PI2.GPIOParameters=GPIO_Speed
+ PI2.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI2.Mode=RGB888
+ PI2.Signal=LTDC_G7
++PI3.Locked=true
++PI3.Signal=GPIO_Output
+ PI4.GPIOParameters=GPIO_Speed
+ PI4.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI4.Mode=RGB888
+@@ -1129,6 +1138,8 @@ PI6.GPIO_Label=MAX30102_INT
+ PI6.GPIO_PuPd=GPIO_PULLUP
+ PI6.Locked=true
+ PI6.Signal=GPXTI6
++PI7.Locked=true
++PI7.Signal=S_TIM8_CH3
+ PI9.GPIOParameters=GPIO_Speed
+ PI9.GPIO_Speed=GPIO_SPEED_FREQ_VERY_HIGH
+ PI9.Locked=true
+@@ -1348,6 +1359,10 @@ SH.GPXTI6.0=GPIO_EXTI6
+ SH.GPXTI6.ConfNb=1
+ SH.S_TIM12_CH1.0=TIM12_CH1,PWM Generation1 CH1
+ SH.S_TIM12_CH1.ConfNb=1
++SH.S_TIM2_CH1.0=TIM2_CH1,Output Compare1 CH1
++SH.S_TIM2_CH1.ConfNb=1
++SH.S_TIM8_CH3.0=TIM8_CH3,Output Compare3 CH3
++SH.S_TIM8_CH3.ConfNb=1
+ SPI1.BaudRatePrescaler=SPI_BAUDRATEPRESCALER_256
+ SPI1.CalculateBaudRate=500.0 KBits/s
+ SPI1.DataSize=SPI_DATASIZE_8BIT
+@@ -1385,6 +1400,11 @@ TIM13.ClockDivision=TIM_CLOCKDIVISION_DIV4
+ TIM13.IPParameters=Channel,Prescaler,Period,ClockDivision
+ TIM13.Period=999
+ TIM13.Prescaler=59
++TIM2.Channel-Output\ Compare1\ CH1=TIM_CHANNEL_1
++TIM2.IPParameters=Channel-Output Compare1 CH1,Prescaler,Period,OCPolarity_1
++TIM2.OCPolarity_1=TIM_OCPOLARITY_LOW
++TIM2.Period=0
++TIM2.Prescaler=119
+ TIM3.Channel-Output\ Compare1\ No\ Output=TIM_CHANNEL_1
+ TIM3.ClockDivision=TIM_CLOCKDIVISION_DIV4
+ TIM3.IPParameters=Prescaler,Period,Channel-Output Compare1 No Output,TIM_MasterOutputTrigger,ClockDivision
+@@ -1395,6 +1415,11 @@ TIM7.IPParameters=Prescaler,Period,TIM_MasterOutputTrigger
+ TIM7.Period=99
+ TIM7.Prescaler=44999
+ TIM7.TIM_MasterOutputTrigger=TIM_TRGO_UPDATE
++TIM8.Channel-Output\ Compare3\ CH3=TIM_CHANNEL_3
++TIM8.IPParameters=Channel-Output Compare3 CH3,Period,Prescaler,OCPolarity_3
++TIM8.OCPolarity_3=TIM_OCPOLARITY_LOW
++TIM8.Period=0
++TIM8.Prescaler=119
+ USART1.IPParameters=VirtualMode-Asynchronous
+ USART1.VirtualMode-Asynchronous=VM_ASYNC
+ USART2.IPParameters=VirtualMode-Asynchronous
+diff --git a/STM32H743IITX_FLASH.ld b/STM32H743IITX_FLASH.ld
+index b099dcc..58b98f3 100644
+--- a/STM32H743IITX_FLASH.ld
++++ b/STM32H743IITX_FLASH.ld
+@@ -34,8 +34,8 @@ ENTRY(Reset_Handler)
+ /* Highest address of the user mode stack */
+ _estack = ORIGIN(RAM_D1) + LENGTH(RAM_D1);	/* end of "RAM_D1" Ram type memory */
+ 
+-_Min_Heap_Size = 0x20000 ;	/* required amount of heap  */
+-_Min_Stack_Size = 0x20000 ;	/* required amount of stack */
++_Min_Heap_Size = 0x3e00 ;	/* required amount of heap  */
++_Min_Stack_Size = 0x3e00 ;	/* required amount of stack */
+ 
+ /* Memories definition */
+ MEMORY
+diff --git a/USB_DEVICE/Target/usbd_conf.c b/USB_DEVICE/Target/usbd_conf.c
+index d1b7651..aa5ba2d 100644
+--- a/USB_DEVICE/Target/usbd_conf.c
++++ b/USB_DEVICE/Target/usbd_conf.c
+@@ -88,11 +88,11 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* pcdHandle)
+     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+ 
+     /* Peripheral interrupt init */
+-    HAL_NVIC_SetPriority(OTG_FS_EP1_OUT_IRQn, 2, 12);
++    HAL_NVIC_SetPriority(OTG_FS_EP1_OUT_IRQn, 5, 0);
+     HAL_NVIC_EnableIRQ(OTG_FS_EP1_OUT_IRQn);
+-    HAL_NVIC_SetPriority(OTG_FS_EP1_IN_IRQn, 2, 11);
++    HAL_NVIC_SetPriority(OTG_FS_EP1_IN_IRQn, 5, 0);
+     HAL_NVIC_EnableIRQ(OTG_FS_EP1_IN_IRQn);
+-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 2, 10);
++    HAL_NVIC_SetPriority(OTG_FS_IRQn, 5, 0);
+     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+   /* USER CODE BEGIN USB_OTG_FS_MspInit 1 */
+ 
+@@ -233,7 +233,6 @@ void HAL_PCD_SuspendCallback(PCD_HandleTypeDef *hpcd)
+ {
+   /* Inform USB library that core enters in suspend Mode. */
+   USBD_LL_Suspend((USBD_HandleTypeDef*)hpcd->pData);
+-
+   __HAL_PCD_GATE_PHYCLOCK(hpcd);
+   /* Enter in STOP mode. */
+   /* USER CODE BEGIN 2 */

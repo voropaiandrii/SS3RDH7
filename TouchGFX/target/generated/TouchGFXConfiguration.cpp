@@ -26,6 +26,10 @@
 
 extern "C" void touchgfx_init();
 extern "C" void touchgfx_taskEntry();
+extern "C" void printTesting(const char*);
+extern "C" void setCPUUsage(uint8_t);
+extern "C" void notifyTestStateChanged();
+extern "C" void notifyMainStateChanged(const char* error);
 
 static STM32TouchController tc;
 static STM32H7DMA dma;
@@ -63,6 +67,26 @@ void touchgfx_taskEntry()
   * Note This function never returns
   */
   hal.taskEntry();
+}
+
+void printTesting(const char* string) {
+	FrontendHeap& heap = FrontendHeap::getInstance();
+	heap.model.printTestingOutput(string);
+}
+
+void setCPUUsage(uint8_t cpuUsage) {
+	FrontendHeap& heap = FrontendHeap::getInstance();
+	heap.model.setCPUUsage(cpuUsage);
+}
+
+void notifyTestStateChanged() {
+	FrontendHeap& heap = FrontendHeap::getInstance();
+	heap.model.notifyTestStateChanged();
+}
+
+void notifyMainStateChanged(const char* error) {
+	FrontendHeap& heap = FrontendHeap::getInstance();
+	heap.model.notifyMainStateChanged(error);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

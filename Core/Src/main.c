@@ -21,6 +21,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "adc.h"
+#include "bdma.h"
 #include "crc.h"
 #include "dma.h"
 #include "dma2d.h"
@@ -37,10 +38,17 @@
 #include "usb_device.h"
 #include "gpio.h"
 #include "fmc.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include "display/display.h"
+#include "devices/touch/XPT2046.h"
+#include "devices/touch/XPT2046LL.h"
+#include "devices/ecg/MAX30003LL.h"
+#include "devices/ppg/MAX30102LL.h"
+#include "devices/ppg/MAX86161LL.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,12 +75,38 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+TouchEvent_t event;
+extern osThreadId touchEventTaskHandle;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void xpt2046TouchEventCallback(TouchEvent_t* e) {
+    event.xPosition = e->xPosition;
+    event.yPosition = e->yPosition;
+    event.batteryVoltage = e->batteryVoltage;
+    event.auxValue = e->auxValue;
+    event.temperature = e->temperature;
+    event.z1Position = e->z1Position;
+    event.z2Position = e->z2Position;
+    osThreadResume(touchEventTaskHandle);
+}
 
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
+	if(hspi->Instance == SPI1) {
+		xpt2046LowLevelSpiTxRxHandler(hspi);
+	} else if(hspi->Instance == SPI5) {
+		max30003LowLevelSpiTxRxHandler(hspi);
+	}
+}
+
+int _write(int file, char *ptr, int len) {
+	for(int i = 0; i < len; i++) {
+		ITM_SendChar(ptr[i]);
+	}
+	return len;
+}
 /* USER CODE END 0 */
 
 /**
@@ -84,6 +118,12 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
+
+  /* Enable I-Cache---------------------------------------------------------*/
+  SCB_EnableICache();
+
+  /* Enable D-Cache---------------------------------------------------------*/
+  //SCB_EnableDCache();
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -103,8 +143,11 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_BDMA_Init();
   MX_DMA_Init();
   MX_DMA2D_Init();
+  MX_FMC_Init();
+  SDRAM_InitSequence();
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_LTDC_Init();
@@ -117,7 +160,6 @@ int main(void)
   MX_USART6_UART_Init();
   MX_FATFS_Init();
   MX_LIBJPEG_Init();
-  MX_FMC_Init();
   MX_JPEG_Init();
   MX_ADC1_Init();
   MX_CRC_Init();
@@ -126,8 +168,23 @@ int main(void)
   MX_TIM7_Init();
   MX_TIM12_Init();
   MX_TIM13_Init();
+  MX_I2C4_Init();
+  MX_TIM2_Init();
+  MX_TIM8_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+  HAL_Delay(100);
+  HAL_GPIO_WritePin(GPIOD, MAX30003_PWR_EN_Pin|OLIMEX_PWR_EN_Pin, GPIO_PIN_SET);
+  HAL_TIM_Base_Start(&htim3);
+  HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1);
+  HAL_ADC_Start_IT(&hadc1);
 
+  //HAL_TIM_Base_Start(&htim2);
+  //HAL_TIM_Base_Start(&htim8);
+
+  HAL_TIM_OC_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_OC_Start(&htim8, TIM_CHANNEL_3);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -169,16 +226,28 @@ void SystemClock_Config(void)
   /** Configure LSE Drive Capability
   */
   HAL_PWR_EnableBkUpAccess();
-  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+  //__HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+#if RTC_CLOCK_SOURCE == RTC_CLOCK_SOURCE_LSE
+  //__HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
+  //__HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_MEDIUMLOW);
+  //__HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_MEDIUMHIGH);
+  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_HIGH);
+#endif
   /** Macro to configure the PLL clock source
   */
   __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSE);
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+#if RTC_CLOCK_SOURCE == RTC_CLOCK_SOURCE_LSE
+  RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSE;//|RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+#else
+  RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_LSI;
+#endif
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.LSEState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 1;
@@ -216,7 +285,8 @@ void SystemClock_Config(void)
                               |RCC_PERIPHCLK_SPI5|RCC_PERIPHCLK_SPI1
                               |RCC_PERIPHCLK_SDMMC|RCC_PERIPHCLK_I2C2
                               |RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C1
-                              |RCC_PERIPHCLK_USB|RCC_PERIPHCLK_FMC;
+                              |RCC_PERIPHCLK_I2C4|RCC_PERIPHCLK_USB
+                              |RCC_PERIPHCLK_FMC;
   PeriphClkInitStruct.PLL2.PLL2M = 8;
   PeriphClkInitStruct.PLL2.PLL2N = 256;
   PeriphClkInitStruct.PLL2.PLL2P = 2;
@@ -229,20 +299,25 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLL3.PLL3N = 192;
   PeriphClkInitStruct.PLL3.PLL3P = 4;
   PeriphClkInitStruct.PLL3.PLL3Q = 4;
-  PeriphClkInitStruct.PLL3.PLL3R = 4;
+  PeriphClkInitStruct.PLL3.PLL3R = 9;
   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_0;
   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
   PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_D1HCLK;
   PeriphClkInitStruct.SdmmcClockSelection = RCC_SDMMCCLKSOURCE_PLL;
-  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
-  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_D2PCLK1;
+  PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL2;
+  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
   PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
   PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;
   PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
   PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLL3;
+  PeriphClkInitStruct.I2c4ClockSelection = RCC_I2C4CLKSOURCE_D3PCLK1;
   PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
-  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+#if RTC_CLOCK_SOURCE == RTC_CLOCK_SOURCE_LSE
+  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;//RCC_RTCCLKSOURCE_LSE
+#else
+  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+#endif
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();

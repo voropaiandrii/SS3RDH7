@@ -11402,6 +11402,9 @@ typedef struct
 #define FMC_SDSR_MODES2_0          (0x1UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000008 */
 #define FMC_SDSR_MODES2_1          (0x2UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000010 */
 
+#define FMC_SDSR_BUSY_Pos           (5U)
+#define FMC_SDSR_BUSY_Msk           (0x1UL << FMC_SDSR_BUSY_Pos)                /*!< 0x00000020 */
+#define FMC_SDSR_BUSY               FMC_SDSR_BUSY_Msk                          /*!<Busy status */
 /******************************************************************************/
 /*                                                                            */
 /*                            General Purpose I/O                             */

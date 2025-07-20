@@ -2,22 +2,2630 @@
   "Application": {
     "Screens": [
       {
-        "Components": [],
+        "Components": [
+          {
+            "Type": "TiledImage",
+            "FileName": "background2.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "SettingsBackgroundTiledImage1",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId24",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 247,
+              "Blue": 247
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea1",
+            "X": 214,
+            "Y": 13,
+            "Width": 373,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId27",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 247,
+              "Blue": 247
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea2",
+            "X": 233,
+            "Y": 118,
+            "Width": 334,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId32",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 249,
+              "Blue": 249
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId60",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "dayTextArea",
+            "X": 55,
+            "Y": 240,
+            "Width": 51,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId33",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 245,
+              "Blue": 245
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId61",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textMonthArea",
+            "X": 155,
+            "Y": 240,
+            "Width": 51,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId36",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 236,
+              "Blue": 236
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId62",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "yearTextArea",
+            "X": 240,
+            "Y": 240,
+            "Width": 102,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId37",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 250,
+              "Green": 244,
+              "Blue": 244
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId63",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "hoursTextArea",
+            "X": 495,
+            "Y": 240,
+            "Width": 51,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId38",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 252,
+              "Blue": 252
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId64",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "minutesTextArea",
+            "X": 595,
+            "Y": 240,
+            "Width": 51,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId39",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 247,
+              "Green": 244,
+              "Blue": 244
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId65",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "secondsTextArea",
+            "X": 695,
+            "Y": 240,
+            "Width": 51,
+            "Height": 49,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId46",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "cancelSettingsButton",
+            "X": 110,
+            "Y": 391,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId47",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "saveSettingsButton",
+            "X": 525,
+            "Y": 391,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseDayButton",
+            "X": 50,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseDayButton",
+            "X": 50,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseMonthButton",
+            "X": 150,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseMonthButton",
+            "X": 150,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseYearButton",
+            "X": 261,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseYearButton",
+            "X": 261,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseHoursButton",
+            "X": 490,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseHoursButton",
+            "X": 490,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 15,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseMinutesButton",
+            "X": 590,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseMinutesButton",
+            "X": 590,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Down_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon13",
+            "Name": "decreaseSecondsButton",
+            "X": 690,
+            "Y": 289,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconReleased": "__designer\\Dark_Icons_Up_arrow_32.png",
+            "IconX": 14,
+            "IconY": 21,
+            "IconHeight": 19,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "IconStyle": "Icon67",
+            "Name": "increaseSecondsButton",
+            "X": 690,
+            "Y": 180,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Slider",
+            "IsHorizontalSlider": true,
+            "BackgroundUnselected": "__designer\\Dark_Slider_Horizontal_Large_Slider_Round_back.png",
+            "BackgroundSelected": "__designer\\Dark_Slider_Horizontal_Large_Slider_Round_fill.png",
+            "Indicator": "__designer\\Dark_Slider_Horizontal_Large_Indicators_Slider_Round_nob.png",
+            "BackgroundX": 5,
+            "BackgroundY": 24,
+            "IndicatorPos": 0,
+            "IndicatorMax": 615,
+            "IndicatorMin": 0,
+            "ValueMax": 100,
+            "ValueMin": 0,
+            "InitValue": 0,
+            "Style": "Style1",
+            "Name": "screenBrightnessSlider",
+            "X": 59,
+            "Y": 50,
+            "Width": 683,
+            "Height": 68,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ScreenBrightnessChanged",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerSliderValueChanged",
+              "TriggerComponent": "screenBrightnessSlider"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "screenBrightnessChanged"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cancelSettingsButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MainScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "saveSettingsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "saveSettings"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseSecondsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseSeconds"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseSecondsButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseSeconds"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseMinutesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseMinutes"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseMinutesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseMinutes"
+            }
+          },
+          {
+            "InteractionName": "Interaction7",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseHoursButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseHours"
+            }
+          },
+          {
+            "InteractionName": "Interaction8",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseHoursButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseHours"
+            }
+          },
+          {
+            "InteractionName": "Interaction9",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseYearButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseYear"
+            }
+          },
+          {
+            "InteractionName": "Interaction10",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseYearButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseYear"
+            }
+          },
+          {
+            "InteractionName": "Interaction11",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseMonthButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseMonths"
+            }
+          },
+          {
+            "InteractionName": "Interaction12",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseMonthButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseMonths"
+            }
+          },
+          {
+            "InteractionName": "Interaction13",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "increaseDayButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increaseDays"
+            }
+          },
+          {
+            "InteractionName": "Interaction14",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "decreaseDayButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decreaseDays"
+            }
+          }
+        ],
+        "Name": "SettingsScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Type": "TiledImage",
+            "FileName": "background2.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "MainBackgroundTiledImage1",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 1664272986,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "Color": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 248,
+                "Green": 250,
+                "Blue": 251
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "standardECGGraph",
+            "X": 50,
+            "Y": 30,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 1348474298,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 0
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 252,
+                "Green": 253,
+                "Blue": 254
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "earECGGraph",
+            "X": 50,
+            "Y": 120,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 339139267,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "Color": {
+                  "Red": 0,
+                  "Green": 255,
+                  "Blue": 0
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 246,
+                "Green": 248,
+                "Blue": 249
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "leftEarPPGGreenGraph",
+            "X": 50,
+            "Y": 210,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 369738043,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 102,
+                  "Blue": 102
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 247,
+                "Green": 248,
+                "Blue": 249
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "leftEarPPGRedGraph",
+            "X": 50,
+            "Y": 300,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 437690302,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 255
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 251,
+                "Green": 253,
+                "Blue": 254
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "leftEarPPGIRGraph",
+            "X": 50,
+            "Y": 390,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 1493872906,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 255
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 251,
+                "Green": 252,
+                "Blue": 252
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "rightEarPPGIRGraph",
+            "X": 425,
+            "Y": 390,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": -236859562,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 102,
+                  "Blue": 102
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 251,
+                "Green": 252,
+                "Blue": 252
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "rightEarPPGRedGraph",
+            "X": 425,
+            "Y": 300,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": -1284002840,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 0,
+                  "Green": 255,
+                  "Blue": 0
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 246,
+                "Green": 248,
+                "Blue": 249
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "rightEarPPGGreenGraph",
+            "X": 425,
+            "Y": 210,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": -1883675924,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 255
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 246,
+                "Green": 248,
+                "Blue": 249
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "fingerPPGIRGraph",
+            "X": 425,
+            "Y": 120,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 110903895,
+            "NumberOfValues": 100,
+            "MaxY": 100.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": false,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 12,
+            "LabelSizeLeft": 15,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphWrapOverwrite",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "FileNameImage": "",
+                "Color": {
+                  "Red": 255,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255
+              }
+            ],
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 248,
+                "Green": 250,
+                "Blue": 251
+              },
+              "Interval": 1000.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "Name": "fingerPPGRedGraph",
+            "X": 425,
+            "Y": 30,
+            "Width": 375,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DigitalClock",
+            "TextColor": {
+              "Red": 254,
+              "Green": 254,
+              "Blue": 254
+            },
+            "TextId": "SingleUseId1",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "Alpha": 255,
+            "UseAmPm": false,
+            "InitialHour": 10,
+            "InitialMinute": 10,
+            "InitialSecond": 0,
+            "Name": "realTimeDigitalClock",
+            "X": 350,
+            "Y": 0,
+            "Width": 100,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextProgress",
+            "NumberOfDecimals": 0,
+            "TextId": "SingleUseId51",
+            "Color": {
+              "Red": 251,
+              "Green": 250,
+              "Blue": 250
+            },
+            "Alpha": 255,
+            "Style": "Style3",
+            "FileNameBackground": "__designer\\Dark_ProgressIndicators_bg_medium_text_progress_bg_square.png",
+            "IndicatorPositionX": 0,
+            "IndicatorPositionY": 0,
+            "IndicatorPositionWidth": 84,
+            "IndicatorPositionHeight": 34,
+            "ProgressRangeMin": 0,
+            "ProgressRangeMax": 100,
+            "ProgressRangeSteps": 0,
+            "ProgressRangeStepsMin": 0,
+            "ProgressInitialValue": 0,
+            "Name": "cpuUsageTextProgress",
+            "X": 715,
+            "Y": -1,
+            "Width": 84,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DigitalClock",
+            "TextColor": {
+              "Red": 254,
+              "Green": 3,
+              "Blue": 3
+            },
+            "TextId": "SingleUseId59",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "Alpha": 255,
+            "UseAmPm": false,
+            "InitialHour": 10,
+            "InitialMinute": 10,
+            "InitialSecond": 0,
+            "Name": "recordingDigitalClock",
+            "X": 175,
+            "Y": 0,
+            "Width": 100,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "CleanButton2_32px.png",
+            "IconReleased": "CleanButton2_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "cleanButton",
+            "X": -5,
+            "Y": 295,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "DisconnectDevices_32px.png",
+            "IconReleased": "DisconnectDevices_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "disconnectDevicesButton",
+            "X": -5,
+            "Y": 235,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "ConnectDevices_32px.png",
+            "IconReleased": "ConnectDevices_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "connectDevicesButton",
+            "X": -5,
+            "Y": 175,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "StopRecordingButton_32px.png",
+            "IconReleased": "StopRecordingButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "stopRecordingButton",
+            "X": -5,
+            "Y": 115,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "StartRecordingButton_32px.png",
+            "IconReleased": "StartRecordingButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "startRecordingButton",
+            "X": -5,
+            "Y": 55,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Alpha": 255,
+            "IconPressed": "ScreenshotButton_32px.png",
+            "IconReleased": "ScreenshotButton_32px.png",
+            "IconX": 14,
+            "IconY": 14,
+            "IconHeight": 32,
+            "IconWidth": 32,
+            "ButtonStyle": "Style1",
+            "Name": "makeScreenshotButton",
+            "X": -5,
+            "Y": -5,
+            "Width": 60,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId66",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 252,
+              "Green": 3,
+              "Blue": 3
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId67",
+              "UseBuffer": true,
+              "BufferSize": 25
+            },
+            "Name": "errorTextArea",
+            "X": 471,
+            "Y": 0,
+            "Width": 222,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "makeScreenshotButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "makeScreenshot"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "startRecordingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "startRecording"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "stopRecordingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "stopRecording"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "connectDevicesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "connectDevices"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "disconnectDevicesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "disconnectDevices"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cleanButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "cleanGraphs"
+            }
+          },
+          {
+            "InteractionName": "Interaction7",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "standardECGGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "standartECGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction8",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "earECGGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "earECGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction9",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "fingerPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "fingerPPGGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction10",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "fingerPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "fingerPPGIRGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction11",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGGreenGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGGreenGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction12",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGRedGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction13",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "leftEarPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "leftEarPPGIRGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction14",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGGreenGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGGreenGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction15",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGRedGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGRedGraphClicked"
+            }
+          },
+          {
+            "InteractionName": "Interaction16",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerGraphClicked",
+              "TriggerComponent": "rightEarPPGIRGraph"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rightEarPPGIRGraphClicked"
+            }
+          }
+        ],
+        "Name": "MainScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 12000
+      },
+      {
+        "Components": [
+          {
+            "Type": "TiledImage",
+            "FileName": "background2.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "backgroundTiledImage",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "DynamicGraph",
+            "DataSeed": 852156102,
+            "NumberOfValues": 100,
+            "MaxY": 65535.0,
+            "MinY": 0.0,
+            "Precision": "1",
+            "UseCustomVisibleDataPointRange": false,
+            "FirstIndex": 0,
+            "LastIndex": 99,
+            "MapDataPointIndexToCustomValue": false,
+            "XAxisOffset": 0.0,
+            "XAxisScale": 1.0,
+            "InsertRandomValues": true,
+            "Alpha": 255,
+            "LabelSizeTop": 0,
+            "LabelSizeBottom": 15,
+            "LabelSizeLeft": 40,
+            "LabelSizeRight": 0,
+            "PaddingTop": 0,
+            "PaddingBottom": 0,
+            "PaddingLeft": 0,
+            "PaddingRight": 0,
+            "GraphType": "GraphScroll",
+            "GraphDrawers": [
+              {
+                "Type": "LineDrawer",
+                "LineWidth": 2,
+                "Color": {
+                  "Red": 252,
+                  "Green": 31,
+                  "Blue": 6
+                },
+                "Alpha": 255
+              }
+            ],
+            "XAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 149,
+                "Green": 151,
+                "Blue": 152
+              },
+              "Interval": 10.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "YAxisGrid": {
+              "Type": "GraphGrid",
+              "Color": {
+                "Red": 152,
+                "Green": 155,
+                "Blue": 156
+              },
+              "Interval": 6553.0,
+              "LineWidth": 1,
+              "Alpha": 255
+            },
+            "XAxisLabel": {
+              "Type": "GraphLabel",
+              "Interval": 10.0,
+              "NumberOfDecimals": 0,
+              "DecimalSeparator": "Point",
+              "TextColor": {
+                "Red": 245,
+                "Green": 249,
+                "Blue": 250
+              },
+              "TextId": "SingleUseId4",
+              "Alpha": 255,
+              "TextRotation": "0",
+              "Position": "Bottom"
+            },
+            "YAxisLabel": {
+              "Type": "GraphLabel",
+              "Interval": 10000.0,
+              "NumberOfDecimals": 0,
+              "DecimalSeparator": "Point",
+              "TextColor": {
+                "Red": 248,
+                "Green": 250,
+                "Blue": 251
+              },
+              "TextId": "SingleUseId5",
+              "Alpha": 255,
+              "TextRotation": "0",
+              "Position": "Left"
+            },
+            "Name": "fullGraph",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
         "Interactions": [],
-        "Name": "screen",
+        "Name": "FullGraphScreen",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 12000
+      },
+      {
+        "Components": [
+          {
+            "Type": "TiledImage",
+            "FileName": "background2.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "backgroundTiledImage",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TiledImage",
+            "FileName": "backgroundDarkGrey.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "tiledImage1",
+            "X": 50,
+            "Y": 60,
+            "Width": 700,
+            "Height": 420,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId57",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "stopTestingButton",
+            "X": 580,
+            "Y": 0,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId58",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "pauseTestingButton",
+            "X": 315,
+            "Y": 0,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId56",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "runTestingButton",
+            "X": 50,
+            "Y": 0,
+            "Width": 170,
+            "Height": 60,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId52",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 253,
+                  "Blue": 253
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 1,
+                "Wildcard1": {
+                  "TextId": "SingleUseId53",
+                  "UseBuffer": true,
+                  "BufferSize": 5000
+                },
+                "Name": "textOutput",
+                "X": 0,
+                "Y": 0,
+                "Width": 700,
+                "Height": 2000,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "ScrollableContainer",
+            "HorizontalScrollEnabled": false,
+            "VerticalScrollEnabled": true,
+            "ScrollbarsVisible": true,
+            "ScrollbarsVisibleOnPressed": true,
+            "ScrollbarsColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "ScrollbarsAlpha": 255,
+            "Name": "textOutputScrollableContainer",
+            "X": 50,
+            "Y": 60,
+            "Width": 700,
+            "Height": 420,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "NavigationMenu",
+            "Type": "CustomContainerInstance",
+            "Name": "navigationMenu1",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 480,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "runTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "startTesting"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "pauseTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "pauseTesting"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "stopTestingButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "stopTesting"
+            }
+          }
+        ],
+        "Name": "TestingScreen",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Components": [
+          {
+            "Components": [
+              {
+                "Type": "TiledImage",
+                "FileName": "NavigationMenuBackground1.png",
+                "Alpha": 255,
+                "OffsetX": 0,
+                "OffsetY": 0,
+                "Name": "backgroundNavigationTiledImage",
+                "X": 0,
+                "Y": 0,
+                "Width": 200,
+                "Height": 480,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId25",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Name": "MainScreenNavigationButton",
+                "X": 15,
+                "Y": 10,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId26",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style4",
+                "Name": "SettingsScreenNavigationButton",
+                "X": 15,
+                "Y": 75,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_small.png",
+                "Alpha": 255,
+                "TextId": "SingleUseId54",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Style": "Style4",
+                "Name": "TestingScreenNavigationButton",
+                "X": 15,
+                "Y": 140,
+                "Width": 170,
+                "Height": 60,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "SlideMenu",
+            "FileNameBackground": "backgroundTransparent.png",
+            "BackgroundX": 250,
+            "BackgroundY": 480,
+            "UseButton": true,
+            "FileNameButtonPressed": "MenuButtonClicked.png",
+            "FileNameButtonReleased": "MenuButton.png",
+            "ButtonX": 195,
+            "ButtonY": 425,
+            "State": "Collapsed",
+            "ExpandDirection": "East",
+            "Easing": "Cubic",
+            "EasingOption": "InOut",
+            "AnimationDuration": 100,
+            "VisiblePixelsWhenCollapsed": 60,
+            "HiddenPixelsWhenExpanded": 0,
+            "ExpandedStateTimeout": 5000,
+            "Name": "screenNavigationMenu",
+            "X": 0,
+            "Y": 0,
+            "Width": 260,
+            "Height": 490,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "MainScreenNavigationButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "MainScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "SettingsScreenNavigationButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "SettingsScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "TestingScreenNavigationButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "TestingScreen"
+            }
+          }
+        ],
+        "Name": "NavigationMenu",
+        "X": 0,
+        "Y": 0,
+        "Width": 260,
+        "Height": 480
+      }
+    ],
     "TextEntries": [
       {
         "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "TextId1",
         "IsResource": true
       },
       {
-        "TextEntryId": "SingleUseId2",
-        "IsResource": true
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId24",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId25",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId26",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId27",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId32",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId33",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId36",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId37",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId38",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId39",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId46",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId47",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId51",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId52",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId53",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId54",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId56",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId57",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId58",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId59",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId60",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId61",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId62",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId63",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId64",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId65",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId66",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId67",
+        "IsResource": false
       }
     ],
     "Name": "SS3RDH7",
@@ -26,9 +2634,9 @@
       "Height": 480
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "screen",
-    "SelectedStartupLanguage": "GB",
-    "Skin": "Blue",
+    "StartupScreenName": "MainScreen",
+    "SelectedStartupLanguage": "EN",
+    "Skin": "Dark",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [

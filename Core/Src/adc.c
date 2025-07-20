@@ -21,7 +21,19 @@
 #include "adc.h"
 
 /* USER CODE BEGIN 0 */
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "semphr.h"
+#include "domain/use_cases/recording_use_case.h"
 
+#define ADC_BUFFER_LENGHT 4
+extern QueueHandle_t earECGQueue;
+
+uint16_t adcBuffer[ADC_BUFFER_LENGHT] = {0, 0, 0, 0};
+uint8_t bufferCounter = 0;
+uint16_t adcValue;
+uint32_t averageValue;
+uint8_t graphCounter = 0;
 /* USER CODE END 0 */
 
 ADC_HandleTypeDef hadc1;
@@ -35,7 +47,7 @@ void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV8;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV128;
   hadc1.Init.Resolution = ADC_RESOLUTION_16B;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
@@ -98,8 +110,10 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+    /* ADC1 interrupt Init */
   /* USER CODE BEGIN ADC1_MspInit 1 */
-
+    HAL_NVIC_SetPriority(ADC_IRQn, 10, 0);
+    HAL_NVIC_EnableIRQ(ADC_IRQn);
   /* USER CODE END ADC1_MspInit 1 */
   }
 }
@@ -121,6 +135,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     */
     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_0|GPIO_PIN_4);
 
+    /* ADC1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(ADC_IRQn);
   /* USER CODE BEGIN ADC1_MspDeInit 1 */
 
   /* USER CODE END ADC1_MspDeInit 1 */
@@ -128,7 +144,36 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	adcValue = HAL_ADC_GetValue(hadc);
 
+	if(bufferCounter < ADC_BUFFER_LENGHT - 1) {
+		adcBuffer[bufferCounter] = adcValue;
+		bufferCounter++;
+	} else {
+		adcBuffer[bufferCounter] = adcValue;
+		bufferCounter = 0;
+		averageValue = 0;
+		for(int i = 0; i < ADC_BUFFER_LENGHT; i++) {
+			averageValue += adcBuffer[i];
+		}
+		averageValue = averageValue / ADC_BUFFER_LENGHT;
+
+		storeSampleECGEar(averageValue);
+
+		if(earECGQueue != 0) {
+			if(graphCounter < GRAPH_DOWNSAMPLING_VALUE) {
+				graphCounter++;
+			} else {
+				graphCounter = 0;
+				xQueueSendFromISR(earECGQueue, (void *)&averageValue, (TickType_t)0);
+			}
+		}
+	}
+
+
+}
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

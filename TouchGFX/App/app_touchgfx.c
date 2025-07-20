@@ -19,6 +19,10 @@
 
 void touchgfx_init(void);
 void touchgfx_taskEntry(void);
+void printTesting(const char*);
+void setCPUUsage(unsigned char);
+void notifyTestStateChanged();
+void notifyMainStateChanged(const char* error);
 
 /**
  * Initialize TouchGFX application
@@ -45,6 +49,22 @@ void TouchGFX_Task(void *argument)
 {
   // Calling farward to touchgfx_init in C++ domain
   touchgfx_taskEntry();
+}
+
+void printForTesting(const char* string) {
+	printTesting(string);
+}
+
+void set_cpu_usage(unsigned char cpuUsage) {
+	setCPUUsage(cpuUsage);
+}
+
+void notify_test_state_changed() {
+	notifyTestStateChanged();
+}
+
+void notify_main_state_changed(const char* error) {
+	notifyMainStateChanged(error);
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

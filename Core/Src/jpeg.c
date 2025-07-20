@@ -48,6 +48,10 @@ void HAL_JPEG_MspInit(JPEG_HandleTypeDef* jpegHandle)
   /* USER CODE END JPEG_MspInit 0 */
     /* JPEG clock enable */
     __HAL_RCC_JPEG_CLK_ENABLE();
+
+    /* JPEG interrupt Init */
+    HAL_NVIC_SetPriority(JPEG_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(JPEG_IRQn);
   /* USER CODE BEGIN JPEG_MspInit 1 */
 
   /* USER CODE END JPEG_MspInit 1 */
@@ -64,6 +68,9 @@ void HAL_JPEG_MspDeInit(JPEG_HandleTypeDef* jpegHandle)
   /* USER CODE END JPEG_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_JPEG_CLK_DISABLE();
+
+    /* JPEG interrupt Deinit */
+    HAL_NVIC_DisableIRQ(JPEG_IRQn);
   /* USER CODE BEGIN JPEG_MspDeInit 1 */
 
   /* USER CODE END JPEG_MspDeInit 1 */

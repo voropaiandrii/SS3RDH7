@@ -41,7 +41,7 @@ void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef* hsdram);
 void HAL_SDRAM_MspDeInit(SDRAM_HandleTypeDef* hsdram);
 
 /* USER CODE BEGIN Prototypes */
-
+void SDRAM_InitSequence();
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
